@@ -1,19 +1,4 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
   - Alamofire (5.4.1)
   - FLEX (4.4.0)
   - FMDB (2.7.5):
@@ -28,7 +13,6 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
   - Alamofire (~> 5.2)
   - FLEX
   - FMDB
@@ -42,7 +26,6 @@ SPEC REPOS:
   "git@code.byted.org:iOS_Library/privatethird_source_repo.git":
     - SnapKit
   "git@code.byted.org:iOS_Library/publicthird_source_repo.git":
-    - AFNetworking
     - FMDB
     - YYModel
   trunk:
@@ -65,7 +48,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 466323e3dafab4d7d5248fd6e3ddff498e527afd
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 0788a6b90c77207094b20f531e68468a736e2985
@@ -75,6 +57,6 @@ SPEC CHECKSUMS:
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: d1181a754dc1bef43b598a6f2fb168d3bcc094be
 
-PODFILE CHECKSUM: 2eca4591b69bada7ebd6e98427021494b5ba4970
+PODFILE CHECKSUM: db81860caf6201d2902a013113e78cd7017372ce
 
 COCOAPODS: 1.8.4

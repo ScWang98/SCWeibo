@@ -1,6 +1,0 @@
-framework module Pods_MNWeiboTests {
-  umbrella header "Pods-MNWeiboTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

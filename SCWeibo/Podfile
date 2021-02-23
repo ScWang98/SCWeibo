@@ -6,7 +6,6 @@ target 'MNWeibo' do
   use_frameworks!
 
   # Pods for MNWeibo
-pod "AFNetworking"
 pod "SDWebImage"
 pod "YYModel"
 pod "FMDB"

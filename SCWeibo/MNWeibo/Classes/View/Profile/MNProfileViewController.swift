@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FLEX
 
 class MNProfileViewController: MNBaseViewController {
     
@@ -14,6 +15,17 @@ class MNProfileViewController: MNBaseViewController {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.refreshControl?.endRefreshing()
+        }
+        
+        naviItem.rightBarButtonItem = UIBarButtonItem(title: "FLEX", fontSize: 16, target: self, action: #selector(showFLEX))
+    }
+    
+    @objc func showFLEX() {
+        if FLEXManager.shared.isHidden {
+            FLEXManager.shared.showExplorer()
+        }
+        else {
+            FLEXManager.shared.hideExplorer()
         }
     }
 }
