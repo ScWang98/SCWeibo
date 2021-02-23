@@ -4,6 +4,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - Neon (0.4.0)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
@@ -13,14 +14,15 @@ PODS:
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
-  - FLEX
-  - FMDB
-  - SDWebImage
-  - SnapKit (~> 5.0.0)
+  - Alamofire (= 5.4.1)
+  - FLEX (= 4.4.0)
+  - FMDB (= 2.7.5)
+  - Neon (= 0.4.0)
+  - SDWebImage (= 5.6.1)
+  - SnapKit (= 5.0.1)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - Weibo_SDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
-  - YYModel
+  - YYModel (= 1.0.4)
 
 SPEC REPOS:
   "git@code.byted.org:iOS_Library/privatethird_source_repo.git":
@@ -31,6 +33,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - FLEX
+    - Neon
     - SDWebImage
 
 EXTERNAL SOURCES:
@@ -51,12 +54,13 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 0788a6b90c77207094b20f531e68468a736e2985
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SnapKit: 54db4a330e1e8991e294901d1b45f9f9e231f740
   SVProgressHUD: 6ed134667e9ebb2f33679e8273cd48fd3fa349e5
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: d1181a754dc1bef43b598a6f2fb168d3bcc094be
 
-PODFILE CHECKSUM: db81860caf6201d2902a013113e78cd7017372ce
+PODFILE CHECKSUM: 8b8b81dba64c333bcec504d6eaa39c8b7e530be8
 
 COCOAPODS: 1.8.4
