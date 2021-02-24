@@ -27,28 +27,6 @@ class MNNetworkManager {
         return userAccount.access_token != nil
     }
 
-    func request(method: RequestMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ isSuccess: Bool, _ json: Any?) -> Void) {
-        var httpMethod: HTTPMethod
-        switch method {
-        case .GET:
-            httpMethod = .get
-
-        case .POST:
-            httpMethod = .post
-        }
-
-        AF.request(URLString, method: httpMethod, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
-            switch response.result {
-            case let .success(json):
-                completion(true, json)
-
-            case let .failure(error):
-                print("Request error ==> \(error)")
-                completion(false, nil)
-            }
-        }
-    }
-
     func tokenRequest(method: RequestMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ isSuccess: Bool, _ json: Any?) -> Void) {
         guard let token = userAccount.access_token else {
             print("token is nil, need to login")
@@ -63,6 +41,29 @@ class MNNetworkManager {
         }
         // at this time, parameters must be valuable
         parameters!["access_token"] = token as AnyObject
-        request(method: method, URLString: URLString, parameters: parameters, completion: completion)
+        
+        var httpMethod : HTTPMethod
+        
+        switch method {
+        case .GET:
+            httpMethod = .get
+        case .POST:
+            httpMethod = .post
+        }
+        
+        AF.request(URLString, method: httpMethod, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            var isSuccess = false
+            var jsonResult : Any?
+            switch response.result {
+            case .success(let json):
+                jsonResult = json
+                isSuccess = true
+            case .failure( _):
+                jsonResult = nil
+                isSuccess = false
+            }
+            
+            completion(isSuccess, jsonResult)
+        }
     }
 }
