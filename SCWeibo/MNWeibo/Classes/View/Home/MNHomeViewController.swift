@@ -8,11 +8,6 @@
 
 import UIKit
 
-//原创微博
-private let originCellID = "originCellID"
-//转发微博
-private let repostCellID = "repostCellID"
-
 class MNHomeViewController: MNBaseViewController {
 
     private lazy var listViewModel = MNStatusListViewModel()
@@ -74,19 +69,15 @@ extension MNHomeViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listViewModel.statusList[indexPath.row]
-        let cellID = (viewModel.status.retweeted_status == nil) ? originCellID : repostCellID
-        var cell:MNHomeBaseCell? = tableView.dequeueReusableCell(withIdentifier: cellID) as? MNHomeBaseCell
-        if cell == nil{
-            if viewModel.status.retweeted_status == nil{
-                cell = MNHomeNormalCell(style: .default, reuseIdentifier: cellID)
-            }else{
-                cell = MNHomeRepostCell(style: .default, reuseIdentifier: cellID)
-            }
-        }
-        cell?.selectionStyle = .none
-        cell?.viewModel = viewModel
-        cell?.delegate = self
-        return cell ?? MNHomeBaseCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        guard let homeCell = (cell as? MNHomeBaseCell) else { return MNHomeBaseCell() }
+        
+        homeCell.selectionStyle = .none
+        homeCell.viewModel = viewModel
+        homeCell.delegate = self
+        
+        return homeCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -112,6 +103,9 @@ extension MNHomeViewController{
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 250
         tableView?.separatorStyle = .none
+        tableView?.register(MNHomeNormalCell.self, forCellReuseIdentifier: String(describing: MNHomeNormalCell.self))
+        tableView?.register(MNHomeRepostCell.self, forCellReuseIdentifier: String(describing: MNHomeRepostCell.self))
+        
         naviItem.leftBarButtonItem = UIBarButtonItem(title: "好友", fontSize: 16, target: self, action: #selector(showFridends))
     }
 }

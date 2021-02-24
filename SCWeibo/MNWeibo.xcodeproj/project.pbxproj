@@ -84,6 +84,7 @@
 		A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6912417D1570082F464 /* MNMessageViewController.swift */; };
 		A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6932417D1680082F464 /* MNProfileViewController.swift */; };
 		A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */; };
+		D602101525E6BB1A006C1D5C /* HomeCellTopActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */; };
 		D602E30C25E655B9006C1D5C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602E30B25E655B9006C1D5C /* NetworkManager.swift */; };
 		D686A60025C0750E00E7D0A5 /* StartupTaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A5FF25C0750E00E7D0A5 /* StartupTaskGroup.swift */; };
 		D686A60825C07BE800E7D0A5 /* FetchAppInfoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A60725C07BE800E7D0A5 /* FetchAppInfoTask.swift */; };
@@ -206,6 +207,7 @@
 		A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		BD7817FF2DDFA37461B14FFD /* Pods_MNWeiboUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNWeiboUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB36DD0FF014258DFB6A7AC /* Pods-MNWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeibo.release.xcconfig"; path = "Target Support Files/Pods-MNWeibo/Pods-MNWeibo.release.xcconfig"; sourceTree = "<group>"; };
+		D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTopActionBar.swift; sourceTree = "<group>"; };
 		D602E30B25E655B9006C1D5C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = MNWeibo/Classes/Tools/Network/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
 		D686A5FF25C0750E00E7D0A5 /* StartupTaskGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupTaskGroup.swift; sourceTree = "<group>"; };
 		D686A60725C07BE800E7D0A5 /* FetchAppInfoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAppInfoTask.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		A73B4445242A544500033F5B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D602101325E6BAE1006C1D5C /* View */,
 				A7EFF4B92430E41A001AB430 /* MNHomeBaseCell.swift */,
 				A73B4446242A548200033F5B /* MNHomeNormalCell.swift */,
 				A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */,
@@ -602,6 +605,14 @@
 				A7249963245081C4003068DA /* NSAttributedString+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D602101325E6BAE1006C1D5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D68693E225C0742200E7D0A5 /* Startup */ = {
@@ -938,6 +949,7 @@
 				A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */,
 				A7EFF4B6242F3AAE001AB430 /* MNStatusPicture.swift in Sources */,
 				A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */,
+				D602101525E6BB1A006C1D5C /* HomeCellTopActionBar.swift in Sources */,
 				A7EFF4B4242F34E2001AB430 /* MNStatusPictureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
