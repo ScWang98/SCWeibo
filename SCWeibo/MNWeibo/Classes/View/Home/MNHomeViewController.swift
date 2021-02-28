@@ -74,7 +74,7 @@ extension MNHomeViewController{
         guard let homeCell = (cell as? MNHomeBaseCell) else { return MNHomeBaseCell() }
         
         homeCell.selectionStyle = .none
-        homeCell.viewModel = viewModel
+        homeCell.reload(viewModel: viewModel)
         homeCell.delegate = self
         
         return homeCell

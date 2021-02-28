@@ -21,11 +21,13 @@ class MNProfileViewController: MNBaseViewController {
     }
     
     @objc func showFLEX() {
-        if FLEXManager.shared.isHidden {
-            FLEXManager.shared.showExplorer()
-        }
-        else {
-            FLEXManager.shared.hideExplorer()
-        }
+//        if FLEXManager.shared.isHidden {
+//            FLEXManager.shared.showExplorer()
+//        }
+//        else {
+//            FLEXManager.shared.hideExplorer()
+//        }
+        let vc = UserProfileViewController.init()
+        self.present(vc, animated: true, completion: nil)
     }
 }
