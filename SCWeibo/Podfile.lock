@@ -25,30 +25,28 @@ DEPENDENCIES:
   - YYModel (= 1.0.4)
 
 SPEC REPOS:
-  "git@code.byted.org:iOS_Library/privatethird_source_repo.git":
-    - SnapKit
-  "git@code.byted.org:iOS_Library/publicthird_source_repo.git":
-    - FMDB
-    - YYModel
   trunk:
     - Alamofire
     - FLEX
+    - FMDB
     - Neon
     - SDWebImage
+    - SnapKit
     - SVProgressHUD
     - Weibo_SDK
+    - YYModel
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
-  FMDB: 0788a6b90c77207094b20f531e68468a736e2985
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
-  SnapKit: 54db4a330e1e8991e294901d1b45f9f9e231f740
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
-  YYModel: d1181a754dc1bef43b598a6f2fb168d3bcc094be
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 0fa640c686fe8aa3177b47c6826e5a4e098fae21
+PODFILE CHECKSUM: bdea7302088774b5a5159d8137650395473c951a
 
 COCOAPODS: 1.8.4
