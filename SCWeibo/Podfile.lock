@@ -1,80 +1,54 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
   - Alamofire (5.4.1)
   - FLEX (4.4.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - Neon (0.4.0)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
   - SnapKit (5.0.1)
-  - SVProgressHUD (2.2.6)
+  - SVProgressHUD (2.2.5)
   - Weibo_SDK (3.3.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
-  - Alamofire (~> 5.2)
-  - FLEX
-  - FMDB
-  - SDWebImage
-  - SnapKit (~> 5.0.0)
-  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
-  - Weibo_SDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
-  - YYModel
+  - Alamofire (= 5.4.1)
+  - FLEX (= 4.4.0)
+  - FMDB (= 2.7.5)
+  - Neon (= 0.4.0)
+  - SDWebImage (= 5.6.1)
+  - SnapKit (= 5.0.1)
+  - SVProgressHUD (= 2.2.5)
+  - Weibo_SDK (= 3.3.0)
+  - YYModel (= 1.0.4)
 
 SPEC REPOS:
   "git@code.byted.org:iOS_Library/privatethird_source_repo.git":
     - SnapKit
   "git@code.byted.org:iOS_Library/publicthird_source_repo.git":
-    - AFNetworking
     - FMDB
     - YYModel
   trunk:
     - Alamofire
     - FLEX
+    - Neon
     - SDWebImage
-
-EXTERNAL SOURCES:
-  SVProgressHUD:
-    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
-  Weibo_SDK:
-    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
-
-CHECKOUT OPTIONS:
-  SVProgressHUD:
-    :commit: 4fdf3fdc8703fd9915dae33fc1363c604a06b24e
-    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
-  Weibo_SDK:
-    :commit: acd1f69f62edefe499aa75540fcad2eefcb57c57
-    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
+    - SVProgressHUD
+    - Weibo_SDK
 
 SPEC CHECKSUMS:
-  AFNetworking: 466323e3dafab4d7d5248fd6e3ddff498e527afd
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 0788a6b90c77207094b20f531e68468a736e2985
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SnapKit: 54db4a330e1e8991e294901d1b45f9f9e231f740
-  SVProgressHUD: 6ed134667e9ebb2f33679e8273cd48fd3fa349e5
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: d1181a754dc1bef43b598a6f2fb168d3bcc094be
 
-PODFILE CHECKSUM: 2eca4591b69bada7ebd6e98427021494b5ba4970
+PODFILE CHECKSUM: 0fa640c686fe8aa3177b47c6826e5a4e098fae21
 
 COCOAPODS: 1.8.4

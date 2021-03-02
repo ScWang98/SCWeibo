@@ -84,11 +84,20 @@
 		A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6912417D1570082F464 /* MNMessageViewController.swift */; };
 		A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE6932417D1680082F464 /* MNProfileViewController.swift */; };
 		A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */; };
+		D602101525E6BB1A006C1D5C /* HomeCellTopActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */; };
+		D602E30C25E655B9006C1D5C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D602E30B25E655B9006C1D5C /* NetworkManager.swift */; };
 		D686A60025C0750E00E7D0A5 /* StartupTaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A5FF25C0750E00E7D0A5 /* StartupTaskGroup.swift */; };
 		D686A60825C07BE800E7D0A5 /* FetchAppInfoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A60725C07BE800E7D0A5 /* FetchAppInfoTask.swift */; };
 		D686A60D25C07CDD00E7D0A5 /* WeiboSDKTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A60C25C07CDD00E7D0A5 /* WeiboSDKTask.swift */; };
 		D686A61425C080C400E7D0A5 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A61325C080C400E7D0A5 /* RouteManager.swift */; };
 		D686A61C25C0974D00E7D0A5 /* RouteRegisterTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D686A61B25C0974D00E7D0A5 /* RouteRegisterTask.swift */; };
+		D6A277FA25EBFE4800E3E767 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A277F925EBFE4800E3E767 /* UserProfileHeaderView.swift */; };
+		D6A28D7325ED126D00E3E767 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A28D7225ED126C00E3E767 /* Utilities.swift */; };
+		D6A28D8525ED155000E3E767 /* UIApplication+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A28D8425ED155000E3E767 /* UIApplication+Utilities.swift */; };
+		D6A2A2D325ED511F00E3E767 /* HorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2A2D225ED511F00E3E767 /* HorizontalCategoryBar.swift */; };
+		D6EC6E8725EBF71C00A2AAAF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC6E8625EBF71C00A2AAAF /* SettingViewController.swift */; };
+		D6EC6E8F25EBF8EF00A2AAAF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC6E8E25EBF8EF00A2AAAF /* UserProfileViewController.swift */; };
+		D6EC6E9425EBFA2700A2AAAF /* UserProfileTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC6E9325EBFA2700A2AAAF /* UserProfileTopToolBar.swift */; };
 		D9217F6E83B81C02CA99A188 /* Pods_MNWeiboUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7817FF2DDFA37461B14FFD /* Pods_MNWeiboUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,11 +214,20 @@
 		A7FFE7192417DA160082F464 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		BD7817FF2DDFA37461B14FFD /* Pods_MNWeiboUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNWeiboUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB36DD0FF014258DFB6A7AC /* Pods-MNWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MNWeibo.release.xcconfig"; path = "Target Support Files/Pods-MNWeibo/Pods-MNWeibo.release.xcconfig"; sourceTree = "<group>"; };
+		D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTopActionBar.swift; sourceTree = "<group>"; };
+		D602E30B25E655B9006C1D5C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = MNWeibo/Classes/Tools/Network/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
 		D686A5FF25C0750E00E7D0A5 /* StartupTaskGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupTaskGroup.swift; sourceTree = "<group>"; };
 		D686A60725C07BE800E7D0A5 /* FetchAppInfoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAppInfoTask.swift; sourceTree = "<group>"; };
 		D686A60C25C07CDD00E7D0A5 /* WeiboSDKTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboSDKTask.swift; sourceTree = "<group>"; };
 		D686A61325C080C400E7D0A5 /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		D686A61B25C0974D00E7D0A5 /* RouteRegisterTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRegisterTask.swift; sourceTree = "<group>"; };
+		D6A277F925EBFE4800E3E767 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
+		D6A28D7225ED126C00E3E767 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		D6A28D8425ED155000E3E767 /* UIApplication+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utilities.swift"; sourceTree = "<group>"; };
+		D6A2A2D225ED511F00E3E767 /* HorizontalCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCategoryBar.swift; sourceTree = "<group>"; };
+		D6EC6E8625EBF71C00A2AAAF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		D6EC6E8E25EBF8EF00A2AAAF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		D6EC6E9325EBFA2700A2AAAF /* UserProfileTopToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTopToolBar.swift; sourceTree = "<group>"; };
 		EFB0D4EFF6B958B7B69E71DF /* Pods_MNWeiboTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MNWeiboTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -275,6 +293,7 @@
 		A700BE30241DF882000E2A1A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D602E30B25E655B9006C1D5C /* NetworkManager.swift */,
 				A7E684F22422765500A58E9E /* Model */,
 				A700BE31241DF8A4000E2A1A /* MNNetworkManager.swift */,
 				A700BE33241E00D2000E2A1A /* MNNetworkManager+Extension.swift */,
@@ -343,6 +362,7 @@
 		A73B4445242A544500033F5B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D602101325E6BAE1006C1D5C /* View */,
 				A7EFF4B92430E41A001AB430 /* MNHomeBaseCell.swift */,
 				A73B4446242A548200033F5B /* MNHomeNormalCell.swift */,
 				A7EFF4B72430D99C001AB430 /* MNHomeRepostCell.swift */,
@@ -499,6 +519,7 @@
 		A7FFE67F2417D05E0082F464 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D6A28D7725ED14B000E3E767 /* Utilities */,
 				A7E395AB244F2AB700669981 /* PhotoBrowser */,
 				A79A206B244AF96100F6619F /* SQLite */,
 				A795113D24435C8700E46C98 /* MNLabel */,
@@ -551,7 +572,10 @@
 		A7FFE6842417D05E0082F464 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D6EC6E9825EBFA2D00A2AAAF /* View */,
+				D6EC592525EBF6AA00A2AAAF /* Setting */,
 				A7FFE6932417D1680082F464 /* MNProfileViewController.swift */,
+				D6EC6E8E25EBF8EF00A2AAAF /* UserProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -601,6 +625,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D602101325E6BAE1006C1D5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D602101425E6BB1A006C1D5C /* HomeCellTopActionBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D68693E225C0742200E7D0A5 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +650,33 @@
 				D686A61325C080C400E7D0A5 /* RouteManager.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		D6A28D7725ED14B000E3E767 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D6A28D7225ED126C00E3E767 /* Utilities.swift */,
+				D6A28D8425ED155000E3E767 /* UIApplication+Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D6EC592525EBF6AA00A2AAAF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D6EC6E8625EBF71C00A2AAAF /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D6EC6E9825EBFA2D00A2AAAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6EC6E9325EBFA2700A2AAAF /* UserProfileTopToolBar.swift */,
+				D6A277F925EBFE4800E3E767 /* UserProfileHeaderView.swift */,
+				D6A2A2D225ED511F00E3E767 /* HorizontalCategoryBar.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -867,6 +926,7 @@
 				A7FFE71F2417DA160082F464 /* Bundle+Extensions.swift in Sources */,
 				A795114124435CB200E46C98 /* MNLabel.swift in Sources */,
 				A724996224507DE8003068DA /* UIButtion+Extension.swift in Sources */,
+				D6A2A2D325ED511F00E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				A79A2075244B51B800F6619F /* MNStatusListDAL.swift in Sources */,
 				A7951131244300B800E46C98 /* MNEmojiManager.swift in Sources */,
 				A7E684EC24210C8A00A58E9E /* MNWeiboCommon.swift in Sources */,
@@ -878,8 +938,10 @@
 				A73B4449242A5EE500033F5B /* MNUserModel.swift in Sources */,
 				A79A206A244AD4F800F6619F /* MNEmojiAttachment.swift in Sources */,
 				A73B444B242A61CE00033F5B /* MNStatusViewModel.swift in Sources */,
+				D6A277FA25EBFE4800E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D686A61425C080C400E7D0A5 /* RouteManager.swift in Sources */,
 				A7FFE68B2417D1070082F464 /* MNBaseViewController.swift in Sources */,
+				D6A28D8525ED155000E3E767 /* UIApplication+Utilities.swift in Sources */,
 				A73B4447242A548200033F5B /* MNHomeNormalCell.swift in Sources */,
 				A79511432443661C00E46C98 /* MNWebViewController.swift in Sources */,
 				A7EFF4AC242E439A001AB430 /* UIImage+MNExtensions.swift in Sources */,
@@ -897,7 +959,9 @@
 				A7E395B7244F2AB700669981 /* HMPhotoViewerController.m in Sources */,
 				A7FFE6872417D0B60082F464 /* MNMainTabBarController.swift in Sources */,
 				A7EFF4A8242E412A001AB430 /* UIImageView+MNWebImage.swift in Sources */,
+				D6EC6E8725EBF71C00A2AAAF /* SettingViewController.swift in Sources */,
 				A724995A244F4AF5003068DA /* String+MNPath.swift in Sources */,
+				D6A28D7325ED126D00E3E767 /* Utilities.swift in Sources */,
 				A700BE34241E00D2000E2A1A /* MNNetworkManager+Extension.swift in Sources */,
 				A7E684F42422766C00A58E9E /* MNUserAccount.swift in Sources */,
 				D686A60D25C07CDD00E7D0A5 /* WeiboSDKTask.swift in Sources */,
@@ -906,6 +970,7 @@
 				A79836162427B0BB0095586A /* MNNewFeatureView.swift in Sources */,
 				A7249956244F4821003068DA /* UIScreen+Extension.swift in Sources */,
 				A700BE2D241A73BD000E2A1A /* MNVisitorView.swift in Sources */,
+				D6EC6E8F25EBF8EF00A2AAAF /* UserProfileViewController.swift in Sources */,
 				A724996624508D9F003068DA /* MNNavigationBar.swift in Sources */,
 				A760EDCB24470E3500F698DF /* MNTextView.swift in Sources */,
 				D686A60825C07BE800E7D0A5 /* FetchAppInfoTask.swift in Sources */,
@@ -918,9 +983,11 @@
 				A79511292438C7A600E46C98 /* MNPublishView.swift in Sources */,
 				A7EFF4B82430D99C001AB430 /* MNHomeRepostCell.swift in Sources */,
 				A7FFE6902417D1510082F464 /* MNDiscoverViewController.swift in Sources */,
+				D602E30C25E655B9006C1D5C /* NetworkManager.swift in Sources */,
 				A7249958244F498F003068DA /* UILabel+Extension.swift in Sources */,
 				A760EDD0244749FD00F698DF /* MNEmojiToolbar.swift in Sources */,
 				A79511372443049000E46C98 /* MNEmojiModel.swift in Sources */,
+				D6EC6E9425EBFA2700A2AAAF /* UserProfileTopToolBar.swift in Sources */,
 				A7FFE6922417D1570082F464 /* MNMessageViewController.swift in Sources */,
 				A700BE38241E1646000E2A1A /* MNStatusListViewModel.swift in Sources */,
 				A7E395B8244F2AB700669981 /* HMPhotoBrowserPhotos.m in Sources */,
@@ -934,6 +1001,7 @@
 				A7FFE6942417D1680082F464 /* MNProfileViewController.swift in Sources */,
 				A7EFF4B6242F3AAE001AB430 /* MNStatusPicture.swift in Sources */,
 				A79511222434E03000E46C98 /* MNRefreshView.swift in Sources */,
+				D602101525E6BB1A006C1D5C /* HomeCellTopActionBar.swift in Sources */,
 				A7EFF4B4242F34E2001AB430 /* MNStatusPictureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

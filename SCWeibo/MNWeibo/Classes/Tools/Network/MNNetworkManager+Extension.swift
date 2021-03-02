@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 //For MNWeibo App request
 extension MNNetworkManager{
@@ -71,11 +72,23 @@ extension MNNetworkManager{
                      "grant_type":"authorization_code",
                      "code":code,
                      "redirect_uri":MNredirectUri]
-        request(method: .POST, URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
-
-            //使用YYModel转模型,如果转出来是nil,记得属性前面加`@objc` 关键字
-            // ==> swift4以后_YYModelMeta中的_keyMappedCount获取不到不带`@objc`的变量
-            self.userAccount.yy_modelSet(with: json as? [String:AnyObject] ?? [:])
+        
+        AF.request(urlString, method: .post, parameters: parms, encoding: URLEncoding.default).responseJSON { response in
+            
+            var isSuccess = false
+            switch response.result {
+            case .success(let json):
+                //使用YYModel转模型,如果转出来是nil,记得属性前面加`@objc` 关键字
+                // ==> swift4以后_YYModelMeta中的_keyMappedCount获取不到不带`@objc`的变量
+                self.userAccount.yy_modelSet(with: json as? [String:AnyObject] ?? [:])
+                
+                isSuccess = true
+                print(json)
+                
+            case .failure(let error):
+                isSuccess = false
+                print(error)
+            }
             
             //load user info
             self.fetchUserInfo { (dic) in

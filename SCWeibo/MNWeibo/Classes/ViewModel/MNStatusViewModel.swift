@@ -53,6 +53,11 @@ class MNStatusViewModel: CustomStringConvertible {
         return status.retweeted_status?.pic_urls ?? status.pic_urls
     }
     
+    var cellIdentifier: String {
+        let clazz = self.status.retweeted_status == nil ? MNHomeNormalCell.self : MNHomeRepostCell.self
+        return String(describing: clazz)
+    }
+    
     init(model:MNStatusModel) {
         self.status = model
         
