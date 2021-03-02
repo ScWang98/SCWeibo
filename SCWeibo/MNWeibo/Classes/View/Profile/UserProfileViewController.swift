@@ -10,8 +10,9 @@ import UIKit
 
 class UserProfileViewController: UIViewController {
     let backScrollView = UIScrollView()
-    let topToolBar = MineTopToolBar()
-    let headerView = UserProfileHeaderAvatarView()
+    let topToolBar = UserProfileTopToolBar()
+    let headerView = UserProfileHeaderView()
+    let categoryBar = HorizontalCategoryBar()
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -25,6 +26,10 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
     }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
 }
 
 // MARK: UI
@@ -32,14 +37,49 @@ class UserProfileViewController: UIViewController {
 private extension UserProfileViewController {
     func setupSubviews() {
         view.backgroundColor = UIColor.white
+        backScrollView.backgroundColor = UIColor.blue
+
+        topToolBar.delegate = self
         
-        view.addSubview(topToolBar)
+        categoryBar.backgroundColor = UIColor.white
+
         view.addSubview(backScrollView)
         backScrollView.addSubview(headerView)
-
-        topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: view.safeAreaInsets.top + 44)
+        view.addSubview(topToolBar)
+        view.addSubview(categoryBar)
+        
+        let safeArea = UIApplication.shared.sc.keyWindow?.safeAreaInsets
+        topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         backScrollView.frame = view.bounds
         headerView.anchorToEdge(.top, padding: 100, width: view.width, height: 200)
+        categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 100)
+        
+        var array = [HorizontalCategoryBarItem]()
+        var item = HorizontalCategoryBarItem()
+        item.name = "微博"
+        array.append(item)
+        item = HorizontalCategoryBarItem()
+        item.name = "视频"
+        array.append(item)
+        item = HorizontalCategoryBarItem()
+        item.name = "相册"
+        array.append(item)
+        categoryBar.reload(items: array)
+    }
+}
+
+// MARK: UserProfileTopToolBarDelegate
+
+extension UserProfileViewController: UserProfileTopToolBarDelegate {
+    func topToolBarDidClickBack(_ topToolBar: UserProfileTopToolBar) {
+        if let viewControllers = self.navigationController?.viewControllers, viewControllers.count > 1 {
+            navigationController?.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+
+    func topToolBarDidClickSetting(_ topToolBar: UserProfileTopToolBar) {
     }
 }
 

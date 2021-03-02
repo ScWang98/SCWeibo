@@ -223,7 +223,7 @@ extension MNMainTabBarController : UITabBarControllerDelegate{
             let vc = navi.children[0] as! MNBaseViewController
             
             //scroll to top
-            vc.tableView?.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            vc.tableView?.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             
             //FIXME: dispatch work around.(必须滚动完,再刷新)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
