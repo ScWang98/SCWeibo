@@ -60,7 +60,7 @@ class MNWelcomeView: UIView {
             return
         }
 
-        avatarImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "avatar_default_big"))
+        avatarImageView.kf.setImage(with: url, placeholder: UIImage(named: "avatar_default_big"), options: nil, completionHandler: nil)
     }
     
     //表示试图已经显示

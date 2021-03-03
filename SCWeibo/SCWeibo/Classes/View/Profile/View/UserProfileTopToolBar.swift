@@ -29,16 +29,18 @@ class UserProfileTopToolBar: UIView {
     }
 }
 
-// MARK: UI
+// MARK: - UI
 
 private extension UserProfileTopToolBar {
     func setupSubviews() {
         backButton.setTitle("返回", for: .normal)
+        backButton.setTitleColor(UIColor.blue, for: .normal)
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         backButton.sizeToFit()
         backButton.addTarget(self, action: #selector(backButtonClickedAction(button:)), for: .touchUpInside)
 
         settingButton.setTitle("设置", for: .normal)
+        settingButton.setTitleColor(UIColor.blue, for: .normal)
         settingButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         settingButton.sizeToFit()
         settingButton.addTarget(self, action: #selector(settingButtonClickedAction(button:)), for: .touchUpInside)
@@ -56,7 +58,7 @@ private extension UserProfileTopToolBar {
     }
 }
 
-// MARK: Action
+// MARK: - Action
 
 @objc private extension UserProfileTopToolBar {
     func backButtonClickedAction(button: UIButton) {

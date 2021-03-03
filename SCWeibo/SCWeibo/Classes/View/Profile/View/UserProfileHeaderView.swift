@@ -30,7 +30,7 @@ class UserProfileHeaderView: UIView {
     }
     
     func reload() {
-        avatarImage.sd_setImage(with: URL.init(string: "https://img2018.cnblogs.com/blog/1115121/201905/1115121-20190514102301527-2098166339.png"))
+        avatarImage.kf.setImage(with: URL.init(string: "https://img2018.cnblogs.com/blog/1115121/201905/1115121-20190514102301527-2098166339.png"))
         nickNameLabel.text = "王铁柱啦啦啦"
         descriptionLabel.text = "你还没有描述"
         locationLabel.text = "陕西 西安"
@@ -40,7 +40,7 @@ class UserProfileHeaderView: UIView {
     }
 }
 
-// MARK: UI
+// MARK: - UI
 
 private extension UserProfileHeaderView {
     func setupSubviews() {
@@ -125,7 +125,7 @@ private extension UserProfileHeaderView {
     }
 }
 
-// MARK: Action
+// MARK: - Action
 
 @objc private extension UserProfileHeaderView {
     func avatarClickedAction(sender: UIImageView) {

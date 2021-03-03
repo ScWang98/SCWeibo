@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MNStatusPictureView: UIView {
     
@@ -29,7 +30,10 @@ class MNStatusPictureView: UIView {
                     index += 1
                 }
                 
-                iv.mn_setImage(urlString: url.thumbnail_pic, placeholderImage: nil)
+                if let urlString = url.thumbnail_pic,
+                   let url = URL.init(string: urlString) {
+                    iv.kf.setImage(with: url)
+                }
                 iv.isHidden = false
                 index += 1
                 
