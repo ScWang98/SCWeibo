@@ -1,15 +1,14 @@
 //
 //  MNNetworkManager+Extension.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/3/15.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/3/15.
 //
 
 import Foundation
 import Alamofire
 
-//For MNWeibo App request
+//For SCWeibo App request
 extension MNNetworkManager{
     
     /// fetch home page datas

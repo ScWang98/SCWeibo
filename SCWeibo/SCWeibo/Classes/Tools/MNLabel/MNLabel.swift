@@ -1,9 +1,8 @@
 //
 //  MNLabel.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2019/6/20.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2019/6/20.
 //
 
 import UIKit

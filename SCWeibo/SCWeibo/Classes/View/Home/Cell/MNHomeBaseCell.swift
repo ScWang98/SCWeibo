@@ -1,9 +1,8 @@
 //
 //  MNHomeBaseCell.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/3/29.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/3/29.
 //
 
 import UIKit

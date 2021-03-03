@@ -11,7 +11,7 @@
   {
     "visitorInfo" : {
       "imageName" : "visitordiscover_image_message",
-      "message" : "You can send message to miniLV"
+      "message" : "You can send message to scwang"
     },
     "imageName" : "message_center",
     "clsName" : "MNMessageViewController",
@@ -26,14 +26,14 @@
     "imageName" : "discover",
     "visitorInfo" : {
       "imageName" : "visitordiscover_image_message",
-      "message" : "You can find miniLV's bug"
+      "message" : "You can find scwang's bug"
     }
   },
   {
     "clsName" : "MNProfileViewController",
     "visitorInfo" : {
       "imageName" : "visitordiscover_image_profile",
-      "message" : "Welcome to miniLV blog."
+      "message" : "Welcome to scwang blog."
     },
     "imageName" : "profile",
     "title" : "我的"

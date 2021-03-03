@@ -1,9 +1,8 @@
 //
 //  MNWebViewController.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/4/12.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/4/12.
 //
 
 import UIKit

@@ -1,9 +1,8 @@
 //
 //  MNTextView.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/4/15.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/4/15.
 //
 
 import UIKit
@@ -44,7 +43,7 @@ class MNTextView: UITextView {
 extension MNTextView{
     func setupUI(){
         placeholderLabel.font = font
-        placeholderLabel.text = "miniLV rua~"
+        placeholderLabel.text = "scwang rua~"
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.sizeToFit()
         placeholderLabel.frame.origin = CGPoint(x: 5, y: 8)

@@ -1,6 +1,6 @@
 //
 //  HorizontalCategoryBar.swift
-//  MNWeibo
+//  SCWeibo
 //
 //  Created by scwang on 2021/3/2.
 //  Copyright © 2021 scwang. All rights reserved.

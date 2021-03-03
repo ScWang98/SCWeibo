@@ -2,7 +2,7 @@
 //  MNLayout.swift
 //  SCWeibo
 //
-//  Created by miniLV on 2020/3/22.
+//  Created by scwang on 2020/3/22.
 //
 
 import UIKit

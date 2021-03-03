@@ -1,9 +1,8 @@
 //
 //  MNWriteController.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/4/8.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/4/8.
 //
 
 import UIKit
@@ -64,7 +63,7 @@ class MNWriteController: UIViewController, RouteAble {
             make.top.equalTo(MNLayout.Layout(10))
         }
         
-        userNameLabel.text = "miniLV"
+        userNameLabel.text = "scwang"
         userNameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(12))
         userNameLabel.textColor = UIColor.lightGray
         view.addSubview(userNameLabel)

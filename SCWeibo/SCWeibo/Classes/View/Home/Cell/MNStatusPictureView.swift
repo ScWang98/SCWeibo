@@ -1,9 +1,8 @@
 //
 //  MNStatusPictureView.swift
-//  MNWeibo
+//  SCWeibo
 //
-//  Created by miniLV on 2020/3/28.
-//  Copyright © 2020 miniLV. All rights reserved.
+//  Created by scwang on 2020/3/28.
 //
 
 import UIKit
