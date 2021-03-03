@@ -14,6 +14,7 @@ pod 'SnapKit', '5.0.1'
 pod "Weibo_SDK",'3.3.0'
 
 pod 'Alamofire', '5.4.1'
+pod 'Kingfisher', '6.1.1'
 pod 'Neon', '0.4.0'
 pod 'FLEX', '4.4.0', :configurations => ['Debug']
 
