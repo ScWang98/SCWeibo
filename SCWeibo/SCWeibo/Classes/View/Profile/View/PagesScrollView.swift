@@ -82,7 +82,7 @@ extension PagesScrollView {
             self.backScrollView.scrollRectToVisible(rect, animated: false)
         } completion: { _ in
             self.backScrollView.delegate = self
-            
+
             self.currentIndex = selectedIndex
             self.currentPage = self.pagesDataSource?.pagesView(self, pageViewControllerAt: selectedIndex).view
             self.currentPageScrollView = self.pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)

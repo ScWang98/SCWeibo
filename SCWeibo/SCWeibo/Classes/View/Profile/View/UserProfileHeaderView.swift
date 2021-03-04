@@ -27,9 +27,9 @@ class UserProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func reload() {
-        avatarImage.kf.setImage(with: URL.init(string: "https://img2018.cnblogs.com/blog/1115121/201905/1115121-20190514102301527-2098166339.png"))
+        avatarImage.kf.setImage(with: URL(string: "https://img2018.cnblogs.com/blog/1115121/201905/1115121-20190514102301527-2098166339.png"))
         nickNameLabel.text = "王铁柱啦啦啦"
         descriptionLabel.text = "你还没有描述"
         locationLabel.text = "陕西 西安"
@@ -44,16 +44,16 @@ class UserProfileHeaderView: UIView {
 private extension UserProfileHeaderView {
     func setupSubviews() {
         backgroundColor = UIColor.white
-        
+
         avatarImage.layer.cornerRadius = 40
         avatarImage.isUserInteractionEnabled = true
         avatarImage.clipsToBounds = true
         avatarImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarClickedAction(sender:))))
-        
+
         nickNameLabel.textAlignment = .center
-        
+
         descriptionLabel.textAlignment = .center
-        
+
         locationLabel.textAlignment = .center
 
         followLabel.isUserInteractionEnabled = true
@@ -135,9 +135,8 @@ private extension UserProfileHeaderView {
 
     func fansLabelClickedAction(sender: UILabel) {
     }
-    
+
     func followButtonClickedAction(button: UIButton) {
         button.isSelected = !button.isSelected
-        
     }
 }

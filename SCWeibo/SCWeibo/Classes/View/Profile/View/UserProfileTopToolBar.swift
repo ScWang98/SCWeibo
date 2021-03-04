@@ -47,7 +47,7 @@ private extension UserProfileTopToolBar {
         addSubview(backButton)
         addSubview(settingButton)
 
-        backButton.snp.makeConstraints { (make) in
+        backButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(12)
             make.bottom.equalToSuperview().offset(-12)
         }

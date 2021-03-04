@@ -143,7 +143,7 @@ class HorizontalCategoryBar: UIView {
 
     func scrollSelected(fromIndex: Int, toIndex: Int, percent: Double) {
         guard 0 <= fromIndex && fromIndex < cells.count,
-              0 <= toIndex && toIndex < cells.count else {
+            0 <= toIndex && toIndex < cells.count else {
             return
         }
 

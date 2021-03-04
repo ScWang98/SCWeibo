@@ -5,8 +5,8 @@
 //  Created by scwang on 2021/3/1.
 //
 
-import UIKit
 import Neon
+import UIKit
 
 class UserProfileViewController: UIViewController {
     let topToolBar = UserProfileTopToolBar()
@@ -79,9 +79,9 @@ private extension UserProfileViewController {
         array.append(item)
         categoryBar.reload(items: array)
     }
-    
+
     func addObservers() {
-        self.pagesView.bk_addObserver(forKeyPath: "contentOffset", options: [.new, .old]) { (obj, change) in
+        self.pagesView.bk_addObserver(forKeyPath: "contentOffset", options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
             print(self.pagesView.contentOffset)
             print(self.categoryBar.bottom)
@@ -125,7 +125,7 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
         print("fromIndex:\(fromIndex) toIndex:\(toIndex) percent:\(percent)")
         categoryBar.scrollSelected(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
     }
-    
+
     // MARK: PagesScrollViewDataSource
 
     func numberOfPages(in pagesView: PagesScrollView) -> Int {
