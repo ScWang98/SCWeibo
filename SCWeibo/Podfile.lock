@@ -1,5 +1,20 @@
 PODS:
   - Alamofire (5.4.1)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - FLEX (4.4.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -16,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 5.4.1)
+  - BlocksKit
   - FLEX (= 4.4.0)
   - FMDB (= 2.7.5)
   - Kingfisher (= 6.1.1)
@@ -29,6 +45,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BlocksKit
     - FLEX
     - FMDB
     - Kingfisher
@@ -41,6 +58,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Kingfisher: 676d63307fbef6ed5d5ed400bff36983480d7500
@@ -51,6 +69,6 @@ SPEC CHECKSUMS:
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a8ae2efe72c1fc061f73f1be0032b4413fe46288
+PODFILE CHECKSUM: 23b8ccbbe75f8e3cb801e7699eae0718b80e130b
 
 COCOAPODS: 1.8.4

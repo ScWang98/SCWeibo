@@ -101,6 +101,7 @@
 		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
 		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
 		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
+		D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F290D025F14E8200F54C87 /* UIView+Edge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
 		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
+		D6F290D025F14E8200F54C87 /* UIView+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Edge.swift"; sourceTree = "<group>"; };
 		E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeiboTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -465,6 +467,7 @@
 				D6A225E225EE3AEF00E3E767 /* Date+Extensions.swift */,
 				D6A225E325EE3AEF00E3E767 /* UIColor+Extentsion.swift */,
 				D68F989725EFD64400C0092A /* UIView+Extension.swift */,
+				D6F290D025F14E8200F54C87 /* UIView+Edge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 		D6A2260D25EE3AEF00E3E767 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D6F24A4025F1032800F54C87 /* ViewModel */,
 				D6A2260E25EE3AEF00E3E767 /* UserProfileViewController.swift */,
 				D6A2260F25EE3AEF00E3E767 /* View */,
 				D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */,
@@ -683,6 +687,13 @@
 				D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */,
 			);
 			path = PhotoBrowser;
+			sourceTree = "<group>";
+		};
+		D6F24A4025F1032800F54C87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -940,6 +951,7 @@
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
 				D6A2265B25EE3AF000E3E767 /* MNHomeBaseCell.swift in Sources */,
+				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,

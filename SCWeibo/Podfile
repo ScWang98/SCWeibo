@@ -17,6 +17,7 @@ pod 'Alamofire', '5.4.1'
 pod 'Kingfisher', '6.1.1'
 pod 'Neon', '0.4.0'
 pod 'FLEX', '4.4.0', :configurations => ['Debug']
+pod 'BlocksKit'
 
   target 'SCWeiboTests' do
     inherit! :search_paths
