@@ -19,7 +19,7 @@ class MNMainTabBarController: UITabBarController {
         setupCenterButton()
         setupTimer()
         //新特性
-        setupNewFeatureViews()
+//        setupNewFeatureViews()
         UITabBar.appearance().tintColor = UIColor.orange
         delegate = self
         
