@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Neon
 
 class UserProfileViewController: UIViewController {
     let topToolBar = UserProfileTopToolBar()
@@ -31,6 +32,7 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
 
         setupSubviews()
+        addObservers()
     }
 
     override func viewDidLayoutSubviews() {
@@ -40,7 +42,7 @@ class UserProfileViewController: UIViewController {
     }
 }
 
-// MARK: - UI
+// MARK: - Private Methods
 
 private extension UserProfileViewController {
     func setupSubviews() {
@@ -51,7 +53,7 @@ private extension UserProfileViewController {
         categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
-        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 100)
+        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
         pagesView.headerView = headerView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
@@ -77,6 +79,14 @@ private extension UserProfileViewController {
         array.append(item)
         categoryBar.reload(items: array)
     }
+    
+    func addObservers() {
+        self.pagesView.bk_addObserver(forKeyPath: "contentOffset", options: [.new, .old]) { (obj, change) in
+            self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
+            print(self.pagesView.contentOffset)
+            print(self.categoryBar.bottom)
+        }
+    }
 }
 
 // MARK: - UserProfileTopToolBarDelegate
@@ -98,23 +108,28 @@ extension UserProfileViewController: UserProfileTopToolBarDelegate {
 
 extension UserProfileViewController: HorizontalCategoryBarDelegate {
     func categoryBar(_ categoryBar: HorizontalCategoryBar, didSelectItemAt index: Int) {
-        pagesView.set(currentIndex: index, animated: true)
+        pagesView.set(selectedIndex: index, animated: true)
     }
 }
 
-// MARK: - PagesScrollViewDataSource
+// MARK: - PagesScrollViewDelegate / PagesScrollViewDataSource
 
 extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewDelegate {
     // MARK: PagesScrollViewDelegate
 
     func pagesView(_ pagesView: PagesScrollView, dragToSelectPageAt index: Int) {
-        categoryBar.selectItem(at: index)
+        return categoryBar.selectItem(at: index)
     }
 
+    func pagesView(_ pagesView: PagesScrollView, pagingFromIndex fromIndex: Int, toIndex: Int, percent: Double) {
+        print("fromIndex:\(fromIndex) toIndex:\(toIndex) percent:\(percent)")
+        categoryBar.scrollSelected(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
+    }
+    
     // MARK: PagesScrollViewDataSource
 
     func numberOfPages(in pagesView: PagesScrollView) -> Int {
-        3
+        return pageVCs.count
     }
 
     func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController {

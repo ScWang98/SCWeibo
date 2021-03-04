@@ -86,7 +86,7 @@ private extension UserProfileHeaderView {
         avatarImage.snp.makeConstraints { make in
             make.width.height.equalTo(80)
             make.centerX.equalTo(self)
-            make.top.equalToSuperview().offset(-15)
+            make.top.equalToSuperview()
         }
         nickNameLabel.snp.makeConstraints { make in
             make.top.equalTo(avatarImage.snp.bottom).offset(10)

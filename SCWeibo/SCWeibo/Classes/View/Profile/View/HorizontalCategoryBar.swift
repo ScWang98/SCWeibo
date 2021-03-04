@@ -68,7 +68,7 @@ protocol HorizontalCategoryBarDelegate {
 
 class HorizontalCategoryBar: UIView {
     var delegate: HorizontalCategoryBarDelegate?
-    
+
     var indicator = UIView()
 
     var cells = [HorizontalCategoryCell]()
@@ -110,39 +110,54 @@ class HorizontalCategoryBar: UIView {
             item.index = index
         }
 
-        let width = self.width / CGFloat(items.count)
-        indicator.frame = CGRect(x: indicator.x, y: indicator.y, width: width - 12, height: indicator.height)
+        let cellWidth = self.width / CGFloat(items.count)
         for (index, cell) in cells.enumerated() {
             let item = items[index]
             cell.reload(item: item)
             if let idx = item.index {
-                cell.frame = CGRect(x: width * CGFloat(idx), y: 0, width: width, height: height)
+                cell.frame = CGRect(x: cellWidth * CGFloat(idx), y: 0, width: cellWidth, height: height)
             }
             cell.delegate = self
             addSubview(cell)
         }
+        indicator.frame = CGRect(x: indicator.x, y: self.height - 4, width: cellWidth - 12, height: indicator.height)
     }
 
-    func selectItem(at index: Int) {
+    func selectItem(at index: Int, animated: Bool = false) {
         guard 0 <= index && index < cells.count else {
             return
         }
-        
+
         lastSelectedCell?.selected = false
         lastSelectedCell = cells[index]
         lastSelectedCell?.selected = true
-        
-        UIView.animate(withDuration: 0.15) {
-            self.indicator.center = CGPoint(x: self.cells[index].center.x, y: self.height - 2)
+
+        if animated {
+            UIView.animate(withDuration: 0.15) {
+                self.indicator.center = CGPoint(x: self.cells[index].center.x, y: self.indicator.center.y)
+            }
+        } else {
+            self.indicator.center = CGPoint(x: self.cells[index].center.x, y: self.indicator.center.y)
         }
+    }
+
+    func scrollSelected(fromIndex: Int, toIndex: Int, percent: Double) {
+        guard 0 <= fromIndex && fromIndex < cells.count,
+              0 <= toIndex && toIndex < cells.count else {
+            return
+        }
+
+        let startX = cells[fromIndex].center.x
+        let endX = cells[toIndex].center.x
+        let indicatorCenterX = startX + (endX - startX) * CGFloat(percent)
+        indicator.center = CGPoint(x: indicatorCenterX, y: indicator.center.y)
     }
 }
 
 extension HorizontalCategoryBar: HorizontalCategoryCellDelegate {
     func cellDidClicked(_ cell: HorizontalCategoryCell) {
-        guard let index = cell.item?.index, 0 <= index , index < cells.count else { return }
-        print("点击cell", index)
-        selectItem(at: index)
+        guard let index = cell.item?.index, 0 <= index, index < cells.count else { return }
+        selectItem(at: index, animated: true)
         delegate?.categoryBar(self, didSelectItemAt: index)
     }
 }
