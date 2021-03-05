@@ -101,6 +101,12 @@
 		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
 		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
 		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
+		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
+		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
+		D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491525F29DA800F54C87 /* URLSettings.swift */; };
+		D6F2491B25F2A36300F54C87 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491A25F2A36300F54C87 /* StatusModel.swift */; };
+		D6F2492325F2A96C00F54C87 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492225F2A96C00F54C87 /* UserModel.swift */; };
+		D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */; };
 		D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F290D025F14E8200F54C87 /* UIView+Edge.swift */; };
 /* End PBXBuildFile section */
 
@@ -232,6 +238,12 @@
 		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
 		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
+		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
+		D6F2491525F29DA800F54C87 /* URLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSettings.swift; sourceTree = "<group>"; };
+		D6F2491A25F2A36300F54C87 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
+		D6F2492225F2A96C00F54C87 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Convenience.swift"; sourceTree = "<group>"; };
 		D6F290D025F14E8200F54C87 /* UIView+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Edge.swift"; sourceTree = "<group>"; };
 		E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeiboTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,7 +327,6 @@
 			children = (
 				D6A2268C25EE3B2A00E3E767 /* Main */,
 				D6A2267F25EE3B1800E3E767 /* Startup */,
-				D6A2267D25EE3B1800E3E767 /* Utilites */,
 				D6A225B725EE3AEF00E3E767 /* Classes */,
 			);
 			path = SCWeibo;
@@ -358,6 +369,7 @@
 				D6A225B925EE3AEF00E3E767 /* MNStatusViewModel.swift */,
 				D6A225BA25EE3AEF00E3E767 /* MNStatusListViewModel.swift */,
 				D6A225BB25EE3AEF00E3E767 /* MNStatusListDAL.swift */,
+				D6F2491025F29C8100F54C87 /* StatusListService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -393,6 +405,7 @@
 				D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */,
 				D6A225C225EE3AEF00E3E767 /* Model */,
 				D6A225C425EE3AEF00E3E767 /* MNNetworkManager+Extension.swift */,
+				D6F2491525F29DA800F54C87 /* URLSettings.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -468,6 +481,7 @@
 				D6A225E325EE3AEF00E3E767 /* UIColor+Extentsion.swift */,
 				D68F989725EFD64400C0092A /* UIView+Extension.swift */,
 				D6F290D025F14E8200F54C87 /* UIView+Edge.swift */,
+				D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +502,8 @@
 				D6A225F825EE3AEF00E3E767 /* MNUserModel.swift */,
 				D6A225F925EE3AEF00E3E767 /* MNStatusPicture.swift */,
 				D6A225FA25EE3AEF00E3E767 /* MNStatusModel.swift */,
+				D6F2491A25F2A36300F54C87 /* StatusModel.swift */,
+				D6F2492225F2A96C00F54C87 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -641,13 +657,6 @@
 			path = VisitorView;
 			sourceTree = "<group>";
 		};
-		D6A2267D25EE3B1800E3E767 /* Utilites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilites;
-			sourceTree = "<group>";
-		};
 		D6A2267F25EE3B1800E3E767 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,6 +701,7 @@
 		D6F24A4025F1032800F54C87 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -945,15 +955,18 @@
 				D6A2263225EE3AEF00E3E767 /* MNEmojiToolbar.swift in Sources */,
 				D6A2265725EE3AF000E3E767 /* MNTitleButton.swift in Sources */,
 				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
+				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
 				D6A2266C25EE3AF000E3E767 /* MNNewFeatureView.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
+				D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */,
 				D6A2265B25EE3AF000E3E767 /* MNHomeBaseCell.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
+				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* MNMainTabBarController.swift in Sources */,
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
@@ -998,6 +1011,7 @@
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
+				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D6A226CD25EE456E00E3E767 /* HMPhotoViewerController.m in Sources */,
@@ -1007,6 +1021,7 @@
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2266025EE3AF000E3E767 /* MNMessageViewController.swift in Sources */,
 				D6A2264A25EE3AEF00E3E767 /* MNRefreshView.swift in Sources */,
+				D6F2491B25F2A36300F54C87 /* StatusModel.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D6A2262725EE3AEF00E3E767 /* MNStatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
@@ -1021,6 +1036,7 @@
 				D6A226CC25EE456E00E3E767 /* HMPhotoBrowserController.m in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
+				D6F2492325F2A96C00F54C87 /* UserModel.swift in Sources */,
 				D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
