@@ -132,7 +132,7 @@ private extension PagesScrollView {
 
         for i in 0 ..< pageCount {
             if let pageVC = pagesDataSource?.pagesView(self, pageViewControllerAt: i) {
-                let parentVC = (self as UIView).sc.viewController
+                let parentVC = self.sc.viewController
                 pageVC.willMove(toParent: parentVC)
                 parentVC.addChild(pageVC)
                 pageVC.didMove(toParent: parentVC)

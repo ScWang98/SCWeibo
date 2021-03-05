@@ -10,7 +10,7 @@ import UIKit
 extension UIView: UtilitiesWrapperable {
 }
 
-extension UtilitiesWrapper where Base == UIView {
+extension UtilitiesWrapper where Base: UIView {
     public var viewController: UIViewController {
         return ResponderHelper.topViewController(for: base)
     }
