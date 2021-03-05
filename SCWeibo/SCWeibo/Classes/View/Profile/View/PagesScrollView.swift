@@ -152,12 +152,6 @@ private extension PagesScrollView {
         setNeedsLayout()
     }
 
-    func addObservers() {
-        bk_addObserver(forKeyPath: "contentOffset", options: [.old, .new]) { _, _ in
-            print("contentOffset Changed")
-        }
-    }
-
     func addObserver(to scrollView: UIScrollView?) {
         guard let scrollView = scrollView else {
             return
@@ -165,9 +159,6 @@ private extension PagesScrollView {
 
         scrollerObserveId = scrollView.bk_addObserver(forKeyPath: "contentSize", options: [.old, .new]) { _, change in
             self.setNeedsLayout()
-
-            print(change ?? "aaaa")
-            print("contentSize Changed")
         }
     }
 

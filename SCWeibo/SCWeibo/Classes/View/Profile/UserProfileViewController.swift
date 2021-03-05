@@ -39,6 +39,7 @@ class UserProfileViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         pagesView.reloadPages()
+        pagesView.set(selectedIndex: 0)
     }
 }
 
@@ -83,8 +84,6 @@ private extension UserProfileViewController {
     func addObservers() {
         self.pagesView.bk_addObserver(forKeyPath: "contentOffset", options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
-            print(self.pagesView.contentOffset)
-            print(self.categoryBar.bottom)
         }
     }
 }
@@ -122,7 +121,6 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
     }
 
     func pagesView(_ pagesView: PagesScrollView, pagingFromIndex fromIndex: Int, toIndex: Int, percent: Double) {
-        print("fromIndex:\(fromIndex) toIndex:\(toIndex) percent:\(percent)")
         categoryBar.scrollSelected(fromIndex: fromIndex, toIndex: toIndex, percent: percent)
     }
 
