@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StatusModel: Codable {
+class StatusModel: Codable {
     var id: Int = 0
 
     var text: String?
@@ -26,7 +26,7 @@ struct StatusModel: Codable {
 
     var source: String?
 
-    var retweetedStatus: RetweetedStatusModel?
+    var retweetedStatus: StatusModel?
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -42,7 +42,7 @@ struct StatusModel: Codable {
     }
 }
 
-struct StatusPicture: Codable {
+class StatusPicture: Codable {
     var thumbnailPic: String? {
         didSet {
             bmiddlePic = thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/bmiddle/")
@@ -58,7 +58,4 @@ struct StatusPicture: Codable {
     private enum CodingKeys: String, CodingKey {
         case thumbnailPic = "thumbnail_pic"
     }
-}
-
-struct RetweetedStatusModel: Codable {
 }
