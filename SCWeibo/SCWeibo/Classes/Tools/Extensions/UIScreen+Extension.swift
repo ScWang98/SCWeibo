@@ -5,10 +5,16 @@
 //  Created by scwang on 2020/4/21.
 //
 
-import Foundation
 import UIKit
 
-extension UIScreen {
-    static let mn_screenW:CGFloat = UIScreen.main.bounds.width
-    static let mn_screenH:CGFloat = UIScreen.main.bounds.height
+extension UIScreen: UtilitiesWrapperable {}
+
+extension UtilitiesWrapper where Base: UIScreen {
+    static var screenWidth: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+
+    static var screenHeight: CGFloat {
+        return UIScreen.main.bounds.height
+    }
 }

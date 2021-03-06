@@ -20,7 +20,7 @@ class MNNavigationBar: UINavigationBar {
             } else if stringFromClass.contains("UINavigationBarContentView") {
                 subview.frame = CGRect(x: 0,
                                        y: MN_statusBarHeight,
-                                       width: UIScreen.mn_screenW,
+                                       width: UIScreen.sc.screenWidth,
                                        height: MN_naviContentHeight)
             }
         }

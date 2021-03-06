@@ -68,8 +68,6 @@ extension EdgeAble {
     }
 }
 
-extension UIView: EdgeAble {
-}
+extension UIView: EdgeAble {}
 
-extension CALayer: EdgeAble {
-}
+extension CALayer: EdgeAble {}
