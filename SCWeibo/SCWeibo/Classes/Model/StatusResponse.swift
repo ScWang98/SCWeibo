@@ -1,5 +1,5 @@
 //
-//  StatusModel.swift
+//  Status.swift
 //  SCWeibo
 //
 //  Created by scwang on 2021/3/6.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-class StatusModel: Codable {
+class StatusResponse: Codable, CustomStringConvertible {
     var id: Int = 0
 
     var text: String?
 
-    var user: UserModel?
+    var user: UserResponse?
 
     var repostsCount: Int = 0
 
@@ -26,7 +26,7 @@ class StatusModel: Codable {
 
     var source: String?
 
-    var retweetedStatus: StatusModel?
+    var retweetedStatus: StatusResponse?
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -40,16 +40,14 @@ class StatusModel: Codable {
         case source
         case retweetedStatus = "retweeted_status"
     }
+
+    var description: String {
+        return "..."
+    }
 }
 
 class StatusPicture: Codable {
-    var thumbnailPic: String? {
-        didSet {
-            bmiddlePic = thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/bmiddle/")
-            originalPic = thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/large/")
-            thumbnailPic = thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/wap360/")
-        }
-    }
+    var thumbnailPic: String?
 
     var bmiddlePic: String?
 

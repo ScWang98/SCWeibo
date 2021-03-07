@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  UserResponse.swift
 //  SCWeibo
 //
 //  Created by scwang on 2021/3/6.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserModel: Codable {
+class UserResponse: Codable {
     
     var id: Int
     
