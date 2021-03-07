@@ -10,6 +10,20 @@
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
 		9A161471712BAA6ACCD4D09E /* Pods_SCWeiboUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8CD1F5162D04979016AE40 /* Pods_SCWeiboUITests.framework */; };
+		D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64125F507E20041D99A /* StatusTopToolBar.swift */; };
+		D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64625F507F70041D99A /* StatusBottomToolBar.swift */; };
+		D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64B25F510620041D99A /* StatusPicturesView.swift */; };
+		D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D65325F511060041D99A /* StatusPicturesModel.swift */; };
+		D627056925F4BA8200B7F6DC /* StatusCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */; };
+		D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */; };
+		D627057925F4C15900B7F6DC /* StatusRepostCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */; };
+		D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */; };
+		D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */; };
+		D627058E25F4C1D500B7F6DC /* StatusNormalCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */; };
+		D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */; };
+		D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */; };
+		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
+		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
 		D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989725EFD64400C0092A /* UIView+Extension.swift */; };
@@ -21,7 +35,6 @@
 		D6A2258925EE388C00E3E767 /* SCWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2258825EE388C00E3E767 /* SCWeiboUITests.swift */; };
 		D6A2262625EE3AEF00E3E767 /* MNStatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225B925EE3AEF00E3E767 /* MNStatusViewModel.swift */; };
 		D6A2262725EE3AEF00E3E767 /* MNStatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225BA25EE3AEF00E3E767 /* MNStatusListViewModel.swift */; };
-		D6A2262825EE3AEF00E3E767 /* MNStatusListDAL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225BB25EE3AEF00E3E767 /* MNStatusListDAL.swift */; };
 		D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */; };
 		D6A2262A25EE3AEF00E3E767 /* MNNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C025EE3AEF00E3E767 /* MNNetworkManager.swift */; };
 		D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */; };
@@ -63,11 +76,11 @@
 		D6A2265525EE3AEF00E3E767 /* MNStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225FA25EE3AEF00E3E767 /* MNStatusModel.swift */; };
 		D6A2265625EE3AEF00E3E767 /* MNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225FD25EE3AEF00E3E767 /* MNWebViewController.swift */; };
 		D6A2265725EE3AF000E3E767 /* MNTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225FF25EE3AEF00E3E767 /* MNTitleButton.swift */; };
-		D6A2265825EE3AF000E3E767 /* MNStatusToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260125EE3AEF00E3E767 /* MNStatusToolView.swift */; };
+		D6A2265825EE3AF000E3E767 /* StatusBottomActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260125EE3AEF00E3E767 /* StatusBottomActionBar.swift */; };
 		D6A2265925EE3AF000E3E767 /* MNHomeNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260225EE3AEF00E3E767 /* MNHomeNormalCell.swift */; };
 		D6A2265A25EE3AF000E3E767 /* MNHomeRepostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260325EE3AEF00E3E767 /* MNHomeRepostCell.swift */; };
 		D6A2265B25EE3AF000E3E767 /* MNHomeBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260425EE3AEF00E3E767 /* MNHomeBaseCell.swift */; };
-		D6A2265C25EE3AF000E3E767 /* HomeCellTopActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260625EE3AEF00E3E767 /* HomeCellTopActionBar.swift */; };
+		D6A2265C25EE3AF000E3E767 /* StatusTopActionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260625EE3AEF00E3E767 /* StatusTopActionBar.swift */; };
 		D6A2265D25EE3AF000E3E767 /* MNStatusPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260725EE3AEF00E3E767 /* MNStatusPictureView.swift */; };
 		D6A2265E25EE3AF000E3E767 /* MNHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260825EE3AEF00E3E767 /* MNHomeViewController.swift */; };
 		D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2260A25EE3AEF00E3E767 /* MNDiscoverViewController.swift */; };
@@ -104,8 +117,8 @@
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
 		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
 		D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491525F29DA800F54C87 /* URLSettings.swift */; };
-		D6F2491B25F2A36300F54C87 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491A25F2A36300F54C87 /* StatusModel.swift */; };
-		D6F2492325F2A96C00F54C87 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492225F2A96C00F54C87 /* UserModel.swift */; };
+		D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491A25F2A36300F54C87 /* StatusResponse.swift */; };
+		D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492225F2A96C00F54C87 /* UserResponse.swift */; };
 		D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */; };
 		D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F290D025F14E8200F54C87 /* UIView+Edge.swift */; };
 /* End PBXBuildFile section */
@@ -135,6 +148,20 @@
 		BD79FE17EC109E56D87E386B /* Pods-SCWeiboTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboTests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboTests/Pods-SCWeiboTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C11352AF11432C26B89DA4F8 /* Pods-SCWeiboTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboTests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboTests/Pods-SCWeiboTests.release.xcconfig"; sourceTree = "<group>"; };
 		D42A4FCDB750311E3112FD46 /* Pods-SCWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeibo.release.xcconfig"; path = "Target Support Files/Pods-SCWeibo/Pods-SCWeibo.release.xcconfig"; sourceTree = "<group>"; };
+		D611D64125F507E20041D99A /* StatusTopToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTopToolBar.swift; sourceTree = "<group>"; };
+		D611D64625F507F70041D99A /* StatusBottomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBottomToolBar.swift; sourceTree = "<group>"; };
+		D611D64B25F510620041D99A /* StatusPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesView.swift; sourceTree = "<group>"; };
+		D611D65325F511060041D99A /* StatusPicturesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesModel.swift; sourceTree = "<group>"; };
+		D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellProducer.swift; sourceTree = "<group>"; };
+		D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellCommonDefine.swift; sourceTree = "<group>"; };
+		D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellProducer.swift; sourceTree = "<group>"; };
+		D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCell.swift; sourceTree = "<group>"; };
+		D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellViewModel.swift; sourceTree = "<group>"; };
+		D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellProducer.swift; sourceTree = "<group>"; };
+		D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCell.swift; sourceTree = "<group>"; };
+		D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModel.swift; sourceTree = "<group>"; };
+		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
+		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
 		D68F989725EFD64400C0092A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -152,7 +179,6 @@
 		D6A2258A25EE388C00E3E767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A225B925EE3AEF00E3E767 /* MNStatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusViewModel.swift; sourceTree = "<group>"; };
 		D6A225BA25EE3AEF00E3E767 /* MNStatusListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusListViewModel.swift; sourceTree = "<group>"; };
-		D6A225BB25EE3AEF00E3E767 /* MNStatusListDAL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusListDAL.swift; sourceTree = "<group>"; };
 		D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNLabel.swift; sourceTree = "<group>"; };
 		D6A225C025EE3AEF00E3E767 /* MNNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNetworkManager.swift; sourceTree = "<group>"; };
 		D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -194,11 +220,11 @@
 		D6A225FA25EE3AEF00E3E767 /* MNStatusModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusModel.swift; sourceTree = "<group>"; };
 		D6A225FD25EE3AEF00E3E767 /* MNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNWebViewController.swift; sourceTree = "<group>"; };
 		D6A225FF25EE3AEF00E3E767 /* MNTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNTitleButton.swift; sourceTree = "<group>"; };
-		D6A2260125EE3AEF00E3E767 /* MNStatusToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusToolView.swift; sourceTree = "<group>"; };
+		D6A2260125EE3AEF00E3E767 /* StatusBottomActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBottomActionBar.swift; sourceTree = "<group>"; };
 		D6A2260225EE3AEF00E3E767 /* MNHomeNormalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNHomeNormalCell.swift; sourceTree = "<group>"; };
 		D6A2260325EE3AEF00E3E767 /* MNHomeRepostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNHomeRepostCell.swift; sourceTree = "<group>"; };
 		D6A2260425EE3AEF00E3E767 /* MNHomeBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNHomeBaseCell.swift; sourceTree = "<group>"; };
-		D6A2260625EE3AEF00E3E767 /* HomeCellTopActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellTopActionBar.swift; sourceTree = "<group>"; };
+		D6A2260625EE3AEF00E3E767 /* StatusTopActionBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTopActionBar.swift; sourceTree = "<group>"; };
 		D6A2260725EE3AEF00E3E767 /* MNStatusPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNStatusPictureView.swift; sourceTree = "<group>"; };
 		D6A2260825EE3AEF00E3E767 /* MNHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNHomeViewController.swift; sourceTree = "<group>"; };
 		D6A2260A25EE3AEF00E3E767 /* MNDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNDiscoverViewController.swift; sourceTree = "<group>"; };
@@ -241,8 +267,8 @@
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
 		D6F2491525F29DA800F54C87 /* URLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSettings.swift; sourceTree = "<group>"; };
-		D6F2491A25F2A36300F54C87 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
-		D6F2492225F2A96C00F54C87 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D6F2491A25F2A36300F54C87 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
+		D6F2492225F2A96C00F54C87 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Convenience.swift"; sourceTree = "<group>"; };
 		D6F290D025F14E8200F54C87 /* UIView+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Edge.swift"; sourceTree = "<group>"; };
 		E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +326,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D611D64025F507B00041D99A /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				D611D64125F507E20041D99A /* StatusTopToolBar.swift */,
+				D611D64625F507F70041D99A /* StatusBottomToolBar.swift */,
+				D611D64B25F510620041D99A /* StatusPicturesView.swift */,
+			);
+			path = CommonView;
+			sourceTree = "<group>";
+		};
+		D627057525F4C11300B7F6DC /* StatusNormalCell */ = {
+			isa = PBXGroup;
+			children = (
+				D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */,
+				D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */,
+			);
+			path = StatusNormalCell;
+			sourceTree = "<group>";
+		};
+		D627057625F4C12100B7F6DC /* StatusRepostCell */ = {
+			isa = PBXGroup;
+			children = (
+				D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */,
+				D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */,
+			);
+			path = StatusRepostCell;
+			sourceTree = "<group>";
+		};
+		D627059C25F4CCD700B7F6DC /* StatusListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */,
+				D627059F25F4CD2F00B7F6DC /* View */,
+				D627059E25F4CD1B00B7F6DC /* ViewModel */,
+			);
+			path = StatusListViewController;
+			sourceTree = "<group>";
+		};
+		D627059E25F4CD1B00B7F6DC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */,
+				D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */,
+				D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */,
+				D611D65325F511060041D99A /* StatusPicturesModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D627059F25F4CD2F00B7F6DC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */,
+				D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */,
+				D611D64025F507B00041D99A /* CommonView */,
+				D627057525F4C11300B7F6DC /* StatusNormalCell */,
+				D627057625F4C12100B7F6DC /* StatusRepostCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D6A2255A25EE388B00E3E767 = {
 			isa = PBXGroup;
 			children = (
@@ -353,9 +440,9 @@
 		D6A225B725EE3AEF00E3E767 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D627059C25F4CCD700B7F6DC /* StatusListViewController */,
 				D6A2267625EE3B0400E3E767 /* MNLayout.swift */,
 				D6A2267725EE3B0400E3E767 /* MNWeiboCommon.swift */,
-				D6A225B825EE3AEF00E3E767 /* ViewModel */,
 				D6A225BC25EE3AEF00E3E767 /* Tools */,
 				D6A225F725EE3AEF00E3E767 /* Model */,
 				D6A225FB25EE3AEF00E3E767 /* View */,
@@ -363,15 +450,14 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		D6A225B825EE3AEF00E3E767 /* ViewModel */ = {
+		D6A225B825EE3AEF00E3E767 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				D6A225B925EE3AEF00E3E767 /* MNStatusViewModel.swift */,
 				D6A225BA25EE3AEF00E3E767 /* MNStatusListViewModel.swift */,
-				D6A225BB25EE3AEF00E3E767 /* MNStatusListDAL.swift */,
 				D6F2491025F29C8100F54C87 /* StatusListService.swift */,
 			);
-			path = ViewModel;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D6A225BC25EE3AEF00E3E767 /* Tools */ = {
@@ -502,8 +588,8 @@
 				D6A225F825EE3AEF00E3E767 /* MNUserModel.swift */,
 				D6A225F925EE3AEF00E3E767 /* MNStatusPicture.swift */,
 				D6A225FA25EE3AEF00E3E767 /* MNStatusModel.swift */,
-				D6F2491A25F2A36300F54C87 /* StatusModel.swift */,
-				D6F2492225F2A96C00F54C87 /* UserModel.swift */,
+				D6F2491A25F2A36300F54C87 /* StatusResponse.swift */,
+				D6F2492225F2A96C00F54C87 /* UserResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -524,8 +610,9 @@
 			isa = PBXGroup;
 			children = (
 				D6A225FD25EE3AEF00E3E767 /* MNWebViewController.swift */,
+				D6A225B825EE3AEF00E3E767 /* Model */,
 				D6A225FE25EE3AEF00E3E767 /* TitleButton */,
-				D6A2260025EE3AEF00E3E767 /* Cell */,
+				D6A2260025EE3AEF00E3E767 /* Cells */,
 				D6A2260825EE3AEF00E3E767 /* MNHomeViewController.swift */,
 			);
 			path = Home;
@@ -539,25 +626,25 @@
 			path = TitleButton;
 			sourceTree = "<group>";
 		};
-		D6A2260025EE3AEF00E3E767 /* Cell */ = {
+		D6A2260025EE3AEF00E3E767 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2260125EE3AEF00E3E767 /* MNStatusToolView.swift */,
 				D6A2260225EE3AEF00E3E767 /* MNHomeNormalCell.swift */,
 				D6A2260325EE3AEF00E3E767 /* MNHomeRepostCell.swift */,
 				D6A2260425EE3AEF00E3E767 /* MNHomeBaseCell.swift */,
-				D6A2260525EE3AEF00E3E767 /* View */,
-				D6A2260725EE3AEF00E3E767 /* MNStatusPictureView.swift */,
+				D6A2260525EE3AEF00E3E767 /* CommonView */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		D6A2260525EE3AEF00E3E767 /* View */ = {
+		D6A2260525EE3AEF00E3E767 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2260625EE3AEF00E3E767 /* HomeCellTopActionBar.swift */,
+				D6A2260725EE3AEF00E3E767 /* MNStatusPictureView.swift */,
+				D6A2260625EE3AEF00E3E767 /* StatusTopActionBar.swift */,
+				D6A2260125EE3AEF00E3E767 /* StatusBottomActionBar.swift */,
 			);
-			path = View;
+			path = CommonView;
 			sourceTree = "<group>";
 		};
 		D6A2260925EE3AEF00E3E767 /* Discover */ = {
@@ -957,6 +1044,7 @@
 				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
+				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
 				D6A2266C25EE3AF000E3E767 /* MNNewFeatureView.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
@@ -966,6 +1054,7 @@
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
+				D627056925F4BA8200B7F6DC /* StatusCellProducer.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* MNMainTabBarController.swift in Sources */,
@@ -974,6 +1063,7 @@
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
 				D6A2262D25EE3AEF00E3E767 /* MNNetworkManager+Extension.swift in Sources */,
+				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
@@ -984,8 +1074,9 @@
 				D6A2263C25EE3AEF00E3E767 /* String+MNPath.swift in Sources */,
 				D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */,
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
-				D6A2265C25EE3AF000E3E767 /* HomeCellTopActionBar.swift in Sources */,
+				D6A2265C25EE3AF000E3E767 /* StatusTopActionBar.swift in Sources */,
 				D6A2265E25EE3AF000E3E767 /* MNHomeViewController.swift in Sources */,
+				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
 				D6A2262A25EE3AEF00E3E767 /* MNNetworkManager.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
@@ -996,24 +1087,30 @@
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
 				D6A2266525EE3AF000E3E767 /* MNProfileViewController.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
+				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Extension.swift in Sources */,
 				D6A2265325EE3AEF00E3E767 /* MNUserModel.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* MNNavigationController.swift in Sources */,
+				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
 				D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */,
 				D6A2264325EE3AEF00E3E767 /* UIBarButtonItem+Extension.swift in Sources */,
+				D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */,
 				D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */,
 				D6A2264425EE3AEF00E3E767 /* String+Extensions..swift in Sources */,
 				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
 				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
+				D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */,
 				D6A2266B25EE3AF000E3E767 /* MNWelcomeView.swift in Sources */,
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
+				D627058E25F4C1D500B7F6DC /* StatusNormalCellProducer.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
+				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
 				D6A226CD25EE456E00E3E767 /* HMPhotoViewerController.m in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,
 				D6A2264925EE3AEF00E3E767 /* MNMTRefreshView.swift in Sources */,
@@ -1021,13 +1118,16 @@
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2266025EE3AF000E3E767 /* MNMessageViewController.swift in Sources */,
 				D6A2264A25EE3AEF00E3E767 /* MNRefreshView.swift in Sources */,
-				D6F2491B25F2A36300F54C87 /* StatusModel.swift in Sources */,
+				D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D6A2262725EE3AEF00E3E767 /* MNStatusListViewModel.swift in Sources */,
+				D627057925F4C15900B7F6DC /* StatusRepostCellProducer.swift in Sources */,
+				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
+				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
-				D6A2262825EE3AEF00E3E767 /* MNStatusListDAL.swift in Sources */,
 				D6A2265A25EE3AF000E3E767 /* MNHomeRepostCell.swift in Sources */,
-				D6A2265825EE3AF000E3E767 /* MNStatusToolView.swift in Sources */,
+				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
+				D6A2265825EE3AF000E3E767 /* StatusBottomActionBar.swift in Sources */,
 				D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */,
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,
 				D6A2265625EE3AEF00E3E767 /* MNWebViewController.swift in Sources */,
@@ -1036,7 +1136,7 @@
 				D6A226CC25EE456E00E3E767 /* HMPhotoBrowserController.m in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
-				D6F2492325F2A96C00F54C87 /* UserModel.swift in Sources */,
+				D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */,
 				D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,8 @@ target 'SCWeibo' do
   pod 'Alamofire', '5.4.1'
   pod 'Kingfisher', '6.1.1'
   pod 'Neon', '0.4.0'
-  pod 'BlocksKit'
+  pod 'BlocksKit', '2.2.5'
+  pod 'MJRefresh', '3.5.0'
 
   # Pods for DEBUG
   pod 'FLEX', '4.4.0', :configurations => ['Debug']
