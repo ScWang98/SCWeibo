@@ -16,7 +16,7 @@ extension MNNetworkManager{
     ///   - since_id: 返回比since_id 晚的微博，默认为0(最新) ==> 上拉刷新
     ///   - max_id: 返回 <= max_id 的微博，默认为0
     ///   - completion: 请求完成的回调
-    func fetchHomePageList(since_id:Int64 = 0, max_id:Int64 = 0, completion:@escaping (_ isSuccess: Bool,_ list:[[String:AnyObject]]?) -> ()) {
+    func fetchHomePageList(since_id:Int = 0, max_id:Int = 0, completion:@escaping (_ isSuccess: Bool,_ list:[[String:AnyObject]]?) -> ()) {
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
 
         //max_id - 1 ==> 不然会出现两条一模一样的记录

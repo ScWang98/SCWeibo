@@ -152,7 +152,7 @@ extension MNSQLiteManager {
     /// - parameter max_id:   返回ID小于max_id的微博
     ///
     /// - return : 微博的字典的数组，将数据库中 status 字段对应的二进制数据反序列化，生成字典
-    func loadWeiboStatus(userId: String, since_id: Int64 = 0, max_id: Int64 = 0) -> [[String: AnyObject]] {
+    func loadWeiboStatus(userId: String, since_id: Int = 0, max_id: Int = 0) -> [[String: AnyObject]] {
         
         var sql = "SELECT statusId, userId, status FROM T_WeiboStatus \n"
         sql += "WHERE userId = \(userId) \n"
