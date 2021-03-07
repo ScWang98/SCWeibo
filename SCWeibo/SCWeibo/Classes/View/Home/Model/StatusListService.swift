@@ -13,11 +13,11 @@ class StatusListService {
     ///   - since_id: 下拉刷新id
     ///   - max_id: 上拉加载更多id
     ///   - ompletion: 完成回调
-    class func loadStatus(since_id: Int64 = 0, max_id: Int64 = 0, completion: @escaping (_ isSuccess: Bool, _ list: [StatusModel]?) -> Void) {
-        guard let userId = MNNetworkManager.shared.userAccount.uid else {
-            print("userId = nil")
-            return
-        }
+    class func loadStatus(since_id: Int = 0, max_id: Int = 0, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void) {
+//        guard let userId = MNNetworkManager.shared.userAccount.uid else {
+//            print("userId = nil")
+//            return
+//        }
         // 1.检查本地数据, 如果有数据, 直接返回
 //        let array = MNSQLiteManager.shared.loadWeiboStatus(userId: userId, since_id: since_id, max_id: max_id)
 
@@ -44,7 +44,7 @@ class StatusListService {
 //            MNSQLiteManager.shared.updateStatus(userId: userId, array: array)
 
             // 4.返回网络请求数据
-            let results = StatusModel.sc.decode(array)
+            let results = StatusResponse.sc.decode(array)
             if let results = results {
                 completion(isSuccess, results)
             }

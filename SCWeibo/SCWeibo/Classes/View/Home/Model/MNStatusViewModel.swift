@@ -10,9 +10,9 @@ import UIKit
 /// 单条微博数据
 let homeCellAvatarHeight = MNLayout.Layout(38)
 
-class MNStatusViewModel: CustomStringConvertible {
+class MNStatusViewModel {
 
-    var status: MNStatusModel
+    var status: StatusResponse
     
     //会员等级
     var levelIcon: UIImage?
@@ -38,26 +38,26 @@ class MNStatusViewModel: CustomStringConvertible {
 
     /// 转发微博的属性文本
     var repostAttrText: NSAttributedString?{
-        let str1 = "@" + (status.retweeted_status?.user?.screen_name ?? "")
-        let str2 = ":" + (status.retweeted_status?.text ?? "")
+        let str1 = "@" + (status.retweetedStatus?.user?.screenName ?? "")
+        let str2 = ":" + (status.retweetedStatus?.text ?? "")
         let resultStr = str1 + str2
         let repostFontSize = UIFont.systemFont(ofSize: MNLayout.Layout(14))
         return MNEmojiManager.shared.getEmojiString(string: resultStr, font: repostFontSize)
     }
     
     //原创&被转发微博
-    var picUrls:[MNStatusPicture]?{
+    var picUrls:[StatusPicture]?{
         //如果有被转发的微博 ==> 返回被转发的微博配图
         //如果没有被转发的微博 ==> 返回原创微博配图
-        return status.retweeted_status?.pic_urls ?? status.pic_urls
+        return status.retweetedStatus?.picUrls ?? status.picUrls
     }
     
     var cellIdentifier: String {
-        let clazz = self.status.retweeted_status == nil ? MNHomeNormalCell.self : MNHomeRepostCell.self
+        let clazz = self.status.retweetedStatus == nil ? MNHomeNormalCell.self : MNHomeRepostCell.self
         return String(describing: clazz)
     }
     
-    init(model:MNStatusModel) {
+    init(model:StatusResponse) {
         self.status = model
         
         getLevelIcon(model: model)
@@ -67,7 +67,7 @@ class MNStatusViewModel: CustomStringConvertible {
         getRowHeigth()
     }
     
-    private func getLevelIcon(model: MNStatusModel){
+    private func getLevelIcon(model: StatusResponse){
         //common_icon_membership_level1~6
         let maxLevel = 6
         guard let rank = model.user?.mbrank else{
@@ -79,9 +79,9 @@ class MNStatusViewModel: CustomStringConvertible {
         }
     }
     
-    private func getVipIcon(model: MNStatusModel){
+    private func getVipIcon(model: StatusResponse){
         // 认证类型（-1:没有认证, 0:认证用户, 2,3,5:企业认证, 220:达人）
-        switch model.user?.verified_type ?? -1{
+        switch model.user?.verifiedType ?? -1{
         case 0:
             vipIcon = UIImage(named: "avatar_vip")
         case 2, 3, 5:
@@ -93,10 +93,10 @@ class MNStatusViewModel: CustomStringConvertible {
         }
     }
     
-    private func getToolCountString(model: MNStatusModel){
-        repostTitle = countSting(count: model.reposts_count, defaultStr: " 转发")
-        commentTitle = countSting(count: model.comments_count, defaultStr: " 评论")
-        likeTitle = countSting(count: model.attitudes_count, defaultStr: " 点赞")
+    private func getToolCountString(model: StatusResponse){
+        repostTitle = countSting(count: model.repostsCount, defaultStr: " 转发")
+        commentTitle = countSting(count: model.commentsCount, defaultStr: " 评论")
+        likeTitle = countSting(count: model.attitudesCount, defaultStr: " 点赞")
     }
     
     private func countSting(count:Int, defaultStr: String) -> String{
@@ -111,7 +111,7 @@ class MNStatusViewModel: CustomStringConvertible {
         return String(format: "%.02f万", Double(count) / 10000)
     }
     
-    private func getPictureViewSize(model: MNStatusModel){
+    private func getPictureViewSize(model: StatusResponse){
         //有转发的计算转发图片视图，有原创计算原创图片
         pictureViewSize = calPicturesSize(count: picUrls?.count ?? 0)
     }
@@ -188,7 +188,7 @@ class MNStatusViewModel: CustomStringConvertible {
         }
         
         //repost
-        if status.retweeted_status != nil{
+        if status.retweetedStatus != nil{
             height += (margin * 2)
             
             if let text = repostAttrText{
@@ -203,9 +203,5 @@ class MNStatusViewModel: CustomStringConvertible {
         height += bottomViewHeight
         
         rowHeight = height
-    }
-    
-    var description: String{
-        return status.description
     }
 }

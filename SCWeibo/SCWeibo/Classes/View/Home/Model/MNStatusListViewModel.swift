@@ -34,18 +34,14 @@ class MNStatusListViewModel {
         // 上拉加载更多 -> 取最旧的一条(last)
         let max_id = !pullup ? 0 : (statusList.last?.status.id ?? 0)
         
-        MNStatusListDAL.loadStatus(since_id: since_id, max_id: max_id) { (isSuccess, list) in
-
+        StatusListService.loadStatus(since_id: since_id, max_id: max_id) { (isSuccess, list) in
             if !isSuccess{
                 completion(false, false)
                 return
             }
 
             var array = [MNStatusViewModel]()
-            for dic in list ?? []{
-                guard let model = MNStatusModel.yy_model(with: dic) else{
-                    continue
-                }
+            for model in list ?? []{
                 //转换成 model -> MNStatusViewModel
                 array.append(MNStatusViewModel(model: model))
             }
@@ -85,7 +81,7 @@ class MNStatusListViewModel {
             }
             
             //get picture url
-            guard let picture = viewModel.picUrls?[0].thumbnail_pic ,
+            guard let picture = viewModel.picUrls?[0].thumbnailPic ,
             let url = URL(string: picture) else{
                 continue
             }
