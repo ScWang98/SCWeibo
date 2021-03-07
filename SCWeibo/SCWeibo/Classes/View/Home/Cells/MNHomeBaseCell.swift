@@ -15,11 +15,11 @@ class MNHomeBaseCell: UITableViewCell {
     weak var delegate: MNHomeCellDelegate?
     var viewModel: MNStatusViewModel?
 
-    var topActionBar = HomeCellTopActionBar()
+    var topActionBar = StatusTopActionBar()
     var contentLabel = MNLabel()
     var repostLabel = MNLabel()
     //toolButton
-    var bottomView: MNStatusToolView = MNStatusToolView(parentView: nil)
+    var bottomView: StatusBottomActionBar = StatusBottomActionBar(parentView: nil)
 
     var contentPictureView = MNStatusPictureView(parentView: nil, topView: nil, bottomView: nil)
 
@@ -62,7 +62,7 @@ class MNHomeBaseCell: UITableViewCell {
             make.height.equalTo(50)
         }
 
-        bottomView = MNStatusToolView(parentView: self)
+        bottomView = StatusBottomActionBar(parentView: self)
         
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0

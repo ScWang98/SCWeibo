@@ -1,5 +1,5 @@
 //
-//  HomeCellTopActionBar.swift
+//  StatusTopActionBar.swift
 //  SCWeibo
 //
 //  Created by scwang on 2021/2/25.
@@ -8,7 +8,7 @@
 import Neon
 import Kingfisher
 
-class HomeCellTopActionBar: UIView {
+class StatusTopActionBar: UIView {
     var avatarImageView = UIImageView()
     var vipIconView = UIImageView(image: UIImage(named: "avatar_enterprise_vip"))
     var nameLabel = UILabel()
@@ -26,13 +26,13 @@ class HomeCellTopActionBar: UIView {
     }
 
     func reload(viewModel: MNStatusViewModel?) {
-        nameLabel.text = viewModel?.status.user?.screen_name
+        nameLabel.text = viewModel?.status.user?.screenName
         // 提前计算好
         vipIconView.image = viewModel?.vipIcon
         levelIconView.image = viewModel?.levelIcon
         
         let placeholder = UIImage(named: "avatar_default_big")
-        if let urlString = viewModel?.status.user?.profile_image_url,
+        if let urlString = viewModel?.status.user?.profileImageUrl,
            let url = URL.init(string: urlString) {
             avatarImageView.kf.setImage(with: url, placeholder: placeholder, options: nil, completionHandler: nil)
         } else {
@@ -48,7 +48,7 @@ class HomeCellTopActionBar: UIView {
     }
 }
 
-private extension HomeCellTopActionBar {
+private extension StatusTopActionBar {
     func setupSubviews() {
         addSubview(avatarImageView)
         addSubview(vipIconView)

@@ -14,14 +14,14 @@ class UserProfileViewController: UIViewController {
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
-    var pageVCs = [MNHomeViewController]()
+    var pageVCs = [StatusListViewController]()
 
     init() {
         super.init(nibName: nil, bundle: nil)
 
-        pageVCs.append(MNHomeViewController())
-        pageVCs.append(MNHomeViewController())
-        pageVCs.append(MNHomeViewController())
+        pageVCs.append(StatusListViewController())
+        pageVCs.append(StatusListViewController())
+        pageVCs.append(StatusListViewController())
     }
 
     required init?(coder: NSCoder) {
@@ -135,7 +135,7 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
     }
 
     func pagesView(_ pagesView: PagesScrollView, pageScrollViewAt index: Int) -> UIScrollView {
-        pageVCs[index].tableView!
+        pageVCs[index].tableView
     }
 }
 

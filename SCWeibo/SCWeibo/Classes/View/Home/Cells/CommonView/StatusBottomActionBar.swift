@@ -1,5 +1,5 @@
 //
-//  MNStatusToolView.swift
+//  StatusBottomActionBar.swift
 //  SCWeibo
 //
 //  Created by scwang on 2020/3/28.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MNStatusToolView: UIView {
+class StatusBottomActionBar: UIView {
     
     lazy var repostButton = UIButton()
     lazy var commentsButton = UIButton()

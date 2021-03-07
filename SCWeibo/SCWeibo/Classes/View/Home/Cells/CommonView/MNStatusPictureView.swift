@@ -10,7 +10,7 @@ import Kingfisher
 
 class MNStatusPictureView: UIView {
     
-    var urls: [MNStatusPicture]?{
+    var urls: [StatusPicture]?{
         didSet{
             //hidden imageView
             subviews.forEach { $0.isHidden = true}
@@ -29,7 +29,7 @@ class MNStatusPictureView: UIView {
                     index += 1
                 }
                 
-                if let urlString = url.thumbnail_pic,
+                if let urlString = url.thumbnailPic,
                    let url = URL.init(string: urlString) {
                     iv.kf.setImage(with: url)
                 }
@@ -40,7 +40,7 @@ class MNStatusPictureView: UIView {
                 guard let gifImageView = iv.subviews.first else{
                     return
                 }
-                let isGif = (url.thumbnail_pic as NSString?)?.pathExtension == "gif"
+                let isGif = (url.thumbnailPic as NSString?)?.pathExtension == "gif"
                 gifImageView.isHidden = !isGif
             }
         }
@@ -65,7 +65,13 @@ class MNStatusPictureView: UIView {
         if picUrls.count == 4 && selectedIndex > 1{
             selectedIndex -= 1
         }
-        let urls = ((picUrls as NSArray).value(forKey: "largePic") as? [String]) ?? []
+
+        var urls = [String]()
+        for pic in picUrls {
+            if let url = pic.thumbnailPic {
+                urls.append(url)
+            }
+        }
         var imageViews = [UIImageView]()
         for view in subviews as! [UIImageView]{
             if !view.isHidden{
