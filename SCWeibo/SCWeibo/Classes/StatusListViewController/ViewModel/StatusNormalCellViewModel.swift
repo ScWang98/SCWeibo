@@ -30,7 +30,7 @@ private extension StatusNormalCellViewModel {
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.profileImageUrl
-        source = "来自" + (source?.mn_href()?.text ?? "")
+        source = "来自" + (status.source?.mn_href()?.text ?? "")
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
@@ -49,8 +49,8 @@ private extension StatusNormalCellViewModel {
 
 extension StatusNormalCellViewModel: StatusCellViewModel {
     var cellHeight: CGFloat {
-        let gap: CGFloat = 4
-        
+        let gap: CGFloat = 8
+
         let topSepHeight: CGFloat = 12
         let topBarHeight = StatusTopToolBar.height(for: self)
 

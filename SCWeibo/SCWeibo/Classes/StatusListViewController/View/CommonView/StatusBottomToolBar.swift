@@ -38,7 +38,7 @@ class StatusBottomToolBar: UIView {
         repostButton.setTitle(viewModel.repostTitle, for: .normal)
         commentsButton.setTitle(viewModel.commentTitle, for: .normal)
         likeButton.setTitle(viewModel.likeTitle, for: .normal)
-        
+
         setNeedsLayout()
     }
 

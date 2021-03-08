@@ -5,8 +5,8 @@
 //  Created by scwang on 2021/3/7.
 //
 
-import UIKit
 import MJRefresh
+import UIKit
 
 class StatusListViewController: UIViewController {
     var tableView = UITableView()
@@ -43,11 +43,11 @@ extension StatusListViewController {
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
         listViewModel.registerCells(with: tableView)
-        tableView.mj_header = MJRefreshHeader.init(refreshingTarget: self, refreshingAction: #selector(loadDatas))
-        tableView.mj_footer = MJRefreshFooter.init(refreshingTarget: self, refreshingAction: #selector(loadDatas))
+        tableView.mj_header = MJRefreshHeader(refreshingTarget: self, refreshingAction: #selector(loadDatas))
+        tableView.mj_footer = MJRefreshFooter(refreshingTarget: self, refreshingAction: #selector(loadDatas))
         tableView.frame = view.bounds
         view.addSubview(tableView)
-        
+
         tableView.mj_header?.beginRefreshing()
     }
 }
@@ -55,7 +55,6 @@ extension StatusListViewController {
 // MARK: - Private Methods
 
 private extension StatusListViewController {
-    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(tapBrowerPhoto(noti:)), name: NSNotification.Name(rawValue: MNWeiboCellBrowserPhotoNotification), object: nil)
     }

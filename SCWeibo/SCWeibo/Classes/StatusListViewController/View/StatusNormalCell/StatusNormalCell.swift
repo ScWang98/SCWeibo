@@ -41,7 +41,7 @@ extension StatusNormalCell: StatusCell {
         contentLabel.attributedText = viewModel.statusAttrText
         picturesView.reload(with: viewModel.picUrls ?? [])
         bottomToolBar.reload(viewModel: viewModel)
-        
+
         setNeedsLayout()
     }
 }
@@ -50,13 +50,12 @@ private extension StatusNormalCell {
     func setupSubviews() {
         topSeperatorView.backgroundColor = UIColor(rgb: 0xF2F2F2)
 
-
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
         contentLabel.textColor = UIColor.darkGray
-        
+
         contentView.addSubview(topSeperatorView)
         contentView.addSubview(topToolBar)
         contentView.addSubview(contentLabel)
@@ -79,9 +78,9 @@ private extension StatusNormalCell {
         bottomToolBar.anchorToEdge(.bottom, padding: 0, width: contentView.width, height: height)
 
         height = StatusPicturesView.height(for: viewModel.picUrls ?? [])
-        picturesView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 4, width: contentView.width - 12 * 2, height: height)
+        picturesView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 8, width: contentView.width - 12 * 2, height: height)
 
-        contentLabel.frame = CGRect(x: 12, y: topToolBar.bottom, width: contentView.width - 12 * 2, height: picturesView.top - topToolBar.bottom - 4)
+        contentLabel.frame = CGRect(x: 12, y: topToolBar.bottom, width: contentView.width - 12 * 2, height: picturesView.top - topToolBar.bottom - 8)
     }
 }
 

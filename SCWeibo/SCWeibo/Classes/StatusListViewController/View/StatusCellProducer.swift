@@ -9,11 +9,11 @@ import UIKit
 
 class StatusCellProducer {
     private var producers = [StatusCellProducerProtocol]()
-    
+
     init() {
         registerAllProducer()
     }
-    
+
     func generateCellViewModel(with model: StatusResponse) -> StatusCellViewModel? {
         for producer in producers {
             if producer.canHandle(model: model) {
@@ -29,17 +29,15 @@ class StatusCellProducer {
             tableView.register(clazz, forCellReuseIdentifier: String(describing: clazz))
         }
     }
-
 }
 
 private extension StatusCellProducer {
     func register(producer: StatusCellProducerProtocol) {
         producers.append(producer)
     }
-    
+
     func registerAllProducer() {
-        register(producer: StatusNormalCellProducer.init())
+        register(producer: StatusNormalCellProducer())
 //        register(producer: StatusRepostCellProducer.init())
     }
 }
-
