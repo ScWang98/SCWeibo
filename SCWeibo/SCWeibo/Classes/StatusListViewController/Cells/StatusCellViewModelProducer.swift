@@ -1,5 +1,5 @@
 //
-//  StatusCellProducer.swift
+//  StatusCellViewModelProducer.swift
 //  SCWeibo
 //
 //  Created by scwang on 2021/3/7.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatusCellProducer {
+class StatusCellViewModelProducer {
     private var producers = [StatusCellProducerProtocol]()
 
     init() {
@@ -31,13 +31,13 @@ class StatusCellProducer {
     }
 }
 
-private extension StatusCellProducer {
+private extension StatusCellViewModelProducer {
     func register(producer: StatusCellProducerProtocol) {
         producers.append(producer)
     }
 
     func registerAllProducer() {
-        register(producer: StatusNormalCellProducer())
-//        register(producer: StatusRepostCellProducer.init())
+        register(producer: StatusNormalCellViewModelProducer())
+//        register(producer: StatusRepostCellViewModelProducer.init())
     }
 }

@@ -14,12 +14,12 @@
 		D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64625F507F70041D99A /* StatusBottomToolBar.swift */; };
 		D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64B25F510620041D99A /* StatusPicturesView.swift */; };
 		D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D65325F511060041D99A /* StatusPicturesModel.swift */; };
-		D627056925F4BA8200B7F6DC /* StatusCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */; };
+		D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056825F4BA8200B7F6DC /* StatusCellViewModelProducer.swift */; };
 		D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */; };
-		D627057925F4C15900B7F6DC /* StatusRepostCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */; };
+		D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */; };
 		D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */; };
 		D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */; };
-		D627058E25F4C1D500B7F6DC /* StatusNormalCellProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */; };
+		D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627058D25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift */; };
 		D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */; };
 		D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */; };
 		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
@@ -152,12 +152,12 @@
 		D611D64625F507F70041D99A /* StatusBottomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBottomToolBar.swift; sourceTree = "<group>"; };
 		D611D64B25F510620041D99A /* StatusPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesView.swift; sourceTree = "<group>"; };
 		D611D65325F511060041D99A /* StatusPicturesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesModel.swift; sourceTree = "<group>"; };
-		D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellProducer.swift; sourceTree = "<group>"; };
+		D627056825F4BA8200B7F6DC /* StatusCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellViewModelProducer.swift; sourceTree = "<group>"; };
 		D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellCommonDefine.swift; sourceTree = "<group>"; };
-		D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellProducer.swift; sourceTree = "<group>"; };
+		D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellViewModelProducer.swift; sourceTree = "<group>"; };
 		D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCell.swift; sourceTree = "<group>"; };
 		D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellViewModel.swift; sourceTree = "<group>"; };
-		D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellProducer.swift; sourceTree = "<group>"; };
+		D627058D25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModelProducer.swift; sourceTree = "<group>"; };
 		D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCell.swift; sourceTree = "<group>"; };
 		D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModel.swift; sourceTree = "<group>"; };
 		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
@@ -339,7 +339,8 @@
 		D627057525F4C11300B7F6DC /* StatusNormalCell */ = {
 			isa = PBXGroup;
 			children = (
-				D627058D25F4C1D500B7F6DC /* StatusNormalCellProducer.swift */,
+				D627058D25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift */,
+				D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */,
 				D627059225F4C1E700B7F6DC /* StatusNormalCell.swift */,
 			);
 			path = StatusNormalCell;
@@ -348,7 +349,8 @@
 		D627057625F4C12100B7F6DC /* StatusRepostCell */ = {
 			isa = PBXGroup;
 			children = (
-				D627057825F4C15900B7F6DC /* StatusRepostCellProducer.swift */,
+				D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */,
+				D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */,
 				D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */,
 			);
 			path = StatusRepostCell;
@@ -358,7 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */,
-				D627059F25F4CD2F00B7F6DC /* View */,
+				D627059F25F4CD2F00B7F6DC /* Cells */,
 				D627059E25F4CD1B00B7F6DC /* ViewModel */,
 			);
 			path = StatusListViewController;
@@ -368,23 +370,21 @@
 			isa = PBXGroup;
 			children = (
 				D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */,
-				D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */,
-				D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */,
 				D611D65325F511060041D99A /* StatusPicturesModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		D627059F25F4CD2F00B7F6DC /* View */ = {
+		D627059F25F4CD2F00B7F6DC /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D627056825F4BA8200B7F6DC /* StatusCellProducer.swift */,
+				D627056825F4BA8200B7F6DC /* StatusCellViewModelProducer.swift */,
 				D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */,
 				D611D64025F507B00041D99A /* CommonView */,
 				D627057525F4C11300B7F6DC /* StatusNormalCell */,
 				D627057625F4C12100B7F6DC /* StatusRepostCell */,
 			);
-			path = View;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D6A2255A25EE388B00E3E767 = {
@@ -1054,7 +1054,7 @@
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
-				D627056925F4BA8200B7F6DC /* StatusCellProducer.swift in Sources */,
+				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* MNMainTabBarController.swift in Sources */,
@@ -1105,7 +1105,7 @@
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
-				D627058E25F4C1D500B7F6DC /* StatusNormalCellProducer.swift in Sources */,
+				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
@@ -1121,7 +1121,7 @@
 				D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D6A2262725EE3AEF00E3E767 /* MNStatusListViewModel.swift in Sources */,
-				D627057925F4C15900B7F6DC /* StatusRepostCellProducer.swift in Sources */,
+				D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */,
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,

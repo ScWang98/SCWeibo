@@ -10,7 +10,7 @@ import UIKit
 
 class StatusListViewModel {
     lazy var statusList = [StatusCellViewModel]()
-    var cellProducer = StatusCellProducer()
+    var cellProducer = StatusCellViewModelProducer()
 
     private var pullupErrorTimes = 0
     /// 处理微博首页数据
