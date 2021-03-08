@@ -33,7 +33,7 @@ class StatusBottomToolBar: UIView {
         line.anchorToEdge(.top, padding: 0, width: self.width - 12 * 2, height: 1)
     }
 
-    func reload(viewModel: StatusCellViewModel) {
+    func reload(with viewModel: StatusCellViewModel) {
         self.viewModel = viewModel
         repostButton.setTitle(viewModel.repostTitle, for: .normal)
         commentsButton.setTitle(viewModel.commentTitle, for: .normal)

@@ -8,7 +8,7 @@
 import UIKit
 
 class StatusCellViewModelProducer {
-    private var producers = [StatusCellProducerProtocol]()
+    private var producers = [StatusCellViewModelProducerProtocol]()
 
     init() {
         registerAllProducer()
@@ -32,12 +32,12 @@ class StatusCellViewModelProducer {
 }
 
 private extension StatusCellViewModelProducer {
-    func register(producer: StatusCellProducerProtocol) {
+    func register(producer: StatusCellViewModelProducerProtocol) {
         producers.append(producer)
     }
 
     func registerAllProducer() {
+        register(producer: StatusRepostCellViewModelProducer())
         register(producer: StatusNormalCellViewModelProducer())
-//        register(producer: StatusRepostCellViewModelProducer.init())
     }
 }

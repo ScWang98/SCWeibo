@@ -13,17 +13,17 @@ class StatusPicturesModel {
     var bmiddlePic: String
 
     var originalPic: String
-    
+
     init(with statusPicture: StatusPicture) {
         thumbnailPic = statusPicture.thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/wap360/") ?? ""
         bmiddlePic = statusPicture.thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/bmiddle/") ?? ""
         originalPic = statusPicture.thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/large/") ?? ""
     }
-    
+
     static func generateModels(with pictures: [StatusPicture]) -> [StatusPicturesModel] {
         var array = [StatusPicturesModel]()
         for picture in pictures {
-            array.append(StatusPicturesModel.init(with: picture))
+            array.append(StatusPicturesModel(with: picture))
         }
         return array
     }

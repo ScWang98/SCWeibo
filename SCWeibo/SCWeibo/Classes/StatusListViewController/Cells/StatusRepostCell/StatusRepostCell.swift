@@ -8,12 +8,12 @@
 import UIKit
 
 class StatusRepostCell: UITableViewCell {
-    var viewModel: StatusNormalCellViewModel?
+    var viewModel: StatusRepostCellViewModel?
 
     let topSeperatorView = UIView()
     let topToolBar = StatusTopToolBar()
     let contentLabel = MNLabel()
-    let picturesView = StatusPicturesView()
+    let repostView = StatusRepostView()
     let bottomToolBar = StatusBottomToolBar()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,14 +33,14 @@ class StatusRepostCell: UITableViewCell {
 
 extension StatusRepostCell: StatusCell {
     func reload(with viewModel: StatusCellViewModel) {
-        guard let viewModel = viewModel as? StatusNormalCellViewModel else {
+        guard let viewModel = viewModel as? StatusRepostCellViewModel else {
             return
         }
         self.viewModel = viewModel
-        topToolBar.reload(viewModel: viewModel)
+        topToolBar.reload(with: viewModel)
         contentLabel.attributedText = viewModel.statusAttrText
-        picturesView.reload(with: viewModel.picUrls ?? [])
-        bottomToolBar.reload(viewModel: viewModel)
+        repostView.reload(with: viewModel)
+        bottomToolBar.reload(with: viewModel)
 
         setNeedsLayout()
     }
@@ -59,7 +59,7 @@ private extension StatusRepostCell {
         contentView.addSubview(topSeperatorView)
         contentView.addSubview(topToolBar)
         contentView.addSubview(contentLabel)
-        contentView.addSubview(picturesView)
+        contentView.addSubview(repostView)
         contentView.addSubview(bottomToolBar)
     }
 
@@ -77,10 +77,10 @@ private extension StatusRepostCell {
         height = StatusBottomToolBar.height(for: viewModel)
         bottomToolBar.anchorToEdge(.bottom, padding: 0, width: contentView.width, height: height)
 
-        height = StatusPicturesView.height(for: viewModel.picUrls ?? [])
-        picturesView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 8, width: contentView.width - 12 * 2, height: height)
+        height = StatusRepostView.height(for: viewModel)
+        repostView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 0, width: contentView.width, height: height)
 
-        contentLabel.frame = CGRect(x: 12, y: topToolBar.bottom, width: contentView.width - 12 * 2, height: picturesView.top - topToolBar.bottom - 8)
+        contentLabel.frame = CGRect(x: 12, y: topToolBar.bottom, width: contentView.width - 12 * 2, height: repostView.top - topToolBar.bottom - 8)
     }
 }
 

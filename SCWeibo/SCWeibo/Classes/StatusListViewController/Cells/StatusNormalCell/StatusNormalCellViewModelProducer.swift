@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatusNormalCellViewModelProducer: StatusCellProducerProtocol {
+class StatusNormalCellViewModelProducer: StatusCellViewModelProducerProtocol {
     var cellClass: UITableViewCell.Type {
         return StatusNormalCell.self
     }

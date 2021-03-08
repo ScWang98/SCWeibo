@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StatusRepostCellViewModelProducer: StatusCellProducerProtocol {
+class StatusRepostCellViewModelProducer: StatusCellViewModelProducerProtocol {
     var cellClass: UITableViewCell.Type {
         return StatusRepostCell.self
     }

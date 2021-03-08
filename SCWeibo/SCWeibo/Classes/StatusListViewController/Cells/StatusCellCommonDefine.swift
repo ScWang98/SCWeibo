@@ -7,10 +7,9 @@
 
 import UIKit
 
-protocol StatusCellProducerProtocol {
+protocol StatusCellViewModelProducerProtocol {
     var cellClass: UITableViewCell.Type { get }
 
-//    func cellHeight(for model: StatusResponse) -> CGFloat
     func canHandle(model: StatusResponse) -> Bool
     func viewModel(for model: StatusResponse) -> StatusCellViewModel
 }

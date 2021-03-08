@@ -37,10 +37,10 @@ extension StatusNormalCell: StatusCell {
             return
         }
         self.viewModel = viewModel
-        topToolBar.reload(viewModel: viewModel)
+        topToolBar.reload(with: viewModel)
         contentLabel.attributedText = viewModel.statusAttrText
         picturesView.reload(with: viewModel.picUrls ?? [])
-        bottomToolBar.reload(viewModel: viewModel)
+        bottomToolBar.reload(with: viewModel)
 
         setNeedsLayout()
     }

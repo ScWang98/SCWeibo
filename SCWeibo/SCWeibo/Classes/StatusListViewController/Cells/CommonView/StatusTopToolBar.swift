@@ -24,7 +24,7 @@ class StatusTopToolBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func reload(viewModel: StatusCellViewModel) {
+    func reload(with viewModel: StatusCellViewModel) {
         self.viewModel = viewModel
         nameLabel.text = viewModel.screenName
 

@@ -24,6 +24,7 @@
 		D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */; };
 		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
 		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
+		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
 		D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989725EFD64400C0092A /* UIView+Extension.swift */; };
@@ -162,6 +163,7 @@
 		D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModel.swift; sourceTree = "<group>"; };
 		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
 		D68F989725EFD64400C0092A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */,
 				D627058525F4C18400B7F6DC /* StatusRepostCellViewModel.swift */,
 				D627058025F4C16A00B7F6DC /* StatusRepostCell.swift */,
+				D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */,
 			);
 			path = StatusRepostCell;
 			sourceTree = "<group>";
@@ -1043,6 +1046,7 @@
 				D6A2265725EE3AF000E3E767 /* MNTitleButton.swift in Sources */,
 				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
+				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
 				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
 				D6A2266C25EE3AF000E3E767 /* MNNewFeatureView.swift in Sources */,
