@@ -35,12 +35,12 @@ private extension StatusNormalCellViewModel {
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
     }
-    
-    private func countSting(count:Int, defaultStr: String) -> String{
-        if count <= 0{
+
+    private func countSting(count: Int, defaultStr: String) -> String {
+        if count <= 0 {
             return defaultStr
         }
-        if count < 10000{
+        if count < 10000 {
             return count.description
         }
         return String(format: "%.02f万", Double(count) / 10000)
@@ -49,15 +49,19 @@ private extension StatusNormalCellViewModel {
 
 extension StatusNormalCellViewModel: StatusCellViewModel {
     var cellHeight: CGFloat {
-        let topHeight = StatusTopToolBar.height(for: self)
+        let gap: CGFloat = 4
         
+        let topSepHeight: CGFloat = 12
+        let topBarHeight = StatusTopToolBar.height(for: self)
+
         let width = UIScreen.sc.screenWidth - 2 * 12
-        let textSize = CGSize(width:width, height: CGFloat.greatestFiniteMagnitude)
-        let textHeight = statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil).height ?? 0
+        let textSize = CGSize(width: width, height: 0)
+        let rect = statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let textHeight = rect?.height ?? 0
 
         let imageHeight = StatusPicturesView.height(for: picUrls ?? [])
         let bottomHeight = StatusBottomToolBar.height(for: self)
-        return topHeight + textHeight + imageHeight + bottomHeight
+        return topSepHeight + topBarHeight + textHeight + gap + imageHeight + gap + bottomHeight
     }
 
     var cellIdentifier: String {

@@ -49,24 +49,23 @@ extension StatusNormalCell: StatusCell {
 private extension StatusNormalCell {
     func setupSubviews() {
         topSeperatorView.backgroundColor = UIColor(rgb: 0xF2F2F2)
-        contentView.addSubview(topSeperatorView)
 
-        contentView.addSubview(topToolBar)
 
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
         contentLabel.textColor = UIColor.darkGray
-        contentView.addSubview(contentLabel)
-
-        contentView.addSubview(picturesView)
         
+        contentView.addSubview(topSeperatorView)
+        contentView.addSubview(topToolBar)
+        contentView.addSubview(contentLabel)
+        contentView.addSubview(picturesView)
         contentView.addSubview(bottomToolBar)
     }
 
     func setupLayout() {
-        topSeperatorView.anchorToEdge(.top, padding: 0, width: self.width, height: 12)
+        topSeperatorView.anchorToEdge(.top, padding: 0, width: contentView.width, height: 12)
 
         guard let viewModel = self.viewModel else {
             return
@@ -74,16 +73,15 @@ private extension StatusNormalCell {
         var height: CGFloat = 0.0
 
         height = StatusTopToolBar.height(for: viewModel)
-        topToolBar.align(.underCentered, relativeTo: topSeperatorView, padding: 0, width: self.width, height: height)
+        topToolBar.align(.underCentered, relativeTo: topSeperatorView, padding: 0, width: contentView.width, height: height)
 
         height = StatusBottomToolBar.height(for: viewModel)
-        bottomToolBar.anchorToEdge(.bottom, padding: 0, width: self.width, height: height)
+        bottomToolBar.anchorToEdge(.bottom, padding: 0, width: contentView.width, height: height)
 
         height = StatusPicturesView.height(for: viewModel.picUrls ?? [])
-        picturesView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 0, width: self.width - 12 * 2, height: height)
+        picturesView.align(.aboveCentered, relativeTo: bottomToolBar, padding: 4, width: contentView.width - 12 * 2, height: height)
 
-        contentLabel.alignBetweenVertical(align: .underCentered, primaryView: topToolBar, secondaryView: picturesView, padding: 0, width: 0)
-//        contentLabel.alignBetweenHorizontal(align: <#T##Align#>, primaryView: <#T##Frameable#>, secondaryView: <#T##Frameable#>, padding: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        contentLabel.frame = CGRect(x: 12, y: topToolBar.bottom, width: contentView.width - 12 * 2, height: picturesView.top - topToolBar.bottom - 4)
     }
 }
 
