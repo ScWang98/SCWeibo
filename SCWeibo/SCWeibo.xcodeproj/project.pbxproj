@@ -115,6 +115,7 @@
 		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
 		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
 		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
+		D6F1A93C25F7E3DB00A42949 /* ProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */; };
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
 		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
 		D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491525F29DA800F54C87 /* URLSettings.swift */; };
@@ -266,6 +267,7 @@
 		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
 		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
+		D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewModel.swift; sourceTree = "<group>"; };
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
 		D6F2491525F29DA800F54C87 /* URLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSettings.swift; sourceTree = "<group>"; };
@@ -792,6 +794,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
+				D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1086,6 +1089,7 @@
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
+				D6F1A93C25F7E3DB00A42949 /* ProfilePageViewModel.swift in Sources */,
 				D6A2262625EE3AEF00E3E767 /* MNStatusViewModel.swift in Sources */,
 				D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
