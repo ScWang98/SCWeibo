@@ -115,7 +115,7 @@
 		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
 		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
 		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
-		D6F1A93C25F7E3DB00A42949 /* ProfilePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */; };
+		D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */; };
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
 		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
 		D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491525F29DA800F54C87 /* URLSettings.swift */; };
@@ -123,6 +123,8 @@
 		D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492225F2A96C00F54C87 /* UserResponse.swift */; };
 		D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */; };
 		D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F290D025F14E8200F54C87 /* UIView+Edge.swift */; };
+		D6F2C0E225F87DA800724B4A /* TabbarItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2C0E125F87DA800724B4A /* TabbarItemsManager.swift */; };
+		D6F2C0E825F87E7900724B4A /* TabbarItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2C0E725F87E7900724B4A /* TabbarItemModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,7 +269,7 @@
 		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
 		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
-		D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewModel.swift; sourceTree = "<group>"; };
+		D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDefine.swift; sourceTree = "<group>"; };
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
 		D6F2491525F29DA800F54C87 /* URLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSettings.swift; sourceTree = "<group>"; };
@@ -275,6 +277,8 @@
 		D6F2492225F2A96C00F54C87 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Convenience.swift"; sourceTree = "<group>"; };
 		D6F290D025F14E8200F54C87 /* UIView+Edge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Edge.swift"; sourceTree = "<group>"; };
+		D6F2C0E125F87DA800724B4A /* TabbarItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemsManager.swift; sourceTree = "<group>"; };
+		D6F2C0E725F87E7900724B4A /* TabbarItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarItemModel.swift; sourceTree = "<group>"; };
 		E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCWeiboTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -673,6 +677,7 @@
 			children = (
 				D6F24A4025F1032800F54C87 /* ViewModel */,
 				D6A2260E25EE3AEF00E3E767 /* UserProfileViewController.swift */,
+				D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */,
 				D6A2260F25EE3AEF00E3E767 /* View */,
 				D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */,
 				D6A2261425EE3AEF00E3E767 /* Setting */,
@@ -702,6 +707,7 @@
 		D6A2261625EE3AEF00E3E767 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D6F2C0E625F87E5B00724B4A /* TabBar */,
 				D6A2261725EE3AEF00E3E767 /* MainController */,
 				D6A2261B25EE3AEF00E3E767 /* main.json */,
 				D6A2261C25EE3AEF00E3E767 /* NewFeature */,
@@ -715,7 +721,6 @@
 		D6A2261725EE3AEF00E3E767 /* MainController */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2261825EE3AEF00E3E767 /* MNMainTabBarController.swift */,
 				D6A2261925EE3AEF00E3E767 /* MNNavigationController.swift */,
 				D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */,
 			);
@@ -794,9 +799,18 @@
 			isa = PBXGroup;
 			children = (
 				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
-				D6F1A93B25F7E3DB00A42949 /* ProfilePageViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D6F2C0E625F87E5B00724B4A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D6A2261825EE3AEF00E3E767 /* MNMainTabBarController.swift */,
+				D6F2C0E125F87DA800724B4A /* TabbarItemsManager.swift */,
+				D6F2C0E725F87E7900724B4A /* TabbarItemModel.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1046,6 +1060,7 @@
 				D6A2262F25EE3AEF00E3E767 /* MNEmojiModel.swift in Sources */,
 				D6A2265525EE3AEF00E3E767 /* MNStatusModel.swift in Sources */,
 				D6A2263225EE3AEF00E3E767 /* MNEmojiToolbar.swift in Sources */,
+				D6F2C0E225F87DA800724B4A /* TabbarItemsManager.swift in Sources */,
 				D6A2265725EE3AF000E3E767 /* MNTitleButton.swift in Sources */,
 				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
@@ -1075,6 +1090,7 @@
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
 				D6A2265425EE3AEF00E3E767 /* MNStatusPicture.swift in Sources */,
+				D6F2C0E825F87E7900724B4A /* TabbarItemModel.swift in Sources */,
 				D6A2265D25EE3AF000E3E767 /* MNStatusPictureView.swift in Sources */,
 				D6A2265925EE3AF000E3E767 /* MNHomeNormalCell.swift in Sources */,
 				D6A2264725EE3AEF00E3E767 /* UIColor+Extentsion.swift in Sources */,
@@ -1089,7 +1105,7 @@
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
-				D6F1A93C25F7E3DB00A42949 /* ProfilePageViewModel.swift in Sources */,
+				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2262625EE3AEF00E3E767 /* MNStatusViewModel.swift in Sources */,
 				D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,

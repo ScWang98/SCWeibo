@@ -37,7 +37,4 @@ class MNNavigationController: UINavigationController {
         super.pushViewController(viewController, animated: animated)
     }
     
-    @objc func popToParent() {
-        popViewController(animated: true)
-    }
 }

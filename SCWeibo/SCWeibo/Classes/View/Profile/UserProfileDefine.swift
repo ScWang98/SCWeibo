@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
-class ProfilePageViewModel: NSObject {
-
+protocol ProfilePageViewModel {
+    
 }
