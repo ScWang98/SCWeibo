@@ -154,6 +154,9 @@ extension MNMainTabBarController{
         for dic in array {
             arrayM.append(controller(dic: dic))
         }
+        
+        
+        
         viewControllers = arrayM
         
     }
