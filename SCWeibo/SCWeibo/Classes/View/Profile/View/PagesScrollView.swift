@@ -15,7 +15,8 @@ protocol PagesScrollViewDelegate: UIScrollViewDelegate {
 
 protocol PagesScrollViewDataSource {
     func numberOfPages(in pagesView: PagesScrollView) -> Int
-    func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController
+    func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController?
+    func pagesView(_ pagesView: PagesScrollView, pageViewAt index: Int) -> UIView
     func pagesView(_ pagesView: PagesScrollView, pageScrollViewAt index: Int) -> UIScrollView
 }
 
@@ -84,7 +85,7 @@ extension PagesScrollView {
             self.backScrollView.delegate = self
 
             self.currentIndex = selectedIndex
-            self.currentPage = self.pagesDataSource?.pagesView(self, pageViewControllerAt: selectedIndex).view
+            self.currentPage = self.pagesDataSource?.pagesView(self, pageViewAt: selectedIndex)
             self.currentPageScrollView = self.pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)
         }
     }
@@ -112,7 +113,7 @@ private extension PagesScrollView {
 
         if let pageNum = pagesDataSource?.numberOfPages(in: self) {
             for i in 0 ..< pageNum {
-                let page = pagesDataSource?.pagesView(self, pageViewControllerAt: i).view
+                let page = pagesDataSource?.pagesView(self, pageViewAt: i)
                 page?.frame = calcPageFrame(At: i)
             }
         }
@@ -136,9 +137,12 @@ private extension PagesScrollView {
                 pageVC.willMove(toParent: parentVC)
                 parentVC.addChild(pageVC)
                 pageVC.didMove(toParent: parentVC)
-                backScrollView.addSubview(pageVC.view)
-                pageVC.view.frame = calcPageFrame(At: i)
             }
+            if let page = pagesDataSource?.pagesView(self, pageViewAt: i) {
+                backScrollView.addSubview(page)
+                page.frame = calcPageFrame(At: i)
+            }
+            
             if let scrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: i) {
                 scrollView.isScrollEnabled = false
                 scrollView.scrollsToTop = false
@@ -194,7 +198,7 @@ extension PagesScrollView: UIScrollViewDelegate {
         pagesDelegate?.pagesView(self, dragToSelectPageAt: selectedIndex)
 
         currentIndex = selectedIndex
-        currentPage = pagesDataSource?.pagesView(self, pageViewControllerAt: selectedIndex).view
+        currentPage = pagesDataSource?.pagesView(self, pageViewAt: selectedIndex)
         currentPageScrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)
     }
 }

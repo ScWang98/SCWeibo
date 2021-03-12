@@ -13,6 +13,8 @@ class UserProfileViewController: UIViewController {
     let headerView = UserProfileHeaderView()
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
+    
+    let viewModel = UserProfileViewModel()
 
     var pageVCs = [StatusListViewController]()
 
@@ -127,15 +129,19 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
     // MARK: PagesScrollViewDataSource
 
     func numberOfPages(in pagesView: PagesScrollView) -> Int {
-        return pageVCs.count
+        return viewModel.tabViewModels.count
     }
 
-    func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController {
-        return pageVCs[index]
+    func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController? {
+        return viewModel.tabViewModels[index].tabViewController
+    }
+    
+    func pagesView(_ pagesView: PagesScrollView, pageViewAt index: Int) -> UIView {
+        return viewModel.tabViewModels[index].tabView
     }
 
     func pagesView(_ pagesView: PagesScrollView, pageScrollViewAt index: Int) -> UIScrollView {
-        pageVCs[index].tableView
+        return viewModel.tabViewModels[index].tabScrollView
     }
 }
 

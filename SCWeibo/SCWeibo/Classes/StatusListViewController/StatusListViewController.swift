@@ -34,9 +34,22 @@ class StatusListViewController: UIViewController {
     }
 }
 
-// MARK: - UI
+// MARK: - Public Methods
 
 extension StatusListViewController {
+    func refreshData(with loadingState: Bool) {
+        if loadingState {
+            self.tableView.mj_header?.beginRefreshing()
+        }
+        else {
+            self.loadDatas()
+        }
+    }
+}
+
+// MARK: - UI
+
+private extension StatusListViewController {
     func setupSubviews() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -90,20 +103,10 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension StatusListViewController: MNHomeCellDelegate {
-    func homeCellDidClickUrlString(cell: MNHomeBaseCell, urlStr: String) {
-        print("urlStr = \(urlStr)")
-        let vc = MNWebViewController()
-        vc.urlString = urlStr
-        vc.title = "123"
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
 // MARK: - Action
 
-@objc extension StatusListViewController {
-    private func tapBrowerPhoto(noti: Notification) {
+@objc private extension StatusListViewController {
+    func tapBrowerPhoto(noti: Notification) {
         let userInfo = noti.userInfo
         guard let selectedIndex = userInfo?[MNWeiboCellBrowserPhotoIndexKey] as? Int,
             let imageViews = userInfo?[MNWeiboCellBrowserPhotoImageViewsKeys] as? [UIImageView],

@@ -8,5 +8,13 @@
 import UIKit
 
 class UserProfileViewModel {
-
+    var tabViewModels = [UserProfileTabViewModel]()
+    
+    
+    init() {
+        
+        tabViewModels.append(UserProfileStatusTabViewModel.init())
+        tabViewModels.append(UserProfileStatusTabViewModel.init())
+        tabViewModels.append(UserProfileStatusTabViewModel.init())
+    }
 }

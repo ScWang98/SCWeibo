@@ -24,6 +24,7 @@
 		D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */; };
 		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
 		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
+		D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
@@ -166,6 +167,7 @@
 		D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModel.swift; sourceTree = "<group>"; };
 		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStatusTabViewModel.swift; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 			isa = PBXGroup;
 			children = (
 				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
+				D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */,
 				D6A2263E25EE3AEF00E3E767 /* UILabel+Extension.swift in Sources */,
 				D6A226CC25EE456E00E3E767 /* HMPhotoBrowserController.m in Sources */,
+				D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
 				D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */,
