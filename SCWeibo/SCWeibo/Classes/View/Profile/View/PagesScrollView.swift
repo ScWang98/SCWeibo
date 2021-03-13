@@ -142,7 +142,7 @@ private extension PagesScrollView {
                 backScrollView.addSubview(page)
                 page.frame = calcPageFrame(At: i)
             }
-            
+
             if let scrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: i) {
                 scrollView.isScrollEnabled = false
                 scrollView.scrollsToTop = false
@@ -161,7 +161,7 @@ private extension PagesScrollView {
             return
         }
 
-        scrollerObserveId = scrollView.bk_addObserver(forKeyPath: "contentSize", options: [.old, .new]) { _, change in
+        scrollerObserveId = scrollView.bk_addObserver(forKeyPath: "contentSize", options: [.old, .new]) { _, _ in
             self.setNeedsLayout()
         }
     }
