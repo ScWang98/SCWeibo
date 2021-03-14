@@ -10,6 +10,14 @@ import UIKit
 class UserProfileViewModel {
     var tabViewModels = [UserProfileTabViewModel]()
     
+    var tabNames: [String] {
+        var names = [String]()
+        for tab in tabViewModels {
+            names.append(tab.tabName)
+        }
+        return names
+    }
+    
     
     init() {
         

@@ -22,7 +22,7 @@ class StatusResponse: Codable, CustomStringConvertible {
 
     var picUrls: [StatusPicture]?
 
-    var createAt: String?
+    var createdAt: String?
 
     var source: String?
 
@@ -36,7 +36,7 @@ class StatusResponse: Codable, CustomStringConvertible {
         case commentsCount = "comments_count"
         case attitudesCount = "attitudes_count"
         case picUrls = "pic_urls"
-        case createAt = "create_at"
+        case createdAt = "created_at"
         case source
         case retweetedStatus = "retweeted_status"
     }

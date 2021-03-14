@@ -16,14 +16,8 @@ class UserProfileViewController: UIViewController {
     
     let viewModel = UserProfileViewModel()
 
-    var pageVCs = [StatusListViewController]()
-
     init() {
         super.init(nibName: nil, bundle: nil)
-
-        pageVCs.append(StatusListViewController())
-        pageVCs.append(StatusListViewController())
-        pageVCs.append(StatusListViewController())
     }
 
     required init?(coder: NSCoder) {
@@ -69,18 +63,8 @@ private extension UserProfileViewController {
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
         categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-
-        var array = [HorizontalCategoryBarItem]()
-        var item = HorizontalCategoryBarItem()
-        item.name = "微博"
-        array.append(item)
-        item = HorizontalCategoryBarItem()
-        item.name = "视频"
-        array.append(item)
-        item = HorizontalCategoryBarItem()
-        item.name = "相册"
-        array.append(item)
-        categoryBar.reload(items: array)
+        
+        categoryBar.reload(names: viewModel.tabNames)
     }
 
     func addObservers() {

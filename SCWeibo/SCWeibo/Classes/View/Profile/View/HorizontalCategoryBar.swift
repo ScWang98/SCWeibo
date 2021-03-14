@@ -96,7 +96,14 @@ class HorizontalCategoryBar: UIView {
         addSubview(indicator)
     }
 
-    func reload(items: [HorizontalCategoryBarItem]) {
+    func reload(names: [String]) {
+        var items = [HorizontalCategoryBarItem]()
+        for name in names {
+            let item = HorizontalCategoryBarItem()
+            item.name = name
+            items.append(item)
+        }
+        
         for cell in cells {
             cell.removeFromSuperview()
         }

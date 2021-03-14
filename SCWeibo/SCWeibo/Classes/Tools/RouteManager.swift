@@ -60,9 +60,13 @@ class RouteManager {
         
         let vc = cls.init(routeParams: routeParams)
         
+        guard let viewController = vc as? UIViewController else {
+            return
+        }
+        
         let rootVC = getCurrentViewController()
         
-        rootVC?.present(vc as! UIViewController, animated: true, completion: nil)
+        rootVC?.present(viewController, animated: true, completion: nil)
     }
     
     private func getCurrentViewController(base: UIViewController? = UIApplication.shared.sc.keyWindow?.rootViewController) -> UIViewController? {

@@ -22,6 +22,7 @@ protocol StatusCellViewModel {
     var screenName: String? { get set }
     var avatarUrl: String? { get set }
     var source: String? { get set }
+    var createdAt: String? { get set }
 
     var repostTitle: String? { get set }
     var commentTitle: String? { get set }

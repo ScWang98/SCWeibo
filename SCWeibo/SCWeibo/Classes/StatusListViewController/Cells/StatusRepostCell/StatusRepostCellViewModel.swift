@@ -12,6 +12,7 @@ class StatusRepostCellViewModel {
     var screenName: String?
     var avatarUrl: String?
     var source: String?
+    var createdAt: String?
     var statusAttrText: NSAttributedString?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
@@ -32,6 +33,7 @@ private extension StatusRepostCellViewModel {
         screenName = status.user?.screenName
         avatarUrl = status.user?.profileImageUrl
         source = "来自" + (status.source?.mn_href()?.text ?? "")
+        createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")

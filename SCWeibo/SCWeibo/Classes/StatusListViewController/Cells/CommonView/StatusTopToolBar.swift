@@ -38,9 +38,7 @@ class StatusTopToolBar: UIView {
 
         sourceLabel.text = viewModel.source
 
-        // FIXME: 新浪API现在没有返回创建时间了,暂时用一个固定字符串代替
-//        timeLabel.text = viewModel?.status.createDate?.mn_dateDescription
-        timeLabel.text = "刚刚"
+        timeLabel.text = viewModel.createdAt
     }
 
     static func height(for viewModel: StatusCellViewModel) -> CGFloat {

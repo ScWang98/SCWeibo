@@ -5,12 +5,12 @@
 //  Created by scwang on 2021/3/7.
 //
 
+import SKPhotoBrowser
 import UIKit
 
 class StatusPicturesView: UIView {
     var urls = [StatusPicturesModel]()
     var picViews = [UIImageView]()
-    var viewModel: MNStatusViewModel?
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -118,6 +118,20 @@ private extension StatusPicturesView {
     }
 
     @objc func imageViewDidTap(tap: UITapGestureRecognizer) {
-        print("imageViewDidTap at \(String(describing: tap.view?.tag))")
+        guard let index = tap.view?.tag, index < self.urls.count else {
+            return
+        }
+
+        var images = [SKPhoto]()
+        for url in self.urls {
+            let photo = SKPhoto.photoWithImageURL(url.originalPic)
+            photo.shouldCachePhotoURLImage = false
+            images.append(photo)
+        }
+
+        let browser = SKPhotoBrowser(photos: images)
+        browser.initializePageIndex(index)
+        let vc = ResponderHelper.topViewController(for: self)
+        vc.present(browser, animated: true, completion: nil)
     }
 }
