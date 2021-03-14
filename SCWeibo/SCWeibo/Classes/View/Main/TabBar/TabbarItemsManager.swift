@@ -17,7 +17,7 @@ enum TabbarItemType: String {
 class TabbarItemsManager: NSObject {
     static var homeItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        let viewController = StatusListViewController()
+        let viewController = StatusHomeViewController()
         item.viewController = MNNavigationController(rootViewController: viewController)
         item.tabbarImage = UIImage(named: "tabbar_home")
         item.selectedTabbarImage = UIImage(named: "tabbar_home_selected")

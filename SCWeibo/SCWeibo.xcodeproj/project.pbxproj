@@ -14,6 +14,7 @@
 		D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64625F507F70041D99A /* StatusBottomToolBar.swift */; };
 		D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D64B25F510620041D99A /* StatusPicturesView.swift */; };
 		D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611D65325F511060041D99A /* StatusPicturesModel.swift */; };
+		D625944B25FE5B770037CB2C /* StatusHomeTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D625944A25FE5B770037CB2C /* StatusHomeTopBar.swift */; };
 		D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056825F4BA8200B7F6DC /* StatusCellViewModelProducer.swift */; };
 		D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */; };
 		D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */; };
@@ -155,6 +156,7 @@
 		D611D64625F507F70041D99A /* StatusBottomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBottomToolBar.swift; sourceTree = "<group>"; };
 		D611D64B25F510620041D99A /* StatusPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesView.swift; sourceTree = "<group>"; };
 		D611D65325F511060041D99A /* StatusPicturesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPicturesModel.swift; sourceTree = "<group>"; };
+		D625944A25FE5B770037CB2C /* StatusHomeTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeTopBar.swift; sourceTree = "<group>"; };
 		D627056825F4BA8200B7F6DC /* StatusCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellViewModelProducer.swift; sourceTree = "<group>"; };
 		D627056D25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCellCommonDefine.swift; sourceTree = "<group>"; };
 		D627057825F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostCellViewModelProducer.swift; sourceTree = "<group>"; };
@@ -340,6 +342,14 @@
 				D611D64B25F510620041D99A /* StatusPicturesView.swift */,
 			);
 			path = CommonView;
+			sourceTree = "<group>";
+		};
+		D625944925FE5B500037CB2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D625944A25FE5B770037CB2C /* StatusHomeTopBar.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D627057525F4C11300B7F6DC /* StatusNormalCell */ = {
@@ -616,12 +626,13 @@
 		D6A225FC25EE3AEF00E3E767 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */,
+				D625944925FE5B500037CB2C /* View */,
 				D6A225FD25EE3AEF00E3E767 /* MNWebViewController.swift */,
 				D6A225B825EE3AEF00E3E767 /* Model */,
 				D6A225FE25EE3AEF00E3E767 /* TitleButton */,
 				D6A2260025EE3AEF00E3E767 /* Cells */,
 				D6A2260825EE3AEF00E3E767 /* MNHomeViewController.swift */,
-				D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1053,6 +1064,7 @@
 				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
 				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
+				D625944B25FE5B770037CB2C /* StatusHomeTopBar.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
 				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
