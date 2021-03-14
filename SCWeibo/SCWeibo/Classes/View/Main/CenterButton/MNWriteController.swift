@@ -217,15 +217,15 @@ private extension MNWriteController{
     @objc func clickSendButton(){
         let text = textView.emojiText
         print("创建微博 ==> 提交的属性文本字符串 = \(text)")
-        MNNetworkManager.shared.createStatus(text: text) { (json, isSuccess) in
-            print("如果有权限 ==> 发布微博成功~")
-            //FIXME: If SVProgressHUD fix crash bug. need add HUD.
-            //let message = isSuccess ? "发布成功" : "没有权限"
-            //SVProgressHUD .show(withStatus: message)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                self.dismissVC()
-            }
-        }
+//        MNNetworkManager.shared.createStatus(text: text) { (json, isSuccess) in
+//            print("如果有权限 ==> 发布微博成功~")
+//            //FIXME: If SVProgressHUD fix crash bug. need add HUD.
+//            //let message = isSuccess ? "发布成功" : "没有权限"
+//            //SVProgressHUD .show(withStatus: message)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+//                self.dismissVC()
+//            }
+//        }
     }
 }
 
