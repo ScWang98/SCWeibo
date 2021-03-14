@@ -93,12 +93,9 @@
 		D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261225EE3AEF00E3E767 /* HorizontalCategoryBar.swift */; };
 		D6A2266525EE3AF000E3E767 /* MNProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */; };
 		D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261525EE3AEF00E3E767 /* SettingViewController.swift */; };
-		D6A2266725EE3AF000E3E767 /* MNMainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261825EE3AEF00E3E767 /* MNMainTabBarController.swift */; };
+		D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */; };
 		D6A2266825EE3AF000E3E767 /* MNNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261925EE3AEF00E3E767 /* MNNavigationController.swift */; };
 		D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */; };
-		D6A2266A25EE3AF000E3E767 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = D6A2261B25EE3AEF00E3E767 /* main.json */; };
-		D6A2266B25EE3AF000E3E767 /* MNWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261D25EE3AEF00E3E767 /* MNWelcomeView.swift */; };
-		D6A2266C25EE3AF000E3E767 /* MNNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261E25EE3AEF00E3E767 /* MNNewFeatureView.swift */; };
 		D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262025EE3AEF00E3E767 /* MNCompostTypeButton.swift */; };
 		D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262125EE3AEF00E3E767 /* MNPublishView.swift */; };
 		D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262225EE3AEF00E3E767 /* MNWriteController.swift */; };
@@ -116,6 +113,7 @@
 		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
 		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
 		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
+		D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */; };
 		D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */; };
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
 		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
@@ -242,12 +240,9 @@
 		D6A2261225EE3AEF00E3E767 /* HorizontalCategoryBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCategoryBar.swift; sourceTree = "<group>"; };
 		D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNProfileViewController.swift; sourceTree = "<group>"; };
 		D6A2261525EE3AEF00E3E767 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		D6A2261825EE3AEF00E3E767 /* MNMainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNMainTabBarController.swift; sourceTree = "<group>"; };
+		D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboTabBarController.swift; sourceTree = "<group>"; };
 		D6A2261925EE3AEF00E3E767 /* MNNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNavigationController.swift; sourceTree = "<group>"; };
 		D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNavigationBar.swift; sourceTree = "<group>"; };
-		D6A2261B25EE3AEF00E3E767 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
-		D6A2261D25EE3AEF00E3E767 /* MNWelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNWelcomeView.swift; sourceTree = "<group>"; };
-		D6A2261E25EE3AEF00E3E767 /* MNNewFeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNewFeatureView.swift; sourceTree = "<group>"; };
 		D6A2262025EE3AEF00E3E767 /* MNCompostTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNCompostTypeButton.swift; sourceTree = "<group>"; };
 		D6A2262125EE3AEF00E3E767 /* MNPublishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNPublishView.swift; sourceTree = "<group>"; };
 		D6A2262225EE3AEF00E3E767 /* MNWriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNWriteController.swift; sourceTree = "<group>"; };
@@ -271,6 +266,7 @@
 		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
 		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
 		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
+		D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeViewController.swift; sourceTree = "<group>"; };
 		D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDefine.swift; sourceTree = "<group>"; };
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
@@ -625,6 +621,7 @@
 				D6A225FE25EE3AEF00E3E767 /* TitleButton */,
 				D6A2260025EE3AEF00E3E767 /* Cells */,
 				D6A2260825EE3AEF00E3E767 /* MNHomeViewController.swift */,
+				D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -711,8 +708,6 @@
 			children = (
 				D6F2C0E625F87E5B00724B4A /* TabBar */,
 				D6A2261725EE3AEF00E3E767 /* MainController */,
-				D6A2261B25EE3AEF00E3E767 /* main.json */,
-				D6A2261C25EE3AEF00E3E767 /* NewFeature */,
 				D6A2261F25EE3AEF00E3E767 /* CenterButton */,
 				D6A2262325EE3AEF00E3E767 /* MNBaseViewController.swift */,
 				D6A2262425EE3AEF00E3E767 /* VisitorView */,
@@ -727,15 +722,6 @@
 				D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */,
 			);
 			path = MainController;
-			sourceTree = "<group>";
-		};
-		D6A2261C25EE3AEF00E3E767 /* NewFeature */ = {
-			isa = PBXGroup;
-			children = (
-				D6A2261D25EE3AEF00E3E767 /* MNWelcomeView.swift */,
-				D6A2261E25EE3AEF00E3E767 /* MNNewFeatureView.swift */,
-			);
-			path = NewFeature;
 			sourceTree = "<group>";
 		};
 		D6A2261F25EE3AEF00E3E767 /* CenterButton */ = {
@@ -809,7 +795,7 @@
 		D6F2C0E625F87E5B00724B4A /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2261825EE3AEF00E3E767 /* MNMainTabBarController.swift */,
+				D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */,
 				D6F2C0E125F87DA800724B4A /* TabbarItemsManager.swift */,
 				D6F2C0E725F87E7900724B4A /* TabbarItemModel.swift */,
 			);
@@ -925,7 +911,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A2266A25EE3AF000E3E767 /* main.json in Resources */,
 				D6A2263925EE3AEF00E3E767 /* MNWeibo.sql in Resources */,
 				D6A2257325EE388C00E3E767 /* LaunchScreen.storyboard in Resources */,
 				D6A2263825EE3AEF00E3E767 /* MNEmoji.bundle in Resources */,
@@ -1070,7 +1055,6 @@
 				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
 				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
-				D6A2266C25EE3AF000E3E767 /* MNNewFeatureView.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
@@ -1082,7 +1066,7 @@
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
-				D6A2266725EE3AF000E3E767 /* MNMainTabBarController.swift in Sources */,
+				D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */,
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
 				D6A2262C25EE3AEF00E3E767 /* MNUserAccount.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
@@ -1119,6 +1103,7 @@
 				D6A2265325EE3AEF00E3E767 /* MNUserModel.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* MNNavigationController.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
+				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
 				D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */,
 				D6A2264325EE3AEF00E3E767 /* UIBarButtonItem+Extension.swift in Sources */,
@@ -1128,7 +1113,6 @@
 				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
 				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
 				D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */,
-				D6A2266B25EE3AF000E3E767 /* MNWelcomeView.swift in Sources */,
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,

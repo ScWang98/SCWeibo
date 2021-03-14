@@ -15,6 +15,8 @@ class UserProfileViewController: UIViewController {
     let pagesView = PagesScrollView()
     
     let viewModel = UserProfileViewModel()
+    
+    var pagesObservation: NSKeyValueObservation?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -68,7 +70,7 @@ private extension UserProfileViewController {
     }
 
     func addObservers() {
-        self.pagesView.bk_addObserver(forKeyPath: "contentOffset", options: [.new, .old]) { _, _ in
+        pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { (scrollView, change) in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
     }

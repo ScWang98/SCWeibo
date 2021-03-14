@@ -7,6 +7,7 @@
 
 import SKPhotoBrowser
 import UIKit
+import SnapKit
 
 class StatusPicturesView: UIView {
     var urls = [StatusPicturesModel]()
@@ -131,7 +132,8 @@ private extension StatusPicturesView {
 
         let browser = SKPhotoBrowser(photos: images)
         browser.initializePageIndex(index)
-        let vc = ResponderHelper.topViewController(for: self)
-        vc.present(browser, animated: true, completion: nil)
+        if let viewController = ResponderHelper.topViewController(for: self) {
+            viewController.present(browser, animated: true, completion: nil)
+        }
     }
 }

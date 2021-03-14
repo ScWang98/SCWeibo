@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.backgroundColor = UIColor.orange
-        window?.rootViewController = MNMainTabBarController()
+        window?.rootViewController = WeiboTabBarController()
         window?.makeKeyAndVisible()
     }
 

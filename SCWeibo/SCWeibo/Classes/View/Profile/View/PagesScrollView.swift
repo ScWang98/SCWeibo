@@ -5,7 +5,6 @@
 //  Created by scwang on 2021/3/3.
 //
 
-import BlocksKit
 import UIKit
 
 protocol PagesScrollViewDelegate: UIScrollViewDelegate {
@@ -46,7 +45,7 @@ class PagesScrollView: UIScrollView {
         }
     }
 
-    var scrollerObserveId: String?
+    var scrollerObservation: NSKeyValueObservation?
 
     // MARK: LifeCycle
 
@@ -132,8 +131,8 @@ private extension PagesScrollView {
         pageCount = count
 
         for i in 0 ..< pageCount {
-            if let pageVC = pagesDataSource?.pagesView(self, pageViewControllerAt: i) {
-                let parentVC = self.sc.viewController
+            if let pageVC = pagesDataSource?.pagesView(self, pageViewControllerAt: i),
+                let parentVC = self.sc.viewController {
                 pageVC.willMove(toParent: parentVC)
                 parentVC.addChild(pageVC)
                 pageVC.didMove(toParent: parentVC)
@@ -161,18 +160,18 @@ private extension PagesScrollView {
             return
         }
 
-        scrollerObserveId = scrollView.bk_addObserver(forKeyPath: "contentSize", options: [.old, .new]) { _, _ in
+        scrollerObservation = scrollView.observe(\UIScrollView.contentSize, options: [.old, .new]) { _, _ in
             self.setNeedsLayout()
         }
     }
 
     func removeObserver(from scrollView: UIScrollView?) {
-        guard let identifier = scrollerObserveId,
-            let scrollView = scrollView else {
+        guard let observation = scrollerObservation,
+            let _ = scrollView else {
             return
         }
-
-        scrollView.bk_removeObservers(withIdentifier: identifier)
+        observation.invalidate()
+//        scrollView.bk_removeObservers(withIdentifier: identifier)
     }
 }
 

@@ -42,67 +42,6 @@ extension MNNetworkManager{
     }
 }
 
-//MARK: - UserInfo
-extension MNNetworkManager{
-    
-    func fetchUserInfo(completion:@escaping (([String:AnyObject])->())){
-        
-        guard let uid = userAccount.uid else{
-            return
-        }
-    
-        let urlString = "https://api.weibo.com/2/users/show.json"
-        let parms = ["uid":uid]
-        
-        tokenRequest(URLString: urlString, parameters: parms as [String : AnyObject]) { (isSuccess, json) in
-            completion((json as? [String:AnyObject]) ?? [:])
-        }
-    }
-}
-
-//MARK: - OAuth
-extension MNNetworkManager{
-    
-    func getAccessToken(code: String, completion: @escaping((_ isSuccess:Bool)->Void)){
-        
-        let urlString = "https://api.weibo.com/oauth2/access_token"
-        let parms = ["client_id":MNAppKey,
-                     "client_secret":MNAppSecret,
-                     "grant_type":"authorization_code",
-                     "code":code,
-                     "redirect_uri":MNredirectUri]
-        
-        AF.request(urlString, method: .post, parameters: parms, encoding: URLEncoding.default).responseJSON { response in
-            
-            var isSuccess = false
-            switch response.result {
-            case .success(let json):
-                //使用YYModel转模型,如果转出来是nil,记得属性前面加`@objc` 关键字
-                // ==> swift4以后_YYModelMeta中的_keyMappedCount获取不到不带`@objc`的变量
-                self.userAccount.yy_modelSet(with: json as? [String:AnyObject] ?? [:])
-                
-                isSuccess = true
-                print(json)
-                
-            case .failure(let error):
-                isSuccess = false
-                print(error)
-            }
-            
-            //load user info
-            self.fetchUserInfo { (dic) in
-    
-                //set userName & avatar to userAccount info
-                self.userAccount.yy_modelSet(with: dic)
-                
-                self.userAccount.saveAccoutInfo()
-                
-                completion(isSuccess)
-            }
-        }
-    }
-}
-
 /// MARK: - 发布微博
 extension MNNetworkManager{
     
