@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RouteAble {
-    init(routeParams: Dictionary<AnyHashable, Any>);
+    init(routeParams: Dictionary<AnyHashable, Any>)
 }
 
 class RouteManager {
@@ -25,50 +25,51 @@ class RouteManager {
         guard let schemeStr = scheme else {
             return false
         }
-        
+
         return pages[schemeStr] != nil
     }
 
-    func open(url: URL) {
-        open(url: url, params: nil)
-    }
-
-    func open(url: URL, params: Dictionary<AnyHashable, Any>?) {
+    func open(url: URL, params: Dictionary<AnyHashable, Any>? = nil) {
         if !canOpen(url: url) {
             return
         }
-        
+
         var routeParams = Dictionary<AnyHashable, Any>()
-        
+
         if let params = params {
             for item in params {
                 routeParams[item.key] = item.value
             }
         }
-        
+
         let urlComp = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        
+
         if let queryItems = urlComp?.queryItems {
             for item in queryItems {
                 routeParams[item.name] = item.value
             }
         }
-        
+
         guard let host = urlComp?.host, let cls = pages[host] else {
             return
         }
-        
+
         let vc = cls.init(routeParams: routeParams)
-        
+
         guard let viewController = vc as? UIViewController else {
             return
         }
-        
-        let rootVC = getCurrentViewController()
-        
-        rootVC?.present(viewController, animated: true, completion: nil)
+
+//        let rootVC = getCurrentViewController()
+//
+//        rootVC?.present(viewController, animated: true, completion: nil)
+        guard let nav = ResponderHelper.topNavigationController() else {
+            return
+        }
+
+        nav.pushViewController(viewController, animated: true)
     }
-    
+
     private func getCurrentViewController(base: UIViewController? = UIApplication.shared.sc.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return getCurrentViewController(base: nav.visibleViewController)

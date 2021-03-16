@@ -53,6 +53,21 @@ class ResponderHelper {
 
         return viewController
     }
+    
+    static func topNavigationController() -> UINavigationController? {
+        let viewController = UIApplication.shared.sc.keyWindow?.rootViewController
+        if let viewController = viewController as? UITabBarController {
+            if let navController = viewController.selectedViewController as? UINavigationController {
+                return navController
+            }
+        }
+        else if let navController = viewController as? UINavigationController {
+            return navController
+        }
+        
+        assert(false, "Can't find navigationController from rootVC")
+        return nil
+    }
 }
 
 private extension ResponderHelper {

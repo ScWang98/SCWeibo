@@ -77,6 +77,9 @@ private extension StatusHomeTopBar {
     }
 
     func writeButtonClickedAction(button: UIButton) {
+        if let url = URL(string: "tt://test") {
+            RouteManager.shared.open(url: url)
+        }
         delegate?.topToolBarDidClickWrite(self)
     }
 }
