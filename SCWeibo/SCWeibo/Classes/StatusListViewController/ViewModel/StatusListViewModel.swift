@@ -5,7 +5,6 @@
 //  Created by scwang on 2021/3/7.
 //
 
-import SDWebImage
 import UIKit
 
 class StatusListViewModel {

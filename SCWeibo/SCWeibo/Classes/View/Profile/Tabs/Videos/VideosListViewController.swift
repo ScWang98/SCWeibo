@@ -1,14 +1,13 @@
 //
-//  StatusListViewController.swift
+//  VideosListViewController.swift
 //  SCWeibo
 //
-//  Created by scwang on 2021/3/7.
+//  Created by scwang on 2021/3/17.
 //
 
-import MJRefresh
 import UIKit
 
-class StatusListViewController: UIViewController {
+class VideosListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = StatusListViewModel()
@@ -36,38 +35,31 @@ class StatusListViewController: UIViewController {
 
 // MARK: - Public Methods
 
-extension StatusListViewController {
+extension VideosListViewController {
     func refreshData(with loadingState: Bool) {
-        if loadingState {
-            self.tableView.mj_header?.beginRefreshing()
-        }
-        else {
-            self.loadDatas()
-        }
+        self.loadDatas()
     }
 }
 
 // MARK: - UI
 
-private extension StatusListViewController {
+private extension VideosListViewController {
     func setupSubviews() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
         listViewModel.registerCells(with: tableView)
-        tableView.mj_header = MJRefreshHeader(refreshingTarget: self, refreshingAction: #selector(loadDatas))
-        tableView.mj_footer = MJRefreshFooter(refreshingTarget: self, refreshingAction: #selector(loadDatas))
         tableView.frame = view.bounds
         view.addSubview(tableView)
 
-        tableView.mj_header?.beginRefreshing()
+        self.loadDatas()
     }
 }
 
 // MARK: - Private Methods
 
-private extension StatusListViewController {
+private extension VideosListViewController {
     func addObservers() {
     }
 
@@ -77,7 +69,7 @@ private extension StatusListViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
+extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listViewModel.statusList.count
     }
@@ -103,11 +95,9 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Action
 
-@objc private extension StatusListViewController {
+@objc private extension VideosListViewController {
     func loadDatas() {
         listViewModel.loadStatus(pullup: self.isPull) { _, needRefresh in
-            self.tableView.mj_header?.endRefreshing()
-            self.tableView.mj_footer?.endRefreshing()
             self.isPull = false
             if needRefresh {
                 self.tableView.reloadData()

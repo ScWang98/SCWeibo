@@ -3,4 +3,3 @@
 //
 
 #import <Weibo_SDK/WeiboSDK.h>
-#import "HMPhotoBrowserController.h"

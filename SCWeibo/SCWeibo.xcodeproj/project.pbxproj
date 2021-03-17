@@ -26,6 +26,11 @@
 		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
 		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
 		D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */; };
+		D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45182601FCF700A63631 /* VideosListViewController.swift */; };
+		D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45202601FF3500A63631 /* VideosListViewModel.swift */; };
+		D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45252601FFCD00A63631 /* VideosListService.swift */; };
+		D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452A260200A400A63631 /* VideoTableCell.swift */; };
+		D64C45302602041400A63631 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452F2602041400A63631 /* VideoResponse.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
@@ -98,11 +103,6 @@
 		D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268125EE3B1800E3E767 /* RouteRegisterTask.swift */; };
 		D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268225EE3B1800E3E767 /* FetchAppInfoTask.swift */; };
 		D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268325EE3B1800E3E767 /* StartupTaskGroup.swift */; };
-		D6A226CC25EE456E00E3E767 /* HMPhotoBrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C225EE456D00E3E767 /* HMPhotoBrowserController.m */; };
-		D6A226CD25EE456E00E3E767 /* HMPhotoViewerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C325EE456D00E3E767 /* HMPhotoViewerController.m */; };
-		D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */; };
-		D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */; };
-		D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */; };
 		D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */; };
 		D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */; };
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
@@ -157,6 +157,11 @@
 		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStatusTabViewModel.swift; sourceTree = "<group>"; };
+		D64C45182601FCF700A63631 /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
+		D64C45202601FF3500A63631 /* VideosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewModel.swift; sourceTree = "<group>"; };
+		D64C45252601FFCD00A63631 /* VideosListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListService.swift; sourceTree = "<group>"; };
+		D64C452A260200A400A63631 /* VideoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableCell.swift; sourceTree = "<group>"; };
+		D64C452F2602041400A63631 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
@@ -236,16 +241,6 @@
 		D6A2268225EE3B1800E3E767 /* FetchAppInfoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAppInfoTask.swift; sourceTree = "<group>"; };
 		D6A2268325EE3B1800E3E767 /* StartupTaskGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartupTaskGroup.swift; sourceTree = "<group>"; };
 		D6A226BA25EE451200E3E767 /* SCWeibo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCWeibo-Bridging-Header.h"; sourceTree = "<group>"; };
-		D6A226C225EE456D00E3E767 /* HMPhotoBrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserController.m; sourceTree = "<group>"; };
-		D6A226C325EE456D00E3E767 /* HMPhotoViewerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoViewerController.m; sourceTree = "<group>"; };
-		D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserPhotos.m; sourceTree = "<group>"; };
-		D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoProgressView.m; sourceTree = "<group>"; };
-		D6A226C625EE456D00E3E767 /* HMPhotoBrowserAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserAnimator.h; sourceTree = "<group>"; };
-		D6A226C725EE456D00E3E767 /* HMPhotoBrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserController.h; sourceTree = "<group>"; };
-		D6A226C825EE456D00E3E767 /* HMPhotoViewerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoViewerController.h; sourceTree = "<group>"; };
-		D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoBrowserPhotos.h; sourceTree = "<group>"; };
-		D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPhotoBrowserAnimator.m; sourceTree = "<group>"; };
-		D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPhotoProgressView.h; sourceTree = "<group>"; };
 		D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeViewController.swift; sourceTree = "<group>"; };
 		D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDefine.swift; sourceTree = "<group>"; };
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
@@ -383,6 +378,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		D64C450A2601F69C00A63631 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				D64C450B2601F6C400A63631 /* Videos */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		D64C450B2601F6C400A63631 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				D64C45182601FCF700A63631 /* VideosListViewController.swift */,
+				D64C45202601FF3500A63631 /* VideosListViewModel.swift */,
+				D64C45252601FFCD00A63631 /* VideosListService.swift */,
+				D64C452A260200A400A63631 /* VideoTableCell.swift */,
+				D64C452F2602041400A63631 /* VideoResponse.swift */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
 		D6A2255A25EE388B00E3E767 = {
 			isa = PBXGroup;
 			children = (
@@ -450,7 +465,6 @@
 			isa = PBXGroup;
 			children = (
 				D6A2267E25EE3B1800E3E767 /* RouteManager.swift */,
-				D6A226C125EE456D00E3E767 /* PhotoBrowser */,
 				D6A225BD25EE3AEF00E3E767 /* MNLabel */,
 				D6A225BF25EE3AEF00E3E767 /* Network */,
 				D6A225C525EE3AEF00E3E767 /* Emoji */,
@@ -620,6 +634,7 @@
 		D6A2260D25EE3AEF00E3E767 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D64C450A2601F69C00A63631 /* Tabs */,
 				D6F24A4025F1032800F54C87 /* ViewModel */,
 				D6A2260E25EE3AEF00E3E767 /* UserProfileViewController.swift */,
 				D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */,
@@ -710,23 +725,6 @@
 				D6A226BA25EE451200E3E767 /* SCWeibo-Bridging-Header.h */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		D6A226C125EE456D00E3E767 /* PhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				D6A226C225EE456D00E3E767 /* HMPhotoBrowserController.m */,
-				D6A226C325EE456D00E3E767 /* HMPhotoViewerController.m */,
-				D6A226C425EE456D00E3E767 /* HMPhotoBrowserPhotos.m */,
-				D6A226C525EE456D00E3E767 /* HMPhotoProgressView.m */,
-				D6A226C625EE456D00E3E767 /* HMPhotoBrowserAnimator.h */,
-				D6A226C725EE456D00E3E767 /* HMPhotoBrowserController.h */,
-				D6A226C825EE456D00E3E767 /* HMPhotoViewerController.h */,
-				D6A226C925EE456D00E3E767 /* HMPhotoBrowserPhotos.h */,
-				D6A226CA25EE456D00E3E767 /* HMPhotoBrowserAnimator.m */,
-				D6A226CB25EE456D00E3E767 /* HMPhotoProgressView.h */,
-			);
-			path = PhotoBrowser;
 			sourceTree = "<group>";
 		};
 		D6F24A4025F1032800F54C87 /* ViewModel */ = {
@@ -989,13 +987,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6A2264025EE3AEF00E3E767 /* String+Substring.swift in Sources */,
-				D6A226D025EE456E00E3E767 /* HMPhotoBrowserAnimator.m in Sources */,
 				D6A2263D25EE3AEF00E3E767 /* UIButton+Tool.swift in Sources */,
 				D6A2262F25EE3AEF00E3E767 /* MNEmojiModel.swift in Sources */,
 				D6A2265525EE3AEF00E3E767 /* MNStatusModel.swift in Sources */,
 				D6A2263225EE3AEF00E3E767 /* MNEmojiToolbar.swift in Sources */,
 				D6F2C0E225F87DA800724B4A /* TabbarItemsManager.swift in Sources */,
-				D6A226CF25EE456E00E3E767 /* HMPhotoProgressView.m in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
 				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
 				D625944B25FE5B770037CB2C /* StatusHomeTopBar.swift in Sources */,
@@ -1021,20 +1017,23 @@
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
+				D64C45302602041400A63631 /* VideoResponse.swift in Sources */,
 				D6A2265425EE3AEF00E3E767 /* MNStatusPicture.swift in Sources */,
+				D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */,
 				D6F2C0E825F87E7900724B4A /* TabbarItemModel.swift in Sources */,
 				D6A2264725EE3AEF00E3E767 /* UIColor+Extentsion.swift in Sources */,
 				D6A2263C25EE3AEF00E3E767 /* String+MNPath.swift in Sources */,
 				D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */,
+				D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */,
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
 				D6A2262A25EE3AEF00E3E767 /* MNNetworkManager.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
+				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
-				D6A226CE25EE456E00E3E767 /* HMPhotoBrowserPhotos.m in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
 				D6A2266525EE3AF000E3E767 /* MNProfileViewController.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
@@ -1062,10 +1061,10 @@
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
-				D6A226CD25EE456E00E3E767 /* HMPhotoViewerController.m in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,
 				D6A2264925EE3AEF00E3E767 /* MNMTRefreshView.swift in Sources */,
 				D6A2263A25EE3AEF00E3E767 /* MNSQLiteManager.swift in Sources */,
+				D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */,
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2266025EE3AF000E3E767 /* MNMessageViewController.swift in Sources */,
 				D6A2264A25EE3AEF00E3E767 /* MNRefreshView.swift in Sources */,
@@ -1080,7 +1079,6 @@
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,
 				D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */,
 				D6A2263E25EE3AEF00E3E767 /* UILabel+Extension.swift in Sources */,
-				D6A226CC25EE456E00E3E767 /* HMPhotoBrowserController.m in Sources */,
 				D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,

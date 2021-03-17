@@ -20,12 +20,6 @@ let MNUserShouldLoginNotification = "MNUserShouldLoginNotification"
 
 let MNUserLoginSuccessNotification = "MNUserLoginSuccessNotification"
 
-/// 微博Cell浏览照片
-/// @param urlString   urlString 字符串
-/// @param photoIndex  照片索引
-/// @param placeholder 占位图像
-let MNWeiboCellBrowserPhotoNotification = "MNWeiboCellBrowserPhotoNotification"
-
 let MNWeiboCellBrowserPhotoIndexKey = "MNWeiboCellBrowserPhotoIndexKey"
 let MNWeiboCellBrowserPhotoURLsKeys = "MNWeiboCellBrowserPhotoURLsKeys"
 let MNWeiboCellBrowserPhotoImageViewsKeys = "MNWeiboCellBrowserPhotoImageViewsKeys"
