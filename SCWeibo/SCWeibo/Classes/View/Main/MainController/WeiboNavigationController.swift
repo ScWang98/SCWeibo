@@ -12,6 +12,7 @@ class WeiboNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.isHidden = true
     }
     
 }

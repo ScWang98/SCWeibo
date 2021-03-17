@@ -48,34 +48,6 @@ class WeiboTabBarController: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    private lazy var tabBarCenterButtion: UIButton =
-        //tabbar_compose_button_highlighted
-        UIButton.mn_imageButton(normalImageName: "tabbar_compose_icon_add",
-                                backgroundImageName: "tabbar_compose_button")
-
-    // center click action
-    // @objc: 可以用OC的消息机制调用
-    @objc private func centerBtnClick() {
-        // FIXME: 发布微博
-        let view = MNPublishView()
-        view.show(rootVC: self) { [weak view] clsName in
-            guard let clsName = clsName,
-                let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type
-            else {
-                view?.removeFromSuperview()
-                return
-            }
-
-            let vc = cls.init(nibName: nil, bundle: nil)
-            // 让vc在ViewDidLoad之前刷新 - 解决动画&约束混在一起的问题
-            let navi = UINavigationController(rootViewController: vc)
-            navi.view.layoutIfNeeded()
-            self.present(navi, animated: true) {
-                view?.removeFromSuperview()
-            }
-        }
-    }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
