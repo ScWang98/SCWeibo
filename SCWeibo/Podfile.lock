@@ -5,8 +5,10 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - Kingfisher (6.1.1)
+  - MGJRouter (0.10.0)
   - MJRefresh (3.5.0)
   - Neon (0.4.0)
+  - Player (0.14.0)
   - Reusable/View (4.1.1)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
@@ -23,8 +25,10 @@ DEPENDENCIES:
   - FLEX (= 4.4.0)
   - FMDB (= 2.7.5)
   - Kingfisher (= 6.1.1)
+  - MGJRouter
   - MJRefresh (= 3.5.0)
   - Neon (= 0.4.0)
+  - Player
   - Reusable/View (= 4.1.1)
   - SDWebImage (= 5.6.1)
   - SKPhotoBrowser (= 6.1.0)
@@ -40,8 +44,10 @@ SPEC REPOS:
     - FLEX
     - FMDB
     - Kingfisher
+    - MGJRouter
     - MJRefresh
     - Neon
+    - Player
     - Reusable
     - SDWebImage
     - SKPhotoBrowser
@@ -56,8 +62,10 @@ SPEC CHECKSUMS:
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Kingfisher: 676d63307fbef6ed5d5ed400bff36983480d7500
+  MGJRouter: 15d94541eb2cc81eff7d577337288feb7ae9575f
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  Player: 37e0acc16ea1495fc241df88fe9f089367513331
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SKPhotoBrowser: 343de95d89dc7913763c5dda243cc6e606e4a168
@@ -67,6 +75,6 @@ SPEC CHECKSUMS:
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 7b2b1da41f8d9c68715e4d2f65b1605ac62fdb62
+PODFILE CHECKSUM: 9ff1ec95e7880b90f8eaf1dfa06e3a8fb5d0b0d4
 
 COCOAPODS: 1.8.4
