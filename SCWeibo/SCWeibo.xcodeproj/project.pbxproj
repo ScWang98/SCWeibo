@@ -31,6 +31,7 @@
 		D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45252601FFCD00A63631 /* VideosListService.swift */; };
 		D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452A260200A400A63631 /* VideoTableCell.swift */; };
 		D64C45302602041400A63631 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452F2602041400A63631 /* VideoResponse.swift */; };
+		D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
@@ -162,6 +163,7 @@
 		D64C45252601FFCD00A63631 /* VideosListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListService.swift; sourceTree = "<group>"; };
 		D64C452A260200A400A63631 /* VideoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableCell.swift; sourceTree = "<group>"; };
 		D64C452F2602041400A63631 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
+		D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utilities.swift"; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				D68F989725EFD64400C0092A /* UIView+Extension.swift */,
 				D6F290D025F14E8200F54C87 /* UIView+Edge.swift */,
 				D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */,
+				D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
+				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
