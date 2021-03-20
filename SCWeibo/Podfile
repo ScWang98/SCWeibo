@@ -21,8 +21,7 @@ target 'SCWeibo' do
   pod 'TZImagePickerController', '3.5.8'
   pod 'Reusable', '4.1.1', :subspecs => ['View']
   pod 'MGJRouter'
-  pod "Player"
-
+  
   # Pods for DEBUG
   pod 'FLEX', '4.4.0', :configurations => ['Debug']
 

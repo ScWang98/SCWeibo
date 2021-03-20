@@ -89,7 +89,6 @@
 		D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261025EE3AEF00E3E767 /* UserProfileTopToolBar.swift */; };
 		D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261125EE3AEF00E3E767 /* UserProfileHeaderView.swift */; };
 		D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261225EE3AEF00E3E767 /* HorizontalCategoryBar.swift */; };
-		D6A2266525EE3AF000E3E767 /* MNProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */; };
 		D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261525EE3AEF00E3E767 /* SettingViewController.swift */; };
 		D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */; };
 		D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261925EE3AEF00E3E767 /* WeiboNavigationController.swift */; };
@@ -229,7 +228,6 @@
 		D6A2261025EE3AEF00E3E767 /* UserProfileTopToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTopToolBar.swift; sourceTree = "<group>"; };
 		D6A2261125EE3AEF00E3E767 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
 		D6A2261225EE3AEF00E3E767 /* HorizontalCategoryBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCategoryBar.swift; sourceTree = "<group>"; };
-		D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNProfileViewController.swift; sourceTree = "<group>"; };
 		D6A2261525EE3AEF00E3E767 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboTabBarController.swift; sourceTree = "<group>"; };
 		D6A2261925EE3AEF00E3E767 /* WeiboNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboNavigationController.swift; sourceTree = "<group>"; };
@@ -647,7 +645,6 @@
 				D6A2260E25EE3AEF00E3E767 /* UserProfileViewController.swift */,
 				D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */,
 				D6A2260F25EE3AEF00E3E767 /* View */,
-				D6A2261325EE3AEF00E3E767 /* MNProfileViewController.swift */,
 				D6A2261425EE3AEF00E3E767 /* Setting */,
 			);
 			path = Profile;
@@ -1045,7 +1042,6 @@
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
-				D6A2266525EE3AF000E3E767 /* MNProfileViewController.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Extension.swift in Sources */,

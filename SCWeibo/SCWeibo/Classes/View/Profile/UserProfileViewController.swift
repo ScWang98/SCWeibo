@@ -5,6 +5,7 @@
 //  Created by scwang on 2021/3/1.
 //
 
+import FLEX
 import Neon
 import UIKit
 
@@ -13,9 +14,9 @@ class UserProfileViewController: UIViewController {
     let headerView = UserProfileHeaderView()
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
-    
+
     let viewModel = UserProfileViewModel()
-    
+
     var pagesObservation: NSKeyValueObservation?
 
     init() {
@@ -65,12 +66,12 @@ private extension UserProfileViewController {
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
         categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-        
+
         categoryBar.reload(names: viewModel.tabNames)
     }
 
     func addObservers() {
-        pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { (scrollView, change) in
+        pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
     }
@@ -88,6 +89,11 @@ extension UserProfileViewController: UserProfileTopToolBarDelegate {
     }
 
     func topToolBarDidClickSetting(_ topToolBar: UserProfileTopToolBar) {
+        if FLEXManager.shared.isHidden {
+            FLEXManager.shared.showExplorer()
+        } else {
+            FLEXManager.shared.hideExplorer()
+        }
     }
 }
 
@@ -121,7 +127,7 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
     func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController? {
         return viewModel.tabViewModels[index].tabViewController
     }
-    
+
     func pagesView(_ pagesView: PagesScrollView, pageViewAt index: Int) -> UIView {
         return viewModel.tabViewModels[index].tabView
     }

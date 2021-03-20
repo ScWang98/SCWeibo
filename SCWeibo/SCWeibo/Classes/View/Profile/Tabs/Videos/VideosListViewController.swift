@@ -71,7 +71,6 @@ private extension VideosListViewController {
 
 extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
         return listViewModel.videoList.count
     }
 
@@ -81,16 +80,17 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTableCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-//        if let homeCell = (cell as? StatusCell) {
-//            homeCell.reload(with: viewModel)
-//        }
+        if let cell = cell as? VideoTableCell {
+            cell.reload(with: viewModel)
+        }
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let viewModel = listViewModel.videoList[indexPath.row]
-        return viewModel.cellHeight
+        let coverHeight = view.width * 9.0 / 16.0
+        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0;
+        return height
     }
 }
 

@@ -28,13 +28,3 @@ private extension VideoCellViewModel {
         videoUrl = video.videoUrl
     }
 }
-
-extension VideoCellViewModel {
-    var cellHeight: CGFloat {
-        return 200
-    }
-
-    var cellIdentifier: String {
-        return String(describing: VideoTableCell.self)
-    }
-}
