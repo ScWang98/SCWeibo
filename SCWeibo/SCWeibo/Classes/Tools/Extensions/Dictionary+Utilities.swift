@@ -16,12 +16,11 @@ protocol DictionaryUtilities {
 }
 
 extension Dictionary: DictionaryUtilities {
-    
+    typealias Key = Key
+    typealias Value = Value
 }
 
 extension UtilitiesWrapper where Base: DictionaryUtilities {
-    
-    
     func string(for key: Base.Key, defaultValue: String? = nil) -> String? {
         guard let dictionary = base as? [Base.Key: Base.Value] else {
             return defaultValue
@@ -29,7 +28,7 @@ extension UtilitiesWrapper where Base: DictionaryUtilities {
         guard let value = dictionary[key] else {
             return defaultValue
         }
-        
+
         if let string = value as? String {
             return string
         }
@@ -38,7 +37,21 @@ extension UtilitiesWrapper where Base: DictionaryUtilities {
         }
         return defaultValue
     }
-    
+
+    func array<T>(for key: Base.Key, defaultValue: Array<T>? = nil) -> Array<T>? {
+        guard let dictionary = base as? [Base.Key: Base.Value] else {
+            return defaultValue
+        }
+        guard let value = dictionary[key] else {
+            return defaultValue
+        }
+
+        if let array = value as? Array<T> {
+            return array
+        }
+        return defaultValue
+    }
+
     func dictionary<K, V>(for key: Base.Key, defaultValue: Dictionary<K, V>? = nil) -> Dictionary<K, V>? {
         guard let dictionary = base as? [Base.Key: Base.Value] else {
             return defaultValue
@@ -46,11 +59,10 @@ extension UtilitiesWrapper where Base: DictionaryUtilities {
         guard let value = dictionary[key] else {
             return defaultValue
         }
-        
+
         if let dictionary = value as? Dictionary<K, V> {
             return dictionary
         }
         return defaultValue
     }
-    
 }

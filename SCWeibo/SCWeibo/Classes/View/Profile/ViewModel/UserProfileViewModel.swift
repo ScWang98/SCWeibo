@@ -22,7 +22,7 @@ class UserProfileViewModel {
     init() {
         
         tabViewModels.append(UserProfileStatusTabViewModel.init())
-        tabViewModels.append(UserProfileStatusTabViewModel.init())
+        tabViewModels.append(UserProfileVideosTabViewModel.init())
         tabViewModels.append(UserProfileStatusTabViewModel.init())
     }
 }

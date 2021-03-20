@@ -10,18 +10,26 @@ import UIKit
 class VideoResponse: Codable {
     var id: String?
     var text: String?
-    var createAt: String?
+    var createdAt: String?
     var coverUrl: String?
     var videoUrl: String?
 
     init(dict: [AnyHashable: Any]) {
-        guard let mblog = dict["mblog"] as? [AnyHashable: Any] else { return }
-        if let id = mblog["id"] as? String {
-            self.id = id
+        guard let mblog: Dictionary<AnyHashable, Any> = dict.sc.dictionary(for: "mblog") else { return }
+
+        id = mblog.sc.string(for: "id")
+        createdAt = mblog.sc.string(for: "created_at")
+
+        guard let pageInfo: Dictionary<AnyHashable, Any> = mblog.sc.dictionary(for: "page_info") else { return }
+
+        text = pageInfo.sc.string(for: "content2")
+
+        if let pagePic: Dictionary<AnyHashable, Any> = dict.sc.dictionary(for: "page_pic") {
+            coverUrl = pagePic.sc.string(for: "url")
         }
 
-        guard let pageInfo = dict["page_info"] as? [AnyHashable: Any] else { return }
-        
-        
+        if let videoUrls: Dictionary<AnyHashable, Any> = pageInfo.sc.dictionary(for: "urls") {
+            coverUrl = videoUrls.sc.string(for: "url")
+        }
     }
 }

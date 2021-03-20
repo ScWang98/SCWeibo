@@ -25,6 +25,8 @@
 		D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */; };
 		D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */; };
 		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
+		D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */; };
+		D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */; };
 		D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */; };
 		D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45182601FCF700A63631 /* VideosListViewController.swift */; };
 		D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45202601FF3500A63631 /* VideosListViewModel.swift */; };
@@ -157,6 +159,8 @@
 		D627059725F4C1F800B7F6DC /* StatusNormalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNormalCellViewModel.swift; sourceTree = "<group>"; };
 		D62705A025F4CDAB00B7F6DC /* StatusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewController.swift; sourceTree = "<group>"; };
 		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
+		D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVideosTabViewModel.swift; sourceTree = "<group>"; };
+		D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellViewModel.swift; sourceTree = "<group>"; };
 		D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStatusTabViewModel.swift; sourceTree = "<group>"; };
 		D64C45182601FCF700A63631 /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 		D64C45202601FF3500A63631 /* VideosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewModel.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				D64C45252601FFCD00A63631 /* VideosListService.swift */,
 				D64C452A260200A400A63631 /* VideoTableCell.swift */,
 				D64C452F2602041400A63631 /* VideoResponse.swift */,
+				D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */,
 			);
 			path = Videos;
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 			children = (
 				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
 				D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */,
+				D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1016,6 +1022,7 @@
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
 				D6A2262D25EE3AEF00E3E767 /* MNNetworkManager+Extension.swift in Sources */,
+				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
@@ -1060,6 +1067,7 @@
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
 				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
+				D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 class VideosListViewController: UIViewController {
     var tableView = UITableView()
 
-    private var listViewModel = StatusListViewModel()
+    private var listViewModel = VideosListViewModel()
 
     var isPull: Bool = false
 
@@ -49,7 +49,7 @@ private extension VideosListViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
-        listViewModel.registerCells(with: tableView)
+        tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)
 
@@ -71,24 +71,25 @@ private extension VideosListViewController {
 
 extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listViewModel.statusList.count
+        return 0
+        return listViewModel.videoList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = listViewModel.statusList[indexPath.row]
+        let viewModel = listViewModel.videoList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTableCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-        if let homeCell = (cell as? StatusCell) {
-            homeCell.reload(with: viewModel)
-        }
+//        if let homeCell = (cell as? StatusCell) {
+//            homeCell.reload(with: viewModel)
+//        }
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let viewModel = listViewModel.statusList[indexPath.row]
+        let viewModel = listViewModel.videoList[indexPath.row]
         return viewModel.cellHeight
     }
 }
@@ -97,7 +98,7 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
 
 @objc private extension VideosListViewController {
     func loadDatas() {
-        listViewModel.loadStatus(pullup: self.isPull) { _, needRefresh in
+        listViewModel.loadStatus(loadMore: self.isPull) { _, needRefresh in
             self.isPull = false
             if needRefresh {
                 self.tableView.reloadData()
