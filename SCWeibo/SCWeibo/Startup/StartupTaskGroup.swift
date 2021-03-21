@@ -12,14 +12,12 @@ protocol StartupTaskProtocol {
 }
 
 class StartupTaskGroup {
-    static var tasks = registerTasks()
-
-    private class func registerTasks() -> Array<StartupTaskProtocol> {
-        let allTasks: Array<StartupTaskProtocol> = [
-            FetchAppInfoTask(),
-            WeiboSDKTask(),
-            RouteRegisterTask()
-        ]
+    class var tasks: Array<StartupTaskProtocol> {
+        var allTasks = [StartupTaskProtocol]()
+        
+        allTasks.append(FetchAppInfoTask())
+        allTasks.append(WeiboSDKTask())
+        allTasks.append(RouteRegisterTask())
 
         return allTasks
     }

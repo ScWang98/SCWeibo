@@ -36,6 +36,7 @@
 		D64C45302602041400A63631 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452F2602041400A63631 /* VideoResponse.swift */; };
 		D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */; };
 		D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */; };
+		D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659EF3A2607A286005F1398 /* H5LoginWebViewController.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
@@ -169,6 +170,7 @@
 		D64C452F2602041400A63631 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
 		D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utilities.swift"; sourceTree = "<group>"; };
 		D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
+		D659EF3A2607A286005F1398 /* H5LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5LoginWebViewController.swift; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				D63D5189260745830034FDB3 /* AccountManager.swift */,
+				D659EF3A2607A286005F1398 /* H5LoginWebViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -1011,6 +1014,7 @@
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
+				D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */,

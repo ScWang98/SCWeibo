@@ -138,5 +138,8 @@ private extension UserProfileHeaderView {
 
     func followButtonClickedAction(button: UIButton) {
         button.isSelected = !button.isSelected
+        if let url = URL(string: "tt://h5login") {
+            RouteManager.shared.open(url: url)
+        }
     }
 }
