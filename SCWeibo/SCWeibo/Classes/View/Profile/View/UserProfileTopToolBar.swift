@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol UserProfileTopToolBarDelegate {
+protocol UserProfileTopToolBarDelegate: class {
     func topToolBarDidClickBack(_ topToolBar: UserProfileTopToolBar)
     func topToolBarDidClickSetting(_ topToolBar: UserProfileTopToolBar)
 }
 
 class UserProfileTopToolBar: UIView {
-    var delegate: UserProfileTopToolBarDelegate?
+    weak var delegate: UserProfileTopToolBarDelegate?
 
     let backButton = UIButton()
     let settingButton = UIButton()

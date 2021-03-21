@@ -24,19 +24,6 @@ let MNWeiboCellBrowserPhotoIndexKey = "MNWeiboCellBrowserPhotoIndexKey"
 let MNWeiboCellBrowserPhotoURLsKeys = "MNWeiboCellBrowserPhotoURLsKeys"
 let MNWeiboCellBrowserPhotoImageViewsKeys = "MNWeiboCellBrowserPhotoImageViewsKeys"
 
-//MARK: - 微博配图视图常亮
-let MNDefaultMargin = MNLayout.Layout(12)
-//外部间距
-let MNStatusPictureOutterMargin = MNLayout.Layout(12)
-//内部间距
-let MNStatusPictureInnerMargin = MNLayout.Layout(5)
-
-let MNPictureMaxPerLine:CGFloat = 3
-
-//1.calculate width
-let MNPictureViewWidth = UIScreen.sc.screenWidth - (2 * MNStatusPictureOutterMargin)
-
-let MNPictureItemWidth = (MNPictureViewWidth - (2 * MNStatusPictureInnerMargin)) / MNPictureMaxPerLine
 
 // iPhone X
 let MN_iPhoneX = (UIScreen.sc.screenWidth >= 375 && UIScreen.sc.screenHeight >= 812)

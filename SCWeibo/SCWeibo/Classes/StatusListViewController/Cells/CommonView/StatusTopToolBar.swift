@@ -61,24 +61,24 @@ private extension StatusTopToolBar {
         }
 
         nameLabel.textColor = UIColor(rgb: 0xFC3E00)
-        nameLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(13.5))
+        nameLabel.font = UIFont.systemFont(ofSize: 13.5)
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(avatarImageView.snp.top).offset(MNLayout.Layout(3))
-            make.left.equalTo(avatarImageView.snp.right).offset(MNLayout.Layout(MNStatusPictureOutterMargin))
+            make.top.equalTo(avatarImageView.snp.top).offset(3)
+            make.left.equalTo(avatarImageView.snp.right).offset(12)
         }
 
         timeLabel.textColor = UIColor(rgb: 0xFC6C00)
-        timeLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(10))
+        timeLabel.font = UIFont.systemFont(ofSize: 10)
         timeLabel.snp.makeConstraints { make in
             make.left.equalTo(nameLabel)
             make.bottom.equalTo(avatarImageView.snp.bottom)
         }
 
         sourceLabel.textColor = UIColor(rgb: 0x828282)
-        sourceLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(10))
+        sourceLabel.font = UIFont.systemFont(ofSize: 10)
         sourceLabel.snp.makeConstraints { make in
             make.centerY.equalTo(timeLabel)
-            make.left.equalTo(timeLabel.snp.right).offset(MNLayout.Layout(8))
+            make.left.equalTo(timeLabel.snp.right).offset(8)
         }
     }
 }

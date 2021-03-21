@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol StatusHomeTopBarDelegate {
+protocol StatusHomeTopBarDelegate: class {
     func topToolBarDidClickAvatar(_ topToolBar: StatusHomeTopBar)
     func topToolBarDidClickWrite(_ topToolBar: StatusHomeTopBar)
 }
 
 class StatusHomeTopBar: UIView {
-    var delegate: StatusHomeTopBarDelegate?
+    weak var delegate: StatusHomeTopBarDelegate?
 
     let avatarView = UIImageView()
     let writeButton = UIButton()

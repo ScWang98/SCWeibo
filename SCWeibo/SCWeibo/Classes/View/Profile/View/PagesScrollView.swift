@@ -12,7 +12,7 @@ protocol PagesScrollViewDelegate: UIScrollViewDelegate {
     func pagesView(_ pagesView: PagesScrollView, pagingFromIndex fromIndex: Int, toIndex: Int, percent: Double)
 }
 
-protocol PagesScrollViewDataSource {
+protocol PagesScrollViewDataSource: NSObjectProtocol {
     func numberOfPages(in pagesView: PagesScrollView) -> Int
     func pagesView(_ pagesView: PagesScrollView, pageViewControllerAt index: Int) -> UIViewController?
     func pagesView(_ pagesView: PagesScrollView, pageViewAt index: Int) -> UIView
@@ -20,8 +20,8 @@ protocol PagesScrollViewDataSource {
 }
 
 class PagesScrollView: UIScrollView {
-    var pagesDelegate: PagesScrollViewDelegate?
-    var pagesDataSource: PagesScrollViewDataSource?
+    weak var pagesDelegate: PagesScrollViewDelegate?
+    weak var pagesDataSource: PagesScrollViewDataSource?
 
     let backScrollView = UIScrollView()
     var headerView: UIView? {

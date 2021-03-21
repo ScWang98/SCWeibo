@@ -13,12 +13,12 @@ class HorizontalCategoryBarItem {
     var index: Int?
 }
 
-protocol HorizontalCategoryCellDelegate {
+protocol HorizontalCategoryCellDelegate: class {
     func cellDidClicked(_ cell: HorizontalCategoryCell)
 }
 
 class HorizontalCategoryCell: UIView {
-    var delegate: HorizontalCategoryCellDelegate?
+    weak var delegate: HorizontalCategoryCellDelegate?
     var item: HorizontalCategoryBarItem?
     var selected = false {
         willSet {
@@ -62,12 +62,12 @@ class HorizontalCategoryCell: UIView {
     }
 }
 
-protocol HorizontalCategoryBarDelegate {
+protocol HorizontalCategoryBarDelegate: class {
     func categoryBar(_ categoryBar: HorizontalCategoryBar, didSelectItemAt index: Int)
 }
 
 class HorizontalCategoryBar: UIView {
-    var delegate: HorizontalCategoryBarDelegate?
+    weak var delegate: HorizontalCategoryBarDelegate?
 
     var indicator = UIView()
 
