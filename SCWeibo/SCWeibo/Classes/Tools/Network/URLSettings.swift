@@ -12,7 +12,7 @@ class URLSettings {
         return "https://api.weibo.com/2/"
     }
 
-    static var homeStatusesURL: String {
+    class var homeStatusesURL: String {
         return baseURL + "statuses/home_timeline.json"
     }
 }

@@ -84,7 +84,7 @@ class MNVisitorView: UIView {
 extension MNVisitorView{
     
     func setupUI() {
-        backgroundColor = UIColor.init(rgb: 0xEDEDED)
+        backgroundColor = UIColor.sc.color(with: 0xEDEDEDFF)
         
         addSubview(iconView)
         addSubview(maskIconView)

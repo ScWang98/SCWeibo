@@ -27,6 +27,7 @@
 		D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */; };
 		D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */; };
 		D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */; };
+		D63D518A260745830034FDB3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63D5189260745830034FDB3 /* AccountManager.swift */; };
 		D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */; };
 		D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45182601FCF700A63631 /* VideosListViewController.swift */; };
 		D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C45202601FF3500A63631 /* VideosListViewModel.swift */; };
@@ -34,10 +35,12 @@
 		D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452A260200A400A63631 /* VideoTableCell.swift */; };
 		D64C45302602041400A63631 /* VideoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C452F2602041400A63631 /* VideoResponse.swift */; };
 		D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */; };
+		D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
 		D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989725EFD64400C0092A /* UIView+Extension.swift */; };
+		D697684426076DC9002825AF /* Date+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D697684326076DC9002825AF /* Date+Utilities.swift */; };
 		D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2256625EE388B00E3E767 /* AppDelegate.swift */; };
 		D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2256825EE388B00E3E767 /* SceneDelegate.swift */; };
 		D6A2257025EE388C00E3E767 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A2256F25EE388C00E3E767 /* Assets.xcassets */; };
@@ -45,10 +48,7 @@
 		D6A2257E25EE388C00E3E767 /* SCWeiboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2257D25EE388C00E3E767 /* SCWeiboTests.swift */; };
 		D6A2258925EE388C00E3E767 /* SCWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2258825EE388C00E3E767 /* SCWeiboUITests.swift */; };
 		D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */; };
-		D6A2262A25EE3AEF00E3E767 /* MNNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C025EE3AEF00E3E767 /* MNNetworkManager.swift */; };
 		D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */; };
-		D6A2262C25EE3AEF00E3E767 /* MNUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C325EE3AEF00E3E767 /* MNUserAccount.swift */; };
-		D6A2262D25EE3AEF00E3E767 /* MNNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C425EE3AEF00E3E767 /* MNNetworkManager+Extension.swift */; };
 		D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C625EE3AEF00E3E767 /* MNEmojiManager.swift */; };
 		D6A2262F25EE3AEF00E3E767 /* MNEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C825EE3AEF00E3E767 /* MNEmojiModel.swift */; };
 		D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C925EE3AEF00E3E767 /* MNEmojiAttachment.swift */; };
@@ -160,6 +160,7 @@
 		D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListViewModel.swift; sourceTree = "<group>"; };
 		D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVideosTabViewModel.swift; sourceTree = "<group>"; };
 		D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCellViewModel.swift; sourceTree = "<group>"; };
+		D63D5189260745830034FDB3 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStatusTabViewModel.swift; sourceTree = "<group>"; };
 		D64C45182601FCF700A63631 /* VideosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewController.swift; sourceTree = "<group>"; };
 		D64C45202601FF3500A63631 /* VideosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosListViewModel.swift; sourceTree = "<group>"; };
@@ -167,10 +168,12 @@
 		D64C452A260200A400A63631 /* VideoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableCell.swift; sourceTree = "<group>"; };
 		D64C452F2602041400A63631 /* VideoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponse.swift; sourceTree = "<group>"; };
 		D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Utilities.swift"; sourceTree = "<group>"; };
+		D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
 		D68F989725EFD64400C0092A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D697684326076DC9002825AF /* Date+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utilities.swift"; sourceTree = "<group>"; };
 		D6A2256325EE388B00E3E767 /* SCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A2256625EE388B00E3E767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6A2256825EE388B00E3E767 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,10 +187,7 @@
 		D6A2258825EE388C00E3E767 /* SCWeiboUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCWeiboUITests.swift; sourceTree = "<group>"; };
 		D6A2258A25EE388C00E3E767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNLabel.swift; sourceTree = "<group>"; };
-		D6A225C025EE3AEF00E3E767 /* MNNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNetworkManager.swift; sourceTree = "<group>"; };
 		D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		D6A225C325EE3AEF00E3E767 /* MNUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNUserAccount.swift; sourceTree = "<group>"; };
-		D6A225C425EE3AEF00E3E767 /* MNNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MNNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		D6A225C625EE3AEF00E3E767 /* MNEmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiManager.swift; sourceTree = "<group>"; };
 		D6A225C825EE3AEF00E3E767 /* MNEmojiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiModel.swift; sourceTree = "<group>"; };
 		D6A225C925EE3AEF00E3E767 /* MNEmojiAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiAttachment.swift; sourceTree = "<group>"; };
@@ -382,6 +382,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		D63D518E26074B1E0034FDB3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				D63D5189260745830034FDB3 /* AccountManager.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		D64C450A2601F69C00A63631 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,21 +500,10 @@
 		D6A225BF25EE3AEF00E3E767 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				D6A225C025EE3AEF00E3E767 /* MNNetworkManager.swift */,
 				D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */,
-				D6A225C225EE3AEF00E3E767 /* Model */,
-				D6A225C425EE3AEF00E3E767 /* MNNetworkManager+Extension.swift */,
 				D6F2491525F29DA800F54C87 /* URLSettings.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		D6A225C225EE3AEF00E3E767 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D6A225C325EE3AEF00E3E767 /* MNUserAccount.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D6A225C525EE3AEF00E3E767 /* Emoji */ = {
@@ -574,6 +571,8 @@
 				D6F290D025F14E8200F54C87 /* UIView+Edge.swift */,
 				D6F2492725F2B23000F54C87 /* Decodable+Convenience.swift */,
 				D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */,
+				D697684326076DC9002825AF /* Date+Utilities.swift */,
+				D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -722,6 +721,7 @@
 		D6A2268C25EE3B2A00E3E767 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D63D518E26074B1E0034FDB3 /* Account */,
 				D6A2256625EE388B00E3E767 /* AppDelegate.swift */,
 				D6A2256825EE388B00E3E767 /* SceneDelegate.swift */,
 				D6A2256F25EE388C00E3E767 /* Assets.xcassets */,
@@ -1015,10 +1015,8 @@
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */,
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
-				D6A2262C25EE3AEF00E3E767 /* MNUserAccount.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
-				D6A2262D25EE3AEF00E3E767 /* MNNetworkManager+Extension.swift in Sources */,
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
@@ -1034,7 +1032,6 @@
 				D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */,
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
-				D6A2262A25EE3AEF00E3E767 /* MNNetworkManager.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
@@ -1043,6 +1040,7 @@
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
+				D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Extension.swift in Sources */,
 				D6A2265325EE3AEF00E3E767 /* MNUserModel.swift in Sources */,
@@ -1054,6 +1052,7 @@
 				D6A2264325EE3AEF00E3E767 /* UIBarButtonItem+Extension.swift in Sources */,
 				D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */,
 				D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */,
+				D697684426076DC9002825AF /* Date+Utilities.swift in Sources */,
 				D6A2264425EE3AEF00E3E767 /* String+Extensions..swift in Sources */,
 				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
 				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
@@ -1089,6 +1088,7 @@
 				D6A2263E25EE3AEF00E3E767 /* UILabel+Extension.swift in Sources */,
 				D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
+				D63D518A260745830034FDB3 /* AccountManager.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
 				D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */,
 				D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */,

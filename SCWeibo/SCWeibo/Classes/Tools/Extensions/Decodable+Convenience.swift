@@ -8,23 +8,17 @@
 import Foundation
 
 extension Decodable {
-    public static var sc: UtilitiesWrapper<Self>.Type {
-        return UtilitiesWrapper.self
-    }
-}
-
-extension UtilitiesWrapper where Base: Decodable {
-    public static func decode(_ param: Dictionary<AnyHashable, Any>) -> Base? {
+    public static func decode<T: Decodable>(_ param: Dictionary<AnyHashable, Any>) -> T? {
         guard let data = self.getJsonData(with: param),
-              let model = try? JSONDecoder().decode(Base.self, from: data) else {
+              let model = try? JSONDecoder().decode(T.self, from: data) else {
             return nil
         }
         return model
     }
 
-    public static func decode(_ param: Array<Dictionary<AnyHashable, Any>>) -> [Base]? {
+    public static func decode<T: Decodable>(_ param: Array<Dictionary<AnyHashable, Any>>) -> [T]? {
         guard let data = self.getJsonData(with: param),
-              let models = try? JSONDecoder().decode([Base].self, from: data) else {
+              let models = try? JSONDecoder().decode([T].self, from: data) else {
             return nil
         }
         return models

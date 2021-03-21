@@ -49,43 +49,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-    // WBAuthorizeRequest 想要通过Weibo SDK 打开内置的webview
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let url = URLContexts.first?.url else {
-            print("url is nil, URLContexts = \(URLContexts)")
-            return
+        for urlContext in URLContexts {
+            _ = handle(url: urlContext.url)
         }
-
-        WeiboSDK.handleOpen(url, delegate: self)
-    }
-}
-
-extension SceneDelegate: WeiboSDKDelegate {
-    func didReceiveWeiboRequest(_ request: WBBaseRequest!) {
-        print("didReceiveWeiboRequest")
     }
 
-    // 登录成功的回调
-    func didReceiveWeiboResponse(_ response: WBBaseResponse!) {
-        print("didReceiveWeiboResponse")
-        if response.isKind(of: WBAuthorizeResponse.self) {
-            guard let authResponse = response as? WBAuthorizeResponse else {
-                print("authResponse is not WBAuthorizeResponse")
-                return
-            }
-            let token = authResponse.accessToken
-            let userID = authResponse.userID
-            let expirationDate = authResponse.expirationDate
+    // URL处理添加于此  result = result || handleXXX
+    func handle(url: URL) -> Bool {
+        var result = false
 
-            MNNetworkManager.shared.userAccount.access_token = token
-            MNNetworkManager.shared.userAccount.uid = userID
-            MNNetworkManager.shared.userAccount.expiresDate = expirationDate
-            MNNetworkManager.shared.userAccount.saveAccoutInfo()
+        result = result || AccountManager.shared.handle(url: url)
 
-            print("token = \(String(describing: token)), userID = \(String(describing: userID)),expirationDate = \(String(describing: expirationDate))")
-
-            // post noti dismiss authView
-            NotificationCenter.default.post(name: NSNotification.Name(MNUserLoginSuccessNotification), object: nil)
-        }
+        return result
     }
 }

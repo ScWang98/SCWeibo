@@ -60,21 +60,21 @@ private extension StatusTopToolBar {
             make.height.width.equalTo(38)
         }
 
-        nameLabel.textColor = UIColor(rgb: 0xFC3E00)
+        nameLabel.textColor = UIColor.sc.color(with: 0xFC3E00FF)
         nameLabel.font = UIFont.systemFont(ofSize: 13.5)
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(avatarImageView.snp.top).offset(3)
             make.left.equalTo(avatarImageView.snp.right).offset(12)
         }
 
-        timeLabel.textColor = UIColor(rgb: 0xFC6C00)
+        timeLabel.textColor = UIColor.sc.color(with: 0xFC6C00FF)
         timeLabel.font = UIFont.systemFont(ofSize: 10)
         timeLabel.snp.makeConstraints { make in
             make.left.equalTo(nameLabel)
             make.bottom.equalTo(avatarImageView.snp.bottom)
         }
 
-        sourceLabel.textColor = UIColor(rgb: 0x828282)
+        sourceLabel.textColor = UIColor.sc.color(with: 0x828282FF)
         sourceLabel.font = UIFont.systemFont(ofSize: 10)
         sourceLabel.snp.makeConstraints { make in
             make.centerY.equalTo(timeLabel)

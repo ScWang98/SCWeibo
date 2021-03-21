@@ -73,7 +73,6 @@ extension WeiboTabBarController: UITabBarControllerDelegate {
     ///   - viewController: will switch to VC
     ///   - return: Whether to switch
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("will switch to \(viewController)")
 
         // 当前控制器index
         let index = children.firstIndex(of: viewController)

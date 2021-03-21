@@ -5,6 +5,7 @@
 //  Created by scwang on 2021/3/6.
 //
 
+import Alamofire
 import Foundation
 
 class StatusListService {
@@ -14,41 +15,30 @@ class StatusListService {
     ///   - max_id: 上拉加载更多id
     ///   - ompletion: 完成回调
     class func loadStatus(since_id: Int = 0, max_id: Int = 0, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void) {
-//        guard let userId = MNNetworkManager.shared.userAccount.uid else {
-//            print("userId = nil")
-//            return
-//        }
-        // 1.检查本地数据, 如果有数据, 直接返回
-//        let array = MNSQLiteManager.shared.loadWeiboStatus(userId: userId, since_id: since_id, max_id: max_id)
+        let URLString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        var parameters = [String: Any]()
+        parameters["since_id"] = since_id
+        parameters["max_id"] = max_id
+        parameters["access_token"] = AccountManager.shared.accessToken
 
-//        if array.count > 0 {
-//            print("加载本地数据库缓存数据")
-//            completion(true, array)
-//            return
-//        }
+        AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+            var jsonResult: Any?
 
-        print("本地缓存 = nil, 加载网络数据")
-        // 2.加载网络请求
-        MNNetworkManager.shared.fetchHomePageList(since_id: since_id, max_id: max_id) { isSuccess, array in
-            if !isSuccess {
+            switch response.result {
+            case let .success(json):
+                jsonResult = json
+            case .failure:
+                jsonResult = nil
+            }
+
+            guard let jsonDict = jsonResult as? [String: Any],
+                let statusDictArray = jsonDict["statuses"] as? [[String: AnyObject]],
+                let results: Array<StatusResponse> = StatusResponse.decode(statusDictArray) else {
                 completion(false, nil)
                 return
             }
 
-            guard let array = array else {
-                completion(false, nil)
-                return
-            }
-
-            // 3.加载完成之后, 写入数据库
-//            MNSQLiteManager.shared.updateStatus(userId: userId, array: array)
-
-            // 4.返回网络请求数据
-            let results = StatusResponse.sc.decode(array)
-            if let results = results {
-                completion(isSuccess, results)
-            }
-//            completion(isSuccess, array)
+            completion(true, results)
         }
     }
 }

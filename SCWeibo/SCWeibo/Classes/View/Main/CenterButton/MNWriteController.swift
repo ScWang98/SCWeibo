@@ -181,7 +181,7 @@ private extension MNWriteController{
     }
     func setupSubviews(){
         
-        bottomBackgroundView.backgroundColor = UIColor(red: 248, green: 248, blue: 248)
+        bottomBackgroundView.backgroundColor = UIColor.sc.color(red: 248, green: 248, blue: 248)
         view.addSubview(bottomBackgroundView)
         bottomBackgroundView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()

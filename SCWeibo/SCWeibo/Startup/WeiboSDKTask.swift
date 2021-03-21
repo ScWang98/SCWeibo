@@ -13,11 +13,5 @@ class WeiboSDKTask: StartupTaskProtocol {
         WeiboSDK.enableDebugMode(true)
         WeiboSDK.registerApp(MNAppKey, universalLink: "https://myappapi.fun/")
 
-//        AFNetworkActivityIndicatorManager.shared().isEnabled = true
-
-        // Authorization allowed(.alert, .sound, .badge)
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay]) { _, _ in
-            // print("授权" + (success ? "成功" : "失败"))
-        }
     }
 }

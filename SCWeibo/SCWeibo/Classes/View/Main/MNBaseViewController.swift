@@ -25,7 +25,7 @@ class MNBaseViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        MNNetworkManager.shared.isLogin ? loadDatas() : ()
+        AccountManager.shared.isLogin ? loadDatas() : ()
         
         registNotification()
         
@@ -74,7 +74,7 @@ extension MNBaseViewController:LoginDelegate{
         view.backgroundColor = UIColor.white
         setupNavigationBar()
         
-        MNNetworkManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
+        AccountManager.shared.isLogin ? setupLoginSuccessUI() : setupVisitorView()
         
         //取消自动缩进
         tableView?.contentInsetAdjustmentBehavior = .never
@@ -126,13 +126,13 @@ extension MNBaseViewController:LoginDelegate{
         
         navigationBar.items = [naviItem]
         //navigationBar background color
-        navigationBar.barTintColor = UIColor.init(rgb: 0xF6F6F6)
+        navigationBar.barTintColor = UIColor.sc.color(with: 0xF6F6F6FF)
         //set title color
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
         //set system item title color
-        navigationBar.backgroundColor = UIColor.init(rgb: 0xF6F6F6)
+        navigationBar.backgroundColor = UIColor.sc.color(with: 0xF6F6F6FF)
     }
     
     //Mark: touch event

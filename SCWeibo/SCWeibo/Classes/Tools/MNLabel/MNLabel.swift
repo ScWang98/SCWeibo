@@ -18,7 +18,7 @@ public protocol MNLabelDelegate: NSObjectProtocol {
 
 public class MNLabel: UILabel {
 
-    public var linkTextColor = UIColor.init(rgb: 0x647cad)
+    public var linkTextColor = UIColor.sc.color(with: 0x647cadFF)
     public var selectedBackgroudColor = UIColor.lightGray
     public weak var delegate: MNLabelDelegate?
     

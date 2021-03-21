@@ -48,7 +48,7 @@ extension StatusRepostCell: StatusCell {
 
 private extension StatusRepostCell {
     func setupSubviews() {
-        topSeperatorView.backgroundColor = UIColor(rgb: 0xF2F2F2)
+        topSeperatorView.backgroundColor = UIColor.sc.color(with: 0xF2F2F2FF)
 
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
