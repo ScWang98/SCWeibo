@@ -106,7 +106,7 @@ private extension VideoTableCell {
             }
         })
         
-        playerVC.observe(\.isReadyForDisplay) { (obj, change) in
+        _ = playerVC.observe(\.isReadyForDisplay) { (obj, change) in
             if change.newValue == true {
                 playerVC.player?.play()
             }

@@ -38,6 +38,13 @@
 		D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */; };
 		D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659EF3A2607A286005F1398 /* H5LoginWebViewController.swift */; };
 		D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */; };
+		D68D04B92608F1BA004A6630 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04B82608F1BA004A6630 /* PhotosListViewController.swift */; };
+		D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04C02608F1CF004A6630 /* PhotosListViewModel.swift */; };
+		D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04C52608F1E1004A6630 /* PhotosListService.swift */; };
+		D68D04CB2608F1F6004A6630 /* PhotoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04CA2608F1F6004A6630 /* PhotoCollectionCell.swift */; };
+		D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */; };
+		D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04D42608FFA8004A6630 /* PhotoResponse.swift */; };
+		D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
 		D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989725EFD64400C0092A /* UIView+Extension.swift */; };
@@ -172,6 +179,13 @@
 		D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utilities.swift"; sourceTree = "<group>"; };
 		D659EF3A2607A286005F1398 /* H5LoginWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H5LoginWebViewController.swift; sourceTree = "<group>"; };
 		D66023BD25F68D1B00DE90A0 /* StatusRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRepostView.swift; sourceTree = "<group>"; };
+		D68D04B82608F1BA004A6630 /* PhotosListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
+		D68D04C02608F1CF004A6630 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
+		D68D04C52608F1E1004A6630 /* PhotosListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListService.swift; sourceTree = "<group>"; };
+		D68D04CA2608F1F6004A6630 /* PhotoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionCell.swift; sourceTree = "<group>"; };
+		D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotosTabViewModel.swift; sourceTree = "<group>"; };
+		D68D04D42608FFA8004A6630 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
+		D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
 		D68F989725EFD64400C0092A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -396,6 +410,7 @@
 		D64C450A2601F69C00A63631 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				D68D04B62608F191004A6630 /* Photos */,
 				D64C450B2601F6C400A63631 /* Videos */,
 			);
 			path = Tabs;
@@ -412,6 +427,19 @@
 				D63D51352604992D0034FDB3 /* VideoCellViewModel.swift */,
 			);
 			path = Videos;
+			sourceTree = "<group>";
+		};
+		D68D04B62608F191004A6630 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				D68D04B82608F1BA004A6630 /* PhotosListViewController.swift */,
+				D68D04C02608F1CF004A6630 /* PhotosListViewModel.swift */,
+				D68D04C52608F1E1004A6630 /* PhotosListService.swift */,
+				D68D04CA2608F1F6004A6630 /* PhotoCollectionCell.swift */,
+				D68D04D42608FFA8004A6630 /* PhotoResponse.swift */,
+				D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */,
+			);
+			path = Photos;
 			sourceTree = "<group>";
 		};
 		D6A2255A25EE388B00E3E767 = {
@@ -741,6 +769,7 @@
 				D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */,
 				D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */,
 				D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */,
+				D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1024,7 +1053,9 @@
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
+				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
+				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
 				D64C45302602041400A63631 /* VideoResponse.swift in Sources */,
 				D6A2265425EE3AEF00E3E767 /* MNStatusPicture.swift in Sources */,
@@ -1038,6 +1069,7 @@
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
+				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
@@ -1063,6 +1095,7 @@
 				D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */,
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
+				D68D04CB2608F1F6004A6630 /* PhotoCollectionCell.swift in Sources */,
 				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
 				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
@@ -1086,6 +1119,9 @@
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
 				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
+				D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */,
+				D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */,
+				D68D04B92608F1BA004A6630 /* PhotosListViewController.swift in Sources */,
 				D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */,
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,
 				D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */,
