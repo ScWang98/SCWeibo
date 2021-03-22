@@ -52,8 +52,7 @@ extension H5LoginWebViewController: WKNavigationDelegate {
         let cookieStore = webView.configuration.websiteDataStore.httpCookieStore
         cookieStore.getAllCookies { cookies in
             for cookie in cookies {
-                print("wscccccc   cookie")
-                print(cookie)
+                HTTPCookieStorage.shared.setCookie(cookie)
             }
         }
 
