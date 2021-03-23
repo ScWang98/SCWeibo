@@ -53,7 +53,7 @@ private extension StatusNormalCell {
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
-        contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        contentLabel.font = UIFont.systemFont(ofSize: 15)
         contentLabel.textColor = UIColor.darkGray
 
         contentView.addSubview(topSeperatorView)

@@ -461,8 +461,9 @@
 		D6A2256525EE388B00E3E767 /* SCWeibo */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2268C25EE3B2A00E3E767 /* Main */,
+				D6A2268C25EE3B2A00E3E767 /* Application */,
 				D6A2267F25EE3B1800E3E767 /* Startup */,
+				D63D518E26074B1E0034FDB3 /* Account */,
 				D6A225B725EE3AEF00E3E767 /* Classes */,
 			);
 			path = SCWeibo;
@@ -740,10 +741,9 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
-		D6A2268C25EE3B2A00E3E767 /* Main */ = {
+		D6A2268C25EE3B2A00E3E767 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				D63D518E26074B1E0034FDB3 /* Account */,
 				D6A2256625EE388B00E3E767 /* AppDelegate.swift */,
 				D6A2256825EE388B00E3E767 /* SceneDelegate.swift */,
 				D6A2256F25EE388C00E3E767 /* Assets.xcassets */,
@@ -751,7 +751,7 @@
 				D6A2257425EE388C00E3E767 /* Info.plist */,
 				D6A226BA25EE451200E3E767 /* SCWeibo-Bridging-Header.h */,
 			);
-			path = Main;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		D6F24A4025F1032800F54C87 /* ViewModel */ = {
