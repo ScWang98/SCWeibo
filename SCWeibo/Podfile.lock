@@ -9,13 +9,8 @@ PODS:
   - MJRefresh (3.5.0)
   - Neon (0.4.0)
   - Reusable/View (4.1.1)
-  - SDWebImage (5.6.1):
-    - SDWebImage/Core (= 5.6.1)
-  - SDWebImage/Core (5.6.1)
   - SKPhotoBrowser (6.1.0)
   - SnapKit (5.0.1)
-  - SVProgressHUD (2.2.5)
-  - TZImagePickerController (3.5.8)
   - Weibo_SDK (3.3.0)
   - YYModel (1.0.4)
 
@@ -28,11 +23,8 @@ DEPENDENCIES:
   - MJRefresh (= 3.5.0)
   - Neon (= 0.4.0)
   - Reusable/View (= 4.1.1)
-  - SDWebImage (= 5.6.1)
   - SKPhotoBrowser (= 6.1.0)
   - SnapKit (= 5.0.1)
-  - SVProgressHUD (= 2.2.5)
-  - TZImagePickerController (= 3.5.8)
   - Weibo_SDK (= 3.3.0)
   - YYModel (= 1.0.4)
 
@@ -46,11 +38,8 @@ SPEC REPOS:
     - MJRefresh
     - Neon
     - Reusable
-    - SDWebImage
     - SKPhotoBrowser
     - SnapKit
-    - SVProgressHUD
-    - TZImagePickerController
     - Weibo_SDK
     - YYModel
 
@@ -63,14 +52,11 @@ SPEC CHECKSUMS:
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
-  SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SKPhotoBrowser: 343de95d89dc7913763c5dda243cc6e606e4a168
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  TZImagePickerController: 7fd9702897ef8c0b7c951e5463f4bcf398296f9e
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 96d4e974b87001f6aab8f865ce956139c4b760bc
+PODFILE CHECKSUM: 9436987d572427f4b221f2b47a6beed4285f8059
 
 COCOAPODS: 1.8.4

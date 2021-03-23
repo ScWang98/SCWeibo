@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YYModel
 
 class MNEmojiModel: NSObject {
     ///图片表情，true = emoji，false = 图片表情
