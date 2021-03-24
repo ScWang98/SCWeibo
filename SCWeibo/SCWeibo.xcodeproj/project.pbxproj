@@ -45,6 +45,10 @@
 		D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */; };
 		D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04D42608FFA8004A6630 /* PhotoResponse.swift */; };
 		D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */; };
+		D68D3636260A1E10004A6630 /* StatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */; };
+		D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */; };
+		D68D3644260A2055004A6630 /* StatusDetailTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */; };
+		D68D3649260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
 		D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989725EFD64400C0092A /* UIView+Extension.swift */; };
@@ -183,6 +187,10 @@
 		D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotosTabViewModel.swift; sourceTree = "<group>"; };
 		D68D04D42608FFA8004A6630 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
+		D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewController.swift; sourceTree = "<group>"; };
+		D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
+		D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailTopBar.swift; sourceTree = "<group>"; };
+		D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailAuthorInfoBar.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
 		D68F989725EFD64400C0092A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -436,6 +444,42 @@
 			path = Photos;
 			sourceTree = "<group>";
 		};
+		D68D3628260A1D92004A6630 /* StatusDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */,
+				D68D363C260A1E40004A6630 /* ViewModel */,
+				D68D3642260A1F16004A6630 /* View */,
+			);
+			path = StatusDetailViewController;
+			sourceTree = "<group>";
+		};
+		D68D363B260A1E2A004A6630 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				D6A2267625EE3B0400E3E767 /* MNLayout.swift */,
+				D6A2267725EE3B0400E3E767 /* MNWeiboCommon.swift */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
+		D68D363C260A1E40004A6630 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D68D3642260A1F16004A6630 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */,
+				D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D6A2255A25EE388B00E3E767 = {
 			isa = PBXGroup;
 			children = (
@@ -490,12 +534,12 @@
 		D6A225B725EE3AEF00E3E767 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D68D3628260A1D92004A6630 /* StatusDetailViewController */,
 				D627059C25F4CCD700B7F6DC /* StatusListViewController */,
-				D6A2267625EE3B0400E3E767 /* MNLayout.swift */,
-				D6A2267725EE3B0400E3E767 /* MNWeiboCommon.swift */,
 				D6A225BC25EE3AEF00E3E767 /* Tools */,
 				D6A225F725EE3AEF00E3E767 /* Model */,
 				D6A225FB25EE3AEF00E3E767 /* View */,
+				D68D363B260A1E2A004A6630 /* Old */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1040,6 +1084,7 @@
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
+				D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */,
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
@@ -1072,11 +1117,13 @@
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
+				D68D3649260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift in Sources */,
 				D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */,
 				D6A2264325EE3AEF00E3E767 /* UIBarButtonItem+Extension.swift in Sources */,
 				D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */,
 				D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */,
 				D697684426076DC9002825AF /* Date+Utilities.swift in Sources */,
+				D68D3636260A1E10004A6630 /* StatusDetailViewController.swift in Sources */,
 				D6A2264425EE3AEF00E3E767 /* String+Extensions..swift in Sources */,
 				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
 				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
@@ -1091,6 +1138,7 @@
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
+				D68D3644260A2055004A6630 /* StatusDetailTopBar.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,
@@ -1294,7 +1342,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = ZRBM6DAKML;
-				INFOPLIST_FILE = SCWeibo/Main/Info.plist;
+				INFOPLIST_FILE = SCWeibo/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1302,7 +1350,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scwang.weiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SCWeibo/Main/SCWeibo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SCWeibo/Application/SCWeibo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1319,7 +1367,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = ZRBM6DAKML;
-				INFOPLIST_FILE = SCWeibo/Main/Info.plist;
+				INFOPLIST_FILE = SCWeibo/Application/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1327,7 +1375,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scwang.weiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SCWeibo/Main/SCWeibo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SCWeibo/Application/SCWeibo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
