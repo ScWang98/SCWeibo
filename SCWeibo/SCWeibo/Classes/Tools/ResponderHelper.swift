@@ -28,7 +28,9 @@ class ResponderHelper {
         var topResponder: UIResponder? = responder
         while topResponder != nil {
             if var viewController = topResponder as? UIViewController? {
-                while viewController?.parent != nil && viewController?.parent != viewController?.navigationController && viewController?.parent != viewController?.tabBarController {
+                while viewController?.parent != nil &&
+                      viewController?.parent != viewController?.navigationController &&
+                      viewController?.parent != viewController?.tabBarController {
                     viewController = viewController?.parent
                 }
                 return viewController
@@ -53,18 +55,18 @@ class ResponderHelper {
 
         return viewController
     }
-    
-    static func topNavigationController() -> UINavigationController? {
+
+    static func baseNavigationController() -> UINavigationController? {
         let viewController = UIApplication.shared.sc.keyWindow?.rootViewController
-        if let viewController = viewController as? UITabBarController {
-            if let navController = viewController.selectedViewController as? UINavigationController {
+        if let navController = viewController as? UINavigationController {
+            return navController
+        }
+        if let tabBarController = viewController as? UITabBarController {
+            if let navController = tabBarController.selectedViewController as? UINavigationController {
                 return navController
             }
         }
-        else if let navController = viewController as? UINavigationController {
-            return navController
-        }
-        
+
         assert(false, "Can't find navigationController from rootVC")
         return nil
     }

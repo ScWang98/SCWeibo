@@ -63,7 +63,7 @@ class RouteManager {
 //        let rootVC = getCurrentViewController()
 //
 //        rootVC?.present(viewController, animated: true, completion: nil)
-        guard let nav = ResponderHelper.topNavigationController() else {
+        guard let nav = ResponderHelper.baseNavigationController() else {
             return
         }
 
