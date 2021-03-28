@@ -16,26 +16,28 @@ class UserProfileHeaderView: UIView {
     let followLabel = UILabel()
     let fansLabel = UILabel()
     let followButton = UIButton()
+    
+    weak var viewModel: UserProfileViewModel?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
         configConstraints()
-        reload()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func reload() {
-        avatarImage.kf.setImage(with: URL(string: "https://img2018.cnblogs.com/blog/1115121/201905/1115121-20190514102301527-2098166339.png"))
-        nickNameLabel.text = "王铁柱啦啦啦"
-        descriptionLabel.text = "你还没有描述"
+    func reload(with viewModel: UserProfileViewModel) {
+        self.viewModel = viewModel
+        avatarImage.kf.setImage(with: viewModel.avatar)
+        nickNameLabel.text = viewModel.screenName
+        descriptionLabel.text = viewModel.description
         locationLabel.text = "陕西 西安"
-        followLabel.text = "116 正在关注"
-        weiboLabel.text = "675 微博"
-        fansLabel.text = "35 粉丝"
+        followLabel.text = viewModel.followCountStr
+        weiboLabel.text = viewModel.statusesCountStr
+        fansLabel.text = viewModel.followersCountStr
     }
 }
 

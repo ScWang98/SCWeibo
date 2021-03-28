@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
 		9A161471712BAA6ACCD4D09E /* Pods_SCWeiboUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8CD1F5162D04979016AE40 /* Pods_SCWeiboUITests.framework */; };
@@ -145,6 +146,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
 		696174D48FF03B8F94DB6F5B /* Pods-SCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeibo.debug.xcconfig"; path = "Target Support Files/Pods-SCWeibo/Pods-SCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 				D64B939725FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift */,
 				D63D5130260494980034FDB3 /* UserProfileVideosTabViewModel.swift */,
 				D68D04CF2608FC18004A6630 /* UserProfilePhotosTabViewModel.swift */,
+				249BC8732610BD1100589656 /* UserProfileService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
 				D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */,
+				249BC8742610BD1100589656 /* UserProfileService.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,

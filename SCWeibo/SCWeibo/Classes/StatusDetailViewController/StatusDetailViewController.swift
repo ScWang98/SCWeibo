@@ -16,6 +16,10 @@ class StatusDetailViewController: UIViewController {
     let viewModel = StatusDetailViewModel()
 
     var pagesObservation: NSKeyValueObservation?
+    
+    deinit {
+        pagesObservation?.invalidate()
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)

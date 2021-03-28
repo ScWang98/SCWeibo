@@ -171,7 +171,6 @@ private extension PagesScrollView {
             return
         }
         observation.invalidate()
-//        scrollView.bk_removeObservers(withIdentifier: identifier)
     }
 }
 

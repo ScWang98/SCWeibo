@@ -17,6 +17,12 @@ class VideoTableCell: UITableViewCell {
     let timeLabel = UILabel()
     let bottomSeperator = UIView()
 
+    var playerObservation: NSKeyValueObservation?
+    
+    deinit {
+        playerObservation?.invalidate()
+    }
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupSubviews()
@@ -106,7 +112,7 @@ private extension VideoTableCell {
             }
         })
         
-        _ = playerVC.observe(\.isReadyForDisplay) { (obj, change) in
+        self.playerObservation = playerVC.observe(\.isReadyForDisplay) { (obj, change) in
             if change.newValue == true {
                 playerVC.player?.play()
             }

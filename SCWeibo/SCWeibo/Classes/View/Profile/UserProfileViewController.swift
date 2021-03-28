@@ -18,6 +18,10 @@ class UserProfileViewController: UIViewController {
     let viewModel = UserProfileViewModel()
 
     var pagesObservation: NSKeyValueObservation?
+    
+    deinit {
+        pagesObservation?.invalidate()
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -39,6 +43,14 @@ class UserProfileViewController: UIViewController {
 
         pagesView.reloadPages()
         pagesView.set(selectedIndex: 0)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.viewModel.fetchUserInfo {
+            self.refresh()
+        }
     }
 }
 
@@ -74,6 +86,10 @@ private extension UserProfileViewController {
         pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
+    }
+    
+    func refresh() {
+        self.headerView.reload(with: self.viewModel)
     }
 }
 

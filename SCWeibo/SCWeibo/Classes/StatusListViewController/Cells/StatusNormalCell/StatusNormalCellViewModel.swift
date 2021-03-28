@@ -30,7 +30,7 @@ private extension StatusNormalCellViewModel {
         statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
-        avatarUrl = status.user?.profileImageUrl
+        avatarUrl = status.user?.avatar
         source = "来自" + (status.source?.mn_href()?.text ?? "")
         createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
