@@ -17,7 +17,13 @@ protocol UserProfileTabViewModel {
 }
 
 class UserProfileViewModel {
-    var tabViewModels = [UserProfileTabViewModel]()
+    var tabViewModels = { () -> [UserProfileTabViewModel] in
+        var models = [UserProfileTabViewModel]()
+        models.append(UserProfileStatusTabViewModel.init())
+        models.append(UserProfileVideosTabViewModel.init())
+        models.append(UserProfilePhotosTabViewModel.init())
+        return models
+    }()
     
     var tabNames: [String] {
         var names = [String]()
@@ -40,9 +46,7 @@ class UserProfileViewModel {
     
     init() {
         
-        tabViewModels.append(UserProfileStatusTabViewModel.init())
-        tabViewModels.append(UserProfileVideosTabViewModel.init())
-        tabViewModels.append(UserProfilePhotosTabViewModel.init())
+
     }
     
     func fetchUserInfo(completion:@escaping ()->Void) {

@@ -13,10 +13,11 @@ class UserProfileService {
     class func fetchUserInfo(completion: @escaping (_ list: UserResponse?) -> Void) {
         let userId = "5236464641"
 
-        let URLString = "https://m.weibo.cn/profile/info"
+        let URLString = URLSettings.userInfoURL
 
         var params = [String: Any]()
         params["uid"] = userId
+        params["access_token"] = AccountManager.shared.accessToken
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
             var jsonResult: Dictionary<AnyHashable, Any>?
             switch response.result {
@@ -29,8 +30,7 @@ class UserProfileService {
             }
 
             var userResult: UserResponse? = nil
-            if let data: Dictionary<AnyHashable, Any> = jsonResult?.sc.dictionary(for: "data"),
-               let user: Dictionary<AnyHashable, Any> = data.sc.dictionary(for: "user") {
+            if let user = jsonResult {
                 userResult = UserResponse.decode(user)
             }
             completion(userResult)

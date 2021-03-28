@@ -15,7 +15,7 @@ class StatusListService {
     ///   - max_id: 上拉加载更多id
     ///   - ompletion: 完成回调
     class func loadStatus(since_id: Int = 0, max_id: Int = 0, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void) {
-        let URLString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let URLString = URLSettings.homeStatusesURL
         var parameters = [String: Any]()
         parameters["since_id"] = since_id
         parameters["max_id"] = max_id

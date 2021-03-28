@@ -15,25 +15,29 @@ class UserResponse: Codable {
     var description: String?
     var gender: String?
     var bgImage: String?
+    var location: String?
     var statusesCount: Int?
     var followersCount: Int?
     var followCount: Int?
     var following: Bool?
+    var followMe: Bool?
     var verifiedType: Int = 0   // 认证类型（-1:没有认证, 0:认证用户, 2,3,5:企业认证, 220:达人）
     var mbrank: Int = 0   // 会员等级 0~6
     
     private enum CodingKeys: String, CodingKey {
         case id
         case screenName = "screen_name"
-        case avatar = "profile_image_url"
+        case avatar = "avatar_large"
         case avatarHD = "avatar_hd"
         case description = "description"
         case gender = "gender"
         case bgImage = "cover_image_phone"
+        case location = "location"
         case statusesCount = "statuses_count"
         case followersCount = "followers_count"
-        case followCount = "follow_count"
+        case followCount = "friends_count"
         case following = "following"
+        case followMe = "follow_me"
         case verifiedType = "verified_type"
         case mbrank
     }
