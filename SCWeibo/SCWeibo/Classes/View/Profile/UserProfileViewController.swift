@@ -9,33 +9,45 @@ import FLEX
 import Neon
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, RouteAble {
     let topToolBar = UserProfileTopToolBar()
     let headerView = UserProfileHeaderView()
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
-    let viewModel = UserProfileViewModel()
+    let viewModel: UserProfileViewModel
 
     var pagesObservation: NSKeyValueObservation?
-    
+
     deinit {
         pagesObservation?.invalidate()
     }
 
     init() {
+        viewModel = UserProfileViewModel(with: nil)
+
         super.init(nibName: nil, bundle: nil)
+
+        commonInit()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    required init(routeParams: Dictionary<AnyHashable, Any>) {
+        viewModel = UserProfileViewModel(with: routeParams)
+
+        super.init(nibName: nil, bundle: nil)
+
+        commonInit()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupSubviews()
-        addObservers()
+        refreshHeader()
     }
 
     override func viewDidLayoutSubviews() {
@@ -44,12 +56,12 @@ class UserProfileViewController: UIViewController {
         pagesView.reloadPages()
         pagesView.set(selectedIndex: 0)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.viewModel.fetchUserInfo {
-            self.refresh()
+
+        viewModel.fetchUserInfo {
+            self.refreshHeader()
         }
     }
 }
@@ -57,6 +69,10 @@ class UserProfileViewController: UIViewController {
 // MARK: - Private Methods
 
 private extension UserProfileViewController {
+    func commonInit() {
+        addObservers()
+    }
+
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
@@ -83,13 +99,13 @@ private extension UserProfileViewController {
     }
 
     func addObservers() {
-        pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
+        pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
     }
-    
-    func refresh() {
-        self.headerView.reload(with: self.viewModel)
+
+    func refreshHeader() {
+        headerView.reload(with: viewModel)
     }
 }
 
@@ -97,7 +113,7 @@ private extension UserProfileViewController {
 
 extension UserProfileViewController: UserProfileTopToolBarDelegate {
     func topToolBarDidClickBack(_ topToolBar: UserProfileTopToolBar) {
-        if let viewControllers = self.navigationController?.viewControllers, viewControllers.count > 1 {
+        if let viewControllers = navigationController?.viewControllers, viewControllers.count > 1 {
             navigationController?.popViewController(animated: true)
         } else {
             dismiss(animated: true, completion: nil)

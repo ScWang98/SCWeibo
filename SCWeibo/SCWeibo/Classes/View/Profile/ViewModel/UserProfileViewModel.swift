@@ -19,12 +19,12 @@ protocol UserProfileTabViewModel {
 class UserProfileViewModel {
     var tabViewModels = { () -> [UserProfileTabViewModel] in
         var models = [UserProfileTabViewModel]()
-        models.append(UserProfileStatusTabViewModel.init())
-        models.append(UserProfileVideosTabViewModel.init())
-        models.append(UserProfilePhotosTabViewModel.init())
+        models.append(UserProfileStatusTabViewModel())
+        models.append(UserProfileVideosTabViewModel())
+        models.append(UserProfilePhotosTabViewModel())
         return models
     }()
-    
+
     var tabNames: [String] {
         var names = [String]()
         for tab in tabViewModels {
@@ -32,7 +32,7 @@ class UserProfileViewModel {
         }
         return names
     }
-    
+
     var user: UserResponse?
     var id: Int?
     var screenName: String?
@@ -43,18 +43,22 @@ class UserProfileViewModel {
     var statusesCountStr: String?
     var followersCountStr: String?
     var followCountStr: String?
-    
-    init() {
-        
 
+    init(with routeParams: Dictionary<AnyHashable, Any>?) {
+        if let routeParams = routeParams,
+           let user = routeParams["user"] as? UserResponse {
+            parseUserResponse(user: user)
+        } else if let user = AccountManager.shared.user {
+            parseUserResponse(user: user)
+        }
     }
-    
-    func fetchUserInfo(completion:@escaping ()->Void) {
+
+    func fetchUserInfo(completion: @escaping () -> Void) {
         UserProfileService.fetchUserInfo { user in
             guard let user = user else {
                 return
             }
-            
+
             self.parseUserResponse(user: user)
             completion()
         }
@@ -64,39 +68,39 @@ class UserProfileViewModel {
 private extension UserProfileViewModel {
     func parseUserResponse(user: UserResponse) {
         self.user = user
-        self.id = user.id
-        self.screenName = user.screenName
+        id = user.id
+        screenName = user.screenName
         if let urlString = user.avatar {
-            self.avatar = URL(string: urlString)
+            avatar = URL(string: urlString)
         } else {
-            self.avatar = nil
+            avatar = nil
         }
         if let urlString = user.avatar {
-            self.avatarHD = URL(string: urlString)
+            avatarHD = URL(string: urlString)
         } else {
-            self.avatarHD = nil
+            avatarHD = nil
         }
         if let description = user.description,
            description.count > 0 {
             self.description = description
-        } else  {
+        } else {
             description = "你还没有描述"
         }
-        self.genderImage = user.gender == "m" ? UIImage(named: "Male_Normal") : UIImage(named: "Female_Normal")
+        genderImage = user.gender == "m" ? UIImage(named: "Male_Normal") : UIImage(named: "Female_Normal")
         if let statusesCount = user.statusesCount {
-            self.statusesCountStr = String(format: "%d 微博", statusesCount)
+            statusesCountStr = String(format: "%d 微博", statusesCount)
         } else {
-            self.statusesCountStr = "---"
+            statusesCountStr = "---"
         }
         if let followersCount = user.followersCount {
-            self.followersCountStr = String(format: "%d 粉丝", followersCount)
+            followersCountStr = String(format: "%d 粉丝", followersCount)
         } else {
-            self.followersCountStr = "---"
+            followersCountStr = "---"
         }
         if let followCount = user.followCount {
-            self.followCountStr = String(format: "%d 正在关注", followCount)
+            followCountStr = String(format: "%d 正在关注", followCount)
         } else {
-            self.followCountStr = "---"
+            followCountStr = "---"
         }
     }
 }
