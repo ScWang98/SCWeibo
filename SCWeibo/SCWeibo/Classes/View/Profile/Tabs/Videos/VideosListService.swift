@@ -13,7 +13,7 @@ class VideosListService {
         let containerIdPre = "231567"
         let userId = "5236464641"
 
-        let URLString = "https://m.weibo.cn/api/container/getIndex"
+        let URLString = URLSettings.getIndexURL
 
         var params = [String: Any]()
         params["containerid"] = containerIdPre + userId

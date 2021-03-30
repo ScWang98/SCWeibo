@@ -40,10 +40,13 @@ class UserProfileViewModel {
     var avatarHD: URL?
     var description: String?
     var genderImage: UIImage?
+    var location: String?
     var statusesCountStr: String?
     var followersCountStr: String?
     var followCountStr: String?
 
+    var profileService = UserProfileService()
+    
     init(with routeParams: Dictionary<AnyHashable, Any>?) {
         if let routeParams = routeParams,
            let user = routeParams["user"] as? UserResponse {
@@ -54,8 +57,12 @@ class UserProfileViewModel {
     }
 
     func fetchUserInfo(completion: @escaping () -> Void) {
-        UserProfileService.fetchUserInfo { user in
+        guard let userId = id else {
+            return
+        }
+        profileService.fetchUserInfo(with: userId) { user in
             guard let user = user else {
+                completion()
                 return
             }
 
@@ -87,6 +94,7 @@ private extension UserProfileViewModel {
             description = "你还没有描述"
         }
         genderImage = user.gender == "m" ? UIImage(named: "Male_Normal") : UIImage(named: "Female_Normal")
+        location = user.location
         if let statusesCount = user.statusesCount {
             statusesCountStr = String(format: "%d 微博", statusesCount)
         } else {

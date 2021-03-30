@@ -8,15 +8,23 @@
 import Foundation
 
 class URLSettings {
-    private static var baseURL: String {
-        return "https://api.weibo.com/2"
+    private class var baseURL: String {
+        return "https://api.weibo.com"
+    }
+    
+    private class var h5BaseURL: String {
+        return "https://m.weibo.cn"
     }
 
     class var homeStatusesURL: String {
-        return baseURL + "/statuses/home_timeline.json"
+        return baseURL + "/2/statuses/home_timeline.json"
     }
     
     class var userInfoURL: String {
-        return baseURL + "/users/show.json"
+        return baseURL + "/2/users/show.json"
+    }
+    
+    class var getIndexURL: String {
+        return h5BaseURL + "/api/container/getIndex"
     }
 }

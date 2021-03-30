@@ -79,20 +79,20 @@ extension WeiboTabBarController: UITabBarControllerDelegate {
 
         // 在首页，又点击了”首页“tabbar, ==> 滚动到顶部
         if selectedIndex == 0 && index == 0 {
-            let navi = children[0] as! UINavigationController
-            let vc = navi.children[0] as! MNBaseViewController
+//            let navi = children[0] as! UINavigationController
+//            let vc = navi.children[0] as! MNBaseViewController
 
             // scroll to top
 //            vc.tableView?.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
 
             // FIXME: dispatch work around.(必须滚动完,再刷新)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                vc.loadDatas()
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                vc.loadDatas()
+//            }
 
             // clear badgeNumber
-            vc.tabBarItem.badgeValue = nil
-            UIApplication.shared.applicationIconBadgeNumber = 0
+//            vc.tabBarItem.badgeValue = nil
+//            UIApplication.shared.applicationIconBadgeNumber = 0
         }
 
         return !viewController.isMember(of: UIViewController.self)

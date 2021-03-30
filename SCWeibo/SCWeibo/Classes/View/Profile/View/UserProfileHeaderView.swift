@@ -31,10 +31,10 @@ class UserProfileHeaderView: UIView {
 
     func reload(with viewModel: UserProfileViewModel) {
         self.viewModel = viewModel
-        avatarImage.kf.setImage(with: viewModel.avatar)
+        avatarImage.kf.setImage(with: viewModel.avatar, placeholder: avatarImage.image)
         nickNameLabel.text = viewModel.screenName
         descriptionLabel.text = viewModel.description
-        locationLabel.text = "陕西 西安"
+        locationLabel.text = viewModel.location
         followLabel.text = viewModel.followCountStr
         weiboLabel.text = viewModel.statusesCountStr
         fansLabel.text = viewModel.followersCountStr

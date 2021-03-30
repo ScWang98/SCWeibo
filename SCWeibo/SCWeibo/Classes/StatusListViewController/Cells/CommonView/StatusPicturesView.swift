@@ -24,7 +24,7 @@ class StatusPicturesView: UIView {
 
         for (index, url) in urls.enumerated() {
             let imageView = picViews[index]
-            let imageURL = URL(string: url.thumbnailPic)
+            let imageURL = URL(string: url.bmiddlePic)
             imageView.kf.setImage(with: imageURL)
 
             // 处理gif图片
@@ -65,7 +65,7 @@ private extension StatusPicturesView {
             var view = picViews[0]
             view.frame = CGRect(x: 0, y: 0, width: self.width / 2 - 2, height: self.height)
             view = picViews[1]
-            view.frame = CGRect(x: 0, y: 0, width: self.width / 2 - 2, height: self.height / 2 - 2)
+            view.frame = CGRect(x: self.width / 2 + 2, y: 0, width: self.width / 2 - 2, height: self.height / 2 - 2)
             view = picViews[2]
             view.frame = CGRect(x: self.width / 2 + 2, y: self.height / 2 + 2, width: self.width / 2 - 2, height: self.height / 2 - 2)
         } else if picViews.count <= 4 {

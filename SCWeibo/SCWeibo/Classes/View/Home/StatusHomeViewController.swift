@@ -29,6 +29,7 @@ private extension StatusHomeViewController {
         inset.top = 50
         tableView.contentInset = inset
 
-        tableView.mj_header?.tintColor = UIColor.black
+        listViewModel.listService = StatusHomeListService()
+//        refreshData(with: true)
     }
 }

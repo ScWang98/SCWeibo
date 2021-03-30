@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
+		24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
 		9A161471712BAA6ACCD4D09E /* Pods_SCWeiboUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8CD1F5162D04979016AE40 /* Pods_SCWeiboUITests.framework */; };
@@ -118,7 +119,6 @@
 		D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */; };
 		D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */; };
 		D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */; };
-		D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491025F29C8100F54C87 /* StatusListService.swift */; };
 		D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491525F29DA800F54C87 /* URLSettings.swift */; };
 		D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2491A25F2A36300F54C87 /* StatusResponse.swift */; };
 		D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2492225F2A96C00F54C87 /* UserResponse.swift */; };
@@ -147,6 +147,7 @@
 
 /* Begin PBXFileReference section */
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
+		24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeListService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
 		696174D48FF03B8F94DB6F5B /* Pods-SCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeibo.debug.xcconfig"; path = "Target Support Files/Pods-SCWeibo/Pods-SCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -268,7 +269,6 @@
 		D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeViewController.swift; sourceTree = "<group>"; };
 		D6F1A93B25F7E3DB00A42949 /* UserProfileDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDefine.swift; sourceTree = "<group>"; };
 		D6F21D4F25F22D4000F54C87 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
-		D6F2491025F29C8100F54C87 /* StatusListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListService.swift; sourceTree = "<group>"; };
 		D6F2491525F29DA800F54C87 /* URLSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSettings.swift; sourceTree = "<group>"; };
 		D6F2491A25F2A36300F54C87 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
 		D6F2492225F2A96C00F54C87 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
@@ -385,7 +385,6 @@
 			children = (
 				D62705AB25F4CDF400B7F6DC /* StatusListViewModel.swift */,
 				D611D65325F511060041D99A /* StatusPicturesModel.swift */,
-				D6F2491025F29C8100F54C87 /* StatusListService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -685,6 +684,7 @@
 			children = (
 				D6A7DEA125FE383B00DE5412 /* StatusHomeViewController.swift */,
 				D625944925FE5B500037CB2C /* View */,
+				24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1075,7 +1075,6 @@
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
-				D6F2491125F29C8100F54C87 /* StatusListService.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
@@ -1106,6 +1105,7 @@
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
+				24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */,
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
