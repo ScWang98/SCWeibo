@@ -16,7 +16,7 @@ class UserProfileHeaderView: UIView {
     let followLabel = UILabel()
     let fansLabel = UILabel()
     let followButton = UIButton()
-    
+
     weak var viewModel: UserProfileViewModel?
 
     override init(frame: CGRect) {

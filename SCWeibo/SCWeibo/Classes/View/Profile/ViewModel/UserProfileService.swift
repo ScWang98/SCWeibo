@@ -37,7 +37,7 @@ class UserProfileService {
 
 class UserProfileStatusService: StatusListService {
     var currentPage: Int = 1
-    
+
     func loadStatus(max_id: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
         let containerIdPre = "230413"
         let userId = "5236464641"
@@ -47,7 +47,7 @@ class UserProfileStatusService: StatusListService {
 //        if max_id == nil {
 //            currentPage = 1
 //        }
-        
+
         var params = [String: Any]()
         params["containerid"] = containerIdPre + userId + "_-_WEIBO_SECOND_PROFILE_WEIBO"
 //        params["page"] = page
@@ -65,7 +65,7 @@ class UserProfileStatusService: StatusListService {
                 jsonResult = nil
                 isSuccess = false
             }
-            
+
             if let data: Dictionary<AnyHashable, Any> = jsonResult?.sc.dictionary(for: "data") {
                 jsonResult = data
             }
