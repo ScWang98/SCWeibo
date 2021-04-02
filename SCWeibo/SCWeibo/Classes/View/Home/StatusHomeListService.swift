@@ -9,7 +9,7 @@ import Alamofire
 import UIKit
 
 class StatusHomeListService: StatusListService {
-    func loadStatus(max_id: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
+    func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
         let URLString = URLSettings.homeStatusesURL
         var parameters = [String: Any]()
         parameters["max_id"] = max_id

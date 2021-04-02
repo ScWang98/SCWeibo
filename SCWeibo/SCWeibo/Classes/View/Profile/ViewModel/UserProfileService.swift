@@ -36,40 +36,43 @@ class UserProfileService {
 }
 
 class UserProfileStatusService: StatusListService {
-    var currentPage: Int = 1
-
-    func loadStatus(max_id: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
+    var userId: String = ""
+    
+    func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
         let containerIdPre = "230413"
-        let userId = "5236464641"
 
         let URLString = URLSettings.getIndexURL
-//        let page: Int
-//        if max_id == nil {
-//            currentPage = 1
-//        }
 
         var params = [String: Any]()
         params["containerid"] = containerIdPre + userId + "_-_WEIBO_SECOND_PROFILE_WEIBO"
-//        params["page"] = page
+        params["page"] = page
         params["type"] = "03"
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
-            var isSuccess = false
             var jsonResult: Dictionary<AnyHashable, Any>?
             switch response.result {
             case let .success(json):
                 if let dict = json as? Dictionary<AnyHashable, Any> {
                     jsonResult = dict
-                    isSuccess = true
                 }
             case .failure:
                 jsonResult = nil
-                isSuccess = false
             }
 
-            if let data: Dictionary<AnyHashable, Any> = jsonResult?.sc.dictionary(for: "data") {
-                jsonResult = data
+            if let data: Dictionary<AnyHashable, Any> = jsonResult?.sc.dictionary(for: "data"),
+               let cards: Array<Dictionary<AnyHashable, Any>> = data.sc.array(for: "cards") {
+                var results = [StatusResponse]()
+                for card in cards {
+                    results.append(StatusResponse(withH5dict: card))
+                }
+                completion(true, results)
             }
-//            completion(isSuccess, jsonResult)
+            completion(false, nil)
         }
+    }
+}
+
+fileprivate extension StatusResponse {
+    convenience init(withH5dict dict: [AnyHashable: Any]) {
+        self.init()
     }
 }

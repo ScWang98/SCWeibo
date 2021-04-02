@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StatusResponse: Codable, CustomStringConvertible {
+class StatusResponse: Codable {
     var id: Int = 0
 
     var text: String?
@@ -40,9 +40,8 @@ class StatusResponse: Codable, CustomStringConvertible {
         case source
         case retweetedStatus = "retweeted_status"
     }
-
-    var description: String {
-        return "..."
+    
+    init() {
     }
 }
 

@@ -8,17 +8,19 @@
 import UIKit
 
 protocol StatusListService {
-    func loadStatus(max_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void)
+    func loadStatus(max_id: Int?, page: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void)
 }
 
 class StatusListViewModel {
     lazy var statusList = [StatusCellViewModel]()
     var listService: StatusListService?
-    
+
     private var cellProducer = StatusCellViewModelProducer()
     private var pullupErrorTimes = 0
+    private var currentPage: Int
 
     init() {
+        currentPage = 1
     }
 
     func registerCells(with tableView: UITableView) {
@@ -33,8 +35,9 @@ class StatusListViewModel {
 
         // 上拉加载更多 -> 取最旧的一条(last)
         let max_id = loadMore ? statusList.last?.status.id : nil
+        let page = loadMore ? currentPage + 1 : 1
 
-        listService?.loadStatus(max_id: max_id, completion: { isSuccess, list in
+        listService?.loadStatus(max_id: max_id, page: page, completion: { isSuccess, list in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -47,13 +50,14 @@ class StatusListViewModel {
                 }
             }
 
-            // data handle
             if loadMore {
-                // 下拉刷新，拼接在数组最前面
-                self.statusList = array + self.statusList
-            } else {
                 // 上拉加载更多，拼接在数组最后
                 self.statusList += array
+                self.currentPage += 1
+            } else {
+                // 下拉刷新，拼接在数组最前面
+                self.statusList = array
+                self.currentPage = 1
             }
 
             if !loadMore && array.count == 0 {
