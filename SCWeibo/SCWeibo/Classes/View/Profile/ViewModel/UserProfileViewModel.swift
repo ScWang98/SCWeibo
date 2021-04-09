@@ -13,25 +13,27 @@ protocol UserProfileTabViewModel {
     var tabView: UIView { get }
     var tabScrollView: UIScrollView { get }
 
-    func tabRefresh(with completion: () -> Void)
+    func tabRefresh(with completion: (() -> Void)?)
 }
 
 class UserProfileViewModel {
-    var tabViewModels = { () -> [UserProfileTabViewModel] in
+    let statusTabViewModel = UserProfileStatusTabViewModel()
+    let videosTabViewModel = UserProfileVideosTabViewModel()
+    let photosTabViewModel = UserProfilePhotosTabViewModel()
+
+    lazy var tabViewModels: [UserProfileTabViewModel] = {
         var models = [UserProfileTabViewModel]()
-        models.append(UserProfileStatusTabViewModel())
-        models.append(UserProfileVideosTabViewModel())
-        models.append(UserProfilePhotosTabViewModel())
+        models.append(self.statusTabViewModel)
+        models.append(self.videosTabViewModel)
+        models.append(self.photosTabViewModel)
         return models
     }()
 
-    var tabNames: [String] {
-        var names = [String]()
-        for tab in tabViewModels {
-            names.append(tab.tabName)
+    lazy var tabNames: [String] = {
+        tabViewModels.map { tabViewModel -> String in
+            tabViewModel.tabName
         }
-        return names
-    }
+    }()
 
     var user: UserResponse?
     var id: Int?
@@ -46,14 +48,25 @@ class UserProfileViewModel {
     var followCountStr: String?
 
     var profileService = UserProfileService()
-    
-    init(with routeParams: Dictionary<AnyHashable, Any>?) {
+
+    init() {
+    }
+
+    convenience init(with routeParams: Dictionary<AnyHashable, Any>?) {
+        self.init()
+
         if let routeParams = routeParams,
            let user = routeParams["user"] as? UserResponse {
             parseUserResponse(user: user)
         } else if let user = AccountManager.shared.user {
             parseUserResponse(user: user)
         }
+
+        var userId: String?
+        if let id = id {
+            userId = String(id)
+        }
+        statusTabViewModel.viewController.config(withUserId: userId)
     }
 
     func fetchUserInfo(completion: @escaping () -> Void) {
@@ -68,6 +81,12 @@ class UserProfileViewModel {
 
             self.parseUserResponse(user: user)
             completion()
+        }
+    }
+    
+    func reloadAllTabsContent() {
+        for viewModel in tabViewModels {
+            viewModel.tabRefresh(with: nil)
         }
     }
 }

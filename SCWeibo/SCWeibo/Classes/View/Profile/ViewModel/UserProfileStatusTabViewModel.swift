@@ -10,7 +10,10 @@ import UIKit
 class UserProfileStatusTabViewModel {
     let viewController: StatusListViewController = {
         let viewController = StatusListViewController()
-        viewController.listViewModel.listService = UserProfileStatusService()
+        let service = UserProfileStatusService()
+//        service.userId =
+        viewController.listViewModel.listService = service
+
         // TODO: 删掉
         viewController.refreshData(with: false)
         return viewController
@@ -34,7 +37,7 @@ extension UserProfileStatusTabViewModel: UserProfileTabViewModel {
         return viewController.tableView
     }
 
-    func tabRefresh(with completion: () -> Void) {
+    func tabRefresh(with completion: (() -> Void)?) {
         viewController.refreshData(with: false)
     }
 }

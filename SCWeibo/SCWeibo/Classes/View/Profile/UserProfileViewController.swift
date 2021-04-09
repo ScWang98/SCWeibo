@@ -20,7 +20,7 @@ class UserProfileViewController: UIViewController, RouteAble {
     var pagesObservation: NSKeyValueObservation?
 
     deinit {
-        pagesObservation?.invalidate()
+        removeObservers()
     }
 
     init() {
@@ -45,16 +45,18 @@ class UserProfileViewController: UIViewController, RouteAble {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
         setupSubviews()
         refreshHeader()
+        
+        categoryBar.reload(names: viewModel.tabNames)
+        pagesView.reloadPages()
+        
+        viewModel.reloadAllTabsContent()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        pagesView.reloadPages()
-        pagesView.set(selectedIndex: 0)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -94,14 +96,17 @@ private extension UserProfileViewController {
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
         categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-
-        categoryBar.reload(names: viewModel.tabNames)
+        self.view.setNeedsLayout()
     }
 
     func addObservers() {
         pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
+    }
+    
+    func removeObservers() {
+        pagesObservation?.invalidate()
     }
 
     func refreshHeader() {

@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import Kanna
 
 class UserProfileService {
     func fetchUserInfo(with userId: Int, completion: @escaping (_ list: UserResponse?) -> Void) {
@@ -36,9 +37,13 @@ class UserProfileService {
 }
 
 class UserProfileStatusService: StatusListService {
-    var userId: String = ""
-    
+    var userId: String?
+
     func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
+        guard let userId = userId else {
+            return
+        }
+
         let containerIdPre = "230413"
 
         let URLString = URLSettings.getIndexURL
@@ -62,6 +67,9 @@ class UserProfileStatusService: StatusListService {
                let cards: Array<Dictionary<AnyHashable, Any>> = data.sc.array(for: "cards") {
                 var results = [StatusResponse]()
                 for card in cards {
+                    if card.sc.int(for: "card_type") != 9 {
+                        continue
+                    }
                     results.append(StatusResponse(withH5dict: card))
                 }
                 completion(true, results)
@@ -74,5 +82,66 @@ class UserProfileStatusService: StatusListService {
 fileprivate extension StatusResponse {
     convenience init(withH5dict dict: [AnyHashable: Any]) {
         self.init()
+
+        guard let dict: [AnyHashable: Any] = dict.sc.dictionary(for: "mblog") else {
+            return
+        }
+
+        id = Int(dict.sc.string(for: "id") ?? "") ?? 0
+        text = dict.sc.string(for: "text")
+        user = UserResponse(withH5dict: dict.sc.dictionary(for: "user") ?? [AnyHashable: Any]())
+        repostsCount = dict.sc.int(for: "reposts_count")
+        commentsCount = dict.sc.int(for: "comments_count")
+        attitudesCount = dict.sc.int(for: "attitudes_count")
+        createdAt = dict.sc.string(for: "created_at")
+        source = dict.sc.string(for: "source")
+        picUrls = StatusPicture.generateStatusPictures(withH5Array: dict.sc.array(for: "pics"))
+        if dict["retweeted_status"] != nil {
+            retweetedStatus = StatusResponse(withH5dict: dict.sc.dictionary(for: "retweeted_status") ?? [AnyHashable: Any]())
+        }
+        
+//        var parser = HTMLParser(html: text, error: &err)
+        if let text = try? HTML(html: text ?? "", encoding: .utf8) {
+//            print(text.)
+        }
+    }
+}
+
+fileprivate extension UserResponse {
+    convenience init(withH5dict dict: [AnyHashable: Any]) {
+        self.init()
+        
+        id = Int(dict.sc.string(for: "id") ?? "")
+        screenName = dict.sc.string(for: "screen_name")
+        avatar = dict.sc.string(for: "profile_image_url")
+        avatarHD = dict.sc.string(for: "avatar_hd")
+        description = dict.sc.string(for: "description")
+        gender = dict.sc.string(for: "gender")
+        bgImage = dict.sc.string(for: "cover_image_phone")
+        statusesCount = dict.sc.int(for: "statuses_count")
+        followersCount = dict.sc.int(for: "followers_count")
+        followCount = dict.sc.int(for: "follow_count")
+        following = dict.sc.bool(for: "following")
+        followMe = dict.sc.bool(for: "follow_me")
+        verifiedType = dict.sc.int(for: "verified_type")
+        mbrank = dict.sc.int(for: "mbrank")
+    }
+}
+
+fileprivate extension StatusPicture {
+    convenience init(withH5dict dict: [AnyHashable: Any]) {
+        self.init()
+
+        if let url = dict.sc.string(for: "url") {
+            thumbnailPic = url.replacingOccurrences(of: "/wap360/", with: "/thumbnail/")
+        }
+    }
+
+    class func generateStatusPictures(withH5Array array: [[AnyHashable: Any]]?) -> [StatusPicture] {
+        var results = [StatusPicture]()
+        for dict in array ?? [[AnyHashable: Any]]() {
+            results.append(StatusPicture(withH5dict: dict))
+        }
+        return results
     }
 }

@@ -4,6 +4,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - Kanna (5.2.4)
   - Kingfisher (6.1.1)
   - MGJRouter (0.10.0)
   - MJRefresh (3.5.0)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Alamofire (= 5.4.1)
   - FLEX (= 4.4.0)
   - FMDB (= 2.7.5)
+  - Kanna (~> 5.2.2)
   - Kingfisher (= 6.1.1)
   - MGJRouter
   - MJRefresh (= 3.5.0)
@@ -33,6 +35,7 @@ SPEC REPOS:
     - Alamofire
     - FLEX
     - FMDB
+    - Kanna
     - Kingfisher
     - MGJRouter
     - MJRefresh
@@ -47,6 +50,7 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   FLEX: 0592c011c6dfbfdb94a5e24f2d4a9dbff0c6026d
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  Kanna: b9d00d7c11428308c7f95e1f1f84b8205f567a8f
   Kingfisher: 676d63307fbef6ed5d5ed400bff36983480d7500
   MGJRouter: 15d94541eb2cc81eff7d577337288feb7ae9575f
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
@@ -57,6 +61,6 @@ SPEC CHECKSUMS:
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 875a97c79b89e3a12afe12c821a40a42fade5ca1
+PODFILE CHECKSUM: 73ffec25b1855df1684e89a235ffc9f49d1f89d6
 
 COCOAPODS: 1.8.4

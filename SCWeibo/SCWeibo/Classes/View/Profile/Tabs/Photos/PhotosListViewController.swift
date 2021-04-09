@@ -40,7 +40,7 @@ class PhotosListViewController: UIViewController {
 
 extension PhotosListViewController {
     func refreshData(with loadingState: Bool) {
-        self.loadDatas()
+        loadDatas()
     }
 }
 
@@ -48,7 +48,7 @@ extension PhotosListViewController {
 
 private extension PhotosListViewController {
     func setupSubviews() {
-        let width = (self.view.width - 2.0 * 3) / 3.0
+        let width = (view.width - 2.0 * 3) / 3.0
         flowLayout.itemSize = CGSize(width: width, height: width)
         flowLayout.minimumInteritemSpacing = 2
         flowLayout.minimumLineSpacing = 2
@@ -61,10 +61,8 @@ private extension PhotosListViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         collectionView.register(PhotoCollectionCell.self, forCellWithReuseIdentifier: String(describing: PhotoCollectionCell.self))
-        collectionView.frame = self.view.bounds
+        collectionView.frame = view.bounds
         view.addSubview(collectionView)
-
-        self.loadDatas()
     }
 }
 
@@ -76,13 +74,22 @@ private extension PhotosListViewController {
 
     func removeObservers() {
     }
+
+    func loadDatas() {
+        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
+            self.isPull = false
+            if needRefresh {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension PhotosListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.listViewModel.photos.count
+        return listViewModel.photos.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,12 +112,4 @@ extension PhotosListViewController: UICollectionViewDelegate, UICollectionViewDa
 // MARK: - Action
 
 @objc private extension PhotosListViewController {
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: self.isPull) { _, needRefresh in
-            self.isPull = false
-            if needRefresh {
-                self.collectionView.reloadData()
-            }
-        }
-    }
 }

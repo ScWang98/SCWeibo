@@ -76,6 +76,7 @@ class HorizontalCategoryBar: UIView {
     var needDivider = false
 
     var lastSelectedCell: HorizontalCategoryCell?
+    var currentSelectedIndex: Int = 0
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -88,6 +89,13 @@ class HorizontalCategoryBar: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        let cellWidth = self.width / CGFloat(cells.count)
+        for (index, cell) in cells.enumerated() {
+            cell.frame = CGRect(x: cellWidth * CGFloat(index), y: 0, width: cellWidth, height: height)
+        }
+//        self.indicator.center = CGPoint(x: self.cells[currentSelectedIndex].center.x, y: self.height - 2)
+        self.indicator.frame = CGRect(x: self.cells[currentSelectedIndex].left + 10, y: self.height - 4, width: cellWidth - 20, height: 4)
     }
 
     private func setupSubviews() {
@@ -117,17 +125,13 @@ class HorizontalCategoryBar: UIView {
             item.index = index
         }
 
-        let cellWidth = self.width / CGFloat(items.count)
         for (index, cell) in cells.enumerated() {
             let item = items[index]
             cell.reload(item: item)
-            if let idx = item.index {
-                cell.frame = CGRect(x: cellWidth * CGFloat(idx), y: 0, width: cellWidth, height: height)
-            }
             cell.delegate = self
             addSubview(cell)
         }
-        indicator.frame = CGRect(x: indicator.x, y: self.height - 4, width: cellWidth - 12, height: indicator.height)
+        setNeedsLayout()
     }
 
     func selectItem(at index: Int, animated: Bool = false) {
@@ -141,10 +145,10 @@ class HorizontalCategoryBar: UIView {
 
         if animated {
             UIView.animate(withDuration: 0.15) {
-                self.indicator.center = CGPoint(x: self.cells[index].center.x, y: self.indicator.center.y)
+                self.indicator.centerX = self.cells[index].center.x
             }
         } else {
-            self.indicator.center = CGPoint(x: self.cells[index].center.x, y: self.indicator.center.y)
+            self.indicator.centerX = self.cells[index].center.x
         }
     }
 
@@ -156,8 +160,7 @@ class HorizontalCategoryBar: UIView {
 
         let startX = cells[fromIndex].center.x
         let endX = cells[toIndex].center.x
-        let indicatorCenterX = startX + (endX - startX) * CGFloat(percent)
-        indicator.center = CGPoint(x: indicatorCenterX, y: indicator.center.y)
+        indicator.centerX = startX + (endX - startX) * CGFloat(percent)
     }
 }
 

@@ -8,6 +8,7 @@
 import UIKit
 
 protocol StatusListService {
+    var userId: String? { get set }
     func loadStatus(max_id: Int?, page: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [StatusResponse]?) -> Void)
 }
 
@@ -25,6 +26,10 @@ class StatusListViewModel {
 
     func registerCells(with tableView: UITableView) {
         cellProducer.registerCells(with: tableView)
+    }
+    
+    func config(withUserId userId: String?) {
+        listService?.userId = userId
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {

@@ -110,15 +110,16 @@ private extension PagesScrollView {
 
         self.contentSize = calcFullContentSize()
 
+        backScrollView.frame = calcBackScrollViewFrame()
+        backScrollView.contentSize = calcBackScrollViewContentSize()
+        
         if let pageNum = pagesDataSource?.numberOfPages(in: self) {
             for i in 0 ..< pageNum {
                 let page = pagesDataSource?.pagesView(self, pageViewAt: i)
                 page?.frame = calcPageFrame(At: i)
             }
         }
-
-        backScrollView.frame = calcBackScrollViewFrame()
-        backScrollView.contentSize = calcBackScrollViewContentSize()
+        
         self.currentPageScrollView?.contentOffset = calcCurrentPageContentOffset()
     }
 

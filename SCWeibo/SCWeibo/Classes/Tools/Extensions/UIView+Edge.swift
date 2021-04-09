@@ -17,6 +17,12 @@ protocol EdgeAble: AnyObject {
     var top: CGFloat { get set }
 
     var bottom: CGFloat { get set }
+
+    var centerX: CGFloat { get set }
+
+    var centerY: CGFloat { get set }
+
+    var size: CGSize { get set }
 }
 
 extension EdgeAble {
@@ -63,6 +69,42 @@ extension EdgeAble {
         set(bottom) {
             var newFrame = frame
             newFrame.origin.y = bottom - frame.size.height
+            frame = newFrame
+        }
+    }
+
+    public var centerX: CGFloat {
+        get {
+            return frame.midX
+        }
+
+        set(centerX) {
+            var newFrame = frame
+            newFrame.origin.x = centerX - frame.size.width / 2
+            frame = newFrame
+        }
+    }
+
+    public var centerY: CGFloat {
+        get {
+            return frame.midY
+        }
+
+        set(centerY) {
+            var newFrame = frame
+            newFrame.origin.y = centerY - frame.size.height / 2
+            frame = newFrame
+        }
+    }
+
+    public var size: CGSize {
+        get {
+            return frame.size
+        }
+
+        set(size) {
+            var newFrame = frame
+            newFrame.size = size
             frame = newFrame
         }
     }

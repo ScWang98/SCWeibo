@@ -37,6 +37,10 @@ class StatusListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension StatusListViewController {
+    func config(withUserId userId: String?) {
+        listViewModel.config(withUserId: userId)
+    }
+    
     func refreshData(with loadingState: Bool) {
         if loadingState {
             tableView.mj_header?.beginRefreshing()

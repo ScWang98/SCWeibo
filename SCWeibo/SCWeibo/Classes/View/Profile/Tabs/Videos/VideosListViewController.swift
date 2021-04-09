@@ -37,7 +37,7 @@ class VideosListViewController: UIViewController {
 
 extension VideosListViewController {
     func refreshData(with loadingState: Bool) {
-        self.loadDatas()
+        loadDatas()
     }
 }
 
@@ -52,8 +52,6 @@ private extension VideosListViewController {
         tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)
-
-        self.loadDatas()
     }
 }
 
@@ -64,6 +62,15 @@ private extension VideosListViewController {
     }
 
     func removeObservers() {
+    }
+    
+    func loadDatas() {
+        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
+            self.isPull = false
+            if needRefresh {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -89,7 +96,7 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let coverHeight = view.width * 9.0 / 16.0
-        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0;
+        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0
         return height
     }
 }
@@ -97,12 +104,5 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Action
 
 @objc private extension VideosListViewController {
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: self.isPull) { _, needRefresh in
-            self.isPull = false
-            if needRefresh {
-                self.tableView.reloadData()
-            }
-        }
-    }
+
 }

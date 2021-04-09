@@ -1,14 +1,11 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'SCWeibo' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for SCWeibo
   pod "YYModel", '1.0.4'
   pod "FMDB", '2.7.5'
-#  pod 'SVProgressHUD', '2.2.5'
   pod 'SnapKit', '5.0.1'
   pod "Weibo_SDK",'3.3.0'
   pod 'Alamofire', '5.4.1'
@@ -16,13 +13,12 @@ target 'SCWeibo' do
   pod 'Neon', '0.4.0'
   pod 'MJRefresh', '3.5.0'
   pod 'SKPhotoBrowser', '6.1.0'
-#  pod 'TZImagePickerController', '3.5.8'
   pod 'Reusable', '4.1.1', :subspecs => ['View']
   pod 'MGJRouter'
+  pod 'Kanna', '~> 5.2.2'
   
   # Pods for DEBUG
   pod 'FLEX', '4.4.0', :configurations => ['Debug']
-
 
   target 'SCWeiboTests' do
     inherit! :search_paths

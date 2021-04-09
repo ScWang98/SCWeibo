@@ -9,6 +9,8 @@ import Alamofire
 import UIKit
 
 class StatusHomeListService: StatusListService {
+    var userId: String?
+    
     func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
         let URLString = URLSettings.homeStatusesURL
         var parameters = [String: Any]()
