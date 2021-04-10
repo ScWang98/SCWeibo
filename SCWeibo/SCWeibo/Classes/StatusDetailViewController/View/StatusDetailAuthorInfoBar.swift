@@ -12,7 +12,6 @@ class StatusDetailAuthorInfoBar: UIView {
     var nameLabel = UILabel()
     var timeLabel = UILabel()
     var sourceLabel = UILabel()
-    var viewModel: StatusCellViewModel?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,8 +22,7 @@ class StatusDetailAuthorInfoBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func reload(with viewModel: StatusCellViewModel) {
-        self.viewModel = viewModel
+    func reload(with viewModel: StatusDetailViewModel) {
         nameLabel.text = viewModel.screenName
 
         let placeholder = UIImage(named: "avatar_default_big")
@@ -40,7 +38,7 @@ class StatusDetailAuthorInfoBar: UIView {
         timeLabel.text = viewModel.createdAt
     }
 
-    static func height(for viewModel: StatusCellViewModel) -> CGFloat {
+    static func height(for viewModel: StatusDetailViewModel) -> CGFloat {
         return 60.0
     }
 }
@@ -55,8 +53,8 @@ private extension StatusDetailAuthorInfoBar {
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = 19
         avatarImageView.snp.makeConstraints { make in
-            make.left.top.equalTo(self).offset(12)
-            make.height.width.equalTo(38)
+            make.left.top.equalTo(self).offset(15)
+            make.height.width.equalTo(40)
         }
 
         nameLabel.textColor = UIColor.sc.color(with: 0xFC3E00FF)

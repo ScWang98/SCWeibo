@@ -94,8 +94,9 @@ class HorizontalCategoryBar: UIView {
         for (index, cell) in cells.enumerated() {
             cell.frame = CGRect(x: cellWidth * CGFloat(index), y: 0, width: cellWidth, height: height)
         }
-//        self.indicator.center = CGPoint(x: self.cells[currentSelectedIndex].center.x, y: self.height - 2)
-        self.indicator.frame = CGRect(x: self.cells[currentSelectedIndex].left + 10, y: self.height - 4, width: cellWidth - 20, height: 4)
+        if currentSelectedIndex < cells.count {
+            self.indicator.frame = CGRect(x: self.cells[currentSelectedIndex].left + 10, y: self.height - 4, width: cellWidth - 20, height: 4)
+        }
     }
 
     private func setupSubviews() {

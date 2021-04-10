@@ -153,7 +153,9 @@ private extension PagesScrollView {
             }
         }
         backScrollView.contentSize = calcBackScrollViewContentSize()
-        currentPageScrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: 0)
+        if pageCount > 0 {
+            currentPageScrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: 0)
+        }
         setNeedsLayout()
     }
 

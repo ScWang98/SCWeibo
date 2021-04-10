@@ -69,7 +69,10 @@ class UserProfileStatusService: StatusListService {
                     if card.sc.int(for: "card_type") != 9 {
                         continue
                     }
-                    results.append(StatusResponse(withH5dict: card))
+                    guard let dict: [AnyHashable: Any] = card.sc.dictionary(for: "mblog") else {
+                        continue
+                    }
+                    results.append(StatusResponse(withH5dict: dict))
                 }
                 completion(true, results)
             }
@@ -81,10 +84,6 @@ class UserProfileStatusService: StatusListService {
 fileprivate extension StatusResponse {
     convenience init(withH5dict dict: [AnyHashable: Any]) {
         self.init()
-
-        guard let dict: [AnyHashable: Any] = dict.sc.dictionary(for: "mblog") else {
-            return
-        }
 
         id = Int(dict.sc.string(for: "id") ?? "") ?? 0
         text = dict.sc.string(for: "text")

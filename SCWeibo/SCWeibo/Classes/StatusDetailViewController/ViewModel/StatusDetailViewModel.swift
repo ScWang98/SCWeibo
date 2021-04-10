@@ -7,22 +7,106 @@
 
 import Foundation
 
+protocol StatusDetailTabViewModel {
+    var tabName: String { get }
+    var tabViewController: UIViewController? { get }
+    var tabView: UIView { get }
+    var tabScrollView: UIScrollView { get }
+
+    func tabRefresh(with completion: (() -> Void)?)
+}
+
 class StatusDetailViewModel {
-    var tabViewModels = [UserProfileTabViewModel]()
-    
-    var tabNames: [String] {
-        var names = [String]()
-        for tab in tabViewModels {
-            names.append(tab.tabName)
+    var status: StatusResponse?
+    var screenName: String?
+    var avatarUrl: String?
+    var source: String?
+    var createdAt: String?
+    var statusAttrText: NSAttributedString?
+    var picUrls: [StatusPicturesModel]?
+    var repostTitle: String?
+    var commentTitle: String?
+    var likeTitle: String?
+    var repostAttrText: NSAttributedString?
+
+//    let statusTabViewModel = UserProfileStatusTabViewModel()
+//    let videosTabViewModel = UserProfileVideosTabViewModel()
+//    let photosTabViewModel = UserProfilePhotosTabViewModel()
+
+    lazy var tabViewModels: [StatusDetailTabViewModel] = {
+        var models = [StatusDetailTabViewModel]()
+//        models.append(self.statusTabViewModel)
+//        models.append(self.videosTabViewModel)
+//        models.append(self.photosTabViewModel)
+        return models
+    }()
+
+    lazy var tabNames: [String] = {
+        tabViewModels.map { tabViewModel -> String in
+            tabViewModel.tabName
         }
-        return names
+    }()
+
+//    var profileService = UserProfileService()
+
+    init() {
+    }
+
+    func config(with routeParams: Dictionary<AnyHashable, Any>?) {
+        if let routeParams = routeParams,
+           let status = routeParams["statusResponse"] as? StatusResponse {
+            parseStatusResponse(status: status)
+        }
+    }
+
+    func fetchUserInfo(completion: @escaping () -> Void) {
+//        guard let userId = id else {
+//            return
+//        }
+//        profileService.fetchUserInfo(with: userId) { user in
+//            guard let user = user else {
+//                completion()
+//                return
+//            }
+//
+//            self.parseUserResponse(user: user)
+//            completion()
+//        }
+    }
+
+    func reloadAllTabsContent() {
+        for viewModel in tabViewModels {
+            viewModel.tabRefresh(with: nil)
+        }
+    }
+}
+
+private extension StatusDetailViewModel {
+    func parseStatusResponse(status: StatusResponse) {
+        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
+        picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
+        screenName = status.user?.screenName
+        avatarUrl = status.user?.avatar
+        source = "来自" + (status.source?.mn_href() ?? "")
+        createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
+        repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
+        commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
+        likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
+        let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
+        let repostFontSize = UIFont.systemFont(ofSize: 14)
+        if status.retweetedStatus != nil {
+            repostAttrText = MNEmojiManager.shared.getEmojiString(string: repostStr, font: repostFontSize)
+            picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
+        }
     }
     
-    
-    init() {
-        
-        tabViewModels.append(UserProfileStatusTabViewModel.init())
-        tabViewModels.append(UserProfileVideosTabViewModel.init())
-        tabViewModels.append(UserProfilePhotosTabViewModel.init())
+    private func countSting(count: Int, defaultStr: String) -> String {
+        if count <= 0 {
+            return defaultStr
+        }
+        if count < 10000 {
+            return count.description
+        }
+        return String(format: "%.02f万", Double(count) / 10000)
     }
 }

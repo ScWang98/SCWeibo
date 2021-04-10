@@ -30,12 +30,12 @@ class StatusDetailTopBar: UIView {
 }
 
 // MARK: - Public Methods
+
 extension StatusDetailTopBar {
     func reload(with title: String) {
-        titleLabel.text = title
+//        titleLabel.text = title
     }
 }
-
 
 // MARK: - UI
 
@@ -52,11 +52,14 @@ private extension StatusDetailTopBar {
         moreButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         moreButton.sizeToFit()
         moreButton.addTarget(self, action: #selector(moreButtonClickedAction(button:)), for: .touchUpInside)
-        
+
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        titleLabel.text = "微博正文"
+        titleLabel.sizeToFit()
 
         addSubview(backButton)
         addSubview(moreButton)
+        addSubview(titleLabel)
 
         backButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(12)
@@ -64,6 +67,10 @@ private extension StatusDetailTopBar {
         }
         moreButton.snp.makeConstraints { make in
             make.right.bottom.equalToSuperview().offset(-12)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-12)
+            make.centerX.equalToSuperview()
         }
     }
 }

@@ -17,6 +17,10 @@ protocol EdgeAble: AnyObject {
     var top: CGFloat { get set }
 
     var bottom: CGFloat { get set }
+    
+    var width: CGFloat { get set }
+    
+    var height: CGFloat { get set }
 
     var centerX: CGFloat { get set }
 
@@ -31,9 +35,7 @@ extension EdgeAble {
             return frame.minX
         }
         set(left) {
-            var newFrame = frame
-            newFrame.origin.x = left
-            frame = newFrame
+            frame.origin.x = left
         }
     }
 
@@ -43,9 +45,7 @@ extension EdgeAble {
         }
 
         set(right) {
-            var newFrame = frame
-            newFrame.origin.x = right - frame.size.width
-            frame = newFrame
+            frame.origin.x = right - frame.size.width
         }
     }
 
@@ -55,9 +55,7 @@ extension EdgeAble {
         }
 
         set(top) {
-            var newFrame = frame
-            newFrame.origin.y = top
-            frame = newFrame
+            frame.origin.y = top
         }
     }
 
@@ -67,11 +65,11 @@ extension EdgeAble {
         }
 
         set(bottom) {
-            var newFrame = frame
-            newFrame.origin.y = bottom - frame.size.height
-            frame = newFrame
+            frame.origin.y = bottom - frame.size.height
         }
     }
+    
+
 
     public var centerX: CGFloat {
         get {
@@ -79,9 +77,7 @@ extension EdgeAble {
         }
 
         set(centerX) {
-            var newFrame = frame
-            newFrame.origin.x = centerX - frame.size.width / 2
-            frame = newFrame
+            frame.origin.x = centerX - frame.size.width / 2
         }
     }
 
@@ -91,9 +87,7 @@ extension EdgeAble {
         }
 
         set(centerY) {
-            var newFrame = frame
-            newFrame.origin.y = centerY - frame.size.height / 2
-            frame = newFrame
+            frame.origin.y = centerY - frame.size.height / 2
         }
     }
 
@@ -103,13 +97,52 @@ extension EdgeAble {
         }
 
         set(size) {
-            var newFrame = frame
-            newFrame.size = size
-            frame = newFrame
+            frame.size = size
         }
     }
 }
 
-extension UIView: EdgeAble {}
+// width和height写在这里是因为Neon中实现了width和height的getter
+extension UIView: EdgeAble {
+    public var width: CGFloat {
+        get {
+            return frame.size.width
+        }
 
-extension CALayer: EdgeAble {}
+        set(width) {
+            frame.size.width = width
+        }
+    }
+    
+    public var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+
+        set(height) {
+            frame.size.height = height
+        }
+    }
+}
+
+extension CALayer: EdgeAble {
+    public var width: CGFloat {
+        get {
+            return frame.size.width
+        }
+
+        set(width) {
+            frame.size.width = width
+        }
+    }
+    
+    public var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+
+        set(height) {
+            frame.size.height = height
+        }
+    }
+}

@@ -7,46 +7,66 @@
 
 import UIKit
 
-class StatusDetailViewController: UIViewController {
+class StatusDetailViewController: UIViewController, RouteAble {
     let topToolBar = StatusDetailTopBar()
-    let headerView = UserProfileHeaderView()
+    let detailContentView = StatusDetailContentView()
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
     let viewModel = StatusDetailViewModel()
 
     var pagesObservation: NSKeyValueObservation?
-    
+
     deinit {
-        pagesObservation?.invalidate()
+        removeObservers()
     }
 
-    init() {
+    private init() {
         super.init(nibName: nil, bundle: nil)
+        commonInit()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    required convenience init(routeParams: Dictionary<AnyHashable, Any>) {
+        self.init()
+        self.viewModel.config(with: routeParams)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
         setupSubviews()
-        addObservers()
+        refreshHeader()
+        
+        categoryBar.reload(names: viewModel.tabNames)
+        pagesView.reloadPages()
+        
+        viewModel.reloadAllTabsContent()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
 
-        pagesView.reloadPages()
-        pagesView.set(selectedIndex: 0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.fetchUserInfo {
+            self.refreshHeader()
+        }
     }
 }
 
 // MARK: - Private Methods
 
 private extension StatusDetailViewController {
+    func commonInit() {
+        addObservers()
+    }
+
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
@@ -55,8 +75,8 @@ private extension StatusDetailViewController {
         categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
-        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
-        pagesView.headerView = headerView
+        detailContentView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
+        pagesView.headerView = detailContentView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
 
@@ -67,15 +87,22 @@ private extension StatusDetailViewController {
         let safeArea = UIApplication.shared.sc.keyWindow?.safeAreaInsets
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
-        categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-
-        categoryBar.reload(names: viewModel.tabNames)
+        categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 50)
+        self.view.setNeedsLayout()
     }
 
     func addObservers() {
-        pagesObservation = self.pagesView.observe(\.contentOffset, options: [.new, .old]) { _, _ in
-            self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
+        pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
+            self.categoryBar.bottom = max(self.topToolBar.bottom + self.detailContentView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
+    }
+    
+    func removeObservers() {
+        pagesObservation?.invalidate()
+    }
+
+    func refreshHeader() {
+        detailContentView.reload(with: viewModel)
     }
 }
 
