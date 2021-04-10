@@ -31,7 +31,7 @@ private extension StatusNormalCellViewModel {
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
-        source = "来自" + (status.source?.mn_href()?.text ?? "")
+        source = "来自" + (status.source?.mn_href() ?? "")
         createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")

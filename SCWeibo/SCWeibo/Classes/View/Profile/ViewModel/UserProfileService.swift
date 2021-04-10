@@ -7,7 +7,6 @@
 
 import Alamofire
 import Foundation
-import Kanna
 
 class UserProfileService {
     func fetchUserInfo(with userId: Int, completion: @escaping (_ list: UserResponse?) -> Void) {
@@ -98,11 +97,6 @@ fileprivate extension StatusResponse {
         picUrls = StatusPicture.generateStatusPictures(withH5Array: dict.sc.array(for: "pics"))
         if dict["retweeted_status"] != nil {
             retweetedStatus = StatusResponse(withH5dict: dict.sc.dictionary(for: "retweeted_status") ?? [AnyHashable: Any]())
-        }
-        
-//        var parser = HTMLParser(html: text, error: &err)
-        if let text = try? HTML(html: text ?? "", encoding: .utf8) {
-//            print(text.)
         }
     }
 }

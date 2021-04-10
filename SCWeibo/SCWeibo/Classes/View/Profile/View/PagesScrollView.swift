@@ -39,9 +39,9 @@ class PagesScrollView: UIScrollView {
     var currentIndex: Int?
     var currentPage: UIView?
     var currentPageScrollView: UIScrollView? {
-        willSet {
+        willSet(scrollView) {
             removeObserver(from: currentPageScrollView)
-            addObserver(to: newValue)
+            addObserver(to: scrollView)
         }
     }
 
@@ -153,6 +153,7 @@ private extension PagesScrollView {
             }
         }
         backScrollView.contentSize = calcBackScrollViewContentSize()
+        currentPageScrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: 0)
         setNeedsLayout()
     }
 
@@ -161,7 +162,7 @@ private extension PagesScrollView {
             return
         }
 
-        scrollerObservation = scrollView.observe(\UIScrollView.contentSize, options: [.old, .new]) { _, _ in
+        scrollerObservation = scrollView.observe(\UIScrollView.contentSize, options: [.old, .new, .initial]) { _, _ in
             self.setNeedsLayout()
         }
     }

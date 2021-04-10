@@ -14,7 +14,9 @@ class StatusHomeListService: StatusListService {
     func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
         let URLString = URLSettings.homeStatusesURL
         var parameters = [String: Any]()
-        parameters["max_id"] = max_id
+        if let max_id = max_id {
+            parameters["max_id"] = max_id - 1
+        }
         parameters["access_token"] = AccountManager.shared.accessToken
 
         AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
