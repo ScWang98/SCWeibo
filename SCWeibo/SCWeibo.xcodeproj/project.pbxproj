@@ -113,7 +113,7 @@
 		D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262525EE3AEF00E3E767 /* MNVisitorView.swift */; };
 		D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2267625EE3B0400E3E767 /* MNLayout.swift */; };
 		D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2267725EE3B0400E3E767 /* MNWeiboCommon.swift */; };
-		D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2267E25EE3B1800E3E767 /* RouteManager.swift */; };
+		D6A2268425EE3B1800E3E767 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2267E25EE3B1800E3E767 /* Router.swift */; };
 		D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268025EE3B1800E3E767 /* WeiboSDKTask.swift */; };
 		D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268125EE3B1800E3E767 /* RouteRegisterTask.swift */; };
 		D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2268225EE3B1800E3E767 /* FetchAppInfoTask.swift */; };
@@ -264,7 +264,7 @@
 		D6A2262525EE3AEF00E3E767 /* MNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNVisitorView.swift; sourceTree = "<group>"; };
 		D6A2267625EE3B0400E3E767 /* MNLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
 		D6A2267725EE3B0400E3E767 /* MNWeiboCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNWeiboCommon.swift; sourceTree = "<group>"; };
-		D6A2267E25EE3B1800E3E767 /* RouteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		D6A2267E25EE3B1800E3E767 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D6A2268025EE3B1800E3E767 /* WeiboSDKTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboSDKTask.swift; sourceTree = "<group>"; };
 		D6A2268125EE3B1800E3E767 /* RouteRegisterTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteRegisterTask.swift; sourceTree = "<group>"; };
 		D6A2268225EE3B1800E3E767 /* FetchAppInfoTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAppInfoTask.swift; sourceTree = "<group>"; };
@@ -554,7 +554,7 @@
 		D6A225BC25EE3AEF00E3E767 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2267E25EE3B1800E3E767 /* RouteManager.swift */,
+				D6A2267E25EE3B1800E3E767 /* Router.swift */,
 				D6A225BD25EE3AEF00E3E767 /* MNLabel */,
 				D6A225BF25EE3AEF00E3E767 /* Network */,
 				D6A225C525EE3AEF00E3E767 /* Emoji */,
@@ -1083,7 +1083,7 @@
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
-				D6A2268425EE3B1800E3E767 /* RouteManager.swift in Sources */,
+				D6A2268425EE3B1800E3E767 /* Router.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,

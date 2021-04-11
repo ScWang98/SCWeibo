@@ -40,7 +40,7 @@ extension StatusListViewController {
     func config(withUserId userId: String?) {
         listViewModel.config(withUserId: userId)
     }
-    
+
     func refreshData(with loadingState: Bool) {
         if loadingState {
             tableView.mj_header?.beginRefreshing()
@@ -115,13 +115,12 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
         let viewModel = listViewModel.statusList[indexPath.row]
         return viewModel.cellHeight
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let status = listViewModel.statusList[indexPath.row].status
         let userInfo = ["statusResponse": status]
-        if let url = URL(string: "ttt://statusDetail") {
-            RouteManager.shared.open(url: url, params: userInfo)
-        }
+
+        Router.open(url: "pillar://statusDetail", userInfo: userInfo)
     }
 }
 

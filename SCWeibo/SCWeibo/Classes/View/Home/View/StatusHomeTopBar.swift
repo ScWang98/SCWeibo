@@ -34,7 +34,7 @@ class StatusHomeTopBar: UIView {
 private extension StatusHomeTopBar {
     func setupSubviews() {
         backgroundColor = UIColor.sc.color(with: 0xF5F5F5FF)
-        
+
         avatarView.clipsToBounds = true
         avatarView.layer.cornerRadius = 15
         avatarView.layer.borderWidth = 1
@@ -47,7 +47,7 @@ private extension StatusHomeTopBar {
         writeButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         writeButton.sizeToFit()
         writeButton.addTarget(self, action: #selector(writeButtonClickedAction(button:)), for: .touchUpInside)
-        
+
         bottomLine.backgroundColor = UIColor.sc.color(with: 0xB2B2B2FF)
 
         addSubview(avatarView)
@@ -77,9 +77,8 @@ private extension StatusHomeTopBar {
     }
 
     func writeButtonClickedAction(button: UIButton) {
-        if let url = URL(string: "tt://test") {
-            RouteManager.shared.open(url: url)
-        }
+        Router.open(url: "pillar://test")
+
         delegate?.topToolBarDidClickWrite(self)
     }
 }

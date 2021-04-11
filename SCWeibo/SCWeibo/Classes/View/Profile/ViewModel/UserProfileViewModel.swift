@@ -56,7 +56,8 @@ class UserProfileViewModel {
         self.init()
 
         if let routeParams = routeParams,
-           let user = routeParams["user"] as? UserResponse {
+           let userInfo: [AnyHashable: Any] = routeParams.sc.dictionary(for: RouterParameterUserInfo),
+           let user = userInfo["user"] as? UserResponse {
             parseUserResponse(user: user)
         } else if let user = AccountManager.shared.user {
             parseUserResponse(user: user)
