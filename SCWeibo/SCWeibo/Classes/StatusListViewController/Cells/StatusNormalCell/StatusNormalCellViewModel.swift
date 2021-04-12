@@ -27,7 +27,7 @@ class StatusNormalCellViewModel {
 
 private extension StatusNormalCellViewModel {
     func parseProperties() {
-        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
+        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar

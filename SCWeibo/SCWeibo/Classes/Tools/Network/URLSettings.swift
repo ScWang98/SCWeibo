@@ -27,4 +27,8 @@ class URLSettings {
     class var getIndexURL: String {
         return h5BaseURL + "/api/container/getIndex"
     }
+    
+    class var repostTimeline: String {
+        return h5BaseURL + "/api/statuses/repostTimeline"
+    }
 }

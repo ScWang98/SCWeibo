@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kanna
 
 class MNEmojiManager {
     static let shared = MNEmojiManager()

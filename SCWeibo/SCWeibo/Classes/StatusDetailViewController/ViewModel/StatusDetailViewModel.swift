@@ -29,15 +29,15 @@ class StatusDetailViewModel {
     var likeTitle: String?
     var repostAttrText: NSAttributedString?
 
-//    let statusTabViewModel = UserProfileStatusTabViewModel()
-//    let videosTabViewModel = UserProfileVideosTabViewModel()
-//    let photosTabViewModel = UserProfilePhotosTabViewModel()
+    let repostTabViewModel = StatusDetailRepostTabViewModel()
+    let commentTabViewModel = StatusDetailCommentTabViewModel()
+    let attitudeTabViewModel = StatusDetailAttitudeTabViewModel()
 
     lazy var tabViewModels: [StatusDetailTabViewModel] = {
         var models = [StatusDetailTabViewModel]()
-//        models.append(self.statusTabViewModel)
-//        models.append(self.videosTabViewModel)
-//        models.append(self.photosTabViewModel)
+        models.append(self.repostTabViewModel)
+        models.append(self.commentTabViewModel)
+        models.append(self.attitudeTabViewModel)
         return models
     }()
 

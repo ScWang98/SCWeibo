@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class StatusDetailContentView: UIView {
     var viewModel: StatusDetailViewModel?
 
@@ -15,7 +14,7 @@ class StatusDetailContentView: UIView {
     let contentLabel = MNLabel()
     let repostView = StatusDetailRepostView()
     let picturesView = StatusPicturesView()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
@@ -35,36 +34,42 @@ class StatusDetailContentView: UIView {
 
 extension StatusDetailContentView {
     func reload(with viewModel: StatusDetailViewModel) {
-
         self.viewModel = viewModel
         authorInfoBar.reload(with: viewModel)
         contentLabel.attributedText = viewModel.statusAttrText
-        repostView.reload(with: viewModel)
+
+        if viewModel.repostAttrText != nil {
+            repostView.isHidden = false
+            repostView.reload(with: viewModel)
+            picturesView.isHidden = true
+        } else if let picUrls = viewModel.picUrls {
+            picturesView.isHidden = false
+            picturesView.reload(with: picUrls)
+        }
 
         setNeedsLayout()
     }
-    
+
     class func height(for viewModel: StatusDetailViewModel) -> CGFloat {
         var totalHeight: CGFloat = 0
-        
+
         let authorInfoBarHeight = StatusDetailAuthorInfoBar.height(for: viewModel)
         totalHeight += authorInfoBarHeight
 
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
         let rect = viewModel.statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0 + 20
+        let textHeight = rect?.height ?? 0
         totalHeight += textHeight
 
         if viewModel.repostAttrText != nil {
             let repostHeight = StatusDetailRepostView.height(for: viewModel)
             totalHeight += repostHeight
-        }
-        else if let picUrls = viewModel.picUrls {
+        } else if let picUrls = viewModel.picUrls {
             let picsHeight = StatusPicturesView.height(for: picUrls)
             totalHeight += picsHeight
         }
-        return totalHeight
+        return totalHeight + 50
     }
 }
 
@@ -76,10 +81,10 @@ private extension StatusDetailContentView {
         contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
         contentLabel.textColor = UIColor.darkGray
 
-        self.addSubview(authorInfoBar)
-        self.addSubview(contentLabel)
-        self.addSubview(repostView)
-        self.addSubview(picturesView)
+        addSubview(authorInfoBar)
+        addSubview(contentLabel)
+        addSubview(repostView)
+        addSubview(picturesView)
     }
 
     func setupLayout() {
@@ -95,15 +100,15 @@ private extension StatusDetailContentView {
         let textSize = CGSize(width: width, height: 0)
         let rect = viewModel.statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
-        contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: self.width - 12 * 2, height: textHeight + 20)
-        
+        contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: self.width - 12 * 2, height: textHeight)
+
         height = StatusDetailRepostView.height(for: viewModel)
         repostView.align(.underCentered, relativeTo: contentLabel, padding: 0, width: self.width, height: height)
-        
+
         height = StatusPicturesView.height(for: viewModel.picUrls ?? [StatusPicturesModel]())
         picturesView.align(.underCentered, relativeTo: contentLabel, padding: 0, width: self.width - 2 * 12, height: height)
-        
-        self.height = StatusDetailContentView.height(for: viewModel) + 20
+
+        self.height = StatusDetailContentView.height(for: viewModel)
     }
 }
 
@@ -116,4 +121,3 @@ extension StatusDetailContentView: MNLabelDelegate {
         print("homeCellDidClickUrlString")
     }
 }
-

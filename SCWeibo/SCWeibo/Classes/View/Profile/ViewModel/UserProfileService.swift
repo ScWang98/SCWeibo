@@ -100,27 +100,6 @@ fileprivate extension StatusResponse {
     }
 }
 
-fileprivate extension UserResponse {
-    convenience init(withH5dict dict: [AnyHashable: Any]) {
-        self.init()
-        
-        id = Int(dict.sc.string(for: "id") ?? "")
-        screenName = dict.sc.string(for: "screen_name")
-        avatar = dict.sc.string(for: "profile_image_url")
-        avatarHD = dict.sc.string(for: "avatar_hd")
-        description = dict.sc.string(for: "description")
-        gender = dict.sc.string(for: "gender")
-        bgImage = dict.sc.string(for: "cover_image_phone")
-        statusesCount = dict.sc.int(for: "statuses_count")
-        followersCount = dict.sc.int(for: "followers_count")
-        followCount = dict.sc.int(for: "follow_count")
-        following = dict.sc.bool(for: "following")
-        followMe = dict.sc.bool(for: "follow_me")
-        verifiedType = dict.sc.int(for: "verified_type")
-        mbrank = dict.sc.int(for: "mbrank")
-    }
-}
-
 fileprivate extension StatusPicture {
     convenience init(withH5dict dict: [AnyHashable: Any]) {
         self.init()

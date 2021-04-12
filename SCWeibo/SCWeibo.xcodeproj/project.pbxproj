@@ -10,6 +10,21 @@
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
 		24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */; };
 		24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */; };
+		24C833F22622FC1E00E45CE5 /* DetailRepostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */; };
+		24C833FA2622FC5100E45CE5 /* DetailCommentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C833F92622FC5100E45CE5 /* DetailCommentListViewController.swift */; };
+		24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C833FE2622FC8700E45CE5 /* DetailAttitudeListViewController.swift */; };
+		24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834032623099500E45CE5 /* StatusDetailRepostTabViewModel.swift */; };
+		24C8340F262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8340E262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift */; };
+		24C83414262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C83413262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift */; };
+		24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C83418262315F400E45CE5 /* DetailRepostListViewModel.swift */; };
+		24C8341E2623161D00E45CE5 /* DetailRepostListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */; };
+		24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834222623165800E45CE5 /* DetailRepostTableCell.swift */; };
+		24C834282623168400E45CE5 /* RepostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834272623168400E45CE5 /* RepostModel.swift */; };
+		24C8342D262316C200E45CE5 /* DetailRespostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */; };
+		24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8343426241BEF00E45CE5 /* ContentLabel.swift */; };
+		24C8346126243A1A00E45CE5 /* String+OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */; };
+		24C8346626243A4000E45CE5 /* UILabel+OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */; };
+		24C8346B26243A5F00E45CE5 /* OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
@@ -151,6 +166,21 @@
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailContentView.swift; sourceTree = "<group>"; };
 		24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailRepostView.swift; sourceTree = "<group>"; };
+		24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListViewController.swift; sourceTree = "<group>"; };
+		24C833F92622FC5100E45CE5 /* DetailCommentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommentListViewController.swift; sourceTree = "<group>"; };
+		24C833FE2622FC8700E45CE5 /* DetailAttitudeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewController.swift; sourceTree = "<group>"; };
+		24C834032623099500E45CE5 /* StatusDetailRepostTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailRepostTabViewModel.swift; sourceTree = "<group>"; };
+		24C8340E262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailCommentTabViewModel.swift; sourceTree = "<group>"; };
+		24C83413262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailAttitudeTabViewModel.swift; sourceTree = "<group>"; };
+		24C83418262315F400E45CE5 /* DetailRepostListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListViewModel.swift; sourceTree = "<group>"; };
+		24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListService.swift; sourceTree = "<group>"; };
+		24C834222623165800E45CE5 /* DetailRepostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostTableCell.swift; sourceTree = "<group>"; };
+		24C834272623168400E45CE5 /* RepostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostModel.swift; sourceTree = "<group>"; };
+		24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRespostCellViewModel.swift; sourceTree = "<group>"; };
+		24C8343426241BEF00E45CE5 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
+		24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+OrangeLabel.swift"; sourceTree = "<group>"; };
+		24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+OrangeLabel.swift"; sourceTree = "<group>"; };
+		24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeLabel.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeListService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -312,6 +342,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24C833ED2622FB5000E45CE5 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				24C833EE2622FB5E00E45CE5 /* Repost */,
+				24C833EF2622FB6700E45CE5 /* Comment */,
+				24C833F02622FB9700E45CE5 /* Attitude */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		24C833EE2622FB5E00E45CE5 /* Repost */ = {
+			isa = PBXGroup;
+			children = (
+				24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */,
+				24C83418262315F400E45CE5 /* DetailRepostListViewModel.swift */,
+				24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */,
+				24C834222623165800E45CE5 /* DetailRepostTableCell.swift */,
+				24C834272623168400E45CE5 /* RepostModel.swift */,
+				24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */,
+			);
+			path = Repost;
+			sourceTree = "<group>";
+		};
+		24C833EF2622FB6700E45CE5 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				24C833F92622FC5100E45CE5 /* DetailCommentListViewController.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		24C833F02622FB9700E45CE5 /* Attitude */ = {
+			isa = PBXGroup;
+			children = (
+				24C833FE2622FC8700E45CE5 /* DetailAttitudeListViewController.swift */,
+			);
+			path = Attitude;
+			sourceTree = "<group>";
+		};
 		6743F5658FECDE936B065BA3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +521,7 @@
 		D68D3628260A1D92004A6630 /* StatusDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				24C833ED2622FB5000E45CE5 /* Tabs */,
 				D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */,
 				D68D363C260A1E40004A6630 /* ViewModel */,
 				D68D3642260A1F16004A6630 /* View */,
@@ -472,6 +542,9 @@
 			isa = PBXGroup;
 			children = (
 				D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */,
+				24C834032623099500E45CE5 /* StatusDetailRepostTabViewModel.swift */,
+				24C8340E262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift */,
+				24C83413262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -555,7 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				D6A2267E25EE3B1800E3E767 /* Router.swift */,
-				D6A225BD25EE3AEF00E3E767 /* MNLabel */,
+				D6A225BD25EE3AEF00E3E767 /* Label */,
 				D6A225BF25EE3AEF00E3E767 /* Network */,
 				D6A225C525EE3AEF00E3E767 /* Emoji */,
 				D6A225D325EE3AEF00E3E767 /* SQLite */,
@@ -566,12 +639,16 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		D6A225BD25EE3AEF00E3E767 /* MNLabel */ = {
+		D6A225BD25EE3AEF00E3E767 /* Label */ = {
 			isa = PBXGroup;
 			children = (
 				D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */,
+				24C8343426241BEF00E45CE5 /* ContentLabel.swift */,
+				24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */,
+				24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */,
+				24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */,
 			);
-			path = MNLabel;
+			path = Label;
 			sourceTree = "<group>";
 		};
 		D6A225BF25EE3AEF00E3E767 /* Network */ = {
@@ -1079,6 +1156,8 @@
 				D6A2264225EE3AEF00E3E767 /* UIImage+MNExtensions.swift in Sources */,
 				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
+				24C83414262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift in Sources */,
+				24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
@@ -1096,6 +1175,7 @@
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
+				24C8346B26243A5F00E45CE5 /* OrangeLabel.swift in Sources */,
 				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
@@ -1113,18 +1193,23 @@
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */,
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
+				24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
+				24C8346626243A4000E45CE5 /* UILabel+OrangeLabel.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
+				24C8346126243A1A00E45CE5 /* String+OrangeLabel.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
 				D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
+				24C833FA2622FC5100E45CE5 /* DetailCommentListViewController.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Extension.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
+				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
 				D68D3649260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift in Sources */,
 				D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */,
@@ -1146,13 +1231,17 @@
 				D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */,
 				249BC8742610BD1100589656 /* UserProfileService.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
+				24C8342D262316C200E45CE5 /* DetailRespostCellViewModel.swift in Sources */,
+				24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */,
 				24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */,
+				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
 				D68D3644260A2055004A6630 /* StatusDetailTopBar.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,
+				24C8340F262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift in Sources */,
 				D6A2264925EE3AEF00E3E767 /* MNMTRefreshView.swift in Sources */,
 				24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */,
 				D6A2263A25EE3AEF00E3E767 /* MNSQLiteManager.swift in Sources */,
@@ -1160,12 +1249,14 @@
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2266025EE3AF000E3E767 /* MNMessageViewController.swift in Sources */,
 				D6A2264A25EE3AEF00E3E767 /* MNRefreshView.swift in Sources */,
+				24C833F22622FC1E00E45CE5 /* DetailRepostListViewController.swift in Sources */,
 				D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */,
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
+				24C834282623168400E45CE5 /* RepostModel.swift in Sources */,
 				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
 				D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */,
 				D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */,
@@ -1178,6 +1269,7 @@
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
 				D63D518A260745830034FDB3 /* AccountManager.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
+				24C8341E2623161D00E45CE5 /* DetailRepostListService.swift in Sources */,
 				D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */,
 				D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */,
 			);
