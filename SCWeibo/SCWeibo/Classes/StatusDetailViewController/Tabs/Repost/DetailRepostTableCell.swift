@@ -12,7 +12,7 @@ class DetailRepostTableCell: UITableViewCell {
 
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
-    let contentLabel = UILabel()
+    let contentLabel = ContentLabel()
     let timeLabel = UILabel()
     let bottomSeperator = UIView()
 
@@ -46,7 +46,8 @@ extension DetailRepostTableCell {
         }
 
         nameLabel.text = viewModel.screenName
-        contentLabel.attributedText = viewModel.commentAttrText
+        contentLabel.textModel = viewModel.commentLabelModel
+        
         timeLabel.text = viewModel.createdAt
 
         setNeedsLayout()
@@ -70,6 +71,7 @@ private extension DetailRepostTableCell {
         contentLabel.textColor = UIColor.black
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont.systemFont(ofSize: 15)
+        contentLabel.delegate = self
 
         timeLabel.textColor = UIColor.sc.color(with: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
@@ -95,4 +97,12 @@ private extension DetailRepostTableCell {
 @objc private extension DetailRepostTableCell {
     func avatarDidClicked(tap: UITapGestureRecognizer) {
     }
+}
+
+extension DetailRepostTableCell: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
+        <#code#>
+    }
+    
+    
 }

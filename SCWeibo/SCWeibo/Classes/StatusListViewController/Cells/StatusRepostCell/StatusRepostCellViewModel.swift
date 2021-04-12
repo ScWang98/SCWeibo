@@ -13,12 +13,12 @@ class StatusRepostCellViewModel {
     var avatarUrl: String?
     var source: String?
     var createdAt: String?
-    var statusAttrText: NSAttributedString?
+    var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
     var commentTitle: String?
     var likeTitle: String?
-    var repostAttrText: NSAttributedString?
+    var repostLabelModel: ContentLabelTextModel?
 
     init(with model: StatusResponse) {
         status = model
@@ -28,7 +28,7 @@ class StatusRepostCellViewModel {
 
 private extension StatusRepostCellViewModel {
     func parseProperties() {
-        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
+        statusLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
         picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -39,7 +39,8 @@ private extension StatusRepostCellViewModel {
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
         let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
         let repostFontSize = UIFont.systemFont(ofSize: 14)
-        repostAttrText = MNEmojiManager.shared.getEmojiString(string: repostStr, font: repostFontSize)
+        repostLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: repostStr, font: repostFontSize)
+        
     }
 
     private func countSting(count: Int, defaultStr: String) -> String {
@@ -62,7 +63,7 @@ extension StatusRepostCellViewModel: StatusCellViewModel {
 
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
 
         let repostHeight = StatusRepostView.height(for: self)

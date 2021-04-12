@@ -22,12 +22,12 @@ class StatusDetailViewModel {
     var avatarUrl: String?
     var source: String?
     var createdAt: String?
-    var statusAttrText: NSAttributedString?
+    var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
     var commentTitle: String?
     var likeTitle: String?
-    var repostAttrText: NSAttributedString?
+    var repostLabelModel: ContentLabelTextModel?
 
     let repostTabViewModel = StatusDetailRepostTabViewModel()
     let commentTabViewModel = StatusDetailCommentTabViewModel()
@@ -84,7 +84,7 @@ class StatusDetailViewModel {
 
 private extension StatusDetailViewModel {
     func parseStatusResponse(status: StatusResponse) {
-        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
+        statusLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -96,7 +96,7 @@ private extension StatusDetailViewModel {
         let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
         let repostFontSize = UIFont.systemFont(ofSize: 14)
         if status.retweetedStatus != nil {
-            repostAttrText = MNEmojiManager.shared.getEmojiString(string: repostStr, font: repostFontSize)
+            repostLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: repostStr, font: repostFontSize)
             picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
         }
     }

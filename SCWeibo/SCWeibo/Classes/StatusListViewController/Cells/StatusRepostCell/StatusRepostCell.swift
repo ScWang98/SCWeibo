@@ -12,7 +12,7 @@ class StatusRepostCell: UITableViewCell {
 
     let topSeperatorView = UIView()
     let topToolBar = StatusTopToolBar()
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let repostView = StatusRepostView()
     let bottomToolBar = StatusBottomToolBar()
 
@@ -38,7 +38,7 @@ extension StatusRepostCell: StatusCell {
         }
         self.viewModel = viewModel
         topToolBar.reload(with: viewModel)
-        contentLabel.attributedText = viewModel.statusAttrText
+        contentLabel.textModel = viewModel.statusLabelModel
         repostView.reload(with: viewModel)
         bottomToolBar.reload(with: viewModel)
 
@@ -84,12 +84,7 @@ private extension StatusRepostCell {
     }
 }
 
-extension StatusRepostCell: MNLabelDelegate {
-    func labelDidSelectedLinkText(label: MNLabel, text: String) {
-        if !text.hasPrefix("http") {
-            return
-        }
-//        delegate?.homeCellDidClickUrlString?(cell: self, urlStr: text)
-        print("homeCellDidClickUrlString")
+extension StatusRepostCell: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

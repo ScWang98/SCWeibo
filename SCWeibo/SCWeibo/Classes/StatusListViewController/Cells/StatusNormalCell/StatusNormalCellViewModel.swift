@@ -13,7 +13,7 @@ class StatusNormalCellViewModel {
     var avatarUrl: String?
     var source: String?
     var createdAt: String?
-    var statusAttrText: NSAttributedString?
+    var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
     var commentTitle: String?
@@ -27,7 +27,7 @@ class StatusNormalCellViewModel {
 
 private extension StatusNormalCellViewModel {
     func parseProperties() {
-        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        statusLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -58,7 +58,7 @@ extension StatusNormalCellViewModel: StatusCellViewModel {
 
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
 
         let imageHeight = StatusPicturesView.height(for: picUrls ?? [])

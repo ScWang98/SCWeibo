@@ -11,7 +11,7 @@ class StatusDetailContentView: UIView {
     var viewModel: StatusDetailViewModel?
 
     let authorInfoBar = StatusDetailAuthorInfoBar()
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let repostView = StatusDetailRepostView()
     let picturesView = StatusPicturesView()
 
@@ -36,9 +36,9 @@ extension StatusDetailContentView {
     func reload(with viewModel: StatusDetailViewModel) {
         self.viewModel = viewModel
         authorInfoBar.reload(with: viewModel)
-        contentLabel.attributedText = viewModel.statusAttrText
+        contentLabel.textModel = viewModel.statusLabelModel
 
-        if viewModel.repostAttrText != nil {
+        if viewModel.repostLabelModel != nil {
             repostView.isHidden = false
             repostView.reload(with: viewModel)
             picturesView.isHidden = true
@@ -58,11 +58,11 @@ extension StatusDetailContentView {
 
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = viewModel.statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
         totalHeight += textHeight
 
-        if viewModel.repostAttrText != nil {
+        if viewModel.repostLabelModel != nil {
             let repostHeight = StatusDetailRepostView.height(for: viewModel)
             totalHeight += repostHeight
         } else if let picUrls = viewModel.picUrls {
@@ -98,7 +98,7 @@ private extension StatusDetailContentView {
 
         let width = self.width - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = viewModel.statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
         contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: self.width - 12 * 2, height: textHeight)
 
@@ -112,12 +112,7 @@ private extension StatusDetailContentView {
     }
 }
 
-extension StatusDetailContentView: MNLabelDelegate {
-    func labelDidSelectedLinkText(label: MNLabel, text: String) {
-        if !text.hasPrefix("http") {
-            return
-        }
-//        delegate?.homeCellDidClickUrlString?(cell: self, urlStr: text)
-        print("homeCellDidClickUrlString")
+extension StatusDetailContentView: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

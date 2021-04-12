@@ -10,7 +10,7 @@ import UIKit
 class StatusRepostView: UIView {
     var viewModel: StatusRepostCellViewModel?
 
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
 
     override init(frame: CGRect) {
@@ -30,7 +30,7 @@ class StatusRepostView: UIView {
     func reload(with viewModel: StatusRepostCellViewModel) {
         self.viewModel = viewModel
 
-        contentLabel.attributedText = viewModel.repostAttrText
+        contentLabel.textModel = viewModel.repostLabelModel
         picturesView.reload(with: viewModel.picUrls ?? [])
 
         setNeedsLayout()
@@ -39,7 +39,7 @@ class StatusRepostView: UIView {
     static func height(for viewModel: StatusRepostCellViewModel) -> CGFloat {
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.repostAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = viewModel.repostLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
 
         let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [])
@@ -51,12 +51,13 @@ class StatusRepostView: UIView {
 
 private extension StatusRepostView {
     func setupSubviews() {
-        self.backgroundColor = UIColor.sc.color(with: 0xF7F7F7FF)
+        backgroundColor = UIColor.sc.color(with: 0xF7F7F7FF)
 
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: 14)
         contentLabel.textColor = UIColor.darkGray
+        contentLabel.delegate = self
 
         addSubview(contentLabel)
         addSubview(picturesView)
@@ -64,8 +65,13 @@ private extension StatusRepostView {
 
     func setupLayout() {
         let gap: CGFloat = 12
-        let picHeight = StatusPicturesView.height(for: self.viewModel?.picUrls ?? [])
-        picturesView.anchorToEdge(.bottom, padding: gap, width: self.width - gap * 2, height: picHeight)
-        contentLabel.anchorToEdge(.top, padding: gap, width: self.width - gap * 2, height: picturesView.top - gap * 2)
+        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [])
+        picturesView.anchorToEdge(.bottom, padding: gap, width: width - gap * 2, height: picHeight)
+        contentLabel.anchorToEdge(.top, padding: gap, width: width - gap * 2, height: picturesView.top - gap * 2)
+    }
+}
+
+extension StatusRepostView: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

@@ -8,252 +8,187 @@
 import UIKit
 
 protocol ContentLabelDelegate: class {
-    func contentLabel(label: ContentLabel, didTapText text:String, schema: String)
+    func contentLabel(label: ContentLabel, didTapSchema: String)
+}
+
+public class ContentLabelTextModel {
+    var text: NSMutableAttributedString
+    var schemas = [SchemaModel]()
+
+    init(text: NSMutableAttributedString) {
+        self.text = text
+    }
+
+    class SchemaModel {
+        var range: NSRange
+        var schema: String
+
+        init(range: NSRange, schema: String) {
+            self.range = range
+            self.schema = schema
+        }
+    }
 }
 
 public class ContentLabel: UILabel {
     weak var delegate: ContentLabelDelegate?
 
-    public var linkTextColor = UIColor.sc.color(with: 0x647cadFF)
+    public var linkTextColor = UIColor.sc.color(with: 0x647CADFF)
     public var selectedBackgroudColor = UIColor.lightGray
-    
-    // MARK: - override properties
-    override public var text: String? {
-        didSet {
-            updateTextStorage()
-        }
-    }
-    
-    override public var attributedText: NSAttributedString? {
-        didSet {
-            updateTextStorage()
-        }
-    }
-    
-    override public var font: UIFont! {
-        didSet {
-            updateTextStorage()
-        }
-    }
-    
-    override public var textColor: UIColor! {
-        didSet {
-            updateTextStorage()
-        }
-    }
-    
-    // MARK: - upadte text storage and redraw text
-    private func updateTextStorage() {
-        if attributedText == nil {
-            return
-        }
 
-        let attrStringM = addLineBreak(attributedText!)
-        regexLinkRanges(attrStringM)
-        addLinkAttribute(attrStringM)
-        
-        textStorage.setAttributedString(attrStringM)
-        
-        setNeedsDisplay()
+    public var textModel: ContentLabelTextModel? {
+        didSet {
+            parseTextModel()
+        }
     }
-    
-    public override func drawText(in rect: CGRect) {
+
+    // MARK: - upadte text storage and redraw text
+
+    override public func drawText(in rect: CGRect) {
         let range = glyphsRange()
         let offset = glyphsOffset(range)
 
         layoutManager.drawBackground(forGlyphRange: range, at: offset)
         layoutManager.drawGlyphs(forGlyphRange: range, at: CGPoint.zero)
     }
-    
+
     private func glyphsRange() -> NSRange {
         return NSRange(location: 0, length: textStorage.length)
     }
-    
+
     private func glyphsOffset(_ range: NSRange) -> CGPoint {
         let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
         let height = (bounds.height - rect.height) * 0.5
-        
+
         return CGPoint(x: 0, y: height)
     }
-    
-    private func modifySelectedAttribute(_ isSet: Bool) {
-        if selectedRange == nil {
-            return
-        }
-        
+
+    private func modifySelectedAttribute(_ range: NSRange, _ selected: Bool) {
         var attributes = textStorage.attributes(at: 0, effectiveRange: nil)
         attributes[NSAttributedString.Key.foregroundColor] = linkTextColor
-        let range = selectedRange!
-        
-        if isSet {
-            attributes[NSAttributedString.Key.backgroundColor] = selectedBackgroudColor
-        } else {
-            attributes[NSAttributedString.Key.backgroundColor] = UIColor.clear
-            selectedRange = nil
-        }
-        
+        attributes[NSAttributedString.Key.backgroundColor] = selected ? selectedBackgroudColor : UIColor.clear
+
         textStorage.addAttributes(attributes, range: range)
-        
+
         setNeedsDisplay()
     }
-    
-    private func linkRangeAtLocation(_ location: CGPoint) -> NSRange? {
-        if textStorage.length == 0 {
+
+    private func hyperLinkSchema(at location: CGPoint) -> ContentLabelTextModel.SchemaModel? {
+        guard let textModel = textModel,
+              textStorage.length != 0 else {
             return nil
         }
-        
+
         let offset = glyphsOffset(glyphsRange())
         let point = CGPoint(x: offset.x + location.x, y: offset.y + location.y)
         let index = layoutManager.glyphIndex(for: point, in: textContainer)
-        
-        for range in linkRanges {
+
+        for schema in textModel.schemas {
+            let range = schema.range
             if index >= range.location && index <= range.location + range.length {
-                return range
+                return schema
             }
         }
-        
+
         return nil
     }
-    
+
     // MARK: - init functions
+
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         prepareLabel()
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         prepareLabel()
     }
-    
-    public override func layoutSubviews() {
+
+    override public func layoutSubviews() {
         super.layoutSubviews()
-        
+
         textContainer.size = bounds.size
     }
-    
+
     private func prepareLabel() {
         textStorage.addLayoutManager(layoutManager)
         layoutManager.addTextContainer(textContainer)
         textContainer.lineFragmentPadding = 0
         isUserInteractionEnabled = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hyperLinkDidTap(tap:)))
+        tap.delegate = self
+        addGestureRecognizer(tap)
     }
-    
+
     // MARK: lazy properties
-    private lazy var linkRanges = [NSRange]()
-    private var selectedRange: NSRange?
     private lazy var textStorage = NSTextStorage()
     private lazy var layoutManager = NSLayoutManager()
     private lazy var textContainer = NSTextContainer()
 }
 
-//MARK: - Touch Event
-extension ContentLabel{
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let location = touches.first!.location(in: self)
-        
-        selectedRange = linkRangeAtLocation(location)
-        modifySelectedAttribute(true)
-    }
-    
-    override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let location = touches.first!.location(in: self)
-        
-        if let range = linkRangeAtLocation(location) {
-            if !(range.location == selectedRange?.location && range.length == selectedRange?.length) {
-                modifySelectedAttribute(false)
-                selectedRange = range
-                modifySelectedAttribute(true)
-            }
-        } else {
-            modifySelectedAttribute(false)
+// MARK: - Touch Event
+
+extension ContentLabel: UIGestureRecognizerDelegate {
+    override public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let tap = gestureRecognizer as? UITapGestureRecognizer {
+            let location = tap.location(in: self)
+            return hyperLinkSchema(at: location) != nil
         }
+        return true
     }
-    
-    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if selectedRange != nil {
-            let text = (textStorage.string as NSString).substring(with: selectedRange!)
-//            delegate?.labelDidSelectedLinkText?(label: self, text: text)
-            
-            let when = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: when) {
-                self.modifySelectedAttribute(false)
-            }
+
+    @objc func hyperLinkDidTap(tap: UITapGestureRecognizer) {
+        let location = tap.location(in: self)
+        guard let schema = hyperLinkSchema(at: location) else {
+            return
         }
-    }
-    
-    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        modifySelectedAttribute(false)
+
+        modifySelectedAttribute(schema.range, true)
+        delegate?.contentLabel(label: self, didTapSchema: schema.schema)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.modifySelectedAttribute(schema.range, false)
+        }
     }
 }
 
-//MARK: - Link attribute
-private extension ContentLabel{
-    
+// MARK: - Link attribute
+
+private extension ContentLabel {
     func addLinkAttribute(_ attrStringM: NSMutableAttributedString) {
-        if attrStringM.length == 0 {
+        guard let textModel = textModel,
+              attrStringM.length != 0 else {
             return
         }
-        
+
         var range = NSRange(location: 0, length: 0)
         var attributes = attrStringM.attributes(at: 0, effectiveRange: &range)
-        
+
         attributes[NSAttributedString.Key.font] = font
         attributes[NSAttributedString.Key.foregroundColor] = textColor
         attrStringM.addAttributes(attributes, range: range)
-        
+
         attributes[NSAttributedString.Key.foregroundColor] = linkTextColor
-        
-        for range in linkRanges {
+
+        for schema in textModel.schemas {
+            let range = schema.range
             attrStringM.setAttributes(attributes, range: range)
         }
     }
-    
-    func regexLinkRanges(_ attrString: NSAttributedString) {
-        linkRanges.removeAll()
-        
-        //FIXME: regexRange
-        /// use regex check all link ranges
-        let patterns = ["[a-zA-Z]*://[a-zA-Z0-9/\\.]*", //url
-            "#.*?#",//话题
-            "@[\\u4e00-\\u9fa5a-zA-Z0-9_-]*"]//@xxx
-        let regexRange = NSRange(location: 0, length: attrString.string.count)
-        for pattern in patterns {
-            let regex = try! NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.dotMatchesLineSeparators)
-            let results = regex.matches(in: attrString.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: regexRange)
-            
-            for range in results {
-                linkRanges.append(range.range(at: 0))
-            }
+
+    private func parseTextModel() {
+        guard let textModel = textModel else {
+            return
         }
-    }
-    
-    /// add line break mode
-    private func addLineBreak(_ attrString: NSAttributedString) -> NSMutableAttributedString {
-        let attrStringM = NSMutableAttributedString(attributedString: attrString)
-        
-        if attrStringM.length == 0 {
-            return attrStringM
-        }
-        
-        var range = NSRange(location: 0, length: 0)
-        var attributes = attrStringM.attributes(at: 0, effectiveRange: &range)
-        var paragraphStyle = attributes[NSAttributedString.Key.paragraphStyle] as? NSMutableParagraphStyle
-        
-        if paragraphStyle != nil {
-            paragraphStyle!.lineBreakMode = NSLineBreakMode.byWordWrapping
-        } else {
-            // iOS 8.0 can not get the paragraphStyle directly
-            paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle!.lineBreakMode = NSLineBreakMode.byWordWrapping
-            attributes[NSAttributedString.Key.paragraphStyle] = paragraphStyle
-            
-            attrStringM.setAttributes(attributes, range: range)
-        }
-        
-        return attrStringM
+
+        let attrString = NSMutableAttributedString(attributedString: textModel.text)
+        addLinkAttribute(attrString)
+
+        textStorage.setAttributedString(attrString)
+        attributedText = attrString
     }
 }
-

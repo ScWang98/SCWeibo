@@ -11,18 +11,8 @@ class DetailRespostCellViewModel {
     var model: RepostModel
     var avatarUrl: String?
     var screenName: String?
-    var commentAttrText: NSAttributedString?
+    var commentLabelModel: ContentLabelTextModel?
     var createdAt: String?
-    
-//    var status: StatusResponse
-//    var screenName: String?
-//    var avatarUrl: String?
-//    var source: String?
-//    var createdAt: String?
-//    var picUrls: [StatusPicturesModel]?
-//    var repostTitle: String?
-//    var commentTitle: String?
-//    var likeTitle: String?
 
     init(with model: RepostModel) {
         self.model = model
@@ -39,7 +29,7 @@ extension DetailRespostCellViewModel {
         
         let width = UIScreen.sc.screenWidth - 26 - 67
         let textSize = CGSize(width: width, height: 0)
-        let rect = commentAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = commentLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
         
         return avatarHeight + timeLabelHeight + textHeight
@@ -50,7 +40,7 @@ private extension DetailRespostCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
-        commentAttrText = MNEmojiManager.shared.getEmojiString(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        commentLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
         createdAt = Date.mn_sinaDate(string: model.createdAt)?.mn_dateDescription
     }
 }

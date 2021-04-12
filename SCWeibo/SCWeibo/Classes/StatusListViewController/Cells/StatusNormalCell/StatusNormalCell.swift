@@ -12,7 +12,7 @@ class StatusNormalCell: UITableViewCell {
 
     let topSeperatorView = UIView()
     let topToolBar = StatusTopToolBar()
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
     let bottomToolBar = StatusBottomToolBar()
 
@@ -38,7 +38,7 @@ extension StatusNormalCell: StatusCell {
         }
         self.viewModel = viewModel
         topToolBar.reload(with: viewModel)
-        contentLabel.attributedText = viewModel.statusAttrText
+        contentLabel.textModel = viewModel.statusLabelModel
         picturesView.reload(with: viewModel.picUrls ?? [])
         bottomToolBar.reload(with: viewModel)
 
@@ -84,12 +84,7 @@ private extension StatusNormalCell {
     }
 }
 
-extension StatusNormalCell: MNLabelDelegate {
-    func labelDidSelectedLinkText(label: MNLabel, text: String) {
-        if !text.hasPrefix("http") {
-            return
-        }
-//        delegate?.homeCellDidClickUrlString?(cell: self, urlStr: text)
-        print("homeCellDidClickUrlString")
+extension StatusNormalCell: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

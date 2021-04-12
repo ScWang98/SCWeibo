@@ -5,8 +5,8 @@
 //  Created by scwang on 2020/4/12.
 //
 
-import UIKit
 import Kanna
+import UIKit
 
 class MNEmojiManager {
     static let shared = MNEmojiManager()
@@ -74,29 +74,29 @@ extension MNEmojiManager {
         return nil
     }
 
-    func replaceHTMLString(withString string: String) -> NSMutableAttributedString {
+    func replaceHTMLString(withString string: String, font: UIFont) -> NSMutableAttributedString {
         let attrString = NSMutableAttributedString(string: string)
+        let labelModel = ContentLabelTextModel(text: attrString)
 
         // 替换emoji
-        let emojiPatternFrom = "<span.*?img.*?\\[.*?\\].*?</span>"
-        let emojiPatternTo = "\\[.*?\\]"
-        replace(string: attrString, with: emojiPatternFrom, patternTo: emojiPatternTo)
+//        replaceEmoji(labelModel: labelModel, font: font)
 
         // 替换换行符
-        let wrapPatternFrom = "<br.*?/>"
-        let wrapStringTo = "\n"
-        replace(string: attrString, with: wrapPatternFrom, stringTo: wrapStringTo)
+        replaceWrap(labelModel: labelModel)
 
-        // 替换转发链接
-        let linkPatternFrom = "<a href=.*?>@.*?</a>"
-        let linkPatternTo = "@.*?(?=</a>)"
-        replace(string: attrString, with: linkPatternFrom, patternTo: linkPatternTo)
+        // 替换如 <a href=xxxx>@xxxxxx</a> 为 @xxxxxx
+        replaceUserHref(labelModel: labelModel)
+
+        // 替换查看图片
+        replacePhotoPreview(labelModel: labelModel)
 
         return attrString
     }
 
-    func replace(string: NSMutableAttributedString, with patternFrom: String, patternTo: String? = nil, stringTo: String? = nil) {
-        guard let regx = try? NSRegularExpression(pattern: patternFrom, options: []) else {
+    func replaceEmojiHTML(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let pattern = "<span.*?img.*?(\\[.*?\\]).*?</span>"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
             return
         }
 
@@ -104,57 +104,145 @@ extension MNEmojiManager {
 
         for result in matchs.reversed() {
             let range = result.range
-            let subStr = string.attributedSubstring(from: range)
-
-            let toStr: NSAttributedString
-
-            if let patternTo = patternTo {
-                // 在子串中找替换的串
-                guard let regx = try? NSRegularExpression(pattern: patternTo, options: []) else {
-                    continue
-                }
-
-                guard let toRange = regx.firstMatch(in: subStr.string, options: [], range: NSRange(location: 0, length: subStr.length))?.range else {
-                    continue
-                }
-
-                toStr = subStr.attributedSubstring(from: toRange)
-            } else if let stringTo = stringTo {
-                // 将子串替换为传入的串
-                toStr = NSAttributedString(string: stringTo)
-            } else {
-                // 删除子串
-                toStr = NSAttributedString(string: "")
-            }
-
+            let toRange = result.range(at: 1)
+            let toStr = string.attributedSubstring(from: toRange)
             string.replaceCharacters(in: range, with: toStr)
         }
+    }
 
-        return
+    func replaceEmojiToAttachment(labelModel: ContentLabelTextModel, font: UIFont) {
+        let string = labelModel.text
+        let pattern = "\\[.*?\\]"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let range = result.range
+            let emoji = string.attributedSubstring(from: range).string
+
+            guard let emojiAttr = findEmoji(string: emoji)?.imageText(font: font) else {
+                continue
+            }
+            string.replaceCharacters(in: range, with: emojiAttr)
+
+            let toLength = emojiAttr.length
+            let offset = range.length - toLength
+            for schemaModel in labelModel.schemas {
+                if schemaModel.range.location > range.location {
+                    schemaModel.range.location -= offset
+                }
+            }
+        }
+    }
+
+    func replaceWrap(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let pattern = "<br.*?/>"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let fromRange = result.range
+            string.replaceCharacters(in: fromRange, with: "\n")
+        }
+    }
+
+    func replaceUserHref(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let pattern = "<a href=.*?>(@.*?)</a>"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let fromRange = result.range
+            let toRange = result.range(at: 1)
+            let toStr = string.attributedSubstring(from: toRange)
+
+            string.replaceCharacters(in: fromRange, with: toStr)
+
+            let newRange = NSRange(location: fromRange.location, length: toRange.length)
+            let offset = fromRange.length - toRange.length
+            for schemaModel in labelModel.schemas {
+                if schemaModel.range.location > newRange.location {
+                    schemaModel.range.location -= offset
+                }
+            }
+            let schema = String(format: "pillar://userProfile?user_name=%@", toStr.string.sc.stringByURLEncode)
+            let schemaModel = ContentLabelTextModel.SchemaModel(range: newRange, schema: schema)
+            labelModel.schemas.append(schemaModel)
+        }
+    }
+
+    func replacePhotoPreview(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let patternFrom = "<a.*?href=\"(.*?)\">.*?(查看图片).*?</a>"
+        guard let regx = try? NSRegularExpression(pattern: patternFrom, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let fromRange = result.range
+            let toRange = result.range(at: 2)
+            let toStr = string.attributedSubstring(from: toRange)
+            let hrefStr = string.attributedSubstring(from: result.range(at: 1)).string
+
+            string.replaceCharacters(in: fromRange, with: toStr)
+            let newRange = NSRange(location: fromRange.location, length: toRange.length)
+            let offset = fromRange.length - toRange.length
+            for schemaModel in labelModel.schemas {
+                if schemaModel.range.location > newRange.location {
+                    schemaModel.range.location -= offset
+                }
+            }
+            let schema = String(format: "pillar://photoPreview?url=%@", hrefStr.sc.stringByURLEncode)
+            let schemaModel = ContentLabelTextModel.SchemaModel(range: newRange, schema: schema)
+            labelModel.schemas.append(schemaModel)
+        }
     }
 
     func getEmojiString(string: String, font: UIFont) -> NSAttributedString {
-        let attrStr = replaceHTMLString(withString: string)
-        let pattern = "\\[.*?\\]"
-
-        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
-            return attrStr
-        }
-
-        let matchs = regx.matches(in: attrStr.string, options: [], range: NSRange(location: 0, length: attrStr.length))
-
-        for result in matchs.reversed() {
-            let range = result.range(at: 0)
-            let subStr = (attrStr.string as NSString).substring(with: range)
-
-            if let model = findEmoji(string: subStr) {
-                attrStr.replaceCharacters(in: range, with: model.imageText(font: font))
-            }
-        }
+        let attrStr = replaceHTMLString(withString: string, font: font)
 
         attrStr.addAttributes([NSAttributedString.Key.font: font,
                                NSAttributedString.Key.foregroundColor: UIColor.darkGray],
                               range: NSRange(location: 0, length: attrStr.length))
         return attrStr
+    }
+
+    func parseTextWithHTML(string: String, font: UIFont) -> ContentLabelTextModel {
+        let attrString = NSMutableAttributedString(string: string)
+        let labelModel = ContentLabelTextModel(text: attrString)
+
+        // 替换emoji的H5标签为 [xxx]
+        replaceEmojiHTML(labelModel: labelModel)
+
+        // 替换换行符
+        replaceWrap(labelModel: labelModel)
+
+        // 替换如 <a href=xxxx>@xxxxxx</a> 为 @xxxxxx
+        replaceUserHref(labelModel: labelModel)
+
+        // 替换查看图片
+        replacePhotoPreview(labelModel: labelModel)
+
+        // 替换 [xxx] 为NSAttachment
+        replaceEmojiToAttachment(labelModel: labelModel, font: font)
+
+        labelModel.text.addAttributes([NSAttributedString.Key.font: font,
+                                       NSAttributedString.Key.foregroundColor: UIColor.darkGray],
+                                      range: NSRange(location: 0, length: labelModel.text.length))
+
+        return labelModel
     }
 }

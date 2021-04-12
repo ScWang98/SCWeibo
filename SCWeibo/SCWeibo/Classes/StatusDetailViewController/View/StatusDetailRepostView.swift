@@ -10,7 +10,7 @@ import UIKit
 class StatusDetailRepostView: UIView {
     var viewModel: StatusDetailViewModel?
 
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
 
     override init(frame: CGRect) {
@@ -30,7 +30,7 @@ class StatusDetailRepostView: UIView {
     func reload(with viewModel: StatusDetailViewModel) {
         self.viewModel = viewModel
 
-        contentLabel.attributedText = viewModel.repostAttrText
+        contentLabel.textModel = viewModel.repostLabelModel
         picturesView.reload(with: viewModel.picUrls ?? [])
 
         setNeedsLayout()
@@ -39,7 +39,7 @@ class StatusDetailRepostView: UIView {
     static func height(for viewModel: StatusDetailViewModel) -> CGFloat {
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.repostAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = viewModel.repostLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
 
         let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [])
@@ -57,6 +57,7 @@ private extension StatusDetailRepostView {
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: 14)
         contentLabel.textColor = UIColor.darkGray
+        contentLabel.delegate = self
 
         addSubview(contentLabel)
         addSubview(picturesView)
@@ -67,5 +68,10 @@ private extension StatusDetailRepostView {
         let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [])
         picturesView.anchorToEdge(.bottom, padding: gap, width: width - gap * 2, height: picHeight)
         contentLabel.anchorToEdge(.top, padding: gap, width: width - gap * 2, height: picturesView.top - gap * 2)
+    }
+}
+
+extension StatusDetailRepostView: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }
