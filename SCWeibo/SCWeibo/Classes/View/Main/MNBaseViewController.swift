@@ -126,13 +126,13 @@ extension MNBaseViewController:LoginDelegate{
         
         navigationBar.items = [naviItem]
         //navigationBar background color
-        navigationBar.barTintColor = UIColor.sc.color(with: 0xF6F6F6FF)
+        navigationBar.barTintColor = UIColor.sc.color(RGBA: 0xF6F6F6FF)
         //set title color
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor : UIColor.darkGray
         ]
         //set system item title color
-        navigationBar.backgroundColor = UIColor.sc.color(with: 0xF6F6F6FF)
+        navigationBar.backgroundColor = UIColor.sc.color(RGBA: 0xF6F6F6FF)
     }
     
     //Mark: touch event

@@ -50,7 +50,7 @@ class StatusBottomToolBar: UIView {
         repostButton.mn_toolButton(type: .repost)
         commentsButton.mn_toolButton(type: .comments)
         likeButton.mn_toolButton(type: .like)
-        line.backgroundColor = UIColor.sc.color(with: 0xF2F2F2FF)
+        line.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
 
         addSubview(repostButton)
         addSubview(commentsButton)

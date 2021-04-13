@@ -48,7 +48,7 @@ extension StatusNormalCell: StatusCell {
 
 private extension StatusNormalCell {
     func setupSubviews() {
-        topSeperatorView.backgroundColor = UIColor.sc.color(with: 0xF2F2F2FF)
+        topSeperatorView.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
 
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0

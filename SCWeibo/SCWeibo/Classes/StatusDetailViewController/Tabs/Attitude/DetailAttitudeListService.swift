@@ -1,19 +1,21 @@
 //
-//  DetailRepostListService.swift
+//  DetailAttitudeListService.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/11.
+//  Created by wangshuchao on 2021/4/13.
 //
 
-import Alamofire
 import Foundation
 
-class DetailRepostListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [RepostModel]) -> Void) {
-        let URLString = URLSettings.repostTimeline
+import Alamofire
+
+class DetailAttitudeListService {
+    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [AttitudeModel]) -> Void) {
+        let URLString = URLSettings.attitudesShow
 
         var params = [String: Any]()
         params["id"] = "4624863745281204"
+        params["mid"] = "4624863745281204"
         params["page"] = 1
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
@@ -30,11 +32,11 @@ class DetailRepostListService {
                 isSuccess = false
             }
             
-            var results = [RepostModel]()
+            var results = [AttitudeModel]()
             if let dataDict: Dictionary<AnyHashable, Any> = jsonResult?.sc.dictionary(for: "data"),
                let dataArray: [Dictionary<AnyHashable, Any>] = dataDict.sc.array(for: "data") {
-                for repostItem in dataArray {
-                    results.append(RepostModel.init(dict: repostItem))
+                for attitudeItem in dataArray {
+                    results.append(AttitudeModel.init(dict: attitudeItem))
                 }
             }
             completion(isSuccess, results)

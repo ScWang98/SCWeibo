@@ -5,10 +5,10 @@
 //  Created by wangshuchao on 2021/4/11.
 //
 
-import UIKit
+import Foundation
 
 class DetailRepostListViewModel {
-    lazy var repostList = [DetailRespostCellViewModel]()
+    lazy var repostList = [DetailRepostCellViewModel]()
 
     var sinceId: String?
 
@@ -22,9 +22,9 @@ class DetailRepostListViewModel {
                 return
             }
 
-            var cellViewModels = [DetailRespostCellViewModel]()
+            var cellViewModels = [DetailRepostCellViewModel]()
             for repostModel in repostModels {
-                let viewModel = DetailRespostCellViewModel(with: repostModel)
+                let viewModel = DetailRepostCellViewModel(with: repostModel)
                 cellViewModels.append(viewModel)
             }
 

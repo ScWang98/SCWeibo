@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */; };
+		246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */; };
+		246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */; };
+		246EEA0C26258AA400DB0F1D /* AttitudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0B26258AA400DB0F1D /* AttitudeModel.swift */; };
+		246EEA1126258AC000DB0F1D /* DetailAttitudeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA1026258AC000DB0F1D /* DetailAttitudeCellViewModel.swift */; };
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
 		24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */; };
 		24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */; };
@@ -20,7 +25,7 @@
 		24C8341E2623161D00E45CE5 /* DetailRepostListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */; };
 		24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834222623165800E45CE5 /* DetailRepostTableCell.swift */; };
 		24C834282623168400E45CE5 /* RepostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834272623168400E45CE5 /* RepostModel.swift */; };
-		24C8342D262316C200E45CE5 /* DetailRespostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */; };
+		24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */; };
 		24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8343426241BEF00E45CE5 /* ContentLabel.swift */; };
 		24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */; };
@@ -161,6 +166,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewModel.swift; sourceTree = "<group>"; };
+		246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListService.swift; sourceTree = "<group>"; };
+		246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeTableCell.swift; sourceTree = "<group>"; };
+		246EEA0B26258AA400DB0F1D /* AttitudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttitudeModel.swift; sourceTree = "<group>"; };
+		246EEA1026258AC000DB0F1D /* DetailAttitudeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeCellViewModel.swift; sourceTree = "<group>"; };
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailContentView.swift; sourceTree = "<group>"; };
 		24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailRepostView.swift; sourceTree = "<group>"; };
@@ -174,7 +184,7 @@
 		24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListService.swift; sourceTree = "<group>"; };
 		24C834222623165800E45CE5 /* DetailRepostTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostTableCell.swift; sourceTree = "<group>"; };
 		24C834272623168400E45CE5 /* RepostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostModel.swift; sourceTree = "<group>"; };
-		24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRespostCellViewModel.swift; sourceTree = "<group>"; };
+		24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostCellViewModel.swift; sourceTree = "<group>"; };
 		24C8343426241BEF00E45CE5 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
 		24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHTMLParser.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeListService.swift; sourceTree = "<group>"; };
@@ -356,7 +366,7 @@
 				24C8341D2623161D00E45CE5 /* DetailRepostListService.swift */,
 				24C834222623165800E45CE5 /* DetailRepostTableCell.swift */,
 				24C834272623168400E45CE5 /* RepostModel.swift */,
-				24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */,
+				24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */,
 			);
 			path = Repost;
 			sourceTree = "<group>";
@@ -373,6 +383,11 @@
 			isa = PBXGroup;
 			children = (
 				24C833FE2622FC8700E45CE5 /* DetailAttitudeListViewController.swift */,
+				246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */,
+				246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */,
+				246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */,
+				246EEA0B26258AA400DB0F1D /* AttitudeModel.swift */,
+				246EEA1026258AC000DB0F1D /* DetailAttitudeCellViewModel.swift */,
 			);
 			path = Attitude;
 			sourceTree = "<group>";
@@ -1165,6 +1180,7 @@
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
+				246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */,
 				D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */,
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
@@ -1172,6 +1188,7 @@
 				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
+				246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
 				D64C45302602041400A63631 /* VideoResponse.swift in Sources */,
 				D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */,
@@ -1183,6 +1200,7 @@
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
 				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
+				246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */,
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */,
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
@@ -1220,9 +1238,10 @@
 				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
 				D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */,
+				246EEA0C26258AA400DB0F1D /* AttitudeModel.swift in Sources */,
 				249BC8742610BD1100589656 /* UserProfileService.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
-				24C8342D262316C200E45CE5 /* DetailRespostCellViewModel.swift in Sources */,
+				24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */,
 				24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */,
 				24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */,
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
@@ -1244,6 +1263,7 @@
 				D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */,
+				246EEA1126258AC000DB0F1D /* DetailAttitudeCellViewModel.swift in Sources */,
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,

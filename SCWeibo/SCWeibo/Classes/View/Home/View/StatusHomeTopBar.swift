@@ -33,12 +33,12 @@ class StatusHomeTopBar: UIView {
 
 private extension StatusHomeTopBar {
     func setupSubviews() {
-        backgroundColor = UIColor.sc.color(with: 0xF5F5F5FF)
+        backgroundColor = UIColor.sc.color(RGBA: 0xF5F5F5FF)
 
         avatarView.clipsToBounds = true
         avatarView.layer.cornerRadius = 15
         avatarView.layer.borderWidth = 1
-        avatarView.layer.borderColor = UIColor.sc.color(with: 0xD9D9D9FF).cgColor
+        avatarView.layer.borderColor = UIColor.sc.color(RGBA: 0xD9D9D9FF).cgColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarViewClickedAction(tap:)))
         avatarView.addGestureRecognizer(tap)
 
@@ -48,7 +48,7 @@ private extension StatusHomeTopBar {
         writeButton.sizeToFit()
         writeButton.addTarget(self, action: #selector(writeButtonClickedAction(button:)), for: .touchUpInside)
 
-        bottomLine.backgroundColor = UIColor.sc.color(with: 0xB2B2B2FF)
+        bottomLine.backgroundColor = UIColor.sc.color(RGBA: 0xB2B2B2FF)
 
         addSubview(avatarView)
         addSubview(writeButton)

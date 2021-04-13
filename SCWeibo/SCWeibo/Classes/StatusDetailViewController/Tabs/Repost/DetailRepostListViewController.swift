@@ -95,9 +95,8 @@ extension DetailRepostListViewController: UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let coverHeight = view.width * 9.0 / 16.0
-        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0
-        return height
+        let viewModel = listViewModel.repostList[indexPath.row]
+        return viewModel.cellHeight
     }
 }
 

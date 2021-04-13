@@ -10,7 +10,7 @@ import UIKit
 class DetailAttitudeListViewController: UIViewController {
     var tableView = UITableView()
 
-    private var listViewModel = VideosListViewModel()
+    private var listViewModel = DetailAttitudeListViewModel()
 
     var isPull: Bool = false
 
@@ -37,7 +37,7 @@ class DetailAttitudeListViewController: UIViewController {
 
 extension DetailAttitudeListViewController {
     func refreshData(with loadingState: Bool) {
-//        loadDatas()
+        loadDatas()
     }
 }
 
@@ -49,7 +49,7 @@ private extension DetailAttitudeListViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
-        tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
+        tableView.register(DetailAttitudeTableCell.self, forCellReuseIdentifier: String(describing: DetailAttitudeTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)
     }
@@ -78,16 +78,16 @@ private extension DetailAttitudeListViewController {
 
 extension DetailAttitudeListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listViewModel.videoList.count
+        return listViewModel.attitudeList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = listViewModel.videoList[indexPath.row]
+        let viewModel = listViewModel.attitudeList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTableCell.self), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailAttitudeTableCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-        if let cell = cell as? VideoTableCell {
+        if let cell = cell as? DetailAttitudeTableCell {
             cell.reload(with: viewModel)
         }
 
@@ -95,9 +95,7 @@ extension DetailAttitudeListViewController: UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let coverHeight = view.width * 9.0 / 16.0
-        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0
-        return height
+        return 60
     }
 }
 

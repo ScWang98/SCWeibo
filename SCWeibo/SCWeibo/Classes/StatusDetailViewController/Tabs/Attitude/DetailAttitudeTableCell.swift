@@ -1,19 +1,17 @@
 //
-//  DetailRepostTableCell.swift
+//  DetailAttitudeTableCell.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/11.
+//  Created by wangshuchao on 2021/4/13.
 //
 
 import UIKit
 
-class DetailRepostTableCell: UITableViewCell {
-    var viewModel: DetailRepostCellViewModel?
+class DetailAttitudeTableCell: UITableViewCell {
+    var viewModel: DetailAttitudeCellViewModel?
 
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
-    let contentLabel = ContentLabel()
-    let timeLabel = UILabel()
     let bottomSeperator = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,8 +31,8 @@ class DetailRepostTableCell: UITableViewCell {
 
 // MARK: - Public Methods
 
-extension DetailRepostTableCell {
-    func reload(with viewModel: DetailRepostCellViewModel) {
+extension DetailAttitudeTableCell {
+    func reload(with viewModel: DetailAttitudeCellViewModel) {
         self.viewModel = viewModel
 
         let placeholder = UIImage(named: "avatar_default_big")
@@ -46,9 +44,6 @@ extension DetailRepostTableCell {
         }
 
         nameLabel.text = viewModel.screenName
-        contentLabel.textModel = viewModel.commentLabelModel
-
-        timeLabel.text = viewModel.createdAt
 
         setNeedsLayout()
     }
@@ -56,12 +51,12 @@ extension DetailRepostTableCell {
 
 // MARK: - Private Methods
 
-private extension DetailRepostTableCell {
+private extension DetailAttitudeTableCell {
     func setupSubviews() {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
         avatarImageView.isUserInteractionEnabled = true
-        avatarImageView.layer.cornerRadius = 16
+        avatarImageView.layer.cornerRadius = 18
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(tap:)))
@@ -70,38 +65,26 @@ private extension DetailRepostTableCell {
         nameLabel.textColor = UIColor.black
         nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
 
-        contentLabel.textColor = UIColor.black
-        contentLabel.numberOfLines = 0
-        contentLabel.font = UIFont.systemFont(ofSize: 15)
-        contentLabel.delegate = self
-
-        timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
-        timeLabel.font = UIFont.systemFont(ofSize: 14)
-
-        bottomSeperator.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
+        bottomSeperator.backgroundColor = UIColor.sc.color(RGBA: 0xC7C6CBFF)
 
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(contentLabel)
-        contentView.addSubview(timeLabel)
         contentView.addSubview(bottomSeperator)
     }
 
     func setupLayout() {
-        avatarImageView.anchorInCorner(.topLeft, xPad: 20, yPad: 12, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: width - 70, height: 16)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 66, yPad: 8, width: width - 66, height: 16)
-        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1)
-        contentLabel.frame = CGRect(x: nameLabel.left, y: avatarImageView.bottom, width: width - nameLabel.left - 26, height: timeLabel.top - avatarImageView.bottom)
+        avatarImageView.anchorToEdge(.left, padding: 27, width: 36, height: 36)
+        nameLabel.align(.toTheRightCentered, relativeTo: avatarImageView, padding: 8, width: width - 71, height: 36)
+        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1 / UIScreen.main.scale)
     }
 }
 
-@objc private extension DetailRepostTableCell {
+@objc private extension DetailAttitudeTableCell {
     func avatarDidClicked(tap: UITapGestureRecognizer) {
     }
 }
 
-extension DetailRepostTableCell: ContentLabelDelegate {
+extension DetailAttitudeTableCell: ContentLabelDelegate {
     func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

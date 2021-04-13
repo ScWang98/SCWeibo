@@ -51,7 +51,7 @@ class StatusDetailRepostView: UIView {
 
 private extension StatusDetailRepostView {
     func setupSubviews() {
-        backgroundColor = UIColor.sc.color(with: 0xF7F7F7FF)
+        backgroundColor = UIColor.sc.color(RGBA: 0xF7F7F7FF)
 
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left

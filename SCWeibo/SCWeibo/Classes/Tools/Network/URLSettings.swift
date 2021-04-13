@@ -31,4 +31,8 @@ class URLSettings {
     class var repostTimeline: String {
         return h5BaseURL + "/api/statuses/repostTimeline"
     }
+    
+    class var attitudesShow: String {
+        return h5BaseURL + "/api/attitudes/show"
+    }
 }

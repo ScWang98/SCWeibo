@@ -10,7 +10,7 @@ import UIKit
 extension UIColor: UtilitiesWrapperable {}
 
 extension UtilitiesWrapper where Base == UIColor {
-    public static func color(with RGBA: Int) -> Base {
+    public static func color(RGBA: Int) -> Base {
         return color(red: CGFloat((RGBA & 0xFF000000) >> 24),
                      green: CGFloat((RGBA & 0xFF0000) >> 16),
                      blue: CGFloat((RGBA & 0xFF00) >> 8),

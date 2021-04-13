@@ -1,13 +1,13 @@
 //
-//  DetailRespostCellViewModel.swift
+//  DetailRepostCellViewModel.swift
 //  SCWeibo
 //
 //  Created by wangshuchao on 2021/4/11.
 //
 
-import UIKit
+import Foundation
 
-class DetailRespostCellViewModel {
+class DetailRepostCellViewModel {
     var model: RepostModel
     var avatarUrl: String?
     var screenName: String?
@@ -22,7 +22,7 @@ class DetailRespostCellViewModel {
 
 // MARK: - Public Methods
 
-extension DetailRespostCellViewModel {
+extension DetailRepostCellViewModel {
     var cellHeight: CGFloat {
         let avatarHeight: CGFloat = 44
         let timeLabelHeight: CGFloat = 24
@@ -36,7 +36,7 @@ extension DetailRespostCellViewModel {
     }
 }
 
-private extension DetailRespostCellViewModel {
+private extension DetailRepostCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName

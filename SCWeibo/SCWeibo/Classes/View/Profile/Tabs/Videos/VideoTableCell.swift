@@ -74,10 +74,10 @@ private extension VideoTableCell {
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
 
-        timeLabel.textColor = UIColor.sc.color(with: 0xAAAAAAFF)
+        timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
 
-        bottomSeperator.backgroundColor = UIColor.sc.color(with: 0xF2F2F2FF)
+        bottomSeperator.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
 
         contentView.addSubview(coverView)
         contentView.addSubview(titleLabel)
