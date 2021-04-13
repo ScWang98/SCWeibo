@@ -5,7 +5,6 @@
 //  Created by scwang on 2020/4/12.
 //
 
-import Kanna
 import UIKit
 
 class MNEmojiManager {

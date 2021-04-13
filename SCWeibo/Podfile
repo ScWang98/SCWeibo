@@ -13,9 +13,6 @@ target 'SCWeibo' do
   pod 'Neon', '0.4.0'
   pod 'MJRefresh', '3.5.0'
   pod 'SKPhotoBrowser', '6.1.0'
-  pod 'Reusable', '4.1.1', :subspecs => ['View']
-  pod 'MGJRouter'
-  pod 'Kanna', '~> 5.2.2'
   
   # Pods for DEBUG
   pod 'FLEX', '4.4.0', :configurations => ['Debug']
