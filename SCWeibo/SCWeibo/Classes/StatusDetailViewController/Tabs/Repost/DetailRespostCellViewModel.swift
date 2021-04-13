@@ -40,7 +40,7 @@ private extension DetailRespostCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
-        commentLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        commentLabelModel = ContentHTMLParser.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
         createdAt = Date.mn_sinaDate(string: model.createdAt)?.mn_dateDescription
     }
 }

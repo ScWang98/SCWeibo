@@ -47,7 +47,7 @@ extension DetailRepostTableCell {
 
         nameLabel.text = viewModel.screenName
         contentLabel.textModel = viewModel.commentLabelModel
-        
+
         timeLabel.text = viewModel.createdAt
 
         setNeedsLayout()
@@ -64,7 +64,7 @@ private extension DetailRepostTableCell {
         avatarImageView.layer.cornerRadius = 16
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(tap:)))
         avatarImageView.addGestureRecognizer(tap)
-        
+
         nameLabel.textColor = UIColor.sc.color(with: 0xFC3E00FF)
         nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
 
@@ -87,10 +87,10 @@ private extension DetailRepostTableCell {
 
     func setupLayout() {
         avatarImageView.anchorInCorner(.topLeft, xPad: 20, yPad: 12, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: self.width - 70, height: 16)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 66, yPad: 8, width: self.width - 66, height: 16)
-        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 20, height: 1)
-        contentLabel.frame = CGRect(x: nameLabel.left, y: avatarImageView.bottom, width: self.width - nameLabel.left - 26, height: timeLabel.top - nameLabel.bottom)
+        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: width - 70, height: 16)
+        timeLabel.anchorInCorner(.bottomLeft, xPad: 66, yPad: 8, width: width - 66, height: 16)
+        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1)
+        contentLabel.frame = CGRect(x: nameLabel.left, y: avatarImageView.bottom, width: width - nameLabel.left - 26, height: timeLabel.top - nameLabel.bottom)
     }
 }
 
@@ -101,8 +101,5 @@ private extension DetailRepostTableCell {
 
 extension DetailRepostTableCell: ContentLabelDelegate {
     func contentLabel(label: ContentLabel, didTapSchema: String) {
-        <#code#>
     }
-    
-    
 }

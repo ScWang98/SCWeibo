@@ -22,9 +22,7 @@
 		24C834282623168400E45CE5 /* RepostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C834272623168400E45CE5 /* RepostModel.swift */; };
 		24C8342D262316C200E45CE5 /* DetailRespostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */; };
 		24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8343426241BEF00E45CE5 /* ContentLabel.swift */; };
-		24C8346126243A1A00E45CE5 /* String+OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */; };
-		24C8346626243A4000E45CE5 /* UILabel+OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */; };
-		24C8346B26243A5F00E45CE5 /* OrangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */; };
+		24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
@@ -178,9 +176,7 @@
 		24C834272623168400E45CE5 /* RepostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostModel.swift; sourceTree = "<group>"; };
 		24C8342C262316C200E45CE5 /* DetailRespostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRespostCellViewModel.swift; sourceTree = "<group>"; };
 		24C8343426241BEF00E45CE5 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
-		24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+OrangeLabel.swift"; sourceTree = "<group>"; };
-		24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+OrangeLabel.swift"; sourceTree = "<group>"; };
-		24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrangeLabel.swift; sourceTree = "<group>"; };
+		24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHTMLParser.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeListService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -628,7 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				D6A2267E25EE3B1800E3E767 /* Router.swift */,
-				D6A225BD25EE3AEF00E3E767 /* Label */,
+				D6A225BD25EE3AEF00E3E767 /* Content */,
 				D6A225BF25EE3AEF00E3E767 /* Network */,
 				D6A225C525EE3AEF00E3E767 /* Emoji */,
 				D6A225D325EE3AEF00E3E767 /* SQLite */,
@@ -639,16 +635,14 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		D6A225BD25EE3AEF00E3E767 /* Label */ = {
+		D6A225BD25EE3AEF00E3E767 /* Content */ = {
 			isa = PBXGroup;
 			children = (
 				D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */,
 				24C8343426241BEF00E45CE5 /* ContentLabel.swift */,
-				24C8346026243A1A00E45CE5 /* String+OrangeLabel.swift */,
-				24C8346526243A4000E45CE5 /* UILabel+OrangeLabel.swift */,
-				24C8346A26243A5F00E45CE5 /* OrangeLabel.swift */,
+				24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */,
 			);
-			path = Label;
+			path = Content;
 			sourceTree = "<group>";
 		};
 		D6A225BF25EE3AEF00E3E767 /* Network */ = {
@@ -1175,7 +1169,6 @@
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
-				24C8346B26243A5F00E45CE5 /* OrangeLabel.swift in Sources */,
 				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
@@ -1197,10 +1190,8 @@
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
-				24C8346626243A4000E45CE5 /* UILabel+OrangeLabel.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
-				24C8346126243A1A00E45CE5 /* String+OrangeLabel.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
 				D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
@@ -1256,6 +1247,7 @@
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
+				24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */,
 				24C834282623168400E45CE5 /* RepostModel.swift in Sources */,
 				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
 				D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */,

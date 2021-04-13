@@ -28,7 +28,7 @@ class StatusRepostCellViewModel {
 
 private extension StatusRepostCellViewModel {
     func parseProperties() {
-        statusLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
+        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
         picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -39,7 +39,7 @@ private extension StatusRepostCellViewModel {
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
         let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
         let repostFontSize = UIFont.systemFont(ofSize: 14)
-        repostLabelModel = MNEmojiManager.shared.parseTextWithHTML(string: repostStr, font: repostFontSize)
+        repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: repostFontSize)
         
     }
 

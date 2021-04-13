@@ -22,6 +22,7 @@ public class ContentLabelTextModel {
     class SchemaModel {
         var range: NSRange
         var schema: String
+        var disableClick = false
 
         init(range: NSRange, schema: String) {
             self.range = range
@@ -85,7 +86,7 @@ public class ContentLabel: UILabel {
 
         for schema in textModel.schemas {
             let range = schema.range
-            if index >= range.location && index <= range.location + range.length {
+            if !schema.disableClick && index >= range.location && index <= range.location + range.length {
                 return schema
             }
         }
@@ -125,6 +126,7 @@ public class ContentLabel: UILabel {
     }
 
     // MARK: lazy properties
+
     private lazy var textStorage = NSTextStorage()
     private lazy var layoutManager = NSLayoutManager()
     private lazy var textContainer = NSTextContainer()

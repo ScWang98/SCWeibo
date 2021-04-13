@@ -164,7 +164,7 @@ private extension PagesScrollView {
             return
         }
 
-        scrollerObservation = scrollView.observe(\UIScrollView.contentSize, options: [.old, .new, .initial]) { _, _ in
+        scrollerObservation = scrollView.observe(\UIScrollView.contentSize, options: [.old, .new]) { _, _ in
             self.setNeedsLayout()
         }
     }
