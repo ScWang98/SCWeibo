@@ -35,4 +35,8 @@ class URLSettings {
     class var attitudesShow: String {
         return h5BaseURL + "/api/attitudes/show"
     }
+    
+    class var commentsHotflow: String {
+        return h5BaseURL + "/comments/hotflow"
+    }
 }

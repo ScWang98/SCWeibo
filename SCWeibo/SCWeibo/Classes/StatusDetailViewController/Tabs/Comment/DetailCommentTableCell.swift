@@ -1,20 +1,20 @@
 //
-//  DetailRepostTableCell.swift
+//  DetailCommentTableCell.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/11.
+//  Created by wangshuchao on 2021/4/13.
 //
 
-import UIKit
+import Foundation
 
-class DetailRepostTableCell: UITableViewCell {
-    var viewModel: DetailRepostCellViewModel?
+class DetailCommentTableCell: UITableViewCell {
+    var viewModel: DetailCommentCellViewModel?
 
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
     let contentLabel = ContentLabel()
+    let commentsView = DetailCommentsView()
     let timeLabel = UILabel()
-    let bottomSeperator = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,8 +33,8 @@ class DetailRepostTableCell: UITableViewCell {
 
 // MARK: - Public Methods
 
-extension DetailRepostTableCell {
-    func reload(with viewModel: DetailRepostCellViewModel) {
+extension DetailCommentTableCell {
+    func reload(with viewModel: DetailCommentCellViewModel) {
         self.viewModel = viewModel
 
         let placeholder = UIImage(named: "avatar_default_big")
@@ -50,13 +50,15 @@ extension DetailRepostTableCell {
 
         timeLabel.text = viewModel.createdAt
 
+        commentsView.reload(labelModels: viewModel.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel.totalNumber)
+
         setNeedsLayout()
     }
 }
 
 // MARK: - Private Methods
 
-private extension DetailRepostTableCell {
+private extension DetailCommentTableCell {
     func setupSubviews() {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
@@ -78,30 +80,34 @@ private extension DetailRepostTableCell {
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
 
-        bottomSeperator.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
-
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(contentLabel)
+        contentView.addSubview(commentsView)
         contentView.addSubview(timeLabel)
-        contentView.addSubview(bottomSeperator)
     }
 
     func setupLayout() {
-        avatarImageView.anchorInCorner(.topLeft, xPad: 20, yPad: 12, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: width - 70, height: 16)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 66, yPad: 8, width: width - 66, height: 16)
-        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1)
-        contentLabel.frame = CGRect(x: nameLabel.left, y: avatarImageView.bottom, width: width - nameLabel.left - 26, height: timeLabel.top - avatarImageView.bottom)
+        let contentWidth = width - 15 - 32 - 15 - 15
+
+        avatarImageView.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: 32, height: 32)
+        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
+        timeLabel.anchorInCorner(.bottomLeft, xPad: 15 + 32 + 15, yPad: 8, width: contentWidth, height: 17)
+
+        let contentHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        contentLabel.frame = CGRect(x: nameLabel.left, y: 45, width: contentWidth, height: contentHeight)
+
+        let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
+        commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
     }
 }
 
-@objc private extension DetailRepostTableCell {
+@objc private extension DetailCommentTableCell {
     func avatarDidClicked(tap: UITapGestureRecognizer) {
     }
 }
 
-extension DetailRepostTableCell: ContentLabelDelegate {
+extension DetailCommentTableCell: ContentLabelDelegate {
     func contentLabel(label: ContentLabel, didTapSchema: String) {
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 class DetailCommentListViewController: UIViewController {
     var tableView = UITableView()
 
-    private var listViewModel = VideosListViewModel()
+    private var listViewModel = DetailCommentListViewModel()
 
     var isPull: Bool = false
 
@@ -24,7 +24,7 @@ class DetailCommentListViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class DetailCommentListViewController: UIViewController {
 
 extension DetailCommentListViewController {
     func refreshData(with loadingState: Bool) {
-//        loadDatas()
+        loadDatas()
     }
 }
 
@@ -48,8 +48,10 @@ private extension DetailCommentListViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
-        tableView.separatorStyle = .none
-        tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        tableView.separatorColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
+        tableView.register(DetailCommentTableCell.self, forCellReuseIdentifier: String(describing: DetailCommentTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)
     }
@@ -63,7 +65,7 @@ private extension DetailCommentListViewController {
 
     func removeObservers() {
     }
-    
+
     func loadDatas() {
         listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
             self.isPull = false
@@ -78,16 +80,16 @@ private extension DetailCommentListViewController {
 
 extension DetailCommentListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listViewModel.videoList.count
+        return listViewModel.commentList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let viewModel = listViewModel.videoList[indexPath.row]
+        let viewModel = listViewModel.commentList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VideoTableCell.self), for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailCommentTableCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-        if let cell = cell as? VideoTableCell {
+        if let cell = cell as? DetailCommentTableCell {
             cell.reload(with: viewModel)
         }
 
@@ -95,15 +97,12 @@ extension DetailCommentListViewController: UITableViewDelegate, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let coverHeight = view.width * 9.0 / 16.0
-        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0
-        return height
+        let viewModel = listViewModel.commentList[indexPath.row]
+        return viewModel.cellHeight(cellWidth: tableView.width)
     }
 }
 
 // MARK: - Action
 
 @objc private extension DetailCommentListViewController {
-
 }
-
