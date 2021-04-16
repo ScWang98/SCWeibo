@@ -23,16 +23,20 @@ class DetailRepostCellViewModel {
 // MARK: - Public Methods
 
 extension DetailRepostCellViewModel {
-    var cellHeight: CGFloat {
-        let avatarHeight: CGFloat = 44
-        let timeLabelHeight: CGFloat = 24
-        
-        let width = UIScreen.sc.screenWidth - 26 - 67
-        let textSize = CGSize(width: width, height: 0)
-        let rect = commentLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
-        
-        return avatarHeight + timeLabelHeight + textHeight
+    func cellHeight(cellWidth: CGFloat) -> CGFloat {
+        var totalHeight: CGFloat = 0
+
+        totalHeight += 32 // 到nameLabel底部的距离
+        totalHeight += 10 // gap
+
+        let contentWidth = cellWidth - 16 - 32 - 15 - 16
+        let contentHeight = commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        totalHeight += contentHeight
+        totalHeight += 10 // gap
+
+        totalHeight += 25 // 底部gap + nameLabel
+
+        return totalHeight
     }
 }
 

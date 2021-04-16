@@ -34,7 +34,7 @@ public class ContentLabelTextModel {
 public class ContentLabel: UILabel {
     weak var delegate: ContentLabelDelegate?
 
-    public var linkTextColor = UIColor.sc.color(RGBA: 0x647CADFF)
+    public var linkTextColor = UIColor.sc.color(RGBA: 0x0099FFFF)
     public var selectedBackgroudColor = UIColor.lightGray
 
     public var textModel: ContentLabelTextModel? {
@@ -167,17 +167,10 @@ private extension ContentLabel {
             return
         }
 
-        var range = NSRange(location: 0, length: 0)
-        var attributes = attrStringM.attributes(at: 0, effectiveRange: &range)
-
-        attributes[NSAttributedString.Key.font] = font
-        attributes[NSAttributedString.Key.foregroundColor] = textColor
-        attrStringM.addAttributes(attributes, range: range)
-
-        attributes[NSAttributedString.Key.foregroundColor] = linkTextColor
-
         for schema in textModel.schemas {
             let range = schema.range
+            var attributes = attrStringM.attributes(at: range.location, effectiveRange: nil)
+            attributes[.foregroundColor] = linkTextColor
             attrStringM.setAttributes(attributes, range: range)
         }
     }

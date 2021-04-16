@@ -60,6 +60,10 @@ extension DetailCommentsView {
     }
 
     class func height(for labelModels: [ContentLabelTextModel], totalNumber: Int, commentsWidth: CGFloat) -> CGFloat {
+        if labelModels.count <= 0 {
+            return 0
+        }
+        
         var totalHeight: CGFloat = 0
 
         totalHeight += 10 // 上边距
@@ -87,8 +91,6 @@ private extension DetailCommentsView {
         layer.cornerRadius = 5
 
         totalLabel.textAlignment = .left
-        totalLabel.font = UIFont.systemFont(ofSize: 16)
-        totalLabel.textColor = UIColor.sc.color(RGBA: 0x0099FFFF)
     }
 
     func setupLayout() {
@@ -120,6 +122,9 @@ private extension DetailCommentsView {
 
     class func totalAttributedString(totalNumber: Int) -> NSAttributedString {
         let totalString = String(format: "共 %d 条回复 >", totalNumber)
-        return NSAttributedString(string: totalString)
+        var attributes = [NSAttributedString.Key: Any]()
+        attributes[.font] = UIFont.systemFont(ofSize: 16)
+        attributes[.foregroundColor] = UIColor.sc.color(RGBA: 0x0099FFFF)
+        return NSAttributedString(string: totalString, attributes: attributes)
     }
 }

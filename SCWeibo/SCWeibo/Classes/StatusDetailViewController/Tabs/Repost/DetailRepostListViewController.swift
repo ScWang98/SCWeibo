@@ -48,7 +48,9 @@ private extension DetailRepostListViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        tableView.separatorColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
         tableView.register(DetailRepostTableCell.self, forCellReuseIdentifier: String(describing: DetailRepostTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)
@@ -96,7 +98,7 @@ extension DetailRepostListViewController: UITableViewDelegate, UITableViewDataSo
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.repostList[indexPath.row]
-        return viewModel.cellHeight
+        return viewModel.cellHeight(cellWidth: tableView.width)
     }
 }
 

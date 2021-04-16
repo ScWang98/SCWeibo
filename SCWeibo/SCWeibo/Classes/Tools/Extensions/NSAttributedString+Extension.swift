@@ -38,6 +38,6 @@ public extension UtilitiesWrapper where Base: NSAttributedString {
     func height(labelWidth: CGFloat) -> CGFloat {
         let size = CGSize(width: labelWidth, height: 0)
         let rect = base.boundingRect(with: size, options: [.usesLineFragmentOrigin], context: nil)
-        return rect.height
+        return ceil(rect.height)
     }
 }

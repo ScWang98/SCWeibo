@@ -50,7 +50,12 @@ extension DetailCommentTableCell {
 
         timeLabel.text = viewModel.createdAt
 
-        commentsView.reload(labelModels: viewModel.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel.totalNumber)
+        if let commentLabelModels = viewModel.subCommentLabelModels, commentLabelModels.count > 0 {
+            commentsView.isHidden = false
+            commentsView.reload(labelModels: commentLabelModels, totalNumber: viewModel.totalNumber)
+        } else {
+            commentsView.isHidden = true
+        }
 
         setNeedsLayout()
     }
@@ -97,8 +102,10 @@ private extension DetailCommentTableCell {
         let contentHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
         contentLabel.frame = CGRect(x: nameLabel.left, y: 45, width: contentWidth, height: contentHeight)
 
-        let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
-        commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
+        if !commentsView.isHidden {
+            let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
+            commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
+        }
     }
 }
 

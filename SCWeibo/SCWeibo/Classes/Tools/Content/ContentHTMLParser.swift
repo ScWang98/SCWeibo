@@ -20,13 +20,13 @@ class ContentHTMLParser {
 
         // 替换 @ 如 <a href=xxxx>@xxxxxx</a> 为 @xxxxxx
         replaceUserHref(labelModel: labelModel)
-        
+
         // 替换 话题 如 <a href=xxxx>#xxxxxx#</a> 为 @xxxxxx
         replaceTopicHref(labelModel: labelModel)
-        
+
         // 替换 全文
         replaceFullTextHref(labelModel: labelModel)
-        
+
         // 替换 位置
         replaceLocationHref(labelModel: labelModel)
 
@@ -37,9 +37,14 @@ class ContentHTMLParser {
         replaceEmojiToAttachment(labelModel: labelModel, font: font)
 
         // 统一添加字体颜色
-        labelModel.text.addAttributes([NSAttributedString.Key.font: font,
-                                       NSAttributedString.Key.foregroundColor: UIColor.darkGray],
-                                      range: NSRange(location: 0, length: labelModel.text.length))
+        var attributes = [NSAttributedString.Key: Any]()
+        attributes[.font] = font
+        attributes[.foregroundColor] = UIColor.darkGray
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        attributes[.paragraphStyle] = paragraphStyle
+
+        labelModel.text.addAttributes(attributes, range: NSRange(location: 0, length: labelModel.text.length))
 
         return labelModel
     }
@@ -163,7 +168,7 @@ private extension ContentHTMLParser {
             labelModel.schemas.append(schemaModel)
         }
     }
-    
+
     class func replaceTopicHref(labelModel: ContentLabelTextModel) {
         let string = labelModel.text
         let pattern = "<a *?href=\".*?\"><span.*?>(#.*?#)</span></a>"
@@ -192,7 +197,7 @@ private extension ContentHTMLParser {
             labelModel.schemas.append(schemaModel)
         }
     }
-    
+
     class func replaceFullTextHref(labelModel: ContentLabelTextModel) {
         let string = labelModel.text
         let pattern = "<a *?href=\".*?\">(全文)</a>"
@@ -222,7 +227,7 @@ private extension ContentHTMLParser {
             labelModel.schemas.append(schemaModel)
         }
     }
-    
+
     class func replaceLocationHref(labelModel: ContentLabelTextModel) {
         let string = labelModel.text
         let pattern = "<a.*?data-url.*?href=\"(.*?)\".*?><img.*?location.*?</span><span.*?>(.*?)</span></a>"

@@ -14,7 +14,6 @@ class DetailRepostTableCell: UITableViewCell {
     let nameLabel = UILabel()
     let contentLabel = ContentLabel()
     let timeLabel = UILabel()
-    let bottomSeperator = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -78,21 +77,19 @@ private extension DetailRepostTableCell {
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
 
-        bottomSeperator.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
-
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(timeLabel)
-        contentView.addSubview(bottomSeperator)
     }
 
     func setupLayout() {
-        avatarImageView.anchorInCorner(.topLeft, xPad: 20, yPad: 12, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: width - 70, height: 16)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 66, yPad: 8, width: width - 66, height: 16)
-        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1)
-        contentLabel.frame = CGRect(x: nameLabel.left, y: avatarImageView.bottom, width: width - nameLabel.left - 26, height: timeLabel.top - avatarImageView.bottom)
+        let contentWidth = width - 16 - 32 - 15 - 16
+        avatarImageView.anchorInCorner(.topLeft, xPad: 16, yPad: 12, width: 32, height: 32)
+        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
+        timeLabel.anchorInCorner(.bottomLeft, xPad: nameLabel.left, yPad: 8, width: contentWidth, height: 17)
+        let labelHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        contentLabel.frame = CGRect(x: nameLabel.left, y: nameLabel.bottom + 10, width: contentWidth, height: labelHeight)
     }
 }
 

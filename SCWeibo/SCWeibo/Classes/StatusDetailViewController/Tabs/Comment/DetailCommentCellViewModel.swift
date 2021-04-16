@@ -37,10 +37,13 @@ extension DetailCommentCellViewModel {
         totalHeight += contentHeight
         totalHeight += 10 // gap
 
-        let commentsHeight = DetailCommentsView.height(for: subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: totalNumber, commentsWidth: contentWidth)
-        totalHeight += commentsHeight
+        if let commentLabelModels = subCommentLabelModels, commentLabelModels.count > 0 {
+            let commentsHeight = DetailCommentsView.height(for: subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: totalNumber, commentsWidth: contentWidth)
+            totalHeight += commentsHeight
+            totalHeight += 8 // gap
+        }
 
-        totalHeight += 32 // 底部gap + nameLabel
+        totalHeight += 25 // 底部gap + nameLabel
 
         return totalHeight
     }
@@ -55,8 +58,9 @@ private extension DetailCommentCellViewModel {
         if let comments = model.comments {
             var subCommentLabelModels = [ContentLabelTextModel]()
             for comment in comments {
-                if let text = comment.text {
-                    let model = ContentLabelTextModel(text: NSMutableAttributedString(string: text))
+                if let text = comment.text,
+                   let user = comment.user {
+                    let model = generateCommentLabelModel(text: text, user: user)
                     subCommentLabelModels.append(model)
                 }
             }
@@ -66,5 +70,26 @@ private extension DetailCommentCellViewModel {
         totalNumber = model.totalNumber
         createdAt = Date.mn_sinaDate(string: model.createdAt)?.mn_dateDescription
         likeCount = model.likeCount
+    }
+
+    func generateCommentLabelModel(text: String, user: UserResponse) -> ContentLabelTextModel {
+        let font = UIFont.systemFont(ofSize: 16)
+        let model = ContentHTMLParser.parseTextWithHTML(string: text, font: font)
+        guard let screenName = user.screenName else {
+            return model
+        }
+        let attributes = [NSAttributedString.Key.font: font,
+                          NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+        let nameAttrStr = NSAttributedString(string: screenName + "：", attributes: attributes)
+        model.text.insert(nameAttrStr, at: 0)
+        for schema in model.schemas {
+            schema.range.location += nameAttrStr.length
+        }
+        let schema = String(format: "pillar://userProfile?user_name=%@", screenName.sc.stringByURLEncode)
+        model.schemas.append(ContentLabelTextModel.SchemaModel(range: NSRange(location: 0, length: screenName.count), schema: schema))
+        model.text.addAttributes([NSAttributedString.Key.font: font,
+                                  NSAttributedString.Key.foregroundColor: UIColor.darkGray],
+                                 range: NSRange(location: 0, length: model.text.length))
+        return model
     }
 }
