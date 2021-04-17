@@ -15,6 +15,7 @@ class DetailCommentTableCell: UITableViewCell {
     let contentLabel = ContentLabel()
     let commentsView = DetailCommentsView()
     let timeLabel = UILabel()
+    let separatorLine = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -84,12 +85,15 @@ private extension DetailCommentTableCell {
 
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        separatorLine.backgroundColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
 
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(commentsView)
         contentView.addSubview(timeLabel)
+        contentView.addSubview(separatorLine)
     }
 
     func setupLayout() {
@@ -106,6 +110,8 @@ private extension DetailCommentTableCell {
             let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [], totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
             commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
         }
+        
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
     }
 }
 

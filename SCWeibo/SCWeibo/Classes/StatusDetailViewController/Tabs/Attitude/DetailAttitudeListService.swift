@@ -9,12 +9,18 @@ import Foundation
 import Alamofire
 
 class DetailAttitudeListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [AttitudeModel]) -> Void) {
+    var statusId: String?
+
+    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [AttitudeModel]) -> Void) {
+        guard let statusId = statusId else {
+            return
+        }
+        
         let URLString = URLSettings.attitudesShow
 
         var params = [String: Any]()
-        params["id"] = "4624863745281204"
-        params["mid"] = "4624863745281204"
+        params["id"] = statusId
+        params["mid"] = statusId
         params["page"] = 1
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in

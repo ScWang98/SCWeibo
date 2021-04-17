@@ -20,6 +20,7 @@
 		246EEA402625AE3900DB0F1D /* DetailCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA3F2625AE3900DB0F1D /* DetailCommentsView.swift */; };
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
 		24AD7E25262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */; };
+		24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */; };
 		24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */; };
 		24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */; };
 		24C833F22622FC1E00E45CE5 /* DetailRepostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */; };
@@ -76,7 +77,6 @@
 		D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */; };
 		D68D3636260A1E10004A6630 /* StatusDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */; };
 		D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */; };
-		D68D3644260A2055004A6630 /* StatusDetailTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */; };
 		D68D3649260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */; };
 		D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F988A25EF67F000C0092A /* PagesScrollView.swift */; };
 		D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F989225EF95B300C0092A /* ResponderHelper.swift */; };
@@ -186,6 +186,7 @@
 		246EEA3F2625AE3900DB0F1D /* DetailCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommentsView.swift; sourceTree = "<group>"; };
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailHorizontalCategoryBar.swift; sourceTree = "<group>"; };
+		24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEndCell.swift; sourceTree = "<group>"; };
 		24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailContentView.swift; sourceTree = "<group>"; };
 		24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailRepostView.swift; sourceTree = "<group>"; };
 		24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +247,6 @@
 		D68D04D92608FFC1004A6630 /* PhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCellViewModel.swift; sourceTree = "<group>"; };
 		D68D3635260A1E10004A6630 /* StatusDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewController.swift; sourceTree = "<group>"; };
 		D68D363D260A1EB1004A6630 /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
-		D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailTopBar.swift; sourceTree = "<group>"; };
 		D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailAuthorInfoBar.swift; sourceTree = "<group>"; };
 		D68F988A25EF67F000C0092A /* PagesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesScrollView.swift; sourceTree = "<group>"; };
 		D68F989225EF95B300C0092A /* ResponderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponderHelper.swift; sourceTree = "<group>"; };
@@ -583,11 +583,11 @@
 		D68D3642260A1F16004A6630 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D68D3643260A2055004A6630 /* StatusDetailTopBar.swift */,
 				D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */,
 				24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */,
 				24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */,
 				24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */,
+				24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1242,6 +1242,7 @@
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Extension.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
+				24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
@@ -1272,7 +1273,6 @@
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
-				D68D3644260A2055004A6630 /* StatusDetailTopBar.swift in Sources */,
 				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,

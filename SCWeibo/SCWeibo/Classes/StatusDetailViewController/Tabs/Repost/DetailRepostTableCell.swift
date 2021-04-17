@@ -14,6 +14,7 @@ class DetailRepostTableCell: UITableViewCell {
     let nameLabel = UILabel()
     let contentLabel = ContentLabel()
     let timeLabel = UILabel()
+    let separatorLine = UIView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -77,10 +78,13 @@ private extension DetailRepostTableCell {
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
 
+        separatorLine.backgroundColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
+
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(timeLabel)
+        contentView.addSubview(separatorLine)
     }
 
     func setupLayout() {
@@ -90,6 +94,7 @@ private extension DetailRepostTableCell {
         timeLabel.anchorInCorner(.bottomLeft, xPad: nameLabel.left, yPad: 8, width: contentWidth, height: 17)
         let labelHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
         contentLabel.frame = CGRect(x: nameLabel.left, y: nameLabel.bottom + 10, width: contentWidth, height: labelHeight)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
     }
 }
 

@@ -36,6 +36,10 @@ class DetailCommentListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension DetailCommentListViewController {
+    func config(statusId: String?) {
+        listViewModel.config(statusId: statusId)
+    }
+    
     func refreshData(with loadingState: Bool) {
         loadDatas()
     }
@@ -48,9 +52,7 @@ private extension DetailCommentListViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
-        tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
-        tableView.separatorColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
+        tableView.separatorStyle = .none
         tableView.register(DetailCommentTableCell.self, forCellReuseIdentifier: String(describing: DetailCommentTableCell.self))
         tableView.frame = view.bounds
         view.addSubview(tableView)

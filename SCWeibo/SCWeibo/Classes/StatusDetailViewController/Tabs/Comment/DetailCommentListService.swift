@@ -9,14 +9,20 @@ import Alamofire
 import Foundation
 
 class DetailCommentListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [CommentModel]) -> Void) {
+    var statusId: String?
+
+    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [CommentModel]) -> Void) {
+        guard let statusId = statusId else {
+            return
+        }
+        
         let URLString = URLSettings.commentsHotflow
 
         var params = [String: Any]()
-        params["id"] = "4625445730125533"
+        params["id"] = statusId
         params["max_id"] = 0
         params["max_id_type"] = 0
-        params["mid"] = 4625445730125533
+        params["mid"] = statusId
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
             var isSuccess = false

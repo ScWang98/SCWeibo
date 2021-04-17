@@ -36,6 +36,10 @@ class DetailAttitudeListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension DetailAttitudeListViewController {
+    func config(statusId: String?) {
+        listViewModel.config(statusId: statusId)
+    }
+    
     func refreshData(with loadingState: Bool) {
         loadDatas()
     }

@@ -63,6 +63,8 @@ class StatusDetailViewModel {
             statusId = String(id)
         }
         repostTabViewModel.viewController.config(statusId: statusId)
+        commentTabViewModel.viewController.config(statusId: statusId)
+        attitudeTabViewModel.viewController.config(statusId: statusId)
     }
 
     func fetchUserInfo(completion: @escaping () -> Void) {

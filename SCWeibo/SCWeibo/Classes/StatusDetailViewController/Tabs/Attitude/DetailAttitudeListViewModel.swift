@@ -9,6 +9,7 @@ import Foundation
 
 class DetailAttitudeListViewModel {
     lazy var attitudeList = [DetailAttitudeCellViewModel]()
+    lazy var listService = DetailAttitudeListService()
 
     var sinceId: String?
 
@@ -16,7 +17,7 @@ class DetailAttitudeListViewModel {
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        DetailAttitudeListService.loadStatus(since_id: nil) { (isSuccess, attitudeModels) in
+        listService.loadStatus(since_id: nil) { (isSuccess, attitudeModels) in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -36,5 +37,9 @@ class DetailAttitudeListViewModel {
 
             completion(isSuccess, true)
         }
+    }
+    
+    func config(statusId: String?) {
+        listService.statusId = statusId
     }
 }

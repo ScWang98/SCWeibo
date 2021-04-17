@@ -8,7 +8,6 @@
 import UIKit
 
 class StatusDetailViewController: UIViewController, RouteAble {
-    let topToolBar = StatusDetailTopBar()
     let detailContentView = StatusDetailContentView()
     let categoryBar = StatusDetailHorizontalCategoryBar()
     let pagesView = PagesScrollView()
@@ -47,10 +46,19 @@ class StatusDetailViewController: UIViewController, RouteAble {
         pagesView.set(selectedIndex: 1, animated: false)
         
         viewModel.reloadAllTabsContent()
+        
+        let rightButton = UIBarButtonItem.init(image: UIImage(named: "MoreActionButton_Normal"), style: .plain, target: self, action: #selector(moreButtonDidClicked(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.title = "微博正文"
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -72,9 +80,6 @@ private extension StatusDetailViewController {
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
-        topToolBar.delegate = self
-
-        categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
         detailContentView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
@@ -82,20 +87,17 @@ private extension StatusDetailViewController {
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
 
-        view.addSubview(topToolBar)
         view.addSubview(pagesView)
         view.addSubview(categoryBar)
 
-        let safeArea = UIApplication.shared.sc.keyWindow?.safeAreaInsets
-        topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
-        pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
+        pagesView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
         categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 35)
         self.view.setNeedsLayout()
     }
 
     func addObservers() {
         pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
-            self.categoryBar.bottom = max(self.topToolBar.bottom + self.detailContentView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
+            self.categoryBar.bottom = max(self.detailContentView.height - self.pagesView.contentOffset.y, self.categoryBar.height)
         }
     }
     
@@ -105,22 +107,6 @@ private extension StatusDetailViewController {
 
     func refreshHeader() {
         detailContentView.reload(with: viewModel)
-    }
-}
-
-// MARK: - UserProfileTopToolBarDelegate
-
-extension StatusDetailViewController: StatusDetailTopBarDelegate {
-    func topBarDidClickBack(_ topBar: StatusDetailTopBar) {
-        if let viewControllers = self.navigationController?.viewControllers, viewControllers.count > 1 {
-            navigationController?.popViewController(animated: true)
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func topBarDidClickMore(_ topBar: StatusDetailTopBar) {
-        
     }
 }
 
@@ -168,6 +154,10 @@ extension StatusDetailViewController: PagesScrollViewDataSource, PagesScrollView
 
 @objc private extension StatusDetailViewController {
     func settingButtonClickedAction(button: UIButton) {
+    }
+    
+    func moreButtonDidClicked(sender: Any) {
+        
     }
 }
 

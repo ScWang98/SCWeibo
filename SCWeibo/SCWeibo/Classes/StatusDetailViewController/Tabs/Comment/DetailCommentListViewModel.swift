@@ -9,6 +9,7 @@ import Foundation
 
 class DetailCommentListViewModel {
     lazy var commentList = [DetailCommentCellViewModel]()
+    lazy var listService = DetailCommentListService()
 
     var sinceId: String?
 
@@ -16,7 +17,7 @@ class DetailCommentListViewModel {
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        DetailCommentListService.loadStatus(since_id: nil) { isSuccess, commentModels in
+        listService.loadStatus(since_id: nil) { isSuccess, commentModels in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -36,5 +37,9 @@ class DetailCommentListViewModel {
 
             completion(isSuccess, true)
         }
+    }
+    
+    func config(statusId: String?) {
+        listService.statusId = statusId
     }
 }
