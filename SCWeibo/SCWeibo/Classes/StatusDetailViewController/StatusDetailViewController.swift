@@ -10,7 +10,7 @@ import UIKit
 class StatusDetailViewController: UIViewController, RouteAble {
     let topToolBar = StatusDetailTopBar()
     let detailContentView = StatusDetailContentView()
-    let categoryBar = HorizontalCategoryBar()
+    let categoryBar = StatusDetailHorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
     let viewModel = StatusDetailViewModel()
@@ -42,7 +42,9 @@ class StatusDetailViewController: UIViewController, RouteAble {
         refreshHeader()
         
         categoryBar.reload(names: viewModel.tabNames)
+        categoryBar.selectItem(at: 1, animated: false)
         pagesView.reloadPages()
+        pagesView.set(selectedIndex: 1, animated: false)
         
         viewModel.reloadAllTabsContent()
     }
@@ -87,7 +89,7 @@ private extension StatusDetailViewController {
         let safeArea = UIApplication.shared.sc.keyWindow?.safeAreaInsets
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
-        categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 50)
+        categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 35)
         self.view.setNeedsLayout()
     }
 
@@ -122,10 +124,10 @@ extension StatusDetailViewController: StatusDetailTopBarDelegate {
     }
 }
 
-// MARK: - HorizontalCategoryDelegate
+// MARK: - StatusDetailHorizontalCategoryDelegate
 
-extension StatusDetailViewController: HorizontalCategoryBarDelegate {
-    func categoryBar(_ categoryBar: HorizontalCategoryBar, didSelectItemAt index: Int) {
+extension StatusDetailViewController: StatusDetailHorizontalCategoryBarDelegate {
+    func categoryBar(_ categoryBar: StatusDetailHorizontalCategoryBar, didSelectItemAt index: Int) {
         pagesView.set(selectedIndex: index, animated: true)
     }
 }

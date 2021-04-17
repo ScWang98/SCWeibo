@@ -19,6 +19,7 @@
 		246EEA362625A2F200DB0F1D /* DetailCommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA352625A2F200DB0F1D /* DetailCommentCellViewModel.swift */; };
 		246EEA402625AE3900DB0F1D /* DetailCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA3F2625AE3900DB0F1D /* DetailCommentsView.swift */; };
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
+		24AD7E25262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */; };
 		24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */; };
 		24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */; };
 		24C833F22622FC1E00E45CE5 /* DetailRepostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */; };
@@ -184,6 +185,7 @@
 		246EEA352625A2F200DB0F1D /* DetailCommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommentCellViewModel.swift; sourceTree = "<group>"; };
 		246EEA3F2625AE3900DB0F1D /* DetailCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommentsView.swift; sourceTree = "<group>"; };
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
+		24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailHorizontalCategoryBar.swift; sourceTree = "<group>"; };
 		24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailContentView.swift; sourceTree = "<group>"; };
 		24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailRepostView.swift; sourceTree = "<group>"; };
 		24C833F12622FC1E00E45CE5 /* DetailRepostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostListViewController.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 				D68D3648260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift */,
 				24C81A032621D21F00E45CE5 /* StatusDetailContentView.swift */,
 				24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */,
+				24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
 				D64C45302602041400A63631 /* VideoResponse.swift in Sources */,
 				D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */,
+				24AD7E25262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift in Sources */,
 				D6F2C0E825F87E7900724B4A /* TabbarItemModel.swift in Sources */,
 				D6A2264725EE3AEF00E3E767 /* UIColor+Extentsion.swift in Sources */,
 				D6A2263C25EE3AEF00E3E767 /* String+MNPath.swift in Sources */,

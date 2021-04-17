@@ -49,27 +49,25 @@ extension StatusDetailContentView {
 
         setNeedsLayout()
     }
-
-    class func height(for viewModel: StatusDetailViewModel) -> CGFloat {
+    
+    class func height(for viewModel: StatusDetailViewModel, width: CGFloat) -> CGFloat {
         var totalHeight: CGFloat = 0
 
         let authorInfoBarHeight = StatusDetailAuthorInfoBar.height(for: viewModel)
         totalHeight += authorInfoBarHeight
 
-        let width = UIScreen.sc.screenWidth - 2 * 12
-        let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
+        let textHeight = viewModel.statusLabelModel?.text.sc.height(labelWidth: width - 15 * 2) ?? 0
         totalHeight += textHeight
+        totalHeight += 10   // Gap
 
         if viewModel.repostLabelModel != nil {
-            let repostHeight = StatusDetailRepostView.height(for: viewModel)
+            let repostHeight = StatusDetailRepostView.height(for: viewModel, width: width - 15 * 2)
             totalHeight += repostHeight
         } else if let picUrls = viewModel.picUrls {
             let picsHeight = StatusPicturesView.height(for: picUrls)
             totalHeight += picsHeight
         }
-        return totalHeight + 50
+        return totalHeight + 35
     }
 }
 
@@ -78,7 +76,7 @@ private extension StatusDetailContentView {
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
-        contentLabel.font = UIFont.systemFont(ofSize: MNLayout.Layout(15))
+        contentLabel.font = UIFont.systemFont(ofSize: 16)
         contentLabel.textColor = UIColor.darkGray
 
         addSubview(authorInfoBar)
@@ -96,19 +94,16 @@ private extension StatusDetailContentView {
         height = StatusDetailAuthorInfoBar.height(for: viewModel)
         authorInfoBar.anchorToEdge(.top, padding: 0, width: self.width, height: height)
 
-        let width = self.width - 2 * 12
-        let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
-        contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: self.width - 12 * 2, height: textHeight)
+        height = viewModel.statusLabelModel?.text.sc.height(labelWidth: width - 15 * 2) ?? 0
+        contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: width - 15 * 2, height: height)
 
-        height = StatusDetailRepostView.height(for: viewModel)
-        repostView.align(.underCentered, relativeTo: contentLabel, padding: 0, width: self.width, height: height)
+        height = StatusDetailRepostView.height(for: viewModel, width: self.width - 15 * 2)
+        repostView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: self.width - 15 * 2, height: height)
 
-        height = StatusPicturesView.height(for: viewModel.picUrls ?? [StatusPicturesModel]())
-        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 0, width: self.width - 2 * 12, height: height)
+        height = StatusPicturesView.height(for: viewModel.picUrls ?? [], width: self.width - 15 * 2)
+        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: self.width - 15 * 2, height: height)
 
-        self.height = StatusDetailContentView.height(for: viewModel)
+        self.height = StatusDetailContentView.height(for: viewModel, width: self.width)
     }
 }
 

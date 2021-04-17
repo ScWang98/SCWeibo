@@ -9,12 +9,12 @@ import UIKit
 
 class StatusDetailRepostTabViewModel {
     let viewController = DetailRepostListViewController()
-    
+    var repostNumber: Int = 0
 }
 
 extension StatusDetailRepostTabViewModel: StatusDetailTabViewModel {
     var tabName: String {
-        return "转发"
+        return String(format: "转发: %d", repostNumber)
     }
     
     var tabViewController: UIViewController? {

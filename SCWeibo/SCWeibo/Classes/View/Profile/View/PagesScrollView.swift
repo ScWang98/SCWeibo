@@ -77,15 +77,25 @@ extension PagesScrollView {
     func set(selectedIndex: Int, animated: Bool = false) {
         let rect = calcPageFrame(At: selectedIndex)
 
-        UIView.animate(withDuration: 0.15) {
-            self.backScrollView.delegate = nil
-            self.backScrollView.scrollRectToVisible(rect, animated: false)
-        } completion: { _ in
-            self.backScrollView.delegate = self
+        if animated {
+            UIView.animate(withDuration: 0.15) {
+                self.backScrollView.delegate = nil
+                self.backScrollView.scrollRectToVisible(rect, animated: false)
+            } completion: { _ in
+                self.backScrollView.delegate = self
 
-            self.currentIndex = selectedIndex
-            self.currentPage = self.pagesDataSource?.pagesView(self, pageViewAt: selectedIndex)
-            self.currentPageScrollView = self.pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)
+                self.currentIndex = selectedIndex
+                self.currentPage = self.pagesDataSource?.pagesView(self, pageViewAt: selectedIndex)
+                self.currentPageScrollView = self.pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)
+            }
+        } else {
+            backScrollView.delegate = nil
+            backScrollView.scrollRectToVisible(rect, animated: false)
+            backScrollView.delegate = self
+
+            currentIndex = selectedIndex
+            currentPage = pagesDataSource?.pagesView(self, pageViewAt: selectedIndex)
+            currentPageScrollView = pagesDataSource?.pagesView(self, pageScrollViewAt: selectedIndex)
         }
     }
 }
@@ -108,19 +118,24 @@ private extension PagesScrollView {
     func setupLayout() {
         headerView?.frame = calcHeaderFrame()
 
-        self.contentSize = calcFullContentSize()
+        contentSize = calcFullContentSize()
 
         backScrollView.frame = calcBackScrollViewFrame()
         backScrollView.contentSize = calcBackScrollViewContentSize()
-        
+
         if let pageNum = pagesDataSource?.numberOfPages(in: self) {
             for i in 0 ..< pageNum {
                 let page = pagesDataSource?.pagesView(self, pageViewAt: i)
                 page?.frame = calcPageFrame(At: i)
             }
         }
-        
-        self.currentPageScrollView?.contentOffset = calcCurrentPageContentOffset()
+
+        if let currentIndex = currentIndex {
+            let rect = calcPageFrame(At: currentIndex)
+            backScrollView.contentOffset = rect.origin
+        }
+
+        currentPageScrollView?.contentOffset = calcCurrentPageContentOffset()
     }
 
     func setupPages() {
@@ -133,7 +148,7 @@ private extension PagesScrollView {
 
         for i in 0 ..< pageCount {
             if let pageVC = pagesDataSource?.pagesView(self, pageViewControllerAt: i),
-                let parentVC = self.sc.viewController {
+               let parentVC = sc.viewController {
                 pageVC.willMove(toParent: parentVC)
                 parentVC.addChild(pageVC)
                 pageVC.didMove(toParent: parentVC)
@@ -171,7 +186,7 @@ private extension PagesScrollView {
 
     func removeObserver(from scrollView: UIScrollView?) {
         guard let observation = scrollerObservation,
-            let _ = scrollView else {
+              let _ = scrollView else {
             return
         }
         observation.invalidate()
@@ -209,12 +224,12 @@ extension PagesScrollView: UIScrollViewDelegate {
 
 private extension PagesScrollView {
     func calcHeaderFrame() -> CGRect {
-        return CGRect(x: 0, y: 0, width: self.width, height: headerView?.height ?? 0)
+        return CGRect(x: 0, y: 0, width: width, height: headerView?.height ?? 0)
     }
 
     func calcFullContentSize() -> CGSize {
         let height = (headerView?.height ?? 0) + (currentPageScrollView?.contentSize.height ?? 0)
-        return CGSize(width: self.width, height: height)
+        return CGSize(width: width, height: height)
     }
 
     func calcPageFrame(At index: Int) -> CGRect {
@@ -225,10 +240,10 @@ private extension PagesScrollView {
     }
 
     func calcBackScrollViewFrame() -> CGRect {
-        let y = max(self.contentOffset.y, headerView?.height ?? 0)
-        let topHeight = max((headerView?.height ?? 0) - self.contentOffset.y, 0)
+        let y = max(contentOffset.y, headerView?.height ?? 0)
+        let topHeight = max((headerView?.height ?? 0) - contentOffset.y, 0)
         let height = self.height - topHeight
-        return CGRect(x: 0, y: y, width: self.width, height: height)
+        return CGRect(x: 0, y: y, width: width, height: height)
     }
 
     func calcBackScrollViewContentSize() -> CGSize {

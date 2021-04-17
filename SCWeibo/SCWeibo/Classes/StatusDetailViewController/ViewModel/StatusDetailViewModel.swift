@@ -20,8 +20,7 @@ class StatusDetailViewModel {
     var status: StatusResponse?
     var screenName: String?
     var avatarUrl: String?
-    var source: String?
-    var createdAt: String?
+    var timeAttrString: NSAttributedString?
     var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
@@ -58,6 +57,12 @@ class StatusDetailViewModel {
            let status = userInfo["statusResponse"] as? StatusResponse {
             parseStatusResponse(status: status)
         }
+        
+        var statusId: String?
+        if let id = status?.id {
+            statusId = String(id)
+        }
+        repostTabViewModel.viewController.config(statusId: statusId)
     }
 
     func fetchUserInfo(completion: @escaping () -> Void) {
@@ -84,12 +89,20 @@ class StatusDetailViewModel {
 
 private extension StatusDetailViewModel {
     func parseStatusResponse(status: StatusResponse) {
+        self.status = status
         statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
-        source = "来自" + (status.source?.mn_href() ?? "")
-        createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
+
+        if let time = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription {
+            var string = time
+            if let source = status.source?.mn_href(), source.count > 0 {
+                string = string + " · 来自 " + source
+            }
+            timeAttrString = NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: 14),
+                                                                             .foregroundColor: UIColor.lightGray])
+        }
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
@@ -99,8 +112,12 @@ private extension StatusDetailViewModel {
             repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: repostFontSize)
             picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
         }
+        
+        repostTabViewModel.repostNumber = status.repostsCount
+        commentTabViewModel.commentNumber = status.commentsCount
+        attitudeTabViewModel.attitudeNumber = status.attitudesCount
     }
-    
+
     private func countSting(count: Int, defaultStr: String) -> String {
         if count <= 0 {
             return defaultStr

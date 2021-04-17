@@ -103,7 +103,7 @@ private extension DetailCommentTableCell {
         contentLabel.frame = CGRect(x: nameLabel.left, y: 45, width: contentWidth, height: contentHeight)
 
         if !commentsView.isHidden {
-            let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
+            let commentsHeight = DetailCommentsView.height(for: viewModel?.subCommentLabelModels ?? [], totalNumber: viewModel?.totalNumber ?? 0, commentsWidth: contentWidth)
             commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
         }
     }

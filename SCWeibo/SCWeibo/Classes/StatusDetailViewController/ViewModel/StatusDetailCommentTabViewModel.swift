@@ -9,11 +9,12 @@ import UIKit
 
 class StatusDetailCommentTabViewModel {
     let viewController = DetailCommentListViewController()
+    var commentNumber: Int = 0
 }
 
 extension StatusDetailCommentTabViewModel: StatusDetailTabViewModel {
     var tabName: String {
-        return "评论"
+        return String(format: "评论: %d", commentNumber)
     }
 
     var tabViewController: UIViewController? {

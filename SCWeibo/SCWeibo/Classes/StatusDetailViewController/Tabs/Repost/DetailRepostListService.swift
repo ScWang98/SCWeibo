@@ -9,11 +9,17 @@ import Alamofire
 import Foundation
 
 class DetailRepostListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [RepostModel]) -> Void) {
+    var statusId: String?
+    
+    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [RepostModel]) -> Void) {
+        guard let statusId = statusId else {
+            return
+        }
+        
         let URLString = URLSettings.repostTimeline
 
         var params = [String: Any]()
-        params["id"] = "4624863745281204"
+        params["id"] = statusId
         params["page"] = 1
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in

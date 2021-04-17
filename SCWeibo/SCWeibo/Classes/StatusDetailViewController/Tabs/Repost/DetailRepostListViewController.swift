@@ -36,6 +36,10 @@ class DetailRepostListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension DetailRepostListViewController {
+    func config(statusId: String?) {
+        listViewModel.config(statusId: statusId)
+    }
+    
     func refreshData(with loadingState: Bool) {
         loadDatas()
     }

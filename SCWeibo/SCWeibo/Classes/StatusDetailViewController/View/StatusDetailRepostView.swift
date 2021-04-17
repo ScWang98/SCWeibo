@@ -35,24 +35,29 @@ class StatusDetailRepostView: UIView {
 
         setNeedsLayout()
     }
+    
+    static func height(for viewModel: StatusDetailViewModel, width: CGFloat) -> CGFloat {
+        var totalHeight: CGFloat = 0
+        
+        totalHeight += 15
+        
+        let textHeight = viewModel.repostLabelModel?.text.sc.height(labelWidth: width - 30) ?? 0
+        totalHeight += textHeight
+        totalHeight += 15
+        
+        let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [], width: width)
+        totalHeight += picHeight
 
-    static func height(for viewModel: StatusDetailViewModel) -> CGFloat {
-        let width = UIScreen.sc.screenWidth - 2 * 12
-        let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.repostLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
-
-        let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [])
-
-        let gap: CGFloat = 12.0
-        return gap + textHeight + gap + picHeight + gap
+        return totalHeight
     }
 }
 
 private extension StatusDetailRepostView {
     func setupSubviews() {
-        backgroundColor = UIColor.sc.color(RGBA: 0xF7F7F7FF)
-
+        layer.cornerRadius = 10
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.sc.color(RGBA: 0xEFEFF4FF).cgColor
+        
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: 14)
@@ -64,10 +69,11 @@ private extension StatusDetailRepostView {
     }
 
     func setupLayout() {
-        let gap: CGFloat = 12
-        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [])
-        picturesView.anchorToEdge(.bottom, padding: gap, width: width - gap * 2, height: picHeight)
-        contentLabel.anchorToEdge(.top, padding: gap, width: width - gap * 2, height: picturesView.top - gap * 2)
+        let textHeight = viewModel?.repostLabelModel?.text.sc.height(labelWidth: self.width - 30) ?? 0
+        contentLabel.anchorToEdge(.top, padding: 15, width: self.width - 15 * 2, height: textHeight)
+        
+        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [], width: self.width)
+        picturesView.anchorToEdge(.bottom, padding: 0, width: self.width, height: picHeight)
     }
 }
 

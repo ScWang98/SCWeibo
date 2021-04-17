@@ -38,7 +38,7 @@ extension DetailCommentCellViewModel {
         totalHeight += 10 // gap
 
         if let commentLabelModels = subCommentLabelModels, commentLabelModels.count > 0 {
-            let commentsHeight = DetailCommentsView.height(for: subCommentLabelModels ?? [ContentLabelTextModel](), totalNumber: totalNumber, commentsWidth: contentWidth)
+            let commentsHeight = DetailCommentsView.height(for: subCommentLabelModels ?? [], totalNumber: totalNumber, commentsWidth: contentWidth)
             totalHeight += commentsHeight
             totalHeight += 8 // gap
         }

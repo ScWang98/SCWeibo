@@ -9,11 +9,12 @@ import UIKit
 
 class StatusDetailAttitudeTabViewModel {
     let viewController = DetailAttitudeListViewController()
+    var attitudeNumber: Int = 0
 }
 
 extension StatusDetailAttitudeTabViewModel: StatusDetailTabViewModel {
     var tabName: String {
-        return "点赞"
+        return String(format: "点赞: %d", attitudeNumber)
     }
 
     var tabViewController: UIViewController? {

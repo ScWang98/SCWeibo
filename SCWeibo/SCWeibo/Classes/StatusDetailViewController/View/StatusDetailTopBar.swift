@@ -53,7 +53,7 @@ private extension StatusDetailTopBar {
         moreButton.sizeToFit()
         moreButton.addTarget(self, action: #selector(moreButtonClickedAction(button:)), for: .touchUpInside)
 
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         titleLabel.text = "微博正文"
         titleLabel.sizeToFit()
 
