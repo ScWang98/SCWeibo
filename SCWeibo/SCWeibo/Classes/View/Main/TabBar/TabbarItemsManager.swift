@@ -17,7 +17,7 @@ enum TabbarItemType: String {
 class TabbarItemsManager: NSObject {
     static var homeItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = StatusHomeViewController()
+        item.viewController = WeiboNavigationController(rootViewController: StatusHomeViewController())
         item.tabbarImage = UIImage(named: "tabbar_home")
         item.selectedTabbarImage = UIImage(named: "tabbar_home_selected")
         item.itemType = TabbarItemType.home
@@ -41,7 +41,7 @@ class TabbarItemsManager: NSObject {
 
     static var messageItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = MNMessageViewController()
+        item.viewController = WeiboNavigationController(rootViewController: MNMessageViewController())
         item.tabbarImage = UIImage(named: "tabbar_message_center")
         item.selectedTabbarImage = UIImage(named: "tabbar_message_center_selected")
         item.itemType = TabbarItemType.message
@@ -65,7 +65,7 @@ class TabbarItemsManager: NSObject {
 
     static var discoverItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = MNDiscoverViewController()
+        item.viewController = WeiboNavigationController(rootViewController: MNDiscoverViewController())
         item.tabbarImage = UIImage(named: "tabbar_discover")
         item.selectedTabbarImage = UIImage(named: "tabbar_discover_selected")
         item.itemType = TabbarItemType.discovery
@@ -89,7 +89,7 @@ class TabbarItemsManager: NSObject {
 
     static var profileItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = UserProfileViewController()
+        item.viewController = WeiboNavigationController(rootViewController: UserProfileViewController())
         item.tabbarImage = UIImage(named: "tabbar_profile")
         item.selectedTabbarImage = UIImage(named: "tabbar_profile_selected")
         item.itemType = TabbarItemType.profile

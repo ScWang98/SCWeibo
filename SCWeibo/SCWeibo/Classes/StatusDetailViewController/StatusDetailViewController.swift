@@ -49,6 +49,7 @@ class StatusDetailViewController: UIViewController, RouteAble {
         
         let rightButton = UIBarButtonItem.init(image: UIImage(named: "MoreActionButton_Normal"), style: .plain, target: self, action: #selector(moreButtonDidClicked(sender:)))
         self.navigationItem.rightBarButtonItem = rightButton
+        self.title = "微博正文"
     }
 
     override func viewDidLayoutSubviews() {
@@ -58,7 +59,6 @@ class StatusDetailViewController: UIViewController, RouteAble {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
-        self.title = "微博正文"
     }
 
     override func viewDidAppear(_ animated: Bool) {
