@@ -109,9 +109,13 @@ fileprivate extension StatusPicture {
         }
     }
 
-    class func generateStatusPictures(withH5Array array: [[AnyHashable: Any]]?) -> [StatusPicture] {
+    class func generateStatusPictures(withH5Array array: [[AnyHashable: Any]]?) -> [StatusPicture]? {
+        guard let array = array,
+              array.count > 0 else {
+            return nil
+        }
         var results = [StatusPicture]()
-        for dict in array ?? [[AnyHashable: Any]]() {
+        for dict in array {
             results.append(StatusPicture(withH5dict: dict))
         }
         return results

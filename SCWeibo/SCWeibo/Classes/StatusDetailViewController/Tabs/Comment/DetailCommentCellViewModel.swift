@@ -68,7 +68,7 @@ private extension DetailCommentCellViewModel {
         }
 
         totalNumber = model.totalNumber
-        createdAt = Date.mn_sinaDate(string: model.createdAt)?.mn_dateDescription
+        createdAt = model.createdAt?.semanticDateDescription
         likeCount = model.likeCount
     }
 

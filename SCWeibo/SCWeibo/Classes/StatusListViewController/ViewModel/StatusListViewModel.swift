@@ -13,10 +13,9 @@ protocol StatusListService {
 }
 
 class StatusListViewModel {
-    lazy var statusList = [StatusCellViewModel]()
+    lazy var statusList = [StatusRepostCellViewModel]()
     var listService: StatusListService?
 
-    private var cellProducer = StatusCellViewModelProducer()
     private var pullupErrorTimes = 0
     private var currentPage: Int
 
@@ -24,10 +23,6 @@ class StatusListViewModel {
         currentPage = 1
     }
 
-    func registerCells(with tableView: UITableView) {
-        cellProducer.registerCells(with: tableView)
-    }
-    
     func config(withUserId userId: String?) {
         listService?.userId = userId
     }
@@ -48,11 +43,9 @@ class StatusListViewModel {
                 return
             }
 
-            var array = [StatusCellViewModel]()
+            var array = [StatusRepostCellViewModel]()
             for model in list ?? [] {
-                if let viewModel = self.cellProducer.generateCellViewModel(with: model) {
-                    array.append(viewModel)
-                }
+                array.append(StatusRepostCellViewModel(with: model))
             }
 
             if loadMore {

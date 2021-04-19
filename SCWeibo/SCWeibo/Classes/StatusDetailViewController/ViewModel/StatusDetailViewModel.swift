@@ -92,12 +92,12 @@ class StatusDetailViewModel {
 private extension StatusDetailViewModel {
     func parseStatusResponse(status: StatusResponse) {
         self.status = status
-        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
-        picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
+        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
 
-        if let time = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription {
+        if let time = status.createdAt?.semanticDateDescription {
             var string = time
             if let source = status.source?.mn_href(), source.count > 0 {
                 string = string + " · 来自 " + source
@@ -108,11 +108,10 @@ private extension StatusDetailViewModel {
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
-        let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
-        let repostFontSize = UIFont.systemFont(ofSize: 14)
         if status.retweetedStatus != nil {
-            repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: repostFontSize)
-            picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls ?? [])
+            let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
+            repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: UIFont.systemFont(ofSize: 14))
+            picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls)
         }
         
         repostTabViewModel.repostNumber = status.repostsCount

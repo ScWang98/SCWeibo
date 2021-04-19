@@ -1,5 +1,5 @@
 //
-//  UIScreen+Extension.swift
+//  UIScreen+Utilities.swift
 //  SCWeibo
 //
 //  Created by scwang on 2020/4/21.

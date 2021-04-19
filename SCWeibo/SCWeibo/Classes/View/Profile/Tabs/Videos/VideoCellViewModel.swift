@@ -23,7 +23,7 @@ class VideoCellViewModel {
 private extension VideoCellViewModel {
     func parseProperties() {
         text = video.text
-        createdAt = Date.mn_sinaDate(string: video.createdAt)?.mn_dateDescription
+        createdAt = video.createdAt?.semanticDateDescription
         coverUrl = video.coverUrl
         videoUrl = video.videoUrl
     }

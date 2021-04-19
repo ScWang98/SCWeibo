@@ -52,7 +52,10 @@ class StatusPicturesView: UIView {
         return picHeight
     }
     
-    static func height(for picUrls: [StatusPicturesModel], width: CGFloat) -> CGFloat {
+    static func height(for picUrls: [StatusPicturesModel]?, width: CGFloat) -> CGFloat {
+        guard let picUrls = picUrls else {
+            return 0
+        }
         var picHeight: CGFloat = 0
         if picUrls.count <= 0 {
             picHeight = 0

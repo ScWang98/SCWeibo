@@ -45,6 +45,6 @@ private extension DetailRepostCellViewModel {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
         commentLabelModel = ContentHTMLParser.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
-        createdAt = Date.mn_sinaDate(string: model.createdAt)?.mn_dateDescription
+        createdAt = model.createdAt?.semanticDateDescription
     }
 }

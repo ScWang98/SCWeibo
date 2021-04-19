@@ -58,7 +58,7 @@ private extension StatusListViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
-        listViewModel.registerCells(with: tableView)
+        tableView.register(StatusRepostCell.self, forCellReuseIdentifier: String(describing: StatusRepostCell.self))
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.loadDatas(with: false)
         })
@@ -101,10 +101,10 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listViewModel.statusList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatusRepostCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-        if let homeCell = (cell as? StatusCell) {
+        if let homeCell = (cell as? StatusRepostCell) {
             homeCell.reload(with: viewModel)
         }
 
@@ -113,7 +113,7 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.statusList[indexPath.row]
-        return viewModel.cellHeight
+        return viewModel.cellHeight(width: tableView.width)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

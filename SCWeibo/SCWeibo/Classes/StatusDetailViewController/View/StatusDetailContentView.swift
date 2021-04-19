@@ -40,16 +40,23 @@ extension StatusDetailContentView {
 
         if viewModel.repostLabelModel != nil {
             repostView.isHidden = false
-            repostView.reload(with: viewModel)
             picturesView.isHidden = true
-        } else if let picUrls = viewModel.picUrls {
+
+            repostView.reload(with: viewModel)
+        } else if let picUrls = viewModel.picUrls,
+                  picUrls.count > 0 {
+            repostView.isHidden = true
             picturesView.isHidden = false
+
             picturesView.reload(with: picUrls)
+        } else {
+            repostView.isHidden = true
+            picturesView.isHidden = true
         }
 
         setNeedsLayout()
     }
-    
+
     class func height(for viewModel: StatusDetailViewModel, width: CGFloat) -> CGFloat {
         var totalHeight: CGFloat = 0
 
@@ -58,12 +65,13 @@ extension StatusDetailContentView {
 
         let textHeight = viewModel.statusLabelModel?.text.sc.height(labelWidth: width - 15 * 2) ?? 0
         totalHeight += textHeight
-        totalHeight += 10   // Gap
+        totalHeight += 10 // Gap
 
         if viewModel.repostLabelModel != nil {
             let repostHeight = StatusDetailRepostView.height(for: viewModel, width: width - 15 * 2)
             totalHeight += repostHeight
-        } else if let picUrls = viewModel.picUrls {
+        } else if let picUrls = viewModel.picUrls,
+                  picUrls.count > 0 {
             let picsHeight = StatusPicturesView.height(for: picUrls)
             totalHeight += picsHeight
         }
@@ -92,18 +100,18 @@ private extension StatusDetailContentView {
         var height: CGFloat = 0.0
 
         height = StatusDetailAuthorInfoBar.height(for: viewModel)
-        authorInfoBar.anchorToEdge(.top, padding: 0, width: self.width, height: height)
+        authorInfoBar.anchorToEdge(.top, padding: 0, width: width, height: height)
 
         height = viewModel.statusLabelModel?.text.sc.height(labelWidth: width - 15 * 2) ?? 0
         contentLabel.align(.underCentered, relativeTo: authorInfoBar, padding: 0, width: width - 15 * 2, height: height)
 
-        height = StatusDetailRepostView.height(for: viewModel, width: self.width - 15 * 2)
-        repostView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: self.width - 15 * 2, height: height)
+        height = StatusDetailRepostView.height(for: viewModel, width: width - 15 * 2)
+        repostView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: width - 15 * 2, height: height)
 
-        height = StatusPicturesView.height(for: viewModel.picUrls ?? [], width: self.width - 15 * 2)
-        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: self.width - 15 * 2, height: height)
+        height = StatusPicturesView.height(for: viewModel.picUrls ?? [], width: width - 15 * 2)
+        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 10, width: width - 15 * 2, height: height)
 
-        self.height = StatusDetailContentView.height(for: viewModel, width: self.width)
+        self.height = StatusDetailContentView.height(for: viewModel, width: width)
     }
 }
 

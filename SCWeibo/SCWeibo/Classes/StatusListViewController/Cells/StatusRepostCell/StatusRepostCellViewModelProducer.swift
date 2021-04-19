@@ -17,6 +17,7 @@ class StatusRepostCellViewModelProducer: StatusCellViewModelProducerProtocol {
     }
 
     func viewModel(for model: StatusResponse) -> StatusCellViewModel {
-        StatusRepostCellViewModel(with: model)
+//        StatusRepostCellViewModel(with: model)
+        StatusNormalCellViewModel(with: model)
     }
 }

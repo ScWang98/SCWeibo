@@ -39,7 +39,7 @@ class ContentHTMLParser {
         // 统一添加字体颜色
         var attributes = [NSAttributedString.Key: Any]()
         attributes[.font] = font
-        attributes[.foregroundColor] = UIColor.darkGray
+        attributes[.foregroundColor] = UIColor.black
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         attributes[.paragraphStyle] = paragraphStyle

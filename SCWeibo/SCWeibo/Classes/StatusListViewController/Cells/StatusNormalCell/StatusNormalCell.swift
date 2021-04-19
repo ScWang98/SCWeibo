@@ -37,7 +37,7 @@ extension StatusNormalCell: StatusCell {
             return
         }
         self.viewModel = viewModel
-        topToolBar.reload(with: viewModel)
+//        topToolBar.reload(with: viewModel)
         contentLabel.textModel = viewModel.statusLabelModel
         picturesView.reload(with: viewModel.picUrls ?? [])
         bottomToolBar.reload(with: viewModel)
@@ -71,7 +71,7 @@ private extension StatusNormalCell {
         }
         var height: CGFloat = 0.0
 
-        height = StatusTopToolBar.height(for: viewModel)
+//        height = StatusTopToolBar.height(for: viewModel)
         topToolBar.align(.underCentered, relativeTo: topSeperatorView, padding: 0, width: contentView.width, height: height)
 
         height = StatusBottomToolBar.height(for: viewModel)

@@ -16,6 +16,13 @@ extension UtilitiesWrapper where Base == UIColor {
                      blue: CGFloat((RGBA & 0xFF00) >> 8),
                      alpha: CGFloat((RGBA & 0xFF) >> 0) / 255.0)
     }
+    
+    public static func color(RGB: Int, alpha: CGFloat = 1.0) -> Base {
+        return color(red: CGFloat((RGB & 0xFF0000) >> 16),
+                     green: CGFloat((RGB & 0xFF00) >> 8),
+                     blue: CGFloat((RGB & 0xFF) >> 0),
+                     alpha: alpha)
+    }
 
     public static func color(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> Base {
         assert(red >= 0 && red <= 255, "Invalid red component")

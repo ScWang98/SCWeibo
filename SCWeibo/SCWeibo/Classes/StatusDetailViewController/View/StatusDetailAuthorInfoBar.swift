@@ -51,7 +51,7 @@ private extension StatusDetailAuthorInfoBar {
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.cornerRadius = 20
         avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
+        avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0x7F7F7F4D).cgColor
         avatarImageView.isUserInteractionEnabled = true
 
         nameLabel.textColor = UIColor.black

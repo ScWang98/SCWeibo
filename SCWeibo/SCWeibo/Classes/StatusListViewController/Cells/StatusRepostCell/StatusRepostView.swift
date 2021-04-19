@@ -36,7 +36,7 @@ class StatusRepostView: UIView {
         setNeedsLayout()
     }
 
-    static func height(for viewModel: StatusRepostCellViewModel) -> CGFloat {
+    class func height(viewModel: StatusRepostCellViewModel, width: CGFloat) -> CGFloat {
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
         let rect = viewModel.repostLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
@@ -51,7 +51,8 @@ class StatusRepostView: UIView {
 
 private extension StatusRepostView {
     func setupSubviews() {
-        backgroundColor = UIColor.sc.color(RGBA: 0xF7F7F7FF)
+        backgroundColor = UIColor.sc.color(RGB: 0x767680, alpha: 0.12)
+        self.layer.cornerRadius = 6
 
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
