@@ -5,6 +5,7 @@
 //  Created by scwang on 2021/3/22.
 //
 
+import MJRefresh
 import UIKit
 
 class PhotosListViewController: UIViewController {
@@ -12,8 +13,6 @@ class PhotosListViewController: UIViewController {
     var collectionView: UICollectionView
 
     private var listViewModel = PhotosListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -39,8 +38,12 @@ class PhotosListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension PhotosListViewController {
+    func config(withUserId userId: String?) {
+        listViewModel.config(withUserId: userId)
+    }
+
     func refreshData(with loadingState: Bool) {
-        loadDatas()
+        loadDatas(with: false)
     }
 }
 
@@ -62,6 +65,9 @@ private extension PhotosListViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.register(PhotoCollectionCell.self, forCellWithReuseIdentifier: String(describing: PhotoCollectionCell.self))
         collectionView.frame = view.bounds
+        collectionView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(with: true)
+        })
         view.addSubview(collectionView)
     }
 }
@@ -75,9 +81,9 @@ private extension PhotosListViewController {
     func removeObservers() {
     }
 
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
-            self.isPull = false
+    func loadDatas(with loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.collectionView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.collectionView.reloadData()
             }

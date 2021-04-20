@@ -5,7 +5,6 @@
 //  Created by scwang on 2020/3/27.
 //
 
-
 import UIKit
 
 extension UIImage: UtilitiesWrapperable {}
@@ -20,5 +19,13 @@ extension UtilitiesWrapper where Base: UIImage {
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return tintedImage
+    }
+
+    public func compressImage(to targetSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)
+        base.draw(in: CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height))
+        let targetImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return targetImage
     }
 }

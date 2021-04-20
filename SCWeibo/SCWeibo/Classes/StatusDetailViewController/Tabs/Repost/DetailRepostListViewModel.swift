@@ -10,14 +10,15 @@ import Foundation
 class DetailRepostListViewModel {
     lazy var repostList = [DetailRepostCellViewModel]()
     lazy var listService = DetailRepostListService()
-
-    var sinceId: String?
+    private var currentPage: Int
 
     init() {
+        currentPage = 1
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        listService.loadStatus(since_id: nil) { (isSuccess, repostModels) in
+        let page = loadMore ? currentPage + 1 : 1
+        listService.loadStatus(page: page) { (isSuccess, repostModels) in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -31,8 +32,10 @@ class DetailRepostListViewModel {
 
             if loadMore {
                 self.repostList += cellViewModels
+                self.currentPage += 1
             } else {
                 self.repostList = cellViewModels
+                self.currentPage = 1
             }
 
             completion(isSuccess, true)

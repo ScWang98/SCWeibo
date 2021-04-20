@@ -68,6 +68,8 @@ class UserProfileViewModel {
             userId = String(id)
         }
         statusTabViewModel.viewController.config(withUserId: userId)
+        videosTabViewModel.viewController.config(withUserId: userId)
+        photosTabViewModel.viewController.config(withUserId: userId)
     }
 
     func fetchUserInfo(completion: @escaping () -> Void) {

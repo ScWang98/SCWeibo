@@ -11,13 +11,11 @@ class DetailCommentListViewModel {
     lazy var commentList = [DetailCommentCellViewModel]()
     lazy var listService = DetailCommentListService()
 
-    var sinceId: String?
-
     init() {
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        listService.loadStatus(since_id: nil) { isSuccess, commentModels in
+        listService.loadStatus(loadMore: loadMore) { isSuccess, commentModels in
             if !isSuccess {
                 completion(false, false)
                 return

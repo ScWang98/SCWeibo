@@ -9,12 +9,20 @@ import Foundation
 
 class PhotosListViewModel {
     lazy var photos = [PhotoCellViewModel]()
+    var listService = PhotosListService()
+    private var currentPage: Int
 
     init() {
+        currentPage = 1
+    }
+    
+    func config(withUserId userId: String?) {
+        listService.userId = userId
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        PhotosListService.loadStatus(since_id: nil) { isSuccess, data in
+        let page = loadMore ? currentPage + 1 : 1
+        listService.loadStatus(page: page) { isSuccess, data in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -40,8 +48,10 @@ class PhotosListViewModel {
 
             if loadMore {
                 self.photos += cellViewModels
+                self.currentPage += 1
             } else {
                 self.photos = cellViewModels
+                self.currentPage = 1
             }
 
             completion(isSuccess, true)

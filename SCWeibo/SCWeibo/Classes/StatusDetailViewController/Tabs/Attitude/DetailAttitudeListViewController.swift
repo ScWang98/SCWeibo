@@ -6,13 +6,12 @@
 //
 
 import UIKit
+import MJRefresh
 
 class DetailAttitudeListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = DetailAttitudeListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -41,7 +40,7 @@ extension DetailAttitudeListViewController {
     }
     
     func refreshData(with loadingState: Bool) {
-        loadDatas()
+        loadDatas(loadMore: false)
     }
 }
 
@@ -55,6 +54,9 @@ private extension DetailAttitudeListViewController {
         tableView.separatorStyle = .none
         tableView.register(DetailAttitudeTableCell.self, forCellReuseIdentifier: String(describing: DetailAttitudeTableCell.self))
         tableView.frame = view.bounds
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(loadMore: true)
+        })
         view.addSubview(tableView)
     }
 }
@@ -68,9 +70,9 @@ private extension DetailAttitudeListViewController {
     func removeObservers() {
     }
     
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
-            self.isPull = false
+    func loadDatas(loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.tableView.reloadData()
             }

@@ -11,7 +11,7 @@ import Alamofire
 class DetailAttitudeListService {
     var statusId: String?
 
-    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [AttitudeModel]) -> Void) {
+    func loadStatus(page: Int, completion: @escaping (_ isSuccess: Bool, _ list: [AttitudeModel]) -> Void) {
         guard let statusId = statusId else {
             return
         }
@@ -21,7 +21,7 @@ class DetailAttitudeListService {
         var params = [String: Any]()
         params["id"] = statusId
         params["mid"] = statusId
-        params["page"] = 1
+        params["page"] = page
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
             var isSuccess = false

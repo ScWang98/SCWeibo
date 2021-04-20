@@ -5,6 +5,7 @@
 //  Created by scwang on 2021/3/14.
 //
 
+import Kingfisher
 import UIKit
 
 class StatusHomeViewController: StatusListViewController {
@@ -33,6 +34,24 @@ private extension StatusHomeViewController {
     func setupNavigationButtons() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
         avatarView.addGestureRecognizer(tap)
+
+        let placeholder = UIImage(named: "avatar_default_big")
+        if let urlString = AccountManager.shared.user?.avatar,
+           let url = URL(string: urlString) {
+            // 如果直接把image给imageView，view会自动根据image大小而变化，原因未知，所以这里把image缩放为指定大小
+            ImageDownloader.default.downloadImage(with: url) { result in
+                switch result {
+                case let .success(imageResult):
+                    self.avatarView.image = imageResult.image.sc.compressImage(to: CGSize(width: 30, height: 30))
+                default:
+                    self.avatarView.image = placeholder
+                }
+            }
+        } else {
+            avatarView.image = placeholder
+        }
+
+        avatarView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let leftButton = UIBarButtonItem(customView: avatarView)
         navigationItem.leftBarButtonItem = leftButton
 
@@ -60,12 +79,13 @@ private extension StatusHomeViewController {
 
     func writeButtonDidClicked(sender: Any) {
         print("writeButtonDidClicked")
-        Router.open(url: "pillar://statusDetail")
+        let status = StatusResponse()
+        status.id = 4627999674073543
+        Router.open(url: "pillar://statusDetail", userInfo: ["status": status])
     }
 
     func titleButtonDidClicked(sender: Any) {
         print("writeButtonDidClicked")
-        Router.open(url: "pillar://statusDetail")
     }
 }
 
@@ -74,6 +94,7 @@ class AccountAvatarView: UIImageView {
         super.init(frame: frame)
         layer.borderWidth = 1
         layer.borderColor = UIColor.sc.color(RGBA: 0x7F7F7F4D).cgColor
+        clipsToBounds = true
     }
 
     required init?(coder: NSCoder) {

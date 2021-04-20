@@ -10,14 +10,15 @@ import Foundation
 class DetailAttitudeListViewModel {
     lazy var attitudeList = [DetailAttitudeCellViewModel]()
     lazy var listService = DetailAttitudeListService()
-
-    var sinceId: String?
+    private var currentPage: Int
 
     init() {
+        currentPage = 1
     }
 
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-        listService.loadStatus(since_id: nil) { (isSuccess, attitudeModels) in
+        let page = loadMore ? currentPage + 1 : 1
+        listService.loadStatus(page: page) { (isSuccess, attitudeModels) in
             if !isSuccess {
                 completion(false, false)
                 return
@@ -31,8 +32,10 @@ class DetailAttitudeListViewModel {
 
             if loadMore {
                 self.attitudeList += cellViewModels
+                self.currentPage += 1
             } else {
                 self.attitudeList = cellViewModels
+                self.currentPage = 1
             }
 
             completion(isSuccess, true)

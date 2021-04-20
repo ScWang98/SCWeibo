@@ -54,7 +54,7 @@ class StatusDetailViewModel {
     func config(with routeParams: Dictionary<AnyHashable, Any>?) {
         if let routeParams = routeParams,
            let userInfo: [AnyHashable: Any] = routeParams.sc.dictionary(for: RouterParameterUserInfo),
-           let status = userInfo["statusResponse"] as? StatusResponse {
+           let status = userInfo["status"] as? StatusResponse {
             parseStatusResponse(status: status)
         }
         

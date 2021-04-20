@@ -6,13 +6,12 @@
 //
 
 import UIKit
+import MJRefresh
 
 class VideosListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = VideosListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -36,8 +35,12 @@ class VideosListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension VideosListViewController {
+    func config(withUserId userId: String?) {
+        listViewModel.config(withUserId: userId)
+    }
+    
     func refreshData(with loadingState: Bool) {
-        loadDatas()
+        loadDatas(loadMore: false)
     }
 }
 
@@ -50,6 +53,9 @@ private extension VideosListViewController {
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
         tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(loadMore: true)
+        })
         tableView.frame = view.bounds
         view.addSubview(tableView)
     }
@@ -64,9 +70,9 @@ private extension VideosListViewController {
     func removeObservers() {
     }
     
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
-            self.isPull = false
+    func loadDatas(loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.tableView.reloadData()
             }

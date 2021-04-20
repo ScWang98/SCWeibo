@@ -6,13 +6,12 @@
 //
 
 import UIKit
+import MJRefresh
 
 class DetailCommentListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = DetailCommentListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -41,7 +40,7 @@ extension DetailCommentListViewController {
     }
     
     func refreshData(with loadingState: Bool) {
-        loadDatas()
+        loadDatas(loadMore: false)
     }
 }
 
@@ -55,6 +54,9 @@ private extension DetailCommentListViewController {
         tableView.separatorStyle = .none
         tableView.register(DetailCommentTableCell.self, forCellReuseIdentifier: String(describing: DetailCommentTableCell.self))
         tableView.frame = view.bounds
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(loadMore: true)
+        })
         view.addSubview(tableView)
     }
 }
@@ -68,9 +70,9 @@ private extension DetailCommentListViewController {
     func removeObservers() {
     }
 
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
-            self.isPull = false
+    func loadDatas(loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.tableView.reloadData()
             }

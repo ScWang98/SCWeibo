@@ -9,16 +9,20 @@ import Alamofire
 import Foundation
 
 class PhotosListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
-        let containerIdPre = "107803"
-        let userId = "5236464641"
+    var userId: String?
+
+    func loadStatus(page: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
+        guard let userId = userId else {
+            completion(false, nil)
+            return
+        }
 
         let URLString = "https://m.weibo.cn/api/container/getSecond"
 
         var params = [String: Any]()
-        params["containerid"] = containerIdPre + userId + "_-_photoall"
+        params["containerid"] = "107803" + userId + "_-_photoall"
         params["count"] = 24
-        params["page"] = 1
+        params["page"] = page
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
             var isSuccess = false
             var jsonResult: Dictionary<AnyHashable, Any>?

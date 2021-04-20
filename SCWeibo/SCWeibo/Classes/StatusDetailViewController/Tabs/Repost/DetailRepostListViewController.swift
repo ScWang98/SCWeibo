@@ -5,14 +5,13 @@
 //  Created by wangshuchao on 2021/4/11.
 //
 
+import MJRefresh
 import UIKit
 
 class DetailRepostListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = DetailRepostListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -39,9 +38,9 @@ extension DetailRepostListViewController {
     func config(statusId: String?) {
         listViewModel.config(statusId: statusId)
     }
-    
+
     func refreshData(with loadingState: Bool) {
-        loadDatas()
+        loadDatas(loadMore: false)
     }
 }
 
@@ -55,6 +54,9 @@ private extension DetailRepostListViewController {
         tableView.separatorStyle = .none
         tableView.register(DetailRepostTableCell.self, forCellReuseIdentifier: String(describing: DetailRepostTableCell.self))
         tableView.frame = view.bounds
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(loadMore: true)
+        })
         view.addSubview(tableView)
     }
 }
@@ -67,10 +69,10 @@ private extension DetailRepostListViewController {
 
     func removeObservers() {
     }
-    
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: isPull) { _, needRefresh in
-            self.isPull = false
+
+    func loadDatas(loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.tableView.reloadData()
             }
@@ -107,6 +109,4 @@ extension DetailRepostListViewController: UITableViewDelegate, UITableViewDataSo
 // MARK: - Action
 
 @objc private extension DetailRepostListViewController {
-
 }
-

@@ -11,7 +11,7 @@ import Foundation
 class DetailRepostListService {
     var statusId: String?
     
-    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: [RepostModel]) -> Void) {
+    func loadStatus(page: Int, completion: @escaping (_ isSuccess: Bool, _ list: [RepostModel]) -> Void) {
         guard let statusId = statusId else {
             return
         }
@@ -20,7 +20,7 @@ class DetailRepostListService {
 
         var params = [String: Any]()
         params["id"] = statusId
-        params["page"] = 1
+        params["page"] = page
 
         AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
             var isSuccess = false

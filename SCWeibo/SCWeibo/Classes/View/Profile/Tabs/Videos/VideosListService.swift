@@ -9,9 +9,15 @@ import Alamofire
 import Foundation
 
 class VideosListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
+    var userId: String?
+
+    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
+        guard let userId = userId else {
+            completion(false, nil)
+            return
+        }
+        
         let containerIdPre = "231567"
-        let userId = "5236464641"
 
         let URLString = URLSettings.getIndexURL
 

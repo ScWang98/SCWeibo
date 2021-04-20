@@ -13,8 +13,6 @@ class StatusListViewController: UIViewController {
 
     var listViewModel = StatusListViewModel()
 
-    var isPull: Bool = false
-
     deinit {
         removeObservers()
     }
@@ -83,7 +81,6 @@ private extension StatusListViewController {
         listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
             self.tableView.mj_header?.endRefreshing()
             self.tableView.mj_footer?.endRefreshing()
-            self.isPull = false
             if needRefresh {
                 self.tableView.reloadData()
             }
@@ -118,7 +115,7 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let status = listViewModel.statusList[indexPath.row].status
-        let userInfo = ["statusResponse": status]
+        let userInfo = ["status": status]
 
         Router.open(url: "pillar://statusDetail", userInfo: userInfo)
     }
