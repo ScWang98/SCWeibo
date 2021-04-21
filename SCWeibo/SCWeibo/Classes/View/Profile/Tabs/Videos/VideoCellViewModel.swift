@@ -11,8 +11,7 @@ class VideoCellViewModel {
     var video: VideoResponse
     var text: String?
     var createdAt: String?
-    var coverUrl: String?
-    var videoUrl: String?
+    var videoModel: StatusVideoModel?
 
     init(with model: VideoResponse) {
         video = model
@@ -24,7 +23,6 @@ private extension VideoCellViewModel {
     func parseProperties() {
         text = video.text
         createdAt = video.createdAt?.semanticDateDescription
-        coverUrl = video.coverUrl
-        videoUrl = video.videoUrl
+        videoModel = video.videoModel
     }
 }

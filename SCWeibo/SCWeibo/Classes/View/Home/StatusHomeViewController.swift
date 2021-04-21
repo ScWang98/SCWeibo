@@ -35,7 +35,6 @@ private extension StatusHomeViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
         avatarView.addGestureRecognizer(tap)
 
-        let placeholder = UIImage(named: "avatar_default_big")
         if let urlString = AccountManager.shared.user?.avatar,
            let url = URL(string: urlString) {
             // 如果直接把image给imageView，view会自动根据image大小而变化，原因未知，所以这里把image缩放为指定大小
@@ -44,11 +43,11 @@ private extension StatusHomeViewController {
                 case let .success(imageResult):
                     self.avatarView.image = imageResult.image.sc.compressImage(to: CGSize(width: 30, height: 30))
                 default:
-                    self.avatarView.image = placeholder
+                    self.avatarView.image = nil
                 }
             }
         } else {
-            avatarView.image = placeholder
+            avatarView.image = nil
         }
 
         avatarView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -90,6 +89,16 @@ private extension StatusHomeViewController {
 }
 
 class AccountAvatarView: UIImageView {
+    lazy var defaultImage = UIImage(named: "avatar_default_big")?.sc.compressImage(to: CGSize(width: 30, height: 30))
+    
+    override var image: UIImage? {
+        didSet {
+            if image == nil {
+                image = defaultImage
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.borderWidth = 1

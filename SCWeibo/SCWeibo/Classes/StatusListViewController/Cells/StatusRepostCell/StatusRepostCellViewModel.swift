@@ -21,6 +21,7 @@ class StatusRepostCellViewModel {
     var likeTitle: String?
     var interactiveAttrStr: NSAttributedString?
     var repostLabelModel: ContentLabelTextModel?
+    var videoModel: StatusVideoModel?
 
     init(with model: StatusResponse) {
         status = model
@@ -30,7 +31,7 @@ class StatusRepostCellViewModel {
 
 private extension StatusRepostCellViewModel {
     func parseProperties() {
-        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        statusLabelModel = ContentHTMLParser.parseContentText(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -44,12 +45,14 @@ private extension StatusRepostCellViewModel {
         }
 
         interactiveAttrStr = generateInteractiveAttrString(status: status)
+        videoModel = status.videoModel
 
         if status.retweetedStatus != nil {
-            let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
+            let repostStr = "<a href=xx>@\(status.retweetedStatus?.user?.screenName ?? "")</a>:\(status.retweetedStatus?.text ?? "")"
             let repostFontSize = UIFont.systemFont(ofSize: 14)
-            repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: repostFontSize)
+            repostLabelModel = ContentHTMLParser.parseContentText(string: repostStr, font: repostFontSize)
             picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls)
+            videoModel = status.retweetedStatus?.videoModel
         }
     }
 
@@ -113,6 +116,10 @@ extension StatusRepostCellViewModel {
                   picUrls.count > 0 {
             let picsHeight = StatusPicturesView.height(for: picUrls)
             totalHeight += picsHeight
+            totalHeight += 10 // Gap
+        } else if self.videoModel != nil {
+            let height = VideoCoverImageView.height(width: contentWidth)
+            totalHeight += height
             totalHeight += 10 // Gap
         }
 

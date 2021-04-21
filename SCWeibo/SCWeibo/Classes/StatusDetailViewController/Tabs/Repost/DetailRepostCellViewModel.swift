@@ -44,7 +44,7 @@ private extension DetailRepostCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
-        commentLabelModel = ContentHTMLParser.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        commentLabelModel = ContentHTMLParser.parseContentText(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
         createdAt = model.createdAt?.semanticDateDescription
     }
 }

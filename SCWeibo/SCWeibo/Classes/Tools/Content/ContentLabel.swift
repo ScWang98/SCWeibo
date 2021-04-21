@@ -35,7 +35,7 @@ public class ContentLabel: UILabel {
     weak var delegate: ContentLabelDelegate?
 
     public var linkTextColor = UIColor.sc.color(RGBA: 0x0099FFFF)
-    public var selectedBackgroudColor = UIColor.lightGray
+    public var selectedBackgroudColor = UIColor(white: 0.8, alpha: 1.0)
 
     public var textModel: ContentLabelTextModel? {
         didSet {

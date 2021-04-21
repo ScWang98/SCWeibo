@@ -53,7 +53,7 @@ private extension DetailCommentCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
-        commentLabelModel = ContentHTMLParser.parseTextWithHTML(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        commentLabelModel = ContentHTMLParser.parseContentText(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
 
         if let comments = model.comments {
             var subCommentLabelModels = [ContentLabelTextModel]()
@@ -74,7 +74,7 @@ private extension DetailCommentCellViewModel {
 
     func generateCommentLabelModel(text: String, user: UserResponse) -> ContentLabelTextModel {
         let font = UIFont.systemFont(ofSize: 16)
-        let model = ContentHTMLParser.parseTextWithHTML(string: text, font: font)
+        let model = ContentHTMLParser.parseContentText(string: text, font: font)
         guard let screenName = user.screenName else {
             return model
         }

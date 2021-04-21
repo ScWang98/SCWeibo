@@ -27,7 +27,7 @@ class StatusNormalCellViewModel {
 
 private extension StatusNormalCellViewModel {
     func parseProperties() {
-        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        statusLabelModel = ContentHTMLParser.parseContentText(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar

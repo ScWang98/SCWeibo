@@ -92,7 +92,7 @@ class StatusDetailViewModel {
 private extension StatusDetailViewModel {
     func parseStatusResponse(status: StatusResponse) {
         self.status = status
-        statusLabelModel = ContentHTMLParser.parseTextWithHTML(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        statusLabelModel = ContentHTMLParser.parseContentText(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
         avatarUrl = status.user?.avatar
@@ -109,8 +109,8 @@ private extension StatusDetailViewModel {
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
         if status.retweetedStatus != nil {
-            let repostStr = "@\(status.retweetedStatus?.user?.screenName ?? ""):\(status.retweetedStatus?.text ?? "")"
-            repostLabelModel = ContentHTMLParser.parseTextWithHTML(string: repostStr, font: UIFont.systemFont(ofSize: 14))
+            let repostStr = "<a href=xx>@\(status.retweetedStatus?.user?.screenName ?? "")</a>:\(status.retweetedStatus?.text ?? "")"
+            repostLabelModel = ContentHTMLParser.parseContentText(string: repostStr, font: UIFont.systemFont(ofSize: 14))
             picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls)
         }
         

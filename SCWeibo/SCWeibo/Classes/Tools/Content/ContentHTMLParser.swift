@@ -8,7 +8,7 @@
 import Foundation
 
 class ContentHTMLParser {
-    class func parseTextWithHTML(string: String, font: UIFont) -> ContentLabelTextModel {
+    class func parseContentText(string: String, font: UIFont, html: Bool = true) -> ContentLabelTextModel {
         let attrString = NSMutableAttributedString(string: string)
         let labelModel = ContentLabelTextModel(text: attrString)
 
@@ -19,16 +19,22 @@ class ContentHTMLParser {
         replaceWrap(labelModel: labelModel)
 
         // 替换 @ 如 <a href=xxxx>@xxxxxx</a> 为 @xxxxxx
-        replaceUserHref(labelModel: labelModel)
+        replaceUserHref(labelModel: labelModel, html: html)
 
         // 替换 话题 如 <a href=xxxx>#xxxxxx#</a> 为 @xxxxxx
-        replaceTopicHref(labelModel: labelModel)
+        replaceTopicHref(labelModel: labelModel, html: html)
 
         // 替换 全文
         replaceFullTextHref(labelModel: labelModel)
 
         // 替换 位置
         replaceLocationHref(labelModel: labelModel)
+        
+        // 替换 视频
+        replaceVideoHref(labelModel: labelModel)
+        
+        // 替换 网页链接
+        replaceWebHref(labelModel: labelModel)
 
         // 替换查看图片
         replacePhotoPreview(labelModel: labelModel)
@@ -111,7 +117,7 @@ private extension ContentHTMLParser {
         }
     }
 
-    class func replaceUserHref(labelModel: ContentLabelTextModel) {
+    class func replaceUserHref(labelModel: ContentLabelTextModel, html: Bool) {
         let string = labelModel.text
         let pattern = "<a href=.*?>(@.*?)</a>"
         guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
@@ -169,7 +175,7 @@ private extension ContentHTMLParser {
         }
     }
 
-    class func replaceTopicHref(labelModel: ContentLabelTextModel) {
+    class func replaceTopicHref(labelModel: ContentLabelTextModel, html: Bool) {
         let string = labelModel.text
         let pattern = "<a *?href=\".*?\"><span.*?>(#.*?#)</span></a>"
         guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
@@ -239,8 +245,101 @@ private extension ContentHTMLParser {
 
         for result in matchs.reversed() {
             let fromRange = result.range
-            let toRange = result.range(at: 2)
-            let toStr = string.attributedSubstring(from: toRange)
+            var toRange = result.range(at: 2)
+            var toStr = string.attributedSubstring(from: toRange)
+            
+            if let image = UIImage(named: "SmallLocation")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
+                let mutToStr = NSMutableAttributedString(attributedString: toStr)
+                let attachment = NSTextAttachment(image: image)
+                attachment.bounds = CGRect(x: 0, y: -1, width: 12, height: 12)
+                let imageAttrStr = NSAttributedString(attachment: attachment)
+                mutToStr.insert(imageAttrStr, at: 0)
+                toRange.length = mutToStr.length
+                toStr = mutToStr
+            }
+            
+            let urlStr = string.attributedSubstring(from: result.range(at: 1))
+
+            string.replaceCharacters(in: fromRange, with: toStr)
+
+            let newRange = NSRange(location: fromRange.location, length: toRange.length)
+            let offset = fromRange.length - toRange.length
+            for schemaModel in labelModel.schemas {
+                if schemaModel.range.location > newRange.location {
+                    schemaModel.range.location -= offset
+                }
+            }
+            let schema = String(format: "pillar://webview?url=%@", urlStr.string.sc.stringByURLEncode)
+            let schemaModel = ContentLabelTextModel.SchemaModel(range: newRange, schema: schema)
+            labelModel.schemas.append(schemaModel)
+        }
+    }
+    
+    class func replaceVideoHref(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let pattern = "<a.*?data-url.*?href=\"(.*?)\".*?><img.*?video.*?</span><span.*?>(.*?)</span></a>"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let fromRange = result.range
+            var toRange = result.range(at: 2)
+            var toStr = string.attributedSubstring(from: toRange)
+            
+            if let image = UIImage(named: "CardSmallVideo")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
+                let mutToStr = NSMutableAttributedString(attributedString: toStr)
+                let attachment = NSTextAttachment(image: image)
+                attachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+                let imageAttrStr = NSAttributedString(attachment: attachment)
+                mutToStr.insert(imageAttrStr, at: 0)
+                toRange.length = mutToStr.length
+                toStr = mutToStr
+            }
+            
+            let urlStr = string.attributedSubstring(from: result.range(at: 1))
+
+            string.replaceCharacters(in: fromRange, with: toStr)
+
+            let newRange = NSRange(location: fromRange.location, length: toRange.length)
+            let offset = fromRange.length - toRange.length
+            for schemaModel in labelModel.schemas {
+                if schemaModel.range.location > newRange.location {
+                    schemaModel.range.location -= offset
+                }
+            }
+            let schema = String(format: "pillar://webview?url=%@", urlStr.string.sc.stringByURLEncode)
+            let schemaModel = ContentLabelTextModel.SchemaModel(range: newRange, schema: schema)
+            labelModel.schemas.append(schemaModel)
+        }
+    }
+    
+    class func replaceWebHref(labelModel: ContentLabelTextModel) {
+        let string = labelModel.text
+        let pattern = "<a.*?data-url.*?href=\"(.*?)\".*?><img.*?web.*?</span><span.*?>(.*?)</span></a>"
+        guard let regx = try? NSRegularExpression(pattern: pattern, options: []) else {
+            return
+        }
+
+        let matchs = regx.matches(in: string.string, options: [], range: NSRange(location: 0, length: string.length))
+
+        for result in matchs.reversed() {
+            let fromRange = result.range
+            var toRange = result.range(at: 2)
+            var toStr = string.attributedSubstring(from: toRange)
+            
+            if let image = UIImage(named: "SmallWebLink")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
+                let mutToStr = NSMutableAttributedString(attributedString: toStr)
+                let attachment = NSTextAttachment(image: image)
+                attachment.bounds = CGRect(x: 0, y: -2.5, width: 14, height: 14)
+                let imageAttrStr = NSAttributedString(attachment: attachment)
+                mutToStr.insert(imageAttrStr, at: 0)
+                toRange.length = mutToStr.length
+                toStr = mutToStr
+            }
+            
             let urlStr = string.attributedSubstring(from: result.range(at: 1))
 
             string.replaceCharacters(in: fromRange, with: toStr)

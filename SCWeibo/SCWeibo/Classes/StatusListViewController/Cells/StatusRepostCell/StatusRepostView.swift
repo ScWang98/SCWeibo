@@ -12,6 +12,7 @@ class StatusRepostView: UIView {
 
     let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
+    let videoCoverView = VideoCoverImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,28 +32,55 @@ class StatusRepostView: UIView {
         self.viewModel = viewModel
 
         contentLabel.textModel = viewModel.repostLabelModel
-        picturesView.reload(with: viewModel.picUrls ?? [])
+
+        if let picUrls = viewModel.picUrls,
+           picUrls.count > 0 {
+            picturesView.isHidden = false
+            videoCoverView.isHidden = true
+
+            picturesView.reload(with: viewModel.picUrls ?? [])
+        } else if let videoModel = viewModel.videoModel {
+            picturesView.isHidden = true
+            videoCoverView.isHidden = false
+
+            videoCoverView.reload(model: videoModel)
+        } else {
+            picturesView.isHidden = true
+            videoCoverView.isHidden = true
+        }
 
         setNeedsLayout()
     }
 
     class func height(viewModel: StatusRepostCellViewModel, width: CGFloat) -> CGFloat {
-        let width = UIScreen.sc.screenWidth - 2 * 12
-        let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.repostLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
+        var totalHeight: CGFloat = 0
+        let contentWidth = width - 12 * 2
 
-        let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [])
+        totalHeight += 12
 
-        let gap: CGFloat = 12.0
-        return gap + textHeight + gap + picHeight + gap
+        let textHeight = viewModel.repostLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        totalHeight += textHeight
+        totalHeight += 12
+
+        if let picUrls = viewModel.picUrls,
+           picUrls.count > 0 {
+            let picHeight = StatusPicturesView.height(for: viewModel.picUrls, width: contentWidth)
+            totalHeight += picHeight
+            totalHeight += 12
+        } else if viewModel.repostLabelModel != nil && viewModel.videoModel != nil {
+            let height = VideoCoverImageView.height(width: contentWidth)
+            totalHeight += height
+            totalHeight += 12
+        }
+
+        return totalHeight
     }
 }
 
 private extension StatusRepostView {
     func setupSubviews() {
         backgroundColor = UIColor.sc.color(RGB: 0x767680, alpha: 0.12)
-        self.layer.cornerRadius = 6
+        layer.cornerRadius = 6
 
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
@@ -62,13 +90,19 @@ private extension StatusRepostView {
 
         addSubview(contentLabel)
         addSubview(picturesView)
+        addSubview(videoCoverView)
     }
 
     func setupLayout() {
-        let gap: CGFloat = 12
-        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [])
-        picturesView.anchorToEdge(.bottom, padding: gap, width: width - gap * 2, height: picHeight)
-        contentLabel.anchorToEdge(.top, padding: gap, width: width - gap * 2, height: picturesView.top - gap * 2)
+        let contentWidth = width - 12 * 2
+        let textHeight = viewModel?.repostLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        contentLabel.anchorToEdge(.top, padding: 12, width: contentWidth, height: textHeight)
+
+        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [], width: contentWidth)
+        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 12, width: contentWidth, height: picHeight)
+
+        let videoHeight = VideoCoverImageView.height(width: contentWidth)
+        videoCoverView.align(.underCentered, relativeTo: contentLabel, padding: 12, width: contentWidth, height: videoHeight)
     }
 }
 
