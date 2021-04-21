@@ -16,6 +16,10 @@ class URLSettings {
         return "https://m.weibo.cn"
     }
 
+    class var feedGroupURL: String {
+        return h5BaseURL + "/api/config/list"
+    }
+    
     class var homeStatusesURL: String {
         return baseURL + "/2/statuses/home_timeline.json"
     }

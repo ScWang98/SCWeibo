@@ -9,12 +9,20 @@ import Kingfisher
 import UIKit
 
 class StatusHomeViewController: StatusListViewController {
-    let avatarView = AccountAvatarView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    let avatarView = AccountAvatarView()
+    let titleButton = HomeTitleButton()
+    
+    let service = StatusHomeService()
+
+    var groupModels: [GroupModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
         setupNavigationButtons()
+        service.fetchFeedGroup { groupModels in
+            self.groupModels = groupModels
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +67,7 @@ private extension StatusHomeViewController {
         navigationItem.rightBarButtonItems = [writeButton, queryButton]
 
         navigationItem.title = "主页"
-        let titleButton = HomeTitleButton(frame: CGRect(x: 0, y: 0, width: 70, height: 21))
+        titleButton.frame = CGRect(x: 0, y: 0, width: 70, height: 21)
         titleButton.addTarget(self, action: #selector(titleButtonDidClicked(sender:)), for: .touchUpInside)
         navigationItem.titleView = titleButton
     }
@@ -84,13 +92,22 @@ private extension StatusHomeViewController {
     }
 
     func titleButtonDidClicked(sender: Any) {
-        print("writeButtonDidClicked")
+        guard let groupModels = groupModels,
+              groupModels.count > 0 else {
+            return
+        }
+        titleButton.isSelected = !titleButton.isSelected
+
+        StatusFriendGroupController.showGroupController(groupList: groupModels) { [weak self] groupModel in
+            self?.titleButton.isSelected = false
+            print("git: \(groupModel?.gid) name: \(groupModel?.name)")
+        }
     }
 }
 
 class AccountAvatarView: UIImageView {
     lazy var defaultImage = UIImage(named: "avatar_default_big")?.sc.compressImage(to: CGSize(width: 30, height: 30))
-    
+
     override var image: UIImage? {
         didSet {
             if image == nil {
@@ -99,6 +116,10 @@ class AccountAvatarView: UIImageView {
         }
     }
     
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.borderWidth = 1
@@ -116,12 +137,20 @@ class AccountAvatarView: UIImageView {
 }
 
 class HomeTitleButton: UIButton {
+    override var isSelected: Bool {
+        didSet {
+            let transform = isSelected ? CATransform3DRotate(CATransform3DIdentity, CGFloat.pi, 1, 0, 0) : CATransform3DIdentity
+            UIView.animate(withDuration: 0.2) {
+                self.imageView?.transform3D = transform
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         let title = NSAttributedString(string: "主页", attributes: [.font: UIFont.boldSystemFont(ofSize: 17)])
         setAttributedTitle(title, for: .normal)
         setImage(UIImage(named: "DownArrow_Normal"), for: .normal)
-        addTarget(self, action: #selector(buttonDidClicked(sender:)), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -132,13 +161,5 @@ class HomeTitleButton: UIButton {
         super.layoutSubviews()
         titleLabel?.center = center
         imageView?.center = CGPoint(x: (titleLabel?.right ?? 0) + (imageView?.width ?? 0) / 2, y: titleLabel?.centerY ?? 0)
-    }
-
-    @objc func buttonDidClicked(sender: Any) {
-        isSelected = !isSelected
-        let transform = imageView?.transform3D ?? CATransform3DIdentity
-        UIView.animate(withDuration: 0.2) {
-            self.imageView?.transform3D = CATransform3DRotate(transform, CGFloat.pi, 1, 0, 0)
-        }
     }
 }

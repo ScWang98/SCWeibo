@@ -5,8 +5,8 @@
 //  Created by wangshuchao on 2021/4/11.
 //
 
-import UIKit
 import MJRefresh
+import UIKit
 
 class DetailAttitudeListViewController: UIViewController {
     var tableView = UITableView()
@@ -38,7 +38,7 @@ extension DetailAttitudeListViewController {
     func config(statusId: String?) {
         listViewModel.config(statusId: statusId)
     }
-    
+
     func refreshData(with loadingState: Bool) {
         loadDatas(loadMore: false)
     }
@@ -69,7 +69,7 @@ private extension DetailAttitudeListViewController {
 
     func removeObservers() {
     }
-    
+
     func loadDatas(loadMore: Bool) {
         listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
             self.tableView.mj_footer?.endRefreshing()
@@ -108,7 +108,4 @@ extension DetailAttitudeListViewController: UITableViewDelegate, UITableViewData
 // MARK: - Action
 
 @objc private extension DetailAttitudeListViewController {
-
 }
-
-
