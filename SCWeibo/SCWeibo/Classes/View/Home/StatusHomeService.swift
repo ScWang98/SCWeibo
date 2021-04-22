@@ -9,6 +9,13 @@ import Alamofire
 import UIKit
 
 class StatusHomeService {
+    var userId: String?
+    var gid: String? {
+        didSet {
+            print(String(describing: gid))
+        }
+    }
+
     func fetchFeedGroup(completion: @escaping ([GroupModel]?) -> Void) {
         let URLString = URLSettings.feedGroupURL
         AF.request(URLString).responseJSON { response in
@@ -42,16 +49,15 @@ class StatusHomeService {
     }
 }
 
-class StatusHomeListService: StatusListService {
-    var userId: String?
-
+extension StatusHomeService: StatusListService {
     func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
-        let URLString = URLSettings.homeStatusesURL
+        let URLString = gid == nil ? URLSettings.homeH5StatusURL : URLSettings.homeH5GroupStatusURL
+
         var parameters = [String: Any]()
+        parameters["gid"] = gid
         if let max_id = max_id {
             parameters["max_id"] = max_id - 1
         }
-        parameters["access_token"] = AccountManager.shared.accessToken
 
         AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
             var jsonResult: Any?
@@ -64,13 +70,48 @@ class StatusHomeListService: StatusListService {
             }
 
             guard let jsonDict = jsonResult as? [String: Any],
-                  let statusDictArray = jsonDict["statuses"] as? [[String: AnyObject]],
-                  let results: Array<StatusResponse> = StatusResponse.decode(statusDictArray) else {
+                  let jsonData: [AnyHashable: Any] = jsonDict.sc.dictionary(for: "data"),
+                  let statusDictArray: [[String: AnyObject]] = jsonData.sc.array(for: "statuses") else {
                 completion(false, nil)
                 return
+            }
+
+            var results = [StatusResponse]()
+            for statusDict in statusDictArray {
+                results.append(StatusResponse(withH5dict: statusDict))
             }
 
             completion(true, results)
         }
     }
+
+    // 此方法实现为 微博开放平台接口
+//    func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
+//        let URLString = URLSettings.homeStatusesURL
+//        var parameters = [String: Any]()
+//        if let max_id = max_id {
+//            parameters["max_id"] = max_id - 1
+//        }
+//        parameters["access_token"] = AccountManager.shared.accessToken
+//
+//        AF.request(URLString, method: .get, parameters: parameters, encoding: URLEncoding.default).responseJSON { response in
+//            var jsonResult: Any?
+//
+//            switch response.result {
+//            case let .success(json):
+//                jsonResult = json
+//            case .failure:
+//                jsonResult = nil
+//            }
+//
+//            guard let jsonDict = jsonResult as? [String: Any],
+//                  let statusDictArray = jsonDict["statuses"] as? [[String: AnyObject]],
+//                  let results: Array<StatusResponse> = StatusResponse.decode(statusDictArray) else {
+//                completion(false, nil)
+//                return
+//            }
+//
+//            completion(true, results)
+//        }
+//    }
 }

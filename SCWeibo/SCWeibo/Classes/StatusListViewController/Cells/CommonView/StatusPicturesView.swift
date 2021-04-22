@@ -23,6 +23,9 @@ class StatusPicturesView: UIView {
         setupPictures()
 
         for (index, url) in urls.enumerated() {
+            if index > 8 {
+                continue
+            }
             let imageView = picViews[index]
             let imageURL = URL(string: url.bmiddlePic)
             imageView.kf.setImage(with: imageURL)

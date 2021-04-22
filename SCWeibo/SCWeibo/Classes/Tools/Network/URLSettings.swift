@@ -20,8 +20,16 @@ class URLSettings {
         return h5BaseURL + "/api/config/list"
     }
     
-    class var homeStatusesURL: String {
+    class var homeStatusURL: String {
         return baseURL + "/2/statuses/home_timeline.json"
+    }
+    
+    class var homeH5StatusURL: String {
+        return h5BaseURL + "/feed/friends"
+    }
+    
+    class var homeH5GroupStatusURL: String {
+        return h5BaseURL + "/feed/group"
     }
     
     class var userInfoURL: String {

@@ -8,10 +8,10 @@
 import UIKit
 
 class GroupModel {
-    var gid: String
+    var gid: String?
     var name: String
 
-    init(gid: String, name: String) {
+    init(gid: String? = nil, name: String) {
         self.gid = gid
         self.name = name
     }

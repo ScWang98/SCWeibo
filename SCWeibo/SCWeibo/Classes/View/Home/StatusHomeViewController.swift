@@ -14,7 +14,11 @@ class StatusHomeViewController: StatusListViewController {
     
     let service = StatusHomeService()
 
-    var groupModels: [GroupModel]?
+    var groupModels: [GroupModel]? {
+        didSet {
+            groupModels?.insert(GroupModel(gid: nil, name: "主页"), at: 0)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +39,7 @@ class StatusHomeViewController: StatusListViewController {
 
 private extension StatusHomeViewController {
     func setupSubviews() {
-        listViewModel.listService = StatusHomeListService()
+        listViewModel.listService = service
 //        refreshData(with: true)
     }
 
@@ -100,7 +104,8 @@ private extension StatusHomeViewController {
 
         StatusFriendGroupController.showGroupController(groupList: groupModels) { [weak self] groupModel in
             self?.titleButton.isSelected = false
-            print("git: \(groupModel?.gid) name: \(groupModel?.name)")
+            self?.service.gid = groupModel?.gid
+            self?.titleButton.title = groupModel?.name
         }
     }
 }
@@ -146,10 +151,19 @@ class HomeTitleButton: UIButton {
         }
     }
     
+    var title: String? {
+        set (title) {
+            let attrTitle = NSAttributedString(string: title ?? "", attributes: [.font: UIFont.boldSystemFont(ofSize: 17)])
+            setAttributedTitle(attrTitle, for: .normal)
+        }
+        get {
+            return attributedTitle(for: .normal)?.string
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let title = NSAttributedString(string: "主页", attributes: [.font: UIFont.boldSystemFont(ofSize: 17)])
-        setAttributedTitle(title, for: .normal)
+        title = "主页"
         setImage(UIImage(named: "DownArrow_Normal"), for: .normal)
     }
 
