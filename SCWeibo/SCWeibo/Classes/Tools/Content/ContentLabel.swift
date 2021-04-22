@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ContentLabelDelegate: class {
-    func contentLabel(label: ContentLabel, didTapSchema: String)
+    func contentLabel(label: ContentLabel, didTap schema: String)
 }
 
 public class ContentLabelTextModel {
@@ -150,7 +150,7 @@ extension ContentLabel: UIGestureRecognizerDelegate {
         }
 
         modifySelectedAttribute(schema.range, true)
-        delegate?.contentLabel(label: self, didTapSchema: schema.schema)
+        delegate?.contentLabel(label: self, didTap: schema.schema)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             self.modifySelectedAttribute(schema.range, false)

@@ -78,6 +78,7 @@ private extension StatusDetailRepostView {
 }
 
 extension StatusDetailRepostView: ContentLabelDelegate {
-    func contentLabel(label: ContentLabel, didTapSchema: String) {
+    func contentLabel(label: ContentLabel, didTap schema: String) {
+        Router.open(url: schema)
     }
 }

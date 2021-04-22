@@ -116,6 +116,7 @@ private extension StatusDetailContentView {
 }
 
 extension StatusDetailContentView: ContentLabelDelegate {
-    func contentLabel(label: ContentLabel, didTapSchema: String) {
+    func contentLabel(label: ContentLabel, didTap schema: String) {
+        Router.open(url: schema)
     }
 }

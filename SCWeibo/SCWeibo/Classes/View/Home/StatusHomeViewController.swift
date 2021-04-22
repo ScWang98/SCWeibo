@@ -104,8 +104,10 @@ private extension StatusHomeViewController {
 
         StatusFriendGroupController.showGroupController(groupList: groupModels) { [weak self] groupModel in
             self?.titleButton.isSelected = false
-            self?.service.gid = groupModel?.gid
-            self?.titleButton.title = groupModel?.name
+            if let groupModel = groupModel {
+                self?.service.gid = groupModel.gid
+                self?.titleButton.title = groupModel.name
+            }
         }
     }
 }

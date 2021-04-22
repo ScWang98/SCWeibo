@@ -85,6 +85,7 @@ private extension DetailAttitudeTableCell {
 }
 
 extension DetailAttitudeTableCell: ContentLabelDelegate {
-    func contentLabel(label: ContentLabel, didTapSchema: String) {
+    func contentLabel(label: ContentLabel, didTap schema: String) {
+        Router.open(url: schema)
     }
 }

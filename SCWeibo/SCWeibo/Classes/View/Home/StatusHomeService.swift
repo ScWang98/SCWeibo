@@ -85,7 +85,7 @@ extension StatusHomeService: StatusListService {
         }
     }
 
-    // 此方法实现为 微博开放平台接口
+    // 此实现为 微博开放平台接口
 //    func loadStatus(max_id: Int?, page: Int?, completion: @escaping (Bool, [StatusResponse]?) -> Void) {
 //        let URLString = URLSettings.homeStatusesURL
 //        var parameters = [String: Any]()

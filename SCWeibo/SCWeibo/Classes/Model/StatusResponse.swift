@@ -83,7 +83,13 @@ class StatusVideoModel {
             coverUrl = pagePic.sc.string(for: "url")
         }
         if let videoUrls: Dictionary<AnyHashable, Any> = H5Dict?.sc.dictionary(for: "urls") {
-            videoUrl = videoUrls.sc.string(for: "mp4_720p_mp4")
+            let keys = ["mp4_720p_mp4", "hevc_mp4_hd", "mp4_hd_mp4", "mp4_ld_mp4"]
+            for key in keys {
+                if videoUrls[key] != nil {
+                    videoUrl = videoUrls.sc.string(for: key)
+                    break
+                }
+            }
         }
     }
 }
