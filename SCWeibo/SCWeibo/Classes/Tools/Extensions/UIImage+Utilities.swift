@@ -13,7 +13,7 @@ extension UtilitiesWrapper where Base: UIImage {
     public func image(tintColor: UIColor) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(base.size, false, 0.0)
         tintColor.setFill()
-        let bounds = CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height)
+        let bounds = CGRect(origin: CGPoint.zero, size: base.size)
         UIRectFill(bounds)
         base.draw(in: bounds, blendMode: .destinationIn, alpha: 1.0)
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()

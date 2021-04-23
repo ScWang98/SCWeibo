@@ -43,6 +43,13 @@ class MNEmojiInputView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        toolbar.snp.updateConstraints { (make) in
+            make.bottom.equalToSuperview().offset(-self.safeAreaInsets.bottom)
+        }
+    }
 }
 
 private extension MNEmojiInputView{
@@ -51,8 +58,9 @@ private extension MNEmojiInputView{
         toolbar.backgroundColor = UIColor.lightGray
         addSubview(toolbar)
         toolbar.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalToSuperview()
-            make.height.equalTo(kMNEmojiToolbarHeight)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(40)
+            make.bottom.equalToSuperview().offset(-self.safeAreaInsets.bottom)
         }
         
         collectionView.dataSource = self

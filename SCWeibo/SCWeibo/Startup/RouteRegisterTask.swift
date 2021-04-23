@@ -12,5 +12,6 @@ class RouteRegisterTask: StartupTaskProtocol {
         Router.register(urlPattern: "pillar://h5login", pageClass: H5LoginWebViewController.self)
         Router.register(urlPattern: "pillar://statusDetail", pageClass: StatusDetailViewController.self)
         Router.register(urlPattern: "pillar://webview", pageClass: WebViewController.self)
+        Router.register(urlPattern: "pillar://writeStatus", pageClass: WriteStatusController.self)
     }
 }

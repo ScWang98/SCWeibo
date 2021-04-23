@@ -42,9 +42,9 @@ private extension WebViewController {
     func setupSubviews() {
         navigationController?.navigationBar.isHidden = false
 
-        webView.frame = view.bounds
-
         view.addSubview(webView)
+
+        webView.fillSuperview(top: view.safeAreaInsets.top)
 
         if let urlString = url {
             guard let url = URL(string: urlString) else { return }

@@ -49,7 +49,7 @@ class MNBaseViewController: UIViewController{
     func registNotification() {
         //login success
         NotificationCenter.default.addObserver(
-            forName: NSNotification.Name(MNUserLoginSuccessNotification),
+            forName: NSNotification.Name(UserLoginStateDidChangeNotification),
             object: nil,
             queue:OperationQueue.main){ [weak self]_ in
                 guard let weakSelf = self else{

@@ -66,7 +66,7 @@ class MNVisitorView: UIView {
     
     private lazy var houseView = UIImageView(image:(UIImage (named: "visitordiscover_feed_image_house")))
     
-    private lazy var tipLabel = UILabel.mn_label(text: "talk is cheep, show me the code", fontSize: 16, color: UIColor.darkGray)
+    private lazy var tipLabel = UILabel.label(text: "talk is cheep, show me the code", fontSize: 16, color: UIColor.darkGray)
     
     private lazy var registerButton = UIButton.mn_textButton(title: "注册",
                                                              fontSize: 16,
@@ -230,5 +230,18 @@ extension MNVisitorView{
             options: [],
             metrics: metrics,
             views: viewDic))
+    }
+}
+
+private extension UILabel{
+    class func label(text:String, fontSize:CGFloat, color:UIColor) -> UILabel{
+        
+        let label = self.init()
+        label.text = text
+        label.font = UIFont.systemFont(ofSize: MNLayout.Layout(fontSize))
+        label.textColor = color
+        label.numberOfLines = 0
+        label.sizeToFit()
+        return label
     }
 }

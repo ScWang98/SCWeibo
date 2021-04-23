@@ -89,10 +89,7 @@ private extension StatusHomeViewController {
     }
 
     func writeButtonDidClicked(sender: Any) {
-        print("writeButtonDidClicked")
-        let status = StatusResponse()
-        status.id = 4627999674073543
-        Router.open(url: "pillar://statusDetail", userInfo: ["status": status])
+        Router.open(url: "pillar://writeStatus")
     }
 
     func titleButtonDidClicked(sender: Any) {

@@ -21,6 +21,13 @@
 		248423072630560200CD25A4 /* VideoCoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248423062630560200CD25A4 /* VideoCoverImageView.swift */; };
 		2484230F2630750200CD25A4 /* StatusFriendGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2484230E2630750200CD25A4 /* StatusFriendGroupController.swift */; };
 		248423232631475300CD25A4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248423222631475300CD25A4 /* WebViewController.swift */; };
+		248423322631BA6100CD25A4 /* WriteTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248423312631BA6100CD25A4 /* WriteTitleButton.swift */; };
+		248A0F022632705400D2DACC /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F012632705400D2DACC /* UIView+Addition.m */; };
+		248A0F092632750600D2DACC /* NSObject+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F082632750600D2DACC /* NSObject+Swizzle.m */; };
+		248A0F142632A13200D2DACC /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F132632A13200D2DACC /* UIViewController+Extension.swift */; };
+		248A0F1C2632A7E700D2DACC /* WriteStatusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */; };
+		248A0F242632A89800D2DACC /* CommonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F232632A89800D2DACC /* CommonService.swift */; };
+		248A0F3C2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 248A0F3B2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.m */; };
 		249BC8742610BD1100589656 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249BC8732610BD1100589656 /* UserProfileService.swift */; };
 		24AD7E25262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */; };
 		24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */; };
@@ -102,7 +109,7 @@
 		D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */; };
 		D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */; };
 		D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */; };
-		D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D025EE3AEF00E3E767 /* MNTextView.swift */; };
+		D6A2263625EE3AEF00E3E767 /* WriteStatusTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */; };
 		D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */; };
 		D6A2263825EE3AEF00E3E767 /* MNEmoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6A225D225EE3AEF00E3E767 /* MNEmoji.bundle */; };
 		D6A2263925EE3AEF00E3E767 /* MNWeibo.sql in Resources */ = {isa = PBXBuildFile; fileRef = D6A225D425EE3AEF00E3E767 /* MNWeibo.sql */; };
@@ -134,9 +141,7 @@
 		D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */; };
 		D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261925EE3AEF00E3E767 /* WeiboNavigationController.swift */; };
 		D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */; };
-		D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262025EE3AEF00E3E767 /* MNCompostTypeButton.swift */; };
-		D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262125EE3AEF00E3E767 /* MNPublishView.swift */; };
-		D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262225EE3AEF00E3E767 /* MNWriteController.swift */; };
+		D6A2266F25EE3AF000E3E767 /* WriteStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */; };
 		D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262325EE3AEF00E3E767 /* MNBaseViewController.swift */; };
 		D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2262525EE3AEF00E3E767 /* MNVisitorView.swift */; };
 		D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2267625EE3B0400E3E767 /* MNLayout.swift */; };
@@ -190,6 +195,16 @@
 		248423062630560200CD25A4 /* VideoCoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCoverImageView.swift; sourceTree = "<group>"; };
 		2484230E2630750200CD25A4 /* StatusFriendGroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusFriendGroupController.swift; sourceTree = "<group>"; };
 		248423222631475300CD25A4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		248423312631BA6100CD25A4 /* WriteTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTitleButton.swift; sourceTree = "<group>"; };
+		248A0F002632705400D2DACC /* UIView+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		248A0F012632705400D2DACC /* UIView+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		248A0F072632750600D2DACC /* NSObject+Swizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Swizzle.h"; sourceTree = "<group>"; };
+		248A0F082632750600D2DACC /* NSObject+Swizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Swizzle.m"; sourceTree = "<group>"; };
+		248A0F132632A13200D2DACC /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteStatusService.swift; sourceTree = "<group>"; };
+		248A0F232632A89800D2DACC /* CommonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonService.swift; sourceTree = "<group>"; };
+		248A0F3A2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+FixSVProgressHUD.h"; sourceTree = "<group>"; };
+		248A0F3B2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+FixSVProgressHUD.m"; sourceTree = "<group>"; };
 		249BC8732610BD1100589656 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
 		24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailHorizontalCategoryBar.swift; sourceTree = "<group>"; };
 		24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEndCell.swift; sourceTree = "<group>"; };
@@ -281,7 +296,7 @@
 		D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiTipView.swift; sourceTree = "<group>"; };
 		D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiCell.swift; sourceTree = "<group>"; };
 		D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiInputView.swift; sourceTree = "<group>"; };
-		D6A225D025EE3AEF00E3E767 /* MNTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNTextView.swift; sourceTree = "<group>"; };
+		D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteStatusTextView.swift; sourceTree = "<group>"; };
 		D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiLayout.swift; sourceTree = "<group>"; };
 		D6A225D225EE3AEF00E3E767 /* MNEmoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MNEmoji.bundle; sourceTree = "<group>"; };
 		D6A225D425EE3AEF00E3E767 /* MNWeibo.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MNWeibo.sql; sourceTree = "<group>"; };
@@ -313,9 +328,7 @@
 		D6A2261825EE3AEF00E3E767 /* WeiboTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboTabBarController.swift; sourceTree = "<group>"; };
 		D6A2261925EE3AEF00E3E767 /* WeiboNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeiboNavigationController.swift; sourceTree = "<group>"; };
 		D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNNavigationBar.swift; sourceTree = "<group>"; };
-		D6A2262025EE3AEF00E3E767 /* MNCompostTypeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNCompostTypeButton.swift; sourceTree = "<group>"; };
-		D6A2262125EE3AEF00E3E767 /* MNPublishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNPublishView.swift; sourceTree = "<group>"; };
-		D6A2262225EE3AEF00E3E767 /* MNWriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNWriteController.swift; sourceTree = "<group>"; };
+		D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteStatusController.swift; sourceTree = "<group>"; };
 		D6A2262325EE3AEF00E3E767 /* MNBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNBaseViewController.swift; sourceTree = "<group>"; };
 		D6A2262525EE3AEF00E3E767 /* MNVisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNVisitorView.swift; sourceTree = "<group>"; };
 		D6A2267625EE3B0400E3E767 /* MNLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNLayout.swift; sourceTree = "<group>"; };
@@ -376,12 +389,42 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		248423212631472B00CD25A4 /* Base */ = {
+		248423212631472B00CD25A4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				248423222631475300CD25A4 /* WebViewController.swift */,
+				248A0F232632A89800D2DACC /* CommonService.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		248423302631B86700CD25A4 /* WriteStatus */ = {
+			isa = PBXGroup;
+			children = (
+				D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */,
+				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
+				248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */,
+			);
+			path = WriteStatus;
+			sourceTree = "<group>";
+		};
+		248A0F06263274EB00D2DACC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D6A2267E25EE3B1800E3E767 /* Router.swift */,
+				248A0F072632750600D2DACC /* NSObject+Swizzle.h */,
+				248A0F082632750600D2DACC /* NSObject+Swizzle.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		248A0F392632D83900D2DACC /* Fix */ = {
+			isa = PBXGroup;
+			children = (
+				248A0F3A2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.h */,
+				248A0F3B2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.m */,
+			);
+			path = Fix;
 			sourceTree = "<group>";
 		};
 		24C833ED2622FB5000E45CE5 /* Tabs */ = {
@@ -642,7 +685,6 @@
 				D6A2268C25EE3B2A00E3E767 /* Application */,
 				D6A2267F25EE3B1800E3E767 /* Startup */,
 				D63D518E26074B1E0034FDB3 /* Account */,
-				248423212631472B00CD25A4 /* Base */,
 				D6A225B725EE3AEF00E3E767 /* Classes */,
 			);
 			path = SCWeibo;
@@ -669,6 +711,7 @@
 		D6A225B725EE3AEF00E3E767 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				248423212631472B00CD25A4 /* Common */,
 				D68D3628260A1D92004A6630 /* StatusDetailViewController */,
 				D627059C25F4CCD700B7F6DC /* StatusListViewController */,
 				D6A225BC25EE3AEF00E3E767 /* Tools */,
@@ -682,7 +725,8 @@
 		D6A225BC25EE3AEF00E3E767 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D6A2267E25EE3B1800E3E767 /* Router.swift */,
+				248A0F392632D83900D2DACC /* Fix */,
+				248A0F06263274EB00D2DACC /* Base */,
 				D6A225BD25EE3AEF00E3E767 /* Content */,
 				D6A225BF25EE3AEF00E3E767 /* Network */,
 				D6A225C525EE3AEF00E3E767 /* Emoji */,
@@ -741,7 +785,7 @@
 				D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */,
 				D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */,
 				D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */,
-				D6A225D025EE3AEF00E3E767 /* MNTextView.swift */,
+				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
 				D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */,
 			);
 			path = View;
@@ -780,6 +824,9 @@
 				D64C453D26032B8D00A63631 /* Dictionary+Utilities.swift */,
 				D697684326076DC9002825AF /* Date+Utilities.swift */,
 				D659EF2F260799CF005F1398 /* UIColor+Utilities.swift */,
+				248A0F002632705400D2DACC /* UIView+Addition.h */,
+				248A0F012632705400D2DACC /* UIView+Addition.m */,
+				248A0F132632A13200D2DACC /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -806,6 +853,7 @@
 		D6A225FB25EE3AEF00E3E767 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				248423302631B86700CD25A4 /* WriteStatus */,
 				24842305263055DF00CD25A4 /* Common */,
 				D6A225FC25EE3AEF00E3E767 /* Home */,
 				D6A2260925EE3AEF00E3E767 /* Discover */,
@@ -880,7 +928,6 @@
 			children = (
 				D6F2C0E625F87E5B00724B4A /* TabBar */,
 				D6A2261725EE3AEF00E3E767 /* MainController */,
-				D6A2261F25EE3AEF00E3E767 /* CenterButton */,
 				D6A2262325EE3AEF00E3E767 /* MNBaseViewController.swift */,
 				D6A2262425EE3AEF00E3E767 /* VisitorView */,
 			);
@@ -894,16 +941,6 @@
 				D6A2261A25EE3AEF00E3E767 /* MNNavigationBar.swift */,
 			);
 			path = MainController;
-			sourceTree = "<group>";
-		};
-		D6A2261F25EE3AEF00E3E767 /* CenterButton */ = {
-			isa = PBXGroup;
-			children = (
-				D6A2262025EE3AEF00E3E767 /* MNCompostTypeButton.swift */,
-				D6A2262125EE3AEF00E3E767 /* MNPublishView.swift */,
-				D6A2262225EE3AEF00E3E767 /* MNWriteController.swift */,
-			);
-			path = CenterButton;
 			sourceTree = "<group>";
 		};
 		D6A2262425EE3AEF00E3E767 /* VisitorView */ = {
@@ -1232,10 +1269,12 @@
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
+				248A0F142632A13200D2DACC /* UIViewController+Extension.swift in Sources */,
 				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
 				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
 				246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */,
+				248A0F022632705400D2DACC /* UIView+Addition.m in Sources */,
 				D6A2266925EE3AF000E3E767 /* MNNavigationBar.swift in Sources */,
 				D64C45302602041400A63631 /* VideoResponse.swift in Sources */,
 				D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */,
@@ -1253,7 +1292,7 @@
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
 				24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
-				D6A2266F25EE3AF000E3E767 /* MNWriteController.swift in Sources */,
+				D6A2266F25EE3AF000E3E767 /* WriteStatusController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
@@ -1271,7 +1310,6 @@
 				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,
 				D6A2268725EE3B1800E3E767 /* FetchAppInfoTask.swift in Sources */,
 				D68D3649260A21C0004A6630 /* StatusDetailAuthorInfoBar.swift in Sources */,
-				D6A2266D25EE3AF000E3E767 /* MNCompostTypeButton.swift in Sources */,
 				D6A2264325EE3AEF00E3E767 /* UIBarButtonItem+Extension.swift in Sources */,
 				D627058125F4C16A00B7F6DC /* StatusRepostCell.swift in Sources */,
 				D6A2268625EE3B1800E3E767 /* RouteRegisterTask.swift in Sources */,
@@ -1281,14 +1319,16 @@
 				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
 				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
 				D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */,
+				248423322631BA6100CD25A4 /* WriteTitleButton.swift in Sources */,
 				2484230F2630750200CD25A4 /* StatusFriendGroupController.swift in Sources */,
 				D6A2256725EE388B00E3E767 /* AppDelegate.swift in Sources */,
 				D6A2264B25EE3AEF00E3E767 /* MNRefreshControl.swift in Sources */,
 				D68D04CB2608F1F6004A6630 /* PhotoCollectionCell.swift in Sources */,
-				D6A2263625EE3AEF00E3E767 /* MNTextView.swift in Sources */,
+				D6A2263625EE3AEF00E3E767 /* WriteStatusTextView.swift in Sources */,
 				D64C453E26032B8D00A63631 /* Dictionary+Utilities.swift in Sources */,
 				D627058E25F4C1D500B7F6DC /* StatusNormalCellViewModelProducer.swift in Sources */,
 				D63D5131260494980034FDB3 /* UserProfileVideosTabViewModel.swift in Sources */,
+				248A0F092632750600D2DACC /* NSObject+Swizzle.m in Sources */,
 				246EEA0C26258AA400DB0F1D /* AttitudeModel.swift in Sources */,
 				249BC8742610BD1100589656 /* UserProfileService.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
@@ -1298,10 +1338,11 @@
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
 				D6F21D5025F22D4100F54C87 /* UserProfileViewModel.swift in Sources */,
 				D6A2264525EE3AEF00E3E767 /* Bundle+Extensions.swift in Sources */,
-				D6A2266E25EE3AF000E3E767 /* MNPublishView.swift in Sources */,
 				D627058625F4C18400B7F6DC /* StatusRepostCellViewModel.swift in Sources */,
+				248A0F3C2632D87200D2DACC /* AppDelegate+FixSVProgressHUD.m in Sources */,
 				D6A2264625EE3AEF00E3E767 /* Date+Extensions.swift in Sources */,
 				246EEA362625A2F200DB0F1D /* DetailCommentCellViewModel.swift in Sources */,
+				248A0F242632A89800D2DACC /* CommonService.swift in Sources */,
 				24C8340F262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift in Sources */,
 				D6A2264925EE3AEF00E3E767 /* MNMTRefreshView.swift in Sources */,
 				24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */,
@@ -1327,6 +1368,7 @@
 				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
 				D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */,
 				D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */,
+				248A0F1C2632A7E700D2DACC /* WriteStatusService.swift in Sources */,
 				D68D04B92608F1BA004A6630 /* PhotosListViewController.swift in Sources */,
 				D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */,
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,

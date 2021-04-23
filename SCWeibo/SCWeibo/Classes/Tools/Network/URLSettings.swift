@@ -51,4 +51,12 @@ class URLSettings {
     class var commentsHotflow: String {
         return h5BaseURL + "/comments/hotflow"
     }
+    
+    class var ApiConfig: String {
+        return h5BaseURL + "/api/config"
+    }
+    
+    class var sendStatus: String {
+        return h5BaseURL + "/api/statuses/update"
+    }
 }

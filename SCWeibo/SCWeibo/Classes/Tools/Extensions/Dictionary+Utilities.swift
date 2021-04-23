@@ -65,6 +65,21 @@ extension UtilitiesWrapper where Base: DictionaryUtilities {
         }
         return defaultValue
     }
+    
+    func double(for key: Base.Key, defaultValue: Double = 0) -> Double {
+        guard let dictionary = base as? [Base.Key: Base.Value],
+              let value = dictionary[key] else {
+            return defaultValue
+        }
+
+        if let doubleValue = value as? Double {
+            return doubleValue
+        }
+        if let number = value as? NSNumber {
+            return number.doubleValue
+        }
+        return defaultValue
+    }
 
     func array<T>(for key: Base.Key) -> Array<T>? {
         guard let dictionary = base as? [Base.Key: Base.Value],

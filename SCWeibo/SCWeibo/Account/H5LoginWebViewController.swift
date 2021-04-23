@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import Alamofire
 
 class H5LoginWebViewController: UIViewController, RouteAble {
     var webView = WKWebView()
@@ -27,6 +28,11 @@ class H5LoginWebViewController: UIViewController, RouteAble {
         super.viewDidLoad()
         setupSubviews()
     }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        refreshLayout()
+    }
 }
 
 // MARK: - Private Methods
@@ -35,9 +41,9 @@ private extension H5LoginWebViewController {
     func setupSubviews() {
         self.navigationController?.navigationBar.isHidden = false
 
-        webView.frame = view.bounds
-
         view.addSubview(webView)
+
+        refreshLayout()
 
         webView.navigationDelegate = self
 
@@ -45,15 +51,25 @@ private extension H5LoginWebViewController {
         let request = URLRequest(url: url)
         webView.load(request)
     }
+    
+    func refreshLayout() {
+        webView.fillSuperview(top: view.safeAreaInsets.top)
+    }
 }
 
 extension H5LoginWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         let cookieStore = webView.configuration.websiteDataStore.httpCookieStore
         cookieStore.getAllCookies { cookies in
+            print("wscccc---------------------")
             for cookie in cookies {
                 HTTPCookieStorage.shared.setCookie(cookie)
+                print("wscccc    " + cookie.domain + "\t\t\t" + cookie.name + " = " + cookie.value)
             }
+            print("wscccc---------------------")
+//            AF.sessionConfiguration.httpCookieStorage?.setCookies(<#T##cookies: [HTTPCookie]##[HTTPCookie]#>, for: <#T##URL?#>, mainDocumentURL: <#T##URL?#>)
+//            let url = URL(string: "https://m.weibo.cn")
+//            HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
         }
 
         decisionHandler(.allow)

@@ -166,7 +166,7 @@ extension AccountManager: WeiboSDKDelegate {
             fetchUserInfo()
 
             // post noti dismiss authView
-            NotificationCenter.default.post(name: NSNotification.Name(MNUserLoginSuccessNotification), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(UserLoginStateDidChangeNotification), object: nil)
         }
     }
 }

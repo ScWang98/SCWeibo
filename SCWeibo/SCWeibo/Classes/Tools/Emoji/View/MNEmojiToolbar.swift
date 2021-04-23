@@ -7,8 +7,6 @@
 
 import UIKit
 
-let kMNEmojiToolbarHeight:CGFloat = 40
-
 @objc protocol MNEmojiToolBarDelegate: NSObjectProtocol{
     
     
@@ -34,7 +32,7 @@ class MNEmojiToolbar: UIView {
     }
     
     init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kMNEmojiToolbarHeight))
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         setupUI()
     }
     

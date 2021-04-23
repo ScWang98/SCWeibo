@@ -9,6 +9,7 @@ PODS:
   - Neon (0.4.0)
   - SKPhotoBrowser (6.1.0)
   - SnapKit (5.0.1)
+  - SVProgressHUD (2.2.5)
   - Weibo_SDK (3.3.0)
   - YYModel (1.0.4)
 
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - Neon (= 0.4.0)
   - SKPhotoBrowser (= 6.1.0)
   - SnapKit (= 5.0.1)
+  - SVProgressHUD
   - Weibo_SDK (= 3.3.0)
   - YYModel (= 1.0.4)
 
@@ -34,6 +36,7 @@ SPEC REPOS:
     - Neon
     - SKPhotoBrowser
     - SnapKit
+    - SVProgressHUD
     - Weibo_SDK
     - YYModel
 
@@ -46,9 +49,10 @@ SPEC CHECKSUMS:
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   SKPhotoBrowser: 343de95d89dc7913763c5dda243cc6e606e4a168
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   Weibo_SDK: 7478846cccb43c4785ba76b214115fb7ec9dc0d4
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a4365a085a79295d54ad84545fb57aec15469fa5
+PODFILE CHECKSUM: 5e29f0b3252066f5ae63e2dbcc084648e2b60ad4
 
 COCOAPODS: 1.8.4
