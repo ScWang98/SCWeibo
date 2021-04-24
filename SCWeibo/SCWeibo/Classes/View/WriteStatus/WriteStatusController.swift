@@ -45,7 +45,7 @@ class WriteStatusController: UIViewController, RouteAble {
     }()
 
     // 往textView中插入表情符号
-    lazy var emojiView: MNEmojiInputView = MNEmojiInputView { [weak self] emojiModel in
+    lazy var emojiView: EmojiInputView = EmojiInputView { [weak self] emojiModel in
         self?.textView.insertEmoji(model: emojiModel)
     }
 

@@ -52,7 +52,7 @@ extension WriteStatusTextView {
 
 extension WriteStatusTextView {
     /// 往textView中插入表情符号，model = nil 表示执行的是 `删除`
-    func insertEmoji(model: MNEmojiModel?) {
+    func insertEmoji(model: EmojiModel?) {
         guard let model = model else {
             // model = nil,删除文本
             deleteBackward()
@@ -106,7 +106,7 @@ extension WriteStatusTextView {
         attrStr.enumerateAttributes(in: NSRange(location: 0, length: attrStr.length), options: []) { dic, range, _ in
 
             let attachmentKey = NSAttributedString.Key("NSAttachment")
-            if let attachment = dic[attachmentKey] as? MNEmojiAttachment {
+            if let attachment = dic[attachmentKey] as? EmojiAttachment {
                 result += attachment.chs ?? ""
             } else {
                 let subString = (attrStr.string as NSString).substring(with: range)

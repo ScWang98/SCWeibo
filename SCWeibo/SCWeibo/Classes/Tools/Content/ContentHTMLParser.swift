@@ -87,7 +87,7 @@ private extension ContentHTMLParser {
             let range = result.range
             let emoji = string.attributedSubstring(from: range).string
 
-            guard let emojiAttr = MNEmojiManager.shared.findEmoji(string: emoji)?.imageText(font: font) else {
+            guard let emojiAttr = EmojiManager.shared.findEmoji(string: emoji)?.imageText(font: font) else {
                 continue
             }
             string.replaceCharacters(in: range, with: emojiAttr)

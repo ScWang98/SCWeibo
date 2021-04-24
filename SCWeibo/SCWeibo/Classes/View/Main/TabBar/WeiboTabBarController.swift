@@ -8,14 +8,26 @@
 import UIKit
 
 class WeiboTabBarController: UITabBarController {
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.white
         setupChildrenControllers()
-        UITabBar.appearance().tintColor = UIColor.orange
+        tabBar.tintColor = UIColor.sc.color(RGB: 0x0099FF)
         delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin(noti:)), name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var tabFrame = tabBar.frame // self.TabBar is IBOutlet of your TabBar
+        tabFrame.size.height -= 12
+        tabFrame.origin.y += 12
+        tabBar.frame = tabFrame
     }
 
     @objc func userLogin(noti: Notification) {
@@ -44,10 +56,6 @@ class WeiboTabBarController: UITabBarController {
         }
     }
 
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
@@ -73,7 +81,6 @@ extension WeiboTabBarController: UITabBarControllerDelegate {
     ///   - viewController: will switch to VC
     ///   - return: Whether to switch
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-
         // 当前控制器index
         let index = children.firstIndex(of: viewController)
 

@@ -1,5 +1,5 @@
 //
-//  MNEmojiPackageModel.swift
+//  EmojiPackageModel.swift
 //  SCWeibo
 //
 //  Created by scwang on 2020/4/12.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MNEmojiPackageModel: NSObject {
+class EmojiPackageModel: NSObject {
     /// 表情包分组
     @objc var groupName:String?
     
@@ -19,7 +19,7 @@ class MNEmojiPackageModel: NSObject {
     }
     
     /// 返回第 n 页的表情模型数组
-    func emojiModel(page:Int) -> [MNEmojiModel] {
+    func emojiModel(page:Int) -> [EmojiModel] {
         // 表情包每页数量
         let count = 20
         let location = page * count
@@ -33,7 +33,7 @@ class MNEmojiPackageModel: NSObject {
         let range = NSRange(location: location, length: length)
         let subArray = (emotions as NSArray).subarray(with: range)
         
-        return subArray as! [MNEmojiModel]
+        return subArray as! [EmojiModel]
     }
     
     /// 表情包目录 - 通过info.plist 创建表情模型数字
@@ -41,11 +41,11 @@ class MNEmojiPackageModel: NSObject {
         didSet{
             // 设置目录的时候，读取 info.plist数据
             guard let directory = directory,
-                let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil),
+                let path = Bundle.main.path(forResource: "Emoji.bundle", ofType: nil),
                 let bundle = Bundle(path:path),
                 let infoPath = bundle.path(forResource: "info.plist", ofType: nil, inDirectory: directory),
                 let array = NSArray(contentsOfFile: infoPath) as? [[String:String]],
-                let models = NSArray.yy_modelArray(with: MNEmojiModel.self, json: array) as? [MNEmojiModel]
+                let models = NSArray.yy_modelArray(with: EmojiModel.self, json: array) as? [EmojiModel]
                 else {
                     print("set directory failure.")
                     return
@@ -61,7 +61,7 @@ class MNEmojiPackageModel: NSObject {
     }
     
     /// 表情模型数组
-    @objc lazy var emotions = [MNEmojiModel]()
+    @objc lazy var emotions = [EmojiModel]()
     
     override var description: String{
         return yy_modelDescription()

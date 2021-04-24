@@ -1,5 +1,5 @@
 //
-//  MNEmojiManager.swift
+//  EmojiManager.swift
 //  SCWeibo
 //
 //  Created by scwang on 2020/4/12.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class MNEmojiManager {
-    static let shared = MNEmojiManager()
+class EmojiManager {
+    static let shared = EmojiManager()
 
-    lazy var packages = [MNEmojiPackageModel]()
+    lazy var packages = [EmojiPackageModel]()
 
     let pageCells = 20
 
     lazy var bundle: Bundle = {
-        let path = Bundle.main.path(forResource: "MNEmoji.bundle", ofType: nil)
+        let path = Bundle.main.path(forResource: "Emoji.bundle", ofType: nil)
         return Bundle(path: path ?? "") ?? Bundle()
     }()
 
@@ -24,7 +24,7 @@ class MNEmojiManager {
     }
 
     // 添加最近使用的表情
-    func recentEmoji(model: MNEmojiModel) {
+    func recentEmoji(model: EmojiModel) {
         // 1.表情使用次数+1
         model.times += 1
 
@@ -45,7 +45,7 @@ class MNEmojiManager {
 
     /// 根据传入的字符串[abc]，查找对应的表情模型
     /// - Parameter string : 查询字符串
-    func findEmoji(string: String) -> MNEmojiModel? {
+    func findEmoji(string: String) -> EmojiModel? {
         for pModel in packages {
             // 传入的参数和model对比，过滤出一致字符串对应的模型.
             let result = pModel.emotions.filter { $0.chs == string }
@@ -57,11 +57,11 @@ class MNEmojiManager {
     }
 }
 
-private extension MNEmojiManager {
+private extension EmojiManager {
     func loadPackageDatas() {
         guard let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
               let array = NSArray(contentsOfFile: plistPath) as? [[String: String]],
-              let models = NSArray.yy_modelArray(with: MNEmojiPackageModel.self, json: array) as? [MNEmojiPackageModel]
+              let models = NSArray.yy_modelArray(with: EmojiPackageModel.self, json: array) as? [EmojiPackageModel]
         else {
             print("loadPackageDatas failure.")
             return

@@ -81,6 +81,9 @@ private extension StatusHomeViewController {
 
 @objc private extension StatusHomeViewController {
     func avatarDidClicked(sender: Any) {
+        if !AccountManager.shared.isLogin {
+            NotificationCenter.default.post(name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
+        }
         print("avatarDidClicked")
     }
 

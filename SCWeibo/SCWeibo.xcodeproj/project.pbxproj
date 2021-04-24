@@ -101,17 +101,17 @@
 		D6A2258925EE388C00E3E767 /* SCWeiboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2258825EE388C00E3E767 /* SCWeiboUITests.swift */; };
 		D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */; };
 		D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */; };
-		D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C625EE3AEF00E3E767 /* MNEmojiManager.swift */; };
-		D6A2262F25EE3AEF00E3E767 /* MNEmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C825EE3AEF00E3E767 /* MNEmojiModel.swift */; };
-		D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C925EE3AEF00E3E767 /* MNEmojiAttachment.swift */; };
-		D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CA25EE3AEF00E3E767 /* MNEmojiPackageModel.swift */; };
-		D6A2263225EE3AEF00E3E767 /* MNEmojiToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CC25EE3AEF00E3E767 /* MNEmojiToolbar.swift */; };
-		D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */; };
-		D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */; };
-		D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */; };
+		D6A2262E25EE3AEF00E3E767 /* EmojiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C625EE3AEF00E3E767 /* EmojiManager.swift */; };
+		D6A2262F25EE3AEF00E3E767 /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C825EE3AEF00E3E767 /* EmojiModel.swift */; };
+		D6A2263025EE3AEF00E3E767 /* EmojiAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225C925EE3AEF00E3E767 /* EmojiAttachment.swift */; };
+		D6A2263125EE3AEF00E3E767 /* EmojiPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CA25EE3AEF00E3E767 /* EmojiPackageModel.swift */; };
+		D6A2263225EE3AEF00E3E767 /* EmojiToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CC25EE3AEF00E3E767 /* EmojiToolbar.swift */; };
+		D6A2263325EE3AEF00E3E767 /* EmojiTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CD25EE3AEF00E3E767 /* EmojiTipView.swift */; };
+		D6A2263425EE3AEF00E3E767 /* EmojiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CE25EE3AEF00E3E767 /* EmojiCell.swift */; };
+		D6A2263525EE3AEF00E3E767 /* EmojiInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225CF25EE3AEF00E3E767 /* EmojiInputView.swift */; };
 		D6A2263625EE3AEF00E3E767 /* WriteStatusTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */; };
-		D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */; };
-		D6A2263825EE3AEF00E3E767 /* MNEmoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6A225D225EE3AEF00E3E767 /* MNEmoji.bundle */; };
+		D6A2263725EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D125EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift */; };
+		D6A2263825EE3AEF00E3E767 /* Emoji.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6A225D225EE3AEF00E3E767 /* Emoji.bundle */; };
 		D6A2263925EE3AEF00E3E767 /* MNWeibo.sql in Resources */ = {isa = PBXBuildFile; fileRef = D6A225D425EE3AEF00E3E767 /* MNWeibo.sql */; };
 		D6A2263A25EE3AEF00E3E767 /* MNSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D525EE3AEF00E3E767 /* MNSQLiteManager.swift */; };
 		D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A225D725EE3AEF00E3E767 /* NSAttributedString+Extension.swift */; };
@@ -288,17 +288,17 @@
 		D6A2258A25EE388C00E3E767 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A225BE25EE3AEF00E3E767 /* MNLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNLabel.swift; sourceTree = "<group>"; };
 		D6A225C125EE3AEF00E3E767 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		D6A225C625EE3AEF00E3E767 /* MNEmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiManager.swift; sourceTree = "<group>"; };
-		D6A225C825EE3AEF00E3E767 /* MNEmojiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiModel.swift; sourceTree = "<group>"; };
-		D6A225C925EE3AEF00E3E767 /* MNEmojiAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiAttachment.swift; sourceTree = "<group>"; };
-		D6A225CA25EE3AEF00E3E767 /* MNEmojiPackageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiPackageModel.swift; sourceTree = "<group>"; };
-		D6A225CC25EE3AEF00E3E767 /* MNEmojiToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiToolbar.swift; sourceTree = "<group>"; };
-		D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiTipView.swift; sourceTree = "<group>"; };
-		D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiCell.swift; sourceTree = "<group>"; };
-		D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiInputView.swift; sourceTree = "<group>"; };
+		D6A225C625EE3AEF00E3E767 /* EmojiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiManager.swift; sourceTree = "<group>"; };
+		D6A225C825EE3AEF00E3E767 /* EmojiModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
+		D6A225C925EE3AEF00E3E767 /* EmojiAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiAttachment.swift; sourceTree = "<group>"; };
+		D6A225CA25EE3AEF00E3E767 /* EmojiPackageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPackageModel.swift; sourceTree = "<group>"; };
+		D6A225CC25EE3AEF00E3E767 /* EmojiToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiToolbar.swift; sourceTree = "<group>"; };
+		D6A225CD25EE3AEF00E3E767 /* EmojiTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTipView.swift; sourceTree = "<group>"; };
+		D6A225CE25EE3AEF00E3E767 /* EmojiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCell.swift; sourceTree = "<group>"; };
+		D6A225CF25EE3AEF00E3E767 /* EmojiInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiInputView.swift; sourceTree = "<group>"; };
 		D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteStatusTextView.swift; sourceTree = "<group>"; };
-		D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNEmojiLayout.swift; sourceTree = "<group>"; };
-		D6A225D225EE3AEF00E3E767 /* MNEmoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MNEmoji.bundle; sourceTree = "<group>"; };
+		D6A225D125EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		D6A225D225EE3AEF00E3E767 /* Emoji.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoji.bundle; sourceTree = "<group>"; };
 		D6A225D425EE3AEF00E3E767 /* MNWeibo.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MNWeibo.sql; sourceTree = "<group>"; };
 		D6A225D525EE3AEF00E3E767 /* MNSQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MNSQLiteManager.swift; sourceTree = "<group>"; };
 		D6A225D725EE3AEF00E3E767 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
@@ -381,6 +381,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		245FA9C42633E5E2002BF6E9 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				D6A225CC25EE3AEF00E3E767 /* EmojiToolbar.swift */,
+				D6A225CD25EE3AEF00E3E767 /* EmojiTipView.swift */,
+				D6A225CE25EE3AEF00E3E767 /* EmojiCell.swift */,
+				D6A225CF25EE3AEF00E3E767 /* EmojiInputView.swift */,
+				D6A225D125EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
+		245FA9C52633E8C1002BF6E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
+				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		24842305263055DF00CD25A4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,8 +422,9 @@
 		248423302631B86700CD25A4 /* WriteStatus */ = {
 			isa = PBXGroup;
 			children = (
+				245FA9C52633E8C1002BF6E9 /* View */,
+				245FA9C42633E5E2002BF6E9 /* Emoji */,
 				D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */,
-				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
 				248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */,
 			);
 			path = WriteStatus;
@@ -760,10 +782,10 @@
 		D6A225C525EE3AEF00E3E767 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
-				D6A225C625EE3AEF00E3E767 /* MNEmojiManager.swift */,
+				D6A225C625EE3AEF00E3E767 /* EmojiManager.swift */,
+				D6A225C925EE3AEF00E3E767 /* EmojiAttachment.swift */,
 				D6A225C725EE3AEF00E3E767 /* Model */,
-				D6A225CB25EE3AEF00E3E767 /* View */,
-				D6A225D225EE3AEF00E3E767 /* MNEmoji.bundle */,
+				D6A225D225EE3AEF00E3E767 /* Emoji.bundle */,
 			);
 			path = Emoji;
 			sourceTree = "<group>";
@@ -771,24 +793,10 @@
 		D6A225C725EE3AEF00E3E767 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D6A225C825EE3AEF00E3E767 /* MNEmojiModel.swift */,
-				D6A225C925EE3AEF00E3E767 /* MNEmojiAttachment.swift */,
-				D6A225CA25EE3AEF00E3E767 /* MNEmojiPackageModel.swift */,
+				D6A225C825EE3AEF00E3E767 /* EmojiModel.swift */,
+				D6A225CA25EE3AEF00E3E767 /* EmojiPackageModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		D6A225CB25EE3AEF00E3E767 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D6A225CC25EE3AEF00E3E767 /* MNEmojiToolbar.swift */,
-				D6A225CD25EE3AEF00E3E767 /* MNEmojiTipView.swift */,
-				D6A225CE25EE3AEF00E3E767 /* MNEmojiCell.swift */,
-				D6A225CF25EE3AEF00E3E767 /* MNEmojiInputView.swift */,
-				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
-				D6A225D125EE3AEF00E3E767 /* MNEmojiLayout.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		D6A225D325EE3AEF00E3E767 /* SQLite */ = {
@@ -1108,7 +1116,7 @@
 			files = (
 				D6A2263925EE3AEF00E3E767 /* MNWeibo.sql in Resources */,
 				D6A2257325EE388C00E3E767 /* LaunchScreen.storyboard in Resources */,
-				D6A2263825EE3AEF00E3E767 /* MNEmoji.bundle in Resources */,
+				D6A2263825EE3AEF00E3E767 /* Emoji.bundle in Resources */,
 				D6A2257025EE388C00E3E767 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1239,8 +1247,8 @@
 			files = (
 				D6A2264025EE3AEF00E3E767 /* String+Substring.swift in Sources */,
 				D6A2263D25EE3AEF00E3E767 /* UIButton+Tool.swift in Sources */,
-				D6A2262F25EE3AEF00E3E767 /* MNEmojiModel.swift in Sources */,
-				D6A2263225EE3AEF00E3E767 /* MNEmojiToolbar.swift in Sources */,
+				D6A2262F25EE3AEF00E3E767 /* EmojiModel.swift in Sources */,
+				D6A2263225EE3AEF00E3E767 /* EmojiToolbar.swift in Sources */,
 				D6F2C0E225F87DA800724B4A /* TabbarItemsManager.swift in Sources */,
 				D6F2491625F29DA800F54C87 /* URLSettings.swift in Sources */,
 				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
@@ -1251,7 +1259,7 @@
 				24C83414262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift in Sources */,
 				24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
-				D6A2263525EE3AEF00E3E767 /* MNEmojiInputView.swift in Sources */,
+				D6A2263525EE3AEF00E3E767 /* EmojiInputView.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				246EEA312625A2DE00DB0F1D /* CommentModel.swift in Sources */,
@@ -1285,17 +1293,17 @@
 				D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */,
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
-				D6A2263025EE3AEF00E3E767 /* MNEmojiAttachment.swift in Sources */,
+				D6A2263025EE3AEF00E3E767 /* EmojiAttachment.swift in Sources */,
 				246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */,
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				24E4E5FB2613615C008EA231 /* StatusHomeService.swift in Sources */,
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
 				24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */,
-				D6A2263725EE3AEF00E3E767 /* MNEmojiLayout.swift in Sources */,
+				D6A2263725EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* WriteStatusController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
-				D6A2263325EE3AEF00E3E767 /* MNEmojiTipView.swift in Sources */,
+				D6A2263325EE3AEF00E3E767 /* EmojiTipView.swift in Sources */,
 				246EEA2C2625A2CE00DB0F1D /* DetailCommentTableCell.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
 				246EEA242625A2B200DB0F1D /* DetailCommentListService.swift in Sources */,
@@ -1316,8 +1324,8 @@
 				D697684426076DC9002825AF /* Date+Utilities.swift in Sources */,
 				D68D3636260A1E10004A6630 /* StatusDetailViewController.swift in Sources */,
 				D6A2264425EE3AEF00E3E767 /* String+Extensions..swift in Sources */,
-				D6A2263125EE3AEF00E3E767 /* MNEmojiPackageModel.swift in Sources */,
-				D6A2263425EE3AEF00E3E767 /* MNEmojiCell.swift in Sources */,
+				D6A2263125EE3AEF00E3E767 /* EmojiPackageModel.swift in Sources */,
+				D6A2263425EE3AEF00E3E767 /* EmojiCell.swift in Sources */,
 				D62705A125F4CDAB00B7F6DC /* StatusListViewController.swift in Sources */,
 				248423322631BA6100CD25A4 /* WriteTitleButton.swift in Sources */,
 				2484230F2630750200CD25A4 /* StatusFriendGroupController.swift in Sources */,
@@ -1370,7 +1378,7 @@
 				D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */,
 				248A0F1C2632A7E700D2DACC /* WriteStatusService.swift in Sources */,
 				D68D04B92608F1BA004A6630 /* PhotosListViewController.swift in Sources */,
-				D6A2262E25EE3AEF00E3E767 /* MNEmojiManager.swift in Sources */,
+				D6A2262E25EE3AEF00E3E767 /* EmojiManager.swift in Sources */,
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,
 				D68F989825EFD64400C0092A /* UIView+Extension.swift in Sources */,
 				D6A2263E25EE3AEF00E3E767 /* UILabel+Extension.swift in Sources */,
