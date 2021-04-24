@@ -8,10 +8,10 @@
 import UIKit
 
 enum TabbarItemType: String {
-    case home = "主页"
-    case message = "消息"
-    case discovery = "发现"
-    case profile = "我的"
+    case home
+    case message
+    case favorite
+    case profile
 }
 
 class TabbarItemsManager: NSObject {
@@ -65,12 +65,12 @@ class TabbarItemsManager: NSObject {
         return item
     }()
 
-    static var discoverItem: TabbarItemModel = {
+    static var favoriteItem: TabbarItemModel = {
         let item = TabbarItemModel()
         item.viewController = WeiboNavigationController(rootViewController: MNDiscoverViewController())
         item.tabbarImage = UIImage(named: "NewFavorite_Normal")
         item.selectedTabbarImage = UIImage(named: "NewFavoriteSelected_Normal")
-        item.itemType = TabbarItemType.discovery
+        item.itemType = TabbarItemType.favorite
         item.textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.orange,
             NSAttributedString.Key.backgroundColor: UIColor.orange,
@@ -116,6 +116,6 @@ class TabbarItemsManager: NSObject {
     }()
 
     static var tabbarItems: [TabbarItemModel] = {
-        [homeItem, messageItem, discoverItem, profileItem]
+        [homeItem, messageItem, favoriteItem, profileItem]
     }()
 }
