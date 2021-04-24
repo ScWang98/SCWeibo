@@ -29,13 +29,14 @@ class MessageAttitudesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
+        self.refreshData(loadingState: false)
     }
 }
 
 // MARK: - Public Methods
 
 extension MessageAttitudesViewController {
-    func refreshData(with loadingState: Bool) {
+    func refreshData(loadingState: Bool) {
         loadDatas(loadMore: false)
     }
 }
@@ -50,6 +51,9 @@ private extension MessageAttitudesViewController {
         tableView.separatorStyle = .none
         tableView.register(MessageAttitudeCell.self, forCellReuseIdentifier: String(describing: MessageAttitudeCell.self))
         tableView.frame = view.bounds
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.loadDatas(loadMore: false)
+        })
         tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
             self.loadDatas(loadMore: true)
         })
@@ -68,6 +72,7 @@ private extension MessageAttitudesViewController {
 
     func loadDatas(loadMore: Bool) {
         listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_header?.endRefreshing()
             self.tableView.mj_footer?.endRefreshing()
             if needRefresh {
                 self.tableView.reloadData()

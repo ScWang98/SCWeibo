@@ -42,7 +42,7 @@ class TabbarItemsManager: NSObject {
 
     static var messageItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = WeiboNavigationController(rootViewController: MNMessageViewController())
+        item.viewController = WeiboNavigationController(rootViewController: MessageViewController())
         item.tabbarImage = UIImage(named: "NewMessage_Normal")
         item.selectedTabbarImage = UIImage(named: "NewMessageSelected_Normal")
         item.itemType = TabbarItemType.message

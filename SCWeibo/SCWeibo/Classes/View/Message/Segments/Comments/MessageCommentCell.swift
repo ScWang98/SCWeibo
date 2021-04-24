@@ -1,21 +1,22 @@
 //
-//  MessageAttitudeCell.swift
+//  MessageCommentCell.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/24.
+//  Created by 王书超 on 2021/4/24.
 //
+
 
 import UIKit
 
-class MessageAttitudeCell: UITableViewCell {
-    var viewModel: MessageAttitudeCellViewModel?
+class MessageCommentCell: UITableViewCell {
+    var viewModel: MessageCommentCellViewModel?
 
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
     
-    let backShadowView = UIView()
-    let pictureView = UIImageView()
-    let contentLabel = UILabel()
+    let leftSeparator = UIView()
+    let commentLabel = ContentLabel()
+    let statusLabel = ContentLabel()
     
     let timeLabel = UILabel()
     let separatorLine = UIView()
@@ -37,8 +38,8 @@ class MessageAttitudeCell: UITableViewCell {
 
 // MARK: - Public Methods
 
-extension MessageAttitudeCell {
-    func reload(with viewModel: MessageAttitudeCellViewModel) {
+extension MessageCommentCell {
+    func reload(with viewModel: MessageCommentCellViewModel) {
         self.viewModel = viewModel
 
         let placeholder = UIImage(named: "avatar_default_big")
@@ -52,11 +53,8 @@ extension MessageAttitudeCell {
         nameLabel.text = viewModel.screenName
         timeLabel.text = viewModel.createdAt
         
-        contentLabel.attributedText = viewModel.cotentAttrString
-        if let urlString = viewModel.imageUrl,
-           let url = URL(string: urlString) {
-            pictureView.kf.setImage(with: url)
-        }
+        commentLabel.textModel = viewModel.commentLabelModel
+        statusLabel.textModel = viewModel.statusLabelModel
         
         setNeedsLayout()
     }
@@ -64,7 +62,7 @@ extension MessageAttitudeCell {
 
 // MARK: - Private Methods
 
-private extension MessageAttitudeCell {
+private extension MessageCommentCell {
     func setupSubviews() {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
@@ -78,13 +76,6 @@ private extension MessageAttitudeCell {
         nameLabel.textColor = UIColor.black
         nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         
-        pictureView.clipsToBounds = true
-        
-        contentLabel.numberOfLines = 2
-        
-        backShadowView.backgroundColor = UIColor.sc.color(RGB: 0xEEEEEE)
-        backShadowView.addSubview(contentLabel)
-        backShadowView.addSubview(pictureView)
 
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
@@ -93,7 +84,8 @@ private extension MessageAttitudeCell {
 
         contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(backShadowView)
+        contentView.addSubview(commentLabel)
+        contentView.addSubview(statusLabel)
         contentView.addSubview(timeLabel)
         contentView.addSubview(separatorLine)
     }
@@ -104,15 +96,13 @@ private extension MessageAttitudeCell {
         avatarImageView.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: 32, height: 32)
         nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
         timeLabel.anchorInCorner(.bottomLeft, xPad: 15 + 32 + 15, yPad: 8, width: contentWidth, height: 17)
-        backShadowView.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 100)
+        commentLabel.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 50)
         separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
-        
-        pictureView.anchorToEdge(.left, padding: 5, width: 40, height: 40)
-        contentLabel.anchorToEdge(.right, padding: 5, width: backShadowView.width - 5 - 40 - 5 - 5, height: 40)
+        statusLabel.align(.underMatchingRight, relativeTo: commentLabel, padding: 20, width: contentWidth - 20, height: 100)
     }
 }
 
-@objc private extension MessageAttitudeCell {
+@objc private extension MessageCommentCell {
     func avatarDidClicked(tap: UITapGestureRecognizer) {
     }
 }

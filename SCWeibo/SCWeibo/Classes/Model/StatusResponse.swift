@@ -110,6 +110,8 @@ class StatusPicture: Codable {
 
         if let url = dict.sc.string(for: "url") {
             thumbnailPic = url.replacingOccurrences(of: "/wap360/", with: "/thumbnail/")
+            bmiddlePic = url.replacingOccurrences(of: "/wap360/", with: "/bmiddle/")
+            originalPic = url.replacingOccurrences(of: "/wap360/", with: "/large/")
         }
     }
 

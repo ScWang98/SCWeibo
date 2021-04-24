@@ -1,16 +1,17 @@
 //
-//  MessageAttitudesService.swift
+//  MessageCommentsService.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/24.
+//  Created by 王书超 on 2021/4/24.
 //
+
 
 import Alamofire
 import Foundation
 
-class MessageAttitudesService {
-    func loadStatus(page: Int, completion: @escaping (_ isSuccess: Bool, _ list: [MessageAttitudeModel]?) -> Void) {
-        let URLString = URLSettings.messageAttitudes
+class MessageCommentsService {
+    func loadStatus(page: Int, completion: @escaping (_ isSuccess: Bool, _ list: [MessageCommentModel]?) -> Void) {
+        let URLString = URLSettings.messageMentionsComments
 
         var params = [String: Any]()
         params["page"] = page
@@ -31,9 +32,9 @@ class MessageAttitudesService {
                 return
             }
 
-            var results = [MessageAttitudeModel]()
+            var results = [MessageCommentModel]()
             for commentItem in dataArray {
-                results.append(MessageAttitudeModel(dict: commentItem))
+                results.append(MessageCommentModel(dict: commentItem))
             }
 
             completion(true, results)

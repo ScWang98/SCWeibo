@@ -1,5 +1,5 @@
 //
-//  MessageMetionsViewController.swift
+//  MessageMentionsViewController.swift
 //  SCWeibo
 //
 //  Created by wangshuchao on 2021/4/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MessageMetionsViewController: StatusListViewController {
+class MessageMentionsViewController: StatusListViewController {
     let avatarView = NavigationAvatarView()
     let titleButton = HomeTitleButton()
     
@@ -15,6 +15,8 @@ class MessageMetionsViewController: StatusListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSubviews()
+        self.refreshData(with: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +27,7 @@ class MessageMetionsViewController: StatusListViewController {
 
 // MARK: - UI
 
-private extension MessageMetionsViewController {
+private extension MessageMentionsViewController {
     func setupSubviews() {
         listViewModel.listService = service
     }

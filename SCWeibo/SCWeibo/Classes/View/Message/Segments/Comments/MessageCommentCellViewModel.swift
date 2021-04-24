@@ -1,21 +1,21 @@
 //
-//  MessageAttitudeCellViewModel.swift
+//  MessageCommentCellViewModel.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/24.
+//  Created by 王书超 on 2021/4/24.
 //
 
 import Foundation
 
-class MessageAttitudeCellViewModel {
-    var model: MessageAttitudeModel
+class MessageCommentCellViewModel {
+    var model: MessageCommentModel
     var avatarUrl: String?
     var screenName: String?
-    var cotentAttrString: NSAttributedString?
-    var imageUrl: String?
+    var commentLabelModel: ContentLabelTextModel?
+    var statusLabelModel: ContentLabelTextModel?
     var createdAt: String?
 
-    init(with model: MessageAttitudeModel) {
+    init(with model: MessageCommentModel) {
         self.model = model
         parseProperties()
     }
@@ -23,7 +23,7 @@ class MessageAttitudeCellViewModel {
 
 // MARK: - Public Methods
 
-extension MessageAttitudeCellViewModel {
+extension MessageCommentCellViewModel {
     func cellHeight(cellWidth: CGFloat) -> CGFloat {
 //        var totalHeight: CGFloat = 0
 //
@@ -44,22 +44,16 @@ extension MessageAttitudeCellViewModel {
 //        totalHeight += 25 // 底部gap + nameLabel
 //
 //        return totalHeight
-        return 180
+        return 300
     }
 }
 
-private extension MessageAttitudeCellViewModel {
+private extension MessageCommentCellViewModel {
     func parseProperties() {
         avatarUrl = model.user?.avatar
         screenName = model.user?.screenName
-        cotentAttrString = ContentHTMLParser.parseContentText(string: model.status?.text ?? "", font: UIFont.systemFont(ofSize: 16)).text
-
-        if (model.status?.picUrls?.count ?? 0) > 0 {
-            imageUrl = model.status?.picUrls?.first?.thumbnailPic
-        } else {
-            imageUrl = model.status?.user?.avatar
-        }
-
+        commentLabelModel = ContentHTMLParser.parseContentText(string: model.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        statusLabelModel = ContentHTMLParser.parseContentText(string: model.status?.text ?? "", font: UIFont.systemFont(ofSize: 16))
         createdAt = model.createdAt?.semanticDateDescription
     }
 }
