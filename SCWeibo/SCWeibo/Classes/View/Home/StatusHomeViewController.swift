@@ -9,7 +9,7 @@ import Kingfisher
 import UIKit
 
 class StatusHomeViewController: StatusListViewController {
-    let avatarView = AccountAvatarView()
+    let avatarView = NavigationAvatarView()
     let titleButton = HomeTitleButton()
     
     let service = StatusHomeService()
@@ -44,23 +44,10 @@ private extension StatusHomeViewController {
     }
 
     func setupNavigationButtons() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
-        avatarView.addGestureRecognizer(tap)
-
-        if let urlString = AccountManager.shared.user?.avatar,
-           let url = URL(string: urlString) {
-            // 如果直接把image给imageView，view会自动根据image大小而变化，原因未知，所以这里把image缩放为指定大小
-            ImageDownloader.default.downloadImage(with: url) { result in
-                switch result {
-                case let .success(imageResult):
-                    self.avatarView.image = imageResult.image.sc.compressImage(to: CGSize(width: 30, height: 30))
-                default:
-                    self.avatarView.image = nil
-                }
-            }
-        } else {
-            avatarView.image = nil
+        avatarView.clickAction = { [weak self] in
+            self?.avatarDidClicked()
         }
+        avatarView.avatarURL = AccountManager.shared.user?.avatar
 
         avatarView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let leftButton = UIBarButtonItem(customView: avatarView)
@@ -80,7 +67,7 @@ private extension StatusHomeViewController {
 // MARK: - Actions
 
 @objc private extension StatusHomeViewController {
-    func avatarDidClicked(sender: Any) {
+    func avatarDidClicked() {
         if !AccountManager.shared.isLogin {
             NotificationCenter.default.post(name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
         }
@@ -109,37 +96,6 @@ private extension StatusHomeViewController {
                 self?.titleButton.title = groupModel.name
             }
         }
-    }
-}
-
-class AccountAvatarView: UIImageView {
-    lazy var defaultImage = UIImage(named: "avatar_default_big")?.sc.compressImage(to: CGSize(width: 30, height: 30))
-
-    override var image: UIImage? {
-        didSet {
-            if image == nil {
-                image = defaultImage
-            }
-        }
-    }
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.sc.color(RGBA: 0x7F7F7F4D).cgColor
-        clipsToBounds = true
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        layer.cornerRadius = width / 2
     }
 }
 

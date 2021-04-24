@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472862633FF690035B75A /* FavoriteListViewController.swift */; };
+		2404728F263404EE0035B75A /* NavigationAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404728E263404EE0035B75A /* NavigationAvatarView.swift */; };
+		24047294263406350035B75A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047293263406350035B75A /* MessageViewController.swift */; };
+		2404729A263408920035B75A /* MessageMetionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047299263408920035B75A /* MessageMetionsViewController.swift */; };
+		2404729F263408DE0035B75A /* MessageCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404729E263408DE0035B75A /* MessageCommentsViewController.swift */; };
+		240472A7263409080035B75A /* MessageAttitudesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472A6263409080035B75A /* MessageAttitudesViewController.swift */; };
+		240472AD26340CBA0035B75A /* MessageMentionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472AC26340CBA0035B75A /* MessageMentionsService.swift */; };
+		240472B42634109A0035B75A /* CommentsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472B32634109A0035B75A /* CommentsListViewController.swift */; };
+		240472BC263411ED0035B75A /* CommentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472BB263411ED0035B75A /* CommentsListViewModel.swift */; };
+		240472C1263412340035B75A /* CommentsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472C0263412340035B75A /* CommentsTableCell.swift */; };
+		240472CC263412820035B75A /* CommentsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472CB263412820035B75A /* CommentsCellViewModel.swift */; };
+		240472D12634168B0035B75A /* MessageAttitudesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472D02634168B0035B75A /* MessageAttitudesViewModel.swift */; };
+		240472D6263416A90035B75A /* MessageAttitudesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472D5263416A90035B75A /* MessageAttitudesService.swift */; };
+		240472DB263416CB0035B75A /* MessageAttitudeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472DA263416CB0035B75A /* MessageAttitudeCell.swift */; };
+		240472E6263416F20035B75A /* MessageAttitudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472E5263416F20035B75A /* MessageAttitudeModel.swift */; };
+		240472EB2634170B0035B75A /* MessageAttitudeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */; };
 		246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */; };
 		246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */; };
 		246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */; };
@@ -181,6 +197,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		240472862633FF690035B75A /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		2404728E263404EE0035B75A /* NavigationAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAvatarView.swift; sourceTree = "<group>"; };
+		24047293263406350035B75A /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		24047299263408920035B75A /* MessageMetionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMetionsViewController.swift; sourceTree = "<group>"; };
+		2404729E263408DE0035B75A /* MessageCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsViewController.swift; sourceTree = "<group>"; };
+		240472A6263409080035B75A /* MessageAttitudesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudesViewController.swift; sourceTree = "<group>"; };
+		240472AC26340CBA0035B75A /* MessageMentionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMentionsService.swift; sourceTree = "<group>"; };
+		240472B32634109A0035B75A /* CommentsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewController.swift; sourceTree = "<group>"; };
+		240472BB263411ED0035B75A /* CommentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsListViewModel.swift; sourceTree = "<group>"; };
+		240472C0263412340035B75A /* CommentsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableCell.swift; sourceTree = "<group>"; };
+		240472CB263412820035B75A /* CommentsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCellViewModel.swift; sourceTree = "<group>"; };
+		240472D02634168B0035B75A /* MessageAttitudesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudesViewModel.swift; sourceTree = "<group>"; };
+		240472D5263416A90035B75A /* MessageAttitudesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudesService.swift; sourceTree = "<group>"; };
+		240472DA263416CB0035B75A /* MessageAttitudeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCell.swift; sourceTree = "<group>"; };
+		240472E5263416F20035B75A /* MessageAttitudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeModel.swift; sourceTree = "<group>"; };
+		240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCellViewModel.swift; sourceTree = "<group>"; };
 		246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewModel.swift; sourceTree = "<group>"; };
 		246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListService.swift; sourceTree = "<group>"; };
 		246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeTableCell.swift; sourceTree = "<group>"; };
@@ -381,6 +413,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240472852633FF300035B75A /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				240472862633FF690035B75A /* FavoriteListViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		240472982634086A0035B75A /* Segments */ = {
+			isa = PBXGroup;
+			children = (
+				240472AB26340CA20035B75A /* Mentions */,
+				240472B12634100F0035B75A /* Comments */,
+				240472B22634103F0035B75A /* Attitudes */,
+			);
+			path = Segments;
+			sourceTree = "<group>";
+		};
+		240472AB26340CA20035B75A /* Mentions */ = {
+			isa = PBXGroup;
+			children = (
+				24047299263408920035B75A /* MessageMetionsViewController.swift */,
+				240472AC26340CBA0035B75A /* MessageMentionsService.swift */,
+			);
+			path = Mentions;
+			sourceTree = "<group>";
+		};
+		240472B12634100F0035B75A /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				2404729E263408DE0035B75A /* MessageCommentsViewController.swift */,
+				240472B32634109A0035B75A /* CommentsListViewController.swift */,
+				240472BB263411ED0035B75A /* CommentsListViewModel.swift */,
+				240472C0263412340035B75A /* CommentsTableCell.swift */,
+				240472CB263412820035B75A /* CommentsCellViewModel.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		240472B22634103F0035B75A /* Attitudes */ = {
+			isa = PBXGroup;
+			children = (
+				240472A6263409080035B75A /* MessageAttitudesViewController.swift */,
+				240472D02634168B0035B75A /* MessageAttitudesViewModel.swift */,
+				240472D5263416A90035B75A /* MessageAttitudesService.swift */,
+				240472DA263416CB0035B75A /* MessageAttitudeCell.swift */,
+				240472E5263416F20035B75A /* MessageAttitudeModel.swift */,
+				240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */,
+			);
+			path = Attitudes;
+			sourceTree = "<group>";
+		};
 		245FA9C42633E5E2002BF6E9 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				248423062630560200CD25A4 /* VideoCoverImageView.swift */,
+				2404728E263404EE0035B75A /* NavigationAvatarView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -861,6 +946,7 @@
 		D6A225FB25EE3AEF00E3E767 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				240472852633FF300035B75A /* Favorite */,
 				248423302631B86700CD25A4 /* WriteStatus */,
 				24842305263055DF00CD25A4 /* Common */,
 				D6A225FC25EE3AEF00E3E767 /* Home */,
@@ -894,7 +980,9 @@
 		D6A2260B25EE3AEF00E3E767 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				240472982634086A0035B75A /* Segments */,
 				D6A2260C25EE3AEF00E3E767 /* MNMessageViewController.swift */,
+				24047293263406350035B75A /* MessageViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1247,6 +1335,7 @@
 			files = (
 				D6A2264025EE3AEF00E3E767 /* String+Substring.swift in Sources */,
 				D6A2263D25EE3AEF00E3E767 /* UIButton+Tool.swift in Sources */,
+				240472AD26340CBA0035B75A /* MessageMentionsService.swift in Sources */,
 				D6A2262F25EE3AEF00E3E767 /* EmojiModel.swift in Sources */,
 				D6A2263225EE3AEF00E3E767 /* EmojiToolbar.swift in Sources */,
 				D6F2C0E225F87DA800724B4A /* TabbarItemsManager.swift in Sources */,
@@ -1254,10 +1343,12 @@
 				D66023BE25F68D1B00DE90A0 /* StatusRepostView.swift in Sources */,
 				D625944B25FE5B770037CB2C /* StatusHomeTopBar.swift in Sources */,
 				D6A2264225EE3AEF00E3E767 /* UIImage+Utilities.swift in Sources */,
+				240472BC263411ED0035B75A /* CommentsListViewModel.swift in Sources */,
 				D627059325F4C1E700B7F6DC /* StatusNormalCell.swift in Sources */,
 				D6A2268525EE3B1800E3E767 /* WeiboSDKTask.swift in Sources */,
 				24C83414262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift in Sources */,
 				24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */,
+				2404728F263404EE0035B75A /* NavigationAvatarView.swift in Sources */,
 				D6A2267125EE3AF000E3E767 /* MNVisitorView.swift in Sources */,
 				D6A2263525EE3AEF00E3E767 /* EmojiInputView.swift in Sources */,
 				D6F290D125F14E8200F54C87 /* UIView+Edge.swift in Sources */,
@@ -1266,6 +1357,7 @@
 				D6A2268425EE3B1800E3E767 /* Router.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */,
+				240472A7263409080035B75A /* MessageAttitudesViewController.swift in Sources */,
 				D6F2492825F2B23000F54C87 /* Decodable+Convenience.swift in Sources */,
 				D6A2263B25EE3AEF00E3E767 /* NSAttributedString+Extension.swift in Sources */,
 				D6A2266725EE3AF000E3E767 /* WeiboTabBarController.swift in Sources */,
@@ -1288,8 +1380,10 @@
 				D64C45212601FF3500A63631 /* VideosListViewModel.swift in Sources */,
 				24AD7E25262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift in Sources */,
 				D6F2C0E825F87E7900724B4A /* TabbarItemModel.swift in Sources */,
+				240472E6263416F20035B75A /* MessageAttitudeModel.swift in Sources */,
 				D6A2263C25EE3AEF00E3E767 /* String+MNPath.swift in Sources */,
 				D68F988B25EF67F000C0092A /* PagesScrollView.swift in Sources */,
+				2404729F263408DE0035B75A /* MessageCommentsViewController.swift in Sources */,
 				D64C452B260200A400A63631 /* VideoTableCell.swift in Sources */,
 				D6A2266625EE3AF000E3E767 /* SettingViewController.swift in Sources */,
 				D611D65425F511060041D99A /* StatusPicturesModel.swift in Sources */,
@@ -1304,15 +1398,19 @@
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* EmojiTipView.swift in Sources */,
+				240472CC263412820035B75A /* CommentsCellViewModel.swift in Sources */,
 				246EEA2C2625A2CE00DB0F1D /* DetailCommentTableCell.swift in Sources */,
 				D6A2264D25EE3AEF00E3E767 /* UIApplication+Utilities.swift in Sources */,
+				24047294263406350035B75A /* MessageViewController.swift in Sources */,
 				246EEA242625A2B200DB0F1D /* DetailCommentListService.swift in Sources */,
 				D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
+				240472C1263412340035B75A /* CommentsTableCell.swift in Sources */,
 				24C833FA2622FC5100E45CE5 /* DetailCommentListViewController.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Utilities.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
+				240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */,
 				24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,
@@ -1341,6 +1439,7 @@
 				249BC8742610BD1100589656 /* UserProfileService.swift in Sources */,
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */,
+				240472DB263416CB0035B75A /* MessageAttitudeCell.swift in Sources */,
 				24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */,
 				24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */,
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
@@ -1355,6 +1454,7 @@
 				D6A2264925EE3AEF00E3E767 /* MNMTRefreshView.swift in Sources */,
 				24C81A092621D81700E45CE5 /* StatusDetailRepostView.swift in Sources */,
 				D6A2263A25EE3AEF00E3E767 /* MNSQLiteManager.swift in Sources */,
+				240472D6263416A90035B75A /* MessageAttitudesService.swift in Sources */,
 				D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */,
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2266025EE3AF000E3E767 /* MNMessageViewController.swift in Sources */,
@@ -1363,6 +1463,7 @@
 				D6F2491B25F2A36300F54C87 /* StatusResponse.swift in Sources */,
 				24B2F810262D5C8E00A97C50 /* String+Date.swift in Sources */,
 				248423072630560200CD25A4 /* VideoCoverImageView.swift in Sources */,
+				240472B42634109A0035B75A /* CommentsListViewController.swift in Sources */,
 				D6A2266425EE3AF000E3E767 /* HorizontalCategoryBar.swift in Sources */,
 				D627057925F4C15900B7F6DC /* StatusRepostCellViewModelProducer.swift in Sources */,
 				246EEA1126258AC000DB0F1D /* DetailAttitudeCellViewModel.swift in Sources */,
@@ -1374,9 +1475,12 @@
 				246EEA402625AE3900DB0F1D /* DetailCommentsView.swift in Sources */,
 				248423232631475300CD25A4 /* WebViewController.swift in Sources */,
 				D627059825F4C1F800B7F6DC /* StatusNormalCellViewModel.swift in Sources */,
+				2404729A263408920035B75A /* MessageMetionsViewController.swift in Sources */,
 				D68D04C62608F1E1004A6630 /* PhotosListService.swift in Sources */,
 				D68D04D02608FC18004A6630 /* UserProfilePhotosTabViewModel.swift in Sources */,
 				248A0F1C2632A7E700D2DACC /* WriteStatusService.swift in Sources */,
+				240472D12634168B0035B75A /* MessageAttitudesViewModel.swift in Sources */,
+				240472EB2634170B0035B75A /* MessageAttitudeCellViewModel.swift in Sources */,
 				D68D04B92608F1BA004A6630 /* PhotosListViewController.swift in Sources */,
 				D6A2262E25EE3AEF00E3E767 /* EmojiManager.swift in Sources */,
 				D6A2256925EE388B00E3E767 /* SceneDelegate.swift in Sources */,
