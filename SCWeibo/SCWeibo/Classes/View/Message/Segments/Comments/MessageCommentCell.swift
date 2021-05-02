@@ -5,7 +5,6 @@
 //  Created by 王书超 on 2021/4/24.
 //
 
-
 import UIKit
 
 class MessageCommentCell: UITableViewCell {
@@ -13,11 +12,11 @@ class MessageCommentCell: UITableViewCell {
 
     let avatarImageView = UIImageView()
     let nameLabel = UILabel()
-    
+
     let leftSeparator = UIView()
     let commentLabel = ContentLabel()
     let statusLabel = ContentLabel()
-    
+
     let timeLabel = UILabel()
     let separatorLine = UIView()
 
@@ -52,10 +51,10 @@ extension MessageCommentCell {
 
         nameLabel.text = viewModel.screenName
         timeLabel.text = viewModel.createdAt
-        
+
         commentLabel.textModel = viewModel.commentLabelModel
         statusLabel.textModel = viewModel.statusLabelModel
-        
+
         setNeedsLayout()
     }
 }
@@ -75,11 +74,10 @@ private extension MessageCommentCell {
 
         nameLabel.textColor = UIColor.black
         nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        
 
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
-        
+
         separatorLine.backgroundColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
 
         contentView.addSubview(avatarImageView)
@@ -97,7 +95,7 @@ private extension MessageCommentCell {
         nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
         timeLabel.anchorInCorner(.bottomLeft, xPad: 15 + 32 + 15, yPad: 8, width: contentWidth, height: 17)
         commentLabel.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 50)
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1 / UIScreen.main.scale)
         statusLabel.align(.underMatchingRight, relativeTo: commentLabel, padding: 20, width: contentWidth - 20, height: 100)
     }
 }

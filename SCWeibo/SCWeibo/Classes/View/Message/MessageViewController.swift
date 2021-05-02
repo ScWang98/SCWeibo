@@ -10,7 +10,7 @@ import UIKit
 class MessageViewController: UIViewController {
     let avatarView = NavigationAvatarView()
     let titleView = MessageTitleView()
-    
+
     var subPages = [UIView]()
 
     override func viewDidLoad() {
@@ -35,19 +35,19 @@ private extension MessageViewController {
         for clazz in viewControllerClazzs {
             addSubSegmentVC(viewControllerClazz: clazz)
         }
-        
+
         titleView.selectedSegmentIndex = 0
         selectPage(atIndex: 0)
     }
-    
+
     func addSubSegmentVC(viewControllerClazz: UIViewController.Type) {
         let viewController = viewControllerClazz.init()
         viewController.willMove(toParent: self)
-        self.addChild(viewController)
+        addChild(viewController)
         viewController.didMove(toParent: self)
         viewController.view.isHidden = true
-        self.view.addSubview(viewController.view)
-        self.subPages.append(viewController.view)
+        view.addSubview(viewController.view)
+        subPages.append(viewController.view)
     }
 
     func setupNavigationButtons() {
@@ -68,12 +68,12 @@ private extension MessageViewController {
         titleView.addTarget(self, action: #selector(titleSegmentDidSelected(segControl:)), for: .valueChanged)
         navigationItem.titleView = titleView
     }
-    
+
     func selectPage(atIndex index: Int) {
         guard 0 <= index && index < subPages.count else {
             return
         }
-        
+
         for (idx, page) in subPages.enumerated() {
             page.isHidden = idx != index
         }
@@ -93,20 +93,19 @@ private extension MessageViewController {
     func writeButtonDidClicked(sender: Any) {
         Router.open(url: "pillar://writeStatus")
     }
-    
+
     func titleSegmentDidSelected(segControl: UISegmentedControl) {
         let index = segControl.selectedSegmentIndex
-        
+
         selectPage(atIndex: index)
     }
 }
 
 class MessageTitleView: UISegmentedControl {
-    
     init() {
         super.init(items: ["@我的", "评论", "赞"])
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
