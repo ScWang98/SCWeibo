@@ -19,6 +19,7 @@
 		240472DB263416CB0035B75A /* MessageAttitudeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472DA263416CB0035B75A /* MessageAttitudeCell.swift */; };
 		240472E6263416F20035B75A /* MessageAttitudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472E5263416F20035B75A /* MessageAttitudeModel.swift */; };
 		240472EB2634170B0035B75A /* MessageAttitudeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */; };
+		2404730426354F460035B75A /* MessageCommentsCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */; };
 		241D8A52263477B50092F598 /* MessageCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */; };
 		241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A56263477C00092F598 /* MessageCommentsService.swift */; };
 		241D8A5C263477CD0092F598 /* MessageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A5B263477CD0092F598 /* MessageCommentCell.swift */; };
@@ -208,6 +209,7 @@
 		240472DA263416CB0035B75A /* MessageAttitudeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCell.swift; sourceTree = "<group>"; };
 		240472E5263416F20035B75A /* MessageAttitudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeModel.swift; sourceTree = "<group>"; };
 		240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCellViewModel.swift; sourceTree = "<group>"; };
+		2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsCategoryBar.swift; sourceTree = "<group>"; };
 		241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsViewModel.swift; sourceTree = "<group>"; };
 		241D8A56263477C00092F598 /* MessageCommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsService.swift; sourceTree = "<group>"; };
 		241D8A5B263477CD0092F598 /* MessageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCell.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				241D8A5B263477CD0092F598 /* MessageCommentCell.swift */,
 				241D8A60263477DA0092F598 /* MessageCommentModel.swift */,
 				241D8A65263477E60092F598 /* MessageCommentCellViewModel.swift */,
+				2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -1477,6 +1480,7 @@
 				D64B939825FB6EF000A26F65 /* UserProfileStatusTabViewModel.swift in Sources */,
 				246EEA1F2625A29800DB0F1D /* DetailCommentListViewModel.swift in Sources */,
 				D6A2264C25EE3AEF00E3E767 /* ExtensionUtilities.swift in Sources */,
+				2404730426354F460035B75A /* MessageCommentsCategoryBar.swift in Sources */,
 				D63D518A260745830034FDB3 /* AccountManager.swift in Sources */,
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
 				24C8341E2623161D00E45CE5 /* DetailRepostListService.swift in Sources */,
@@ -1702,7 +1706,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZRBM6DAKML;
+				DEVELOPMENT_TEAM = 37ZD5SXT8T;
 				INFOPLIST_FILE = SCWeiboTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1725,7 +1729,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZRBM6DAKML;
+				DEVELOPMENT_TEAM = 37ZD5SXT8T;
 				INFOPLIST_FILE = SCWeiboTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1747,7 +1751,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZRBM6DAKML;
+				DEVELOPMENT_TEAM = 37ZD5SXT8T;
 				INFOPLIST_FILE = SCWeiboUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1768,7 +1772,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZRBM6DAKML;
+				DEVELOPMENT_TEAM = 37ZD5SXT8T;
 				INFOPLIST_FILE = SCWeiboUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
