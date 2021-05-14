@@ -13,7 +13,7 @@ class StatusNormalCellViewModel {
     var avatarUrl: String?
     var source: String?
     var createdAt: String?
-    var statusAttrText: NSAttributedString?
+    var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
     var repostTitle: String?
     var commentTitle: String?
@@ -27,12 +27,12 @@ class StatusNormalCellViewModel {
 
 private extension StatusNormalCellViewModel {
     func parseProperties() {
-        statusAttrText = MNEmojiManager.shared.getEmojiString(string: status.text ?? "", font: UIFont.systemFont(ofSize: MNLayout.Layout(15)))
-        picUrls = StatusPicturesModel.generateModels(with: status.picUrls ?? [])
+        statusLabelModel = ContentHTMLParser.parseContentText(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
+        picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
-        avatarUrl = status.user?.profileImageUrl
-        source = "来自" + (status.source?.mn_href()?.text ?? "")
-        createdAt = Date.mn_sinaDate(string: status.createdAt)?.mn_dateDescription
+        avatarUrl = status.user?.avatar
+        source = "来自" + (status.source?.mn_href() ?? "")
+        createdAt = status.createdAt?.semanticDateDescription
         repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
         commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
         likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
@@ -54,11 +54,12 @@ extension StatusNormalCellViewModel: StatusCellViewModel {
         let gap: CGFloat = 8
 
         let topSepHeight: CGFloat = 12
-        let topBarHeight = StatusTopToolBar.height(for: self)
+//        let topBarHeight = StatusTopToolBar.height(for: self)
+        let topBarHeight: CGFloat = 0
 
         let width = UIScreen.sc.screenWidth - 2 * 12
         let textSize = CGSize(width: width, height: 0)
-        let rect = statusAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
+        let rect = statusLabelModel?.text.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
         let textHeight = rect?.height ?? 0
 
         let imageHeight = StatusPicturesView.height(for: picUrls ?? [])

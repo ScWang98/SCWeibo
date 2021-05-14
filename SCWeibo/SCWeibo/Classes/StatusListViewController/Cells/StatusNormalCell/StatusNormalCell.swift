@@ -12,7 +12,7 @@ class StatusNormalCell: UITableViewCell {
 
     let topSeperatorView = UIView()
     let topToolBar = StatusTopToolBar()
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
     let bottomToolBar = StatusBottomToolBar()
 
@@ -22,7 +22,7 @@ class StatusNormalCell: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     override func layoutSubviews() {
@@ -37,8 +37,8 @@ extension StatusNormalCell: StatusCell {
             return
         }
         self.viewModel = viewModel
-        topToolBar.reload(with: viewModel)
-        contentLabel.attributedText = viewModel.statusAttrText
+//        topToolBar.reload(with: viewModel)
+        contentLabel.textModel = viewModel.statusLabelModel
         picturesView.reload(with: viewModel.picUrls ?? [])
         bottomToolBar.reload(with: viewModel)
 
@@ -48,7 +48,7 @@ extension StatusNormalCell: StatusCell {
 
 private extension StatusNormalCell {
     func setupSubviews() {
-        topSeperatorView.backgroundColor = UIColor.sc.color(with: 0xF2F2F2FF)
+        topSeperatorView.backgroundColor = UIColor.sc.color(RGBA: 0xF2F2F2FF)
 
         contentLabel.delegate = self
         contentLabel.numberOfLines = 0
@@ -71,7 +71,7 @@ private extension StatusNormalCell {
         }
         var height: CGFloat = 0.0
 
-        height = StatusTopToolBar.height(for: viewModel)
+//        height = StatusTopToolBar.height(for: viewModel)
         topToolBar.align(.underCentered, relativeTo: topSeperatorView, padding: 0, width: contentView.width, height: height)
 
         height = StatusBottomToolBar.height(for: viewModel)
@@ -84,12 +84,8 @@ private extension StatusNormalCell {
     }
 }
 
-extension StatusNormalCell: MNLabelDelegate {
-    func labelDidSelectedLinkText(label: MNLabel, text: String) {
-        if !text.hasPrefix("http") {
-            return
-        }
-//        delegate?.homeCellDidClickUrlString?(cell: self, urlStr: text)
-        print("homeCellDidClickUrlString")
+extension StatusNormalCell: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTap schema: String) {
+        Router.open(url: schema)
     }
 }

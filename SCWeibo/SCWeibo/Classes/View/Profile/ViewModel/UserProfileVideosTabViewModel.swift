@@ -29,7 +29,7 @@ extension UserProfileVideosTabViewModel: UserProfileTabViewModel {
         return viewController.tableView
     }
     
-    func tabRefresh(with completion: () -> Void) {
+    func tabRefresh(with completion: (() -> Void)?) {
         viewController.refreshData(with: false)
     }
 }

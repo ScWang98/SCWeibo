@@ -14,3 +14,7 @@ extension UtilitiesWrapper where Base: UIView {
         return ResponderHelper.topViewController(for: base)
     }
 }
+
+extension UIView {
+    
+}

@@ -9,16 +9,19 @@ import Foundation
 
 class VideosListViewModel {
     lazy var videoList = [VideoCellViewModel]()
+    var listService = VideosListService()
 
     var sinceId: String?
 
     init() {
     }
 
+    func config(withUserId userId: String?) {
+        listService.userId = userId
+    }
+
     func loadStatus(loadMore: Bool, completion: @escaping (_ isSuccess: Bool, _ needRefresh: Bool) -> Void) {
-
-
-        VideosListService.loadStatus(since_id: nil) { isSuccess, data in
+        listService.loadStatus(since_id: nil) { isSuccess, data in
             if !isSuccess {
                 completion(false, false)
                 return

@@ -17,6 +17,16 @@ protocol EdgeAble: AnyObject {
     var top: CGFloat { get set }
 
     var bottom: CGFloat { get set }
+    
+    var width: CGFloat { get set }
+    
+    var height: CGFloat { get set }
+
+    var centerX: CGFloat { get set }
+
+    var centerY: CGFloat { get set }
+
+    var size: CGSize { get set }
 }
 
 extension EdgeAble {
@@ -25,9 +35,7 @@ extension EdgeAble {
             return frame.minX
         }
         set(left) {
-            var newFrame = frame
-            newFrame.origin.x = left
-            frame = newFrame
+            frame.origin.x = left
         }
     }
 
@@ -37,9 +45,7 @@ extension EdgeAble {
         }
 
         set(right) {
-            var newFrame = frame
-            newFrame.origin.x = right - frame.size.width
-            frame = newFrame
+            frame.origin.x = right - frame.size.width
         }
     }
 
@@ -49,9 +55,7 @@ extension EdgeAble {
         }
 
         set(top) {
-            var newFrame = frame
-            newFrame.origin.y = top
-            frame = newFrame
+            frame.origin.y = top
         }
     }
 
@@ -61,13 +65,84 @@ extension EdgeAble {
         }
 
         set(bottom) {
-            var newFrame = frame
-            newFrame.origin.y = bottom - frame.size.height
-            frame = newFrame
+            frame.origin.y = bottom - frame.size.height
+        }
+    }
+    
+
+
+    public var centerX: CGFloat {
+        get {
+            return frame.midX
+        }
+
+        set(centerX) {
+            frame.origin.x = centerX - frame.size.width / 2
+        }
+    }
+
+    public var centerY: CGFloat {
+        get {
+            return frame.midY
+        }
+
+        set(centerY) {
+            frame.origin.y = centerY - frame.size.height / 2
+        }
+    }
+
+    public var size: CGSize {
+        get {
+            return frame.size
+        }
+
+        set(size) {
+            frame.size = size
         }
     }
 }
 
-extension UIView: EdgeAble {}
+// width和height写在这里是因为Neon中实现了width和height的getter
+extension UIView: EdgeAble {
+    public var width: CGFloat {
+        get {
+            return frame.size.width
+        }
 
-extension CALayer: EdgeAble {}
+        set(width) {
+            frame.size.width = width
+        }
+    }
+    
+    public var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+
+        set(height) {
+            frame.size.height = height
+        }
+    }
+}
+
+extension CALayer: EdgeAble {
+    public var width: CGFloat {
+        get {
+            return frame.size.width
+        }
+
+        set(width) {
+            frame.size.width = width
+        }
+    }
+    
+    public var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+
+        set(height) {
+            frame.size.height = height
+        }
+    }
+}

@@ -18,7 +18,7 @@ let MNredirectUri = "https://api.weibo.com/oauth2/default.html"
 
 let MNUserShouldLoginNotification = "MNUserShouldLoginNotification"
 
-let MNUserLoginSuccessNotification = "MNUserLoginSuccessNotification"
+let UserLoginStateDidChangeNotification = "UserLoginStateDidChangeNotification"
 
 let MNWeiboCellBrowserPhotoIndexKey = "MNWeiboCellBrowserPhotoIndexKey"
 let MNWeiboCellBrowserPhotoURLsKeys = "MNWeiboCellBrowserPhotoURLsKeys"

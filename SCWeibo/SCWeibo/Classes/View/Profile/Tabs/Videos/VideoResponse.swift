@@ -8,12 +8,11 @@
 import UIKit
 
 /// 因此model使用了H5版的接口，参数层级较复杂，因此手动解析数据
-class VideoResponse: Codable {
+class VideoResponse {
     var id: String?
     var text: String?
     var createdAt: String?
-    var coverUrl: String?
-    var videoUrl: String?
+    var videoModel: StatusVideoModel?
 
     init(dict: [AnyHashable: Any]) {
         guard let mblog: Dictionary<AnyHashable, Any> = dict.sc.dictionary(for: "mblog") else { return }
@@ -25,12 +24,6 @@ class VideoResponse: Codable {
 
         text = pageInfo.sc.string(for: "content2")
 
-        if let pagePic: Dictionary<AnyHashable, Any> = pageInfo.sc.dictionary(for: "page_pic") {
-            coverUrl = pagePic.sc.string(for: "url")
-        }
-
-        if let videoUrls: Dictionary<AnyHashable, Any> = pageInfo.sc.dictionary(for: "urls") {
-            videoUrl = videoUrls.sc.string(for: "mp4_720p_mp4")
-        }
+        videoModel = StatusVideoModel(H5Dict: pageInfo)
     }
 }

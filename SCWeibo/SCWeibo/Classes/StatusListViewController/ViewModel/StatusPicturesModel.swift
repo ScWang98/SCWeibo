@@ -20,7 +20,11 @@ class StatusPicturesModel {
         originalPic = statusPicture.thumbnailPic?.replacingOccurrences(of: "/thumbnail/", with: "/large/") ?? ""
     }
 
-    static func generateModels(with pictures: [StatusPicture]) -> [StatusPicturesModel] {
+    static func generateModels(with pictures: [StatusPicture]?) -> [StatusPicturesModel]? {
+        guard let pictures = pictures,
+              pictures.count > 0 else {
+            return nil
+        }
         var array = [StatusPicturesModel]()
         for picture in pictures {
             array.append(StatusPicturesModel(with: picture))

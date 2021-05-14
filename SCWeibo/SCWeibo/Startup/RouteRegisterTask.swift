@@ -9,7 +9,9 @@ import UIKit
 
 class RouteRegisterTask: StartupTaskProtocol {
     func startTask(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        RouteManager.shared.register(pageClass: MNWriteController.self, for: "test")
-        RouteManager.shared.register(pageClass: H5LoginWebViewController.self, for: "h5login")
+        Router.register(urlPattern: "pillar://h5login", pageClass: H5LoginWebViewController.self)
+        Router.register(urlPattern: "pillar://statusDetail", pageClass: StatusDetailViewController.self)
+        Router.register(urlPattern: "pillar://webview", pageClass: WebViewController.self)
+        Router.register(urlPattern: "pillar://writeStatus", pageClass: WriteStatusController.self)
     }
 }

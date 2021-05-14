@@ -6,13 +6,12 @@
 //
 
 import UIKit
+import MJRefresh
 
 class VideosListViewController: UIViewController {
     var tableView = UITableView()
 
     private var listViewModel = VideosListViewModel()
-
-    var isPull: Bool = false
 
     deinit {
         removeObservers()
@@ -24,7 +23,7 @@ class VideosListViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
@@ -36,8 +35,12 @@ class VideosListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension VideosListViewController {
+    func config(withUserId userId: String?) {
+        listViewModel.config(withUserId: userId)
+    }
+    
     func refreshData(with loadingState: Bool) {
-        self.loadDatas()
+        loadDatas(loadMore: false)
     }
 }
 
@@ -50,10 +53,11 @@ private extension VideosListViewController {
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
         tableView.register(VideoTableCell.self, forCellReuseIdentifier: String(describing: VideoTableCell.self))
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(loadMore: true)
+        })
         tableView.frame = view.bounds
         view.addSubview(tableView)
-
-        self.loadDatas()
     }
 }
 
@@ -64,6 +68,15 @@ private extension VideosListViewController {
     }
 
     func removeObservers() {
+    }
+    
+    func loadDatas(loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_footer?.endRefreshing()
+            if needRefresh {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -89,7 +102,7 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let coverHeight = view.width * 9.0 / 16.0
-        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0;
+        let height = 12.0 + coverHeight + 25.0 * 2 + 8.0
         return height
     }
 }
@@ -97,12 +110,5 @@ extension VideosListViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Action
 
 @objc private extension VideosListViewController {
-    func loadDatas() {
-        listViewModel.loadStatus(loadMore: self.isPull) { _, needRefresh in
-            self.isPull = false
-            if needRefresh {
-                self.tableView.reloadData()
-            }
-        }
-    }
+
 }

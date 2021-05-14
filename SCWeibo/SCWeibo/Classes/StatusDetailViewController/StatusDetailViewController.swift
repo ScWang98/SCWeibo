@@ -7,94 +7,113 @@
 
 import UIKit
 
-class StatusDetailViewController: UIViewController {
-    let topToolBar = StatusDetailTopBar()
-    let headerView = UserProfileHeaderView()
-    let categoryBar = HorizontalCategoryBar()
+class StatusDetailViewController: UIViewController, RouteAble {
+    let detailContentView = StatusDetailContentView()
+    let categoryBar = StatusDetailHorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
     let viewModel = StatusDetailViewModel()
 
     var pagesObservation: NSKeyValueObservation?
 
-    init() {
+    deinit {
+        removeObservers()
+    }
+
+    private init() {
         super.init(nibName: nil, bundle: nil)
+        commonInit()
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+    }
+
+    required convenience init(routeParams: Dictionary<AnyHashable, Any>) {
+        self.init()
+        self.viewModel.config(with: routeParams)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
         setupSubviews()
-        addObservers()
+        refreshHeader()
+        
+        categoryBar.reload(names: viewModel.tabNames)
+        categoryBar.selectItem(at: 1, animated: false)
+        pagesView.reloadPages()
+        pagesView.set(selectedIndex: 1, animated: false)
+        
+        viewModel.reloadAllTabsContent()
+        
+        let rightButton = UIBarButtonItem.init(image: UIImage(named: "MoreActionButton_Normal"), style: .plain, target: self, action: #selector(moreButtonDidClicked(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.title = "微博正文"
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
-        pagesView.reloadPages()
-        pagesView.set(selectedIndex: 0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.fetchUserInfo {
+            self.refreshHeader()
+        }
     }
 }
 
 // MARK: - Private Methods
 
 private extension StatusDetailViewController {
+    func commonInit() {
+        addObservers()
+    }
+
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
-        topToolBar.delegate = self
-
-        categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
-        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
-        pagesView.headerView = headerView
+        detailContentView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
+        pagesView.headerView = detailContentView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
 
-        view.addSubview(topToolBar)
         view.addSubview(pagesView)
         view.addSubview(categoryBar)
 
-        let safeArea = UIApplication.shared.sc.keyWindow?.safeAreaInsets
-        topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
-        pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
-        categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-
-        categoryBar.reload(names: viewModel.tabNames)
+        pagesView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
+        categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 35)
+        self.view.setNeedsLayout()
     }
 
     func addObservers() {
-        pagesObservation = self.pagesView.observe(\.contentOffset, options: [.new, .old]) { _, _ in
-            self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
-        }
-    }
-}
-
-// MARK: - UserProfileTopToolBarDelegate
-
-extension StatusDetailViewController: StatusDetailTopBarDelegate {
-    func topBarDidClickBack(_ topBar: StatusDetailTopBar) {
-        if let viewControllers = self.navigationController?.viewControllers, viewControllers.count > 1 {
-            navigationController?.popViewController(animated: true)
-        } else {
-            dismiss(animated: true, completion: nil)
+        pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
+            self.categoryBar.bottom = max(self.detailContentView.height - self.pagesView.contentOffset.y, self.categoryBar.height)
         }
     }
     
-    func topBarDidClickMore(_ topBar: StatusDetailTopBar) {
-        
+    func removeObservers() {
+        pagesObservation?.invalidate()
+    }
+
+    func refreshHeader() {
+        detailContentView.reload(with: viewModel)
     }
 }
 
-// MARK: - HorizontalCategoryDelegate
+// MARK: - StatusDetailHorizontalCategoryDelegate
 
-extension StatusDetailViewController: HorizontalCategoryBarDelegate {
-    func categoryBar(_ categoryBar: HorizontalCategoryBar, didSelectItemAt index: Int) {
+extension StatusDetailViewController: StatusDetailHorizontalCategoryBarDelegate {
+    func categoryBar(_ categoryBar: StatusDetailHorizontalCategoryBar, didSelectItemAt index: Int) {
         pagesView.set(selectedIndex: index, animated: true)
     }
 }
@@ -135,6 +154,10 @@ extension StatusDetailViewController: PagesScrollViewDataSource, PagesScrollView
 
 @objc private extension StatusDetailViewController {
     func settingButtonClickedAction(button: UIButton) {
+    }
+    
+    func moreButtonDidClicked(sender: Any) {
+        
     }
 }
 

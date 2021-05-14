@@ -9,11 +9,17 @@ import Alamofire
 import Foundation
 
 class VideosListService {
-    class func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
-        let containerIdPre = "231567"
-        let userId = "5236464641"
+    var userId: String?
 
-        let URLString = "https://m.weibo.cn/api/container/getIndex"
+    func loadStatus(since_id: Int?, completion: @escaping (_ isSuccess: Bool, _ list: Dictionary<AnyHashable, Any>?) -> Void) {
+        guard let userId = userId else {
+            completion(false, nil)
+            return
+        }
+        
+        let containerIdPre = "231567"
+
+        let URLString = URLSettings.getIndexURL
 
         var params = [String: Any]()
         params["containerid"] = containerIdPre + userId

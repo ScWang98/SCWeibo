@@ -9,48 +9,82 @@ import FLEX
 import Neon
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: UIViewController, RouteAble {
     let topToolBar = UserProfileTopToolBar()
     let headerView = UserProfileHeaderView()
     let categoryBar = HorizontalCategoryBar()
     let pagesView = PagesScrollView()
 
-    let viewModel = UserProfileViewModel()
+    let viewModel: UserProfileViewModel
 
     var pagesObservation: NSKeyValueObservation?
 
+    deinit {
+        removeObservers()
+    }
+
     init() {
+        viewModel = UserProfileViewModel(with: nil)
+
         super.init(nibName: nil, bundle: nil)
+
+        commonInit()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    required init(routeParams: Dictionary<AnyHashable, Any>) {
+        viewModel = UserProfileViewModel(with: routeParams)
+
+        super.init(nibName: nil, bundle: nil)
+
+        commonInit()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+                
         setupSubviews()
-        addObservers()
+        refreshHeader()
+        
+        categoryBar.reload(names: viewModel.tabNames)
+        pagesView.reloadPages()
+        
+        viewModel.reloadAllTabsContent()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
-        pagesView.reloadPages()
-        pagesView.set(selectedIndex: 0)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.fetchUserInfo {
+            self.refreshHeader()
+        }
     }
 }
 
 // MARK: - Private Methods
 
 private extension UserProfileViewController {
+    func commonInit() {
+        addObservers()
+    }
+
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
         topToolBar.delegate = self
 
-        categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
         headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
@@ -66,14 +100,21 @@ private extension UserProfileViewController {
         topToolBar.anchorToEdge(.top, padding: 0, width: view.width, height: (safeArea?.top ?? 0) + 44)
         pagesView.frame = CGRect(x: 0, y: topToolBar.yMax, width: view.width, height: view.height - topToolBar.height)
         categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-
-        categoryBar.reload(names: viewModel.tabNames)
+        self.view.setNeedsLayout()
     }
 
     func addObservers() {
-        pagesObservation = self.pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
+        pagesObservation = pagesView.observe(\PagesScrollView.contentOffset, options: [.new, .old]) { _, _ in
             self.categoryBar.bottom = max(self.topToolBar.bottom + self.headerView.height - self.pagesView.contentOffset.y, self.topToolBar.bottom + self.categoryBar.height)
         }
+    }
+    
+    func removeObservers() {
+        pagesObservation?.invalidate()
+    }
+
+    func refreshHeader() {
+        headerView.reload(with: viewModel)
     }
 }
 
@@ -81,7 +122,7 @@ private extension UserProfileViewController {
 
 extension UserProfileViewController: UserProfileTopToolBarDelegate {
     func topToolBarDidClickBack(_ topToolBar: UserProfileTopToolBar) {
-        if let viewControllers = self.navigationController?.viewControllers, viewControllers.count > 1 {
+        if let viewControllers = navigationController?.viewControllers, viewControllers.count > 1 {
             navigationController?.popViewController(animated: true)
         } else {
             dismiss(animated: true, completion: nil)

@@ -11,9 +11,7 @@ import UIKit
 class StatusListViewController: UIViewController {
     var tableView = UITableView()
 
-    private var listViewModel = StatusListViewModel()
-
-    var isPull: Bool = false
+    var listViewModel = StatusListViewModel()
 
     deinit {
         removeObservers()
@@ -25,7 +23,7 @@ class StatusListViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
@@ -37,12 +35,15 @@ class StatusListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension StatusListViewController {
+    func config(withUserId userId: String?) {
+        listViewModel.config(withUserId: userId)
+    }
+
     func refreshData(with loadingState: Bool) {
         if loadingState {
-            self.tableView.mj_header?.beginRefreshing()
-        }
-        else {
-            self.loadDatas()
+            tableView.mj_header?.beginRefreshing()
+        } else {
+            loadDatas(with: false)
         }
     }
 }
@@ -55,13 +56,15 @@ private extension StatusListViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
         tableView.separatorStyle = .none
-        listViewModel.registerCells(with: tableView)
-        tableView.mj_header = MJRefreshHeader(refreshingTarget: self, refreshingAction: #selector(loadDatas))
-        tableView.mj_footer = MJRefreshFooter(refreshingTarget: self, refreshingAction: #selector(loadDatas))
+        tableView.register(StatusRepostCell.self, forCellReuseIdentifier: String(describing: StatusRepostCell.self))
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.loadDatas(with: false)
+        })
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            self.loadDatas(with: true)
+        })
         tableView.frame = view.bounds
         view.addSubview(tableView)
-
-        tableView.mj_header?.beginRefreshing()
     }
 }
 
@@ -72,6 +75,16 @@ private extension StatusListViewController {
     }
 
     func removeObservers() {
+    }
+
+    func loadDatas(with loadMore: Bool) {
+        listViewModel.loadStatus(loadMore: loadMore) { _, needRefresh in
+            self.tableView.mj_header?.endRefreshing()
+            self.tableView.mj_footer?.endRefreshing()
+            if needRefresh {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -85,10 +98,10 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let viewModel = listViewModel.statusList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StatusRepostCell.self), for: indexPath)
         cell.selectionStyle = .none
 
-        if let homeCell = (cell as? StatusCell) {
+        if let homeCell = (cell as? StatusRepostCell) {
             homeCell.reload(with: viewModel)
         }
 
@@ -97,21 +110,18 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.statusList[indexPath.row]
-        return viewModel.cellHeight
+        return viewModel.cellHeight(width: tableView.width)
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let status = listViewModel.statusList[indexPath.row].status
+        let userInfo = ["status": status]
+
+        Router.open(url: "pillar://statusDetail", userInfo: userInfo)
     }
 }
 
 // MARK: - Action
 
 @objc private extension StatusListViewController {
-    func loadDatas() {
-        listViewModel.loadStatus(pullup: self.isPull) { _, needRefresh in
-            self.tableView.mj_header?.endRefreshing()
-            self.tableView.mj_footer?.endRefreshing()
-            self.isPull = false
-            if needRefresh {
-                self.tableView.reloadData()
-            }
-        }
-    }
 }

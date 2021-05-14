@@ -23,8 +23,11 @@ class StatusPicturesView: UIView {
         setupPictures()
 
         for (index, url) in urls.enumerated() {
+            if index > 8 {
+                continue
+            }
             let imageView = picViews[index]
-            let imageURL = URL(string: url.thumbnailPic)
+            let imageURL = URL(string: url.bmiddlePic)
             imageView.kf.setImage(with: imageURL)
 
             // 处理gif图片
@@ -51,6 +54,21 @@ class StatusPicturesView: UIView {
         }
         return picHeight
     }
+    
+    static func height(for picUrls: [StatusPicturesModel]?, width: CGFloat) -> CGFloat {
+        guard let picUrls = picUrls else {
+            return 0
+        }
+        var picHeight: CGFloat = 0
+        if picUrls.count <= 0 {
+            picHeight = 0
+        } else if picUrls.count <= 6 {
+            picHeight = width * 2 / 3
+        } else {
+            picHeight = width
+        }
+        return picHeight
+    }
 }
 
 private extension StatusPicturesView {
@@ -65,7 +83,7 @@ private extension StatusPicturesView {
             var view = picViews[0]
             view.frame = CGRect(x: 0, y: 0, width: self.width / 2 - 2, height: self.height)
             view = picViews[1]
-            view.frame = CGRect(x: 0, y: 0, width: self.width / 2 - 2, height: self.height / 2 - 2)
+            view.frame = CGRect(x: self.width / 2 + 2, y: 0, width: self.width / 2 - 2, height: self.height / 2 - 2)
             view = picViews[2]
             view.frame = CGRect(x: self.width / 2 + 2, y: self.height / 2 + 2, width: self.width / 2 - 2, height: self.height / 2 - 2)
         } else if picViews.count <= 4 {

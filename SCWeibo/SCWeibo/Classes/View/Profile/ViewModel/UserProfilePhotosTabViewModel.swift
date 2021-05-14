@@ -28,7 +28,7 @@ extension UserProfilePhotosTabViewModel: UserProfileTabViewModel {
         return viewController.collectionView
     }
 
-    func tabRefresh(with completion: () -> Void) {
+    func tabRefresh(with completion: (() -> Void)?) {
         viewController.refreshData(with: false)
     }
 }

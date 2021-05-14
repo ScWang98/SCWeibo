@@ -10,8 +10,9 @@ import UIKit
 class StatusRepostView: UIView {
     var viewModel: StatusRepostCellViewModel?
 
-    let contentLabel = MNLabel()
+    let contentLabel = ContentLabel()
     let picturesView = StatusPicturesView()
+    let videoCoverView = VideoCoverImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,7 +20,7 @@ class StatusRepostView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     override func layoutSubviews() {
@@ -30,42 +31,83 @@ class StatusRepostView: UIView {
     func reload(with viewModel: StatusRepostCellViewModel) {
         self.viewModel = viewModel
 
-        contentLabel.attributedText = viewModel.repostAttrText
-        picturesView.reload(with: viewModel.picUrls ?? [])
+        contentLabel.textModel = viewModel.repostLabelModel
+
+        if let picUrls = viewModel.picUrls,
+           picUrls.count > 0 {
+            picturesView.isHidden = false
+            videoCoverView.isHidden = true
+
+            picturesView.reload(with: viewModel.picUrls ?? [])
+        } else if let videoModel = viewModel.videoModel {
+            picturesView.isHidden = true
+            videoCoverView.isHidden = false
+
+            videoCoverView.reload(model: videoModel)
+        } else {
+            picturesView.isHidden = true
+            videoCoverView.isHidden = true
+        }
 
         setNeedsLayout()
     }
 
-    static func height(for viewModel: StatusRepostCellViewModel) -> CGFloat {
-        let width = UIScreen.sc.screenWidth - 2 * 12
-        let textSize = CGSize(width: width, height: 0)
-        let rect = viewModel.repostAttrText?.boundingRect(with: textSize, options: [.usesLineFragmentOrigin], context: nil)
-        let textHeight = rect?.height ?? 0
+    class func height(viewModel: StatusRepostCellViewModel, width: CGFloat) -> CGFloat {
+        var totalHeight: CGFloat = 0
+        let contentWidth = width - 12 * 2
 
-        let picHeight = StatusPicturesView.height(for: viewModel.picUrls ?? [])
+        totalHeight += 12
 
-        let gap: CGFloat = 12.0
-        return gap + textHeight + gap + picHeight + gap
+        let textHeight = viewModel.repostLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        totalHeight += textHeight
+        totalHeight += 12
+
+        if let picUrls = viewModel.picUrls,
+           picUrls.count > 0 {
+            let picHeight = StatusPicturesView.height(for: viewModel.picUrls, width: contentWidth)
+            totalHeight += picHeight
+            totalHeight += 12
+        } else if viewModel.repostLabelModel != nil && viewModel.videoModel != nil {
+            let height = VideoCoverImageView.height(width: contentWidth)
+            totalHeight += height
+            totalHeight += 12
+        }
+
+        return totalHeight
     }
 }
 
 private extension StatusRepostView {
     func setupSubviews() {
-        self.backgroundColor = UIColor.sc.color(with: 0xF7F7F7FF)
+        backgroundColor = UIColor.sc.color(RGB: 0x767680, alpha: 0.12)
+        layer.cornerRadius = 6
 
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.font = UIFont.systemFont(ofSize: 14)
         contentLabel.textColor = UIColor.darkGray
+        contentLabel.delegate = self
 
         addSubview(contentLabel)
         addSubview(picturesView)
+        addSubview(videoCoverView)
     }
 
     func setupLayout() {
-        let gap: CGFloat = 12
-        let picHeight = StatusPicturesView.height(for: self.viewModel?.picUrls ?? [])
-        picturesView.anchorToEdge(.bottom, padding: gap, width: self.width - gap * 2, height: picHeight)
-        contentLabel.anchorToEdge(.top, padding: gap, width: self.width - gap * 2, height: picturesView.top - gap * 2)
+        let contentWidth = width - 12 * 2
+        let textHeight = viewModel?.repostLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        contentLabel.anchorToEdge(.top, padding: 12, width: contentWidth, height: textHeight)
+
+        let picHeight = StatusPicturesView.height(for: viewModel?.picUrls ?? [], width: contentWidth)
+        picturesView.align(.underCentered, relativeTo: contentLabel, padding: 12, width: contentWidth, height: picHeight)
+
+        let videoHeight = VideoCoverImageView.height(width: contentWidth)
+        videoCoverView.align(.underCentered, relativeTo: contentLabel, padding: 12, width: contentWidth, height: videoHeight)
+    }
+}
+
+extension StatusRepostView: ContentLabelDelegate {
+    func contentLabel(label: ContentLabel, didTap schema: String) {
+        Router.open(url: schema)
     }
 }
