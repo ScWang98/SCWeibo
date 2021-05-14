@@ -1,5 +1,5 @@
 //
-//  MNTextView.swift
+//  WriteStatusTextView.swift
 //  SCWeibo
 //
 //  Created by scwang on 2020/4/15.
