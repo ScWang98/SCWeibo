@@ -65,6 +65,8 @@
 		24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */; };
 		24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8343426241BEF00E45CE5 /* ContentLabel.swift */; };
 		24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */; };
+		24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */; };
+		24D0A45D264EBB9000F0BF28 /* StatusDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
@@ -258,6 +260,8 @@
 		24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostCellViewModel.swift; sourceTree = "<group>"; };
 		24C8343426241BEF00E45CE5 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
 		24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHTMLParser.swift; sourceTree = "<group>"; };
+		24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailToolbar.swift; sourceTree = "<group>"; };
+		24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailService.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 				24C834032623099500E45CE5 /* StatusDetailRepostTabViewModel.swift */,
 				24C8340E262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift */,
 				24C83413262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift */,
+				24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -754,6 +759,7 @@
 				24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */,
 				24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */,
 				24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */,
+				24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1347,6 +1353,7 @@
 				241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */,
 				246EEA312625A2DE00DB0F1D /* CommentModel.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* Router.swift in Sources */,
+				24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */,
 				240472A7263409080035B75A /* MessageAttitudesViewController.swift in Sources */,
@@ -1356,6 +1363,7 @@
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
+				24D0A45D264EBB9000F0BF28 /* StatusDetailService.swift in Sources */,
 				246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */,
 				D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */,
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,

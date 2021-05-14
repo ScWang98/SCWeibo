@@ -18,19 +18,29 @@ protocol StatusDetailTabViewModel {
 
 class StatusDetailViewModel {
     var status: StatusResponse?
+    var statusId: Int = 0
     var screenName: String?
     var avatarUrl: String?
     var timeAttrString: NSAttributedString?
     var statusLabelModel: ContentLabelTextModel?
     var picUrls: [StatusPicturesModel]?
-    var repostTitle: String?
-    var commentTitle: String?
-    var likeTitle: String?
+    var liked: Bool {
+        get { status?.liked ?? false }
+        set { status?.liked = newValue }
+    }
+
+    var favorited: Bool {
+        get { status?.favorited ?? false }
+        set { status?.favorited = newValue }
+    }
+
     var repostLabelModel: ContentLabelTextModel?
 
     let repostTabViewModel = StatusDetailRepostTabViewModel()
     let commentTabViewModel = StatusDetailCommentTabViewModel()
     let attitudeTabViewModel = StatusDetailAttitudeTabViewModel()
+
+    var service = StatusDetailService()
 
     lazy var tabViewModels: [StatusDetailTabViewModel] = {
         var models = [StatusDetailTabViewModel]()
@@ -46,8 +56,6 @@ class StatusDetailViewModel {
         }
     }()
 
-//    var profileService = UserProfileService()
-
     init() {
     }
 
@@ -57,7 +65,7 @@ class StatusDetailViewModel {
            let status = userInfo["status"] as? StatusResponse {
             parseStatusResponse(status: status)
         }
-        
+
         var statusId: String?
         if let id = status?.id {
             statusId = String(id)
@@ -89,9 +97,32 @@ class StatusDetailViewModel {
     }
 }
 
+// MARK: - Public Methods
+
+extension StatusDetailViewModel {
+    func sendRepostAction() {
+        print("sendRepostAction")
+    }
+
+    func sendCommentAction() {
+        print("sendCommentAction")
+    }
+
+    func sendFavoriteAction(favorited: Bool) {
+        service.sendFavoriteAction(favorited: favorited, statusId: statusId) { _ in
+        }
+    }
+
+    func sendLikeAction(liked: Bool) {
+        service.sendLikeAction(liked: liked, statusId: statusId) { _ in
+        }
+    }
+}
+
 private extension StatusDetailViewModel {
     func parseStatusResponse(status: StatusResponse) {
         self.status = status
+        statusId = status.id
         statusLabelModel = ContentHTMLParser.parseContentText(string: status.text ?? "", font: UIFont.systemFont(ofSize: 16))
         picUrls = StatusPicturesModel.generateModels(with: status.picUrls)
         screenName = status.user?.screenName
@@ -105,15 +136,12 @@ private extension StatusDetailViewModel {
             timeAttrString = NSAttributedString(string: string, attributes: [.font: UIFont.systemFont(ofSize: 14),
                                                                              .foregroundColor: UIColor.lightGray])
         }
-        repostTitle = countSting(count: status.repostsCount, defaultStr: " 转发")
-        commentTitle = countSting(count: status.commentsCount, defaultStr: " 评论")
-        likeTitle = countSting(count: status.attitudesCount, defaultStr: " 点赞")
         if status.retweetedStatus != nil {
             let repostStr = "<a href=xx>@\(status.retweetedStatus?.user?.screenName ?? "")</a>:\(status.retweetedStatus?.text ?? "")"
             repostLabelModel = ContentHTMLParser.parseContentText(string: repostStr, font: UIFont.systemFont(ofSize: 14))
             picUrls = StatusPicturesModel.generateModels(with: status.retweetedStatus?.picUrls)
         }
-        
+
         repostTabViewModel.repostNumber = status.repostsCount
         commentTabViewModel.commentNumber = status.commentsCount
         attitudeTabViewModel.attitudeNumber = status.attitudesCount

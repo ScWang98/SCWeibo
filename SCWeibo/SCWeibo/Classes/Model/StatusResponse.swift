@@ -9,25 +9,17 @@ import Foundation
 
 class StatusResponse: Codable {
     var id: Int = 0
-
     var text: String?
-
     var user: UserResponse?
-
     var repostsCount: Int = 0
-
     var commentsCount: Int = 0
-
     var attitudesCount: Int = 0
-
     var picUrls: [StatusPicture]?
-
     var createdAt: String?
-
     var source: String?
-
+    var liked: Bool = false
+    var favorited: Bool = false
     var retweetedStatus: StatusResponse?
-
     var videoModel: StatusVideoModel?
 
     private enum CodingKeys: String, CodingKey {
@@ -57,6 +49,8 @@ class StatusResponse: Codable {
         attitudesCount = dict.sc.int(for: "attitudes_count")
         createdAt = dict.sc.string(for: "created_at")
         source = dict.sc.string(for: "source")
+        liked = dict.sc.bool(for: "liked")
+        favorited = dict.sc.bool(for: "favorited")
         picUrls = StatusPicture.generateStatusPictures(withH5Array: dict.sc.array(for: "pics"))
         if dict["retweeted_status"] != nil {
             retweetedStatus = StatusResponse(withH5dict: dict.sc.dictionary(for: "retweeted_status") ?? [AnyHashable: Any]())

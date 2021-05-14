@@ -91,4 +91,24 @@ extension URLSettings {
     class var commentsHotflow: String {
         return h5BaseURL + "/comments/hotflow"
     }
+    
+    // 点赞
+    class var attitudesCreate: String {
+        return h5BaseURL + "/api/attitudes/create"
+    }
+    
+    // 取消点赞
+    class var attitudesDestroy: String {
+        return h5BaseURL + "/api/attitudes/destroy"
+    }
+    
+    // 收藏
+    class var favoriteCreate: String {
+        return h5BaseURL + "/mblogDeal/addFavMblog"
+    }
+    
+    // 取消收藏
+    class var favoriteDestroy: String {
+        return h5BaseURL + "/mblogDeal/delFavMblog"
+    }
 }
