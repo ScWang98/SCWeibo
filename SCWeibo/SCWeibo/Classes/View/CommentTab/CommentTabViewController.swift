@@ -1,15 +1,15 @@
 //
-//  MessageViewController.swift
+//  CommentListViewController.swift
 //  SCWeibo
 //
-//  Created by wangshuchao on 2021/4/24.
+//  Created by 王书超 on 2021/5/15.
 //
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class CommentTabViewController: UIViewController {
     let avatarView = NavigationAvatarView()
-    let titleView = MessageTitleView()
+    let titleView = CommentTitleView()
 
     var subPages = [UIView]()
 
@@ -27,21 +27,17 @@ class MessageViewController: UIViewController {
 
 // MARK: - UI
 
-private extension MessageViewController {
+private extension CommentTabViewController {
     func setupSubviews() {
-        let viewControllerClazzs = [MessageMentionsViewController.self,
-//                                    MessageCommentsViewController.self,
-                                    MessageAttitudesViewController.self]
-        for clazz in viewControllerClazzs {
-            addSubSegmentVC(viewControllerClazz: clazz)
-        }
+        addSubSegmentVC(viewController: MessageCommentsViewController.init(type: .received))
+        addSubSegmentVC(viewController: MessageCommentsViewController.init(type: .mentioned))
+        addSubSegmentVC(viewController: MessageCommentsViewController.init(type: .sended))
 
         titleView.selectedSegmentIndex = 0
         selectPage(atIndex: 0)
     }
 
-    func addSubSegmentVC(viewControllerClazz: UIViewController.Type) {
-        let viewController = viewControllerClazz.init()
+    func addSubSegmentVC(viewController: UIViewController) {
         viewController.willMove(toParent: self)
         addChild(viewController)
         viewController.didMove(toParent: self)
@@ -51,7 +47,7 @@ private extension MessageViewController {
     }
 
     func setupNavigationButtons() {
-        navigationItem.title = "消息"
+        navigationItem.title = "评论"
 
         avatarView.clickAction = { [weak self] in
             self?.avatarDidClicked()
@@ -61,7 +57,7 @@ private extension MessageViewController {
         let leftButton = UIBarButtonItem(customView: avatarView)
         navigationItem.leftBarButtonItem = leftButton
 
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeButtonDidClicked(sender:)))
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
         navigationItem.rightBarButtonItem = rightButton
 
         titleView.frame = CGRect(x: 0, y: 0, width: 100, height: 21)
@@ -82,7 +78,7 @@ private extension MessageViewController {
 
 // MARK: - Actions
 
-@objc private extension MessageViewController {
+@objc private extension CommentTabViewController {
     func avatarDidClicked() {
         if !AccountManager.shared.isLogin {
             NotificationCenter.default.post(name: NSNotification.Name(MNUserShouldLoginNotification), object: nil)
@@ -90,8 +86,8 @@ private extension MessageViewController {
         print("avatarDidClicked")
     }
 
-    func writeButtonDidClicked(sender: Any) {
-        Router.open(url: "pillar://writeStatus")
+    func queryButtonDidClicked(sender: Any) {
+//        Router.open(url: "pillar://writeStatus")
     }
 
     func titleSegmentDidSelected(segControl: UISegmentedControl) {
@@ -101,9 +97,9 @@ private extension MessageViewController {
     }
 }
 
-class MessageTitleView: UISegmentedControl {
+class CommentTitleView: UISegmentedControl {
     init() {
-        super.init(items: ["@我的", "赞"])
+        super.init(items: ["收到的", "@我的", "发出的"])
     }
 
     required init?(coder: NSCoder) {

@@ -43,8 +43,8 @@ class TabbarItemsManager: NSObject {
     static var messageItem: TabbarItemModel = {
         let item = TabbarItemModel()
         item.viewController = WeiboNavigationController(rootViewController: MessageViewController())
-        item.tabbarImage = UIImage(named: "NewMessage_Normal")
-        item.selectedTabbarImage = UIImage(named: "NewMessageSelected_Normal")
+        item.tabbarImage = UIImage(named: "InboxTabBar_Normal")
+        item.selectedTabbarImage = UIImage(named: "InboxTabBarSelected_Normal")
         item.itemType = TabbarItemType.message
         item.textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.orange,
@@ -67,9 +67,9 @@ class TabbarItemsManager: NSObject {
 
     static var favoriteItem: TabbarItemModel = {
         let item = TabbarItemModel()
-        item.viewController = WeiboNavigationController(rootViewController: MNDiscoverViewController())
-        item.tabbarImage = UIImage(named: "NewFavorite_Normal")
-        item.selectedTabbarImage = UIImage(named: "NewFavoriteSelected_Normal")
+        item.viewController = WeiboNavigationController(rootViewController: CommentTabViewController())
+        item.tabbarImage = UIImage(named: "NewMessage_Normal")
+        item.selectedTabbarImage = UIImage(named: "NewMessageSelected_Normal")
         item.itemType = TabbarItemType.favorite
         item.textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.orange,

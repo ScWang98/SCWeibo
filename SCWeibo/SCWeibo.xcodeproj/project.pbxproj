@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472862633FF690035B75A /* FavoriteListViewController.swift */; };
+		240472872633FF690035B75A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472862633FF690035B75A /* FavoriteViewController.swift */; };
 		2404728F263404EE0035B75A /* NavigationAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404728E263404EE0035B75A /* NavigationAvatarView.swift */; };
 		24047294263406350035B75A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047293263406350035B75A /* MessageViewController.swift */; };
 		2404729A263408920035B75A /* MessageMentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047299263408920035B75A /* MessageMentionsViewController.swift */; };
@@ -67,6 +67,8 @@
 		24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */; };
 		24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */; };
 		24D0A45D264EBB9000F0BF28 /* StatusDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */; };
+		24D0A466264FBF3D00F0BF28 /* FavoriteListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */; };
+		24D0A46C264FCA3600F0BF28 /* CommentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeService.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
@@ -199,7 +201,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		240472862633FF690035B75A /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		240472862633FF690035B75A /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		2404728E263404EE0035B75A /* NavigationAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAvatarView.swift; sourceTree = "<group>"; };
 		24047293263406350035B75A /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		24047299263408920035B75A /* MessageMentionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMentionsViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,8 @@
 		24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHTMLParser.swift; sourceTree = "<group>"; };
 		24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailToolbar.swift; sourceTree = "<group>"; };
 		24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailService.swift; sourceTree = "<group>"; };
+		24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListService.swift; sourceTree = "<group>"; };
+		24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTabViewController.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeService.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -420,7 +424,8 @@
 		240472852633FF300035B75A /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				240472862633FF690035B75A /* FavoriteListViewController.swift */,
+				240472862633FF690035B75A /* FavoriteViewController.swift */,
+				24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -588,6 +593,14 @@
 				246EEA1026258AC000DB0F1D /* DetailAttitudeCellViewModel.swift */,
 			);
 			path = Attitude;
+			sourceTree = "<group>";
+		};
+		24D0A46A264FC97C00F0BF28 /* CommentTab */ = {
+			isa = PBXGroup;
+			children = (
+				24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */,
+			);
+			path = CommentTab;
 			sourceTree = "<group>";
 		};
 		6743F5658FECDE936B065BA3 /* Pods */ = {
@@ -946,6 +959,7 @@
 		D6A225FB25EE3AEF00E3E767 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24D0A46A264FC97C00F0BF28 /* CommentTab */,
 				240472852633FF300035B75A /* Favorite */,
 				248423302631B86700CD25A4 /* WriteStatus */,
 				24842305263055DF00CD25A4 /* Common */,
@@ -1352,6 +1366,7 @@
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */,
 				246EEA312625A2DE00DB0F1D /* CommentModel.swift in Sources */,
+				24D0A466264FBF3D00F0BF28 /* FavoriteListService.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* Router.swift in Sources */,
 				24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
@@ -1397,6 +1412,7 @@
 				D6A2263725EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* WriteStatusController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
+				24D0A46C264FCA3600F0BF28 /* CommentTabViewController.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* EmojiTipView.swift in Sources */,
 				246EEA2C2625A2CE00DB0F1D /* DetailCommentTableCell.swift in Sources */,
@@ -1409,7 +1425,7 @@
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Utilities.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
-				240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */,
+				240472872633FF690035B75A /* FavoriteViewController.swift in Sources */,
 				24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,

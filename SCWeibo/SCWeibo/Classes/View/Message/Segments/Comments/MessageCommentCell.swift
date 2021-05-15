@@ -66,7 +66,7 @@ private extension MessageCommentCell {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
         avatarImageView.isUserInteractionEnabled = true
-        avatarImageView.layer.cornerRadius = 16
+        avatarImageView.layer.cornerRadius = 20
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(tap:)))
@@ -77,6 +77,8 @@ private extension MessageCommentCell {
 
         timeLabel.textColor = UIColor.sc.color(RGBA: 0xAAAAAAFF)
         timeLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        leftSeparator.backgroundColor = UIColor.sc.color(RGB: 0xEFEFF4)
 
         separatorLine.backgroundColor = UIColor.sc.color(RGBA: 0xC7C7CCFF)
 
@@ -84,19 +86,28 @@ private extension MessageCommentCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(commentLabel)
         contentView.addSubview(statusLabel)
+        contentView.addSubview(leftSeparator)
         contentView.addSubview(timeLabel)
         contentView.addSubview(separatorLine)
     }
 
     func setupLayout() {
-        let contentWidth = width - 15 - 32 - 15 - 15
+        let contentWidth = width - 15 - 40 - 10 - 15
 
-        avatarImageView.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 15 + 32 + 15, yPad: 8, width: contentWidth, height: 17)
-        commentLabel.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 50)
+        avatarImageView.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: 40, height: 40)
+
+        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 10, width: contentWidth, height: 20)
+
+        let commentHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
+        commentLabel.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: commentHeight)
+
+        let statusHeight = viewModel?.statusLabelModel?.text.sc.height(labelWidth: contentWidth - 16) ?? 0
+        statusLabel.align(.underMatchingRight, relativeTo: commentLabel, padding: 8, width: contentWidth - 16, height: statusHeight)
+        leftSeparator.align(.toTheLeftCentered, relativeTo: statusLabel, padding: 10, width: 6, height: statusHeight)
+
+        timeLabel.anchorInCorner(.bottomLeft, xPad: nameLabel.left, yPad: 8, width: contentWidth, height: 17)
+
         separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1 / UIScreen.main.scale)
-        statusLabel.align(.underMatchingRight, relativeTo: commentLabel, padding: 20, width: contentWidth - 20, height: 100)
     }
 }
 

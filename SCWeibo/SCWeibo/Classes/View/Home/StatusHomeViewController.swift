@@ -5,7 +5,6 @@
 //  Created by scwang on 2021/3/14.
 //
 
-import Kingfisher
 import UIKit
 
 class StatusHomeViewController: StatusListViewController {
@@ -113,6 +112,7 @@ class HomeTitleButton: UIButton {
         set (title) {
             let attrTitle = NSAttributedString(string: title ?? "", attributes: [.font: UIFont.boldSystemFont(ofSize: 17)])
             setAttributedTitle(attrTitle, for: .normal)
+            self.sizeToFit()
         }
         get {
             return attributedTitle(for: .normal)?.string

@@ -85,6 +85,7 @@ private extension UserProfileViewController {
 
         topToolBar.delegate = self
 
+        categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
         headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)

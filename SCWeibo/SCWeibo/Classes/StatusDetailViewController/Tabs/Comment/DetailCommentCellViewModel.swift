@@ -74,12 +74,13 @@ private extension DetailCommentCellViewModel {
 
     func generateCommentLabelModel(text: String, user: UserResponse) -> ContentLabelTextModel {
         let font = UIFont.systemFont(ofSize: 16)
-        let model = ContentHTMLParser.parseContentText(string: text, font: font)
+        var attributes = [NSAttributedString.Key: Any]()
+        attributes[.font] = font
+        attributes[.foregroundColor] = UIColor.black
+        let model = ContentHTMLParser.parseContentText(string: text, font: font, baseAttributes: attributes)
         guard let screenName = user.screenName else {
             return model
         }
-        let attributes = [NSAttributedString.Key.font: font,
-                          NSAttributedString.Key.foregroundColor: UIColor.black]
         let nameAttrStr = NSAttributedString(string: screenName + "：", attributes: attributes)
         model.text.insert(nameAttrStr, at: 0)
         for schema in model.schemas {
@@ -87,9 +88,6 @@ private extension DetailCommentCellViewModel {
         }
         let schema = String(format: "pillar://userProfile?user_name=%@", screenName.sc.stringByURLEncode)
         model.schemas.append(ContentLabelTextModel.SchemaModel(range: NSRange(location: 0, length: screenName.count), schema: schema))
-        model.text.addAttributes([NSAttributedString.Key.font: font,
-                                  NSAttributedString.Key.foregroundColor: UIColor.black],
-                                 range: NSRange(location: 0, length: model.text.length))
         return model
     }
 }

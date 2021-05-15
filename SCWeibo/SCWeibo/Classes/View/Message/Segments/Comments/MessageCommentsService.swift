@@ -5,18 +5,32 @@
 //  Created by 王书超 on 2021/4/24.
 //
 
-
 import Alamofire
 import Foundation
 
 class MessageCommentsService {
+    var requestURL: String?
+
+    init(type: MessageCommentsListType) {
+        switch type {
+        case .received:
+            requestURL = URLSettings.messageComments
+        case .mentioned:
+            requestURL = URLSettings.messageMentionsComments
+        case .sended:
+            requestURL = URLSettings.messageMyComments
+        }
+    }
+
     func loadStatus(page: Int, completion: @escaping (_ isSuccess: Bool, _ list: [MessageCommentModel]?) -> Void) {
-        let URLString = URLSettings.messageMentionsComments
+        guard let requestURL = requestURL else {
+            return
+        }
 
         var params = [String: Any]()
         params["page"] = page
 
-        AF.request(URLString, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
+        AF.request(requestURL, method: .get, parameters: params, encoding: URLEncoding.default).responseJSON { response in
 
             var jsonDict: Dictionary<AnyHashable, Any>?
 

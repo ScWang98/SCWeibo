@@ -79,6 +79,9 @@ class StatusRepostView: UIView {
 
 private extension StatusRepostView {
     func setupSubviews() {
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(viewDidTap(tap:)))
+        self.addGestureRecognizer(tap)
         backgroundColor = UIColor.sc.color(RGB: 0x767680, alpha: 0.12)
         layer.cornerRadius = 6
 
@@ -103,6 +106,15 @@ private extension StatusRepostView {
 
         let videoHeight = VideoCoverImageView.height(width: contentWidth)
         videoCoverView.align(.underCentered, relativeTo: contentLabel, padding: 12, width: contentWidth, height: videoHeight)
+    }
+    
+    @objc func viewDidTap(tap: UITapGestureRecognizer) {
+        guard let status = viewModel?.status.retweetedStatus else {
+            return
+        }
+        let userInfo = ["status": status]
+
+        Router.open(url: "pillar://statusDetail", userInfo: userInfo)
     }
 }
 

@@ -32,12 +32,12 @@ class UserProfileHeaderView: UIView {
     func reload(with viewModel: UserProfileViewModel) {
         self.viewModel = viewModel
         avatarImage.kf.setImage(with: viewModel.avatar, placeholder: avatarImage.image)
-        nickNameLabel.text = viewModel.screenName
+        nickNameLabel.attributedText = viewModel.screenName
         descriptionLabel.text = viewModel.description
-        locationLabel.text = viewModel.location
-        followLabel.text = viewModel.followCountStr
-        weiboLabel.text = viewModel.statusesCountStr
-        fansLabel.text = viewModel.followersCountStr
+        locationLabel.attributedText = viewModel.location
+        followLabel.attributedText = viewModel.followCountAttrStr
+        weiboLabel.attributedText = viewModel.statusesCountAttrStr
+        fansLabel.attributedText = viewModel.followersCountAttrStr
     }
 }
 
@@ -50,11 +50,15 @@ private extension UserProfileHeaderView {
         avatarImage.layer.cornerRadius = 40
         avatarImage.isUserInteractionEnabled = true
         avatarImage.clipsToBounds = true
+        avatarImage.layer.borderWidth = 1
+        avatarImage.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
         avatarImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarClickedAction(sender:))))
 
         nickNameLabel.textAlignment = .center
+        nickNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
         descriptionLabel.textAlignment = .center
+        descriptionLabel.font = UIFont.systemFont(ofSize: 15)
 
         locationLabel.textAlignment = .center
 

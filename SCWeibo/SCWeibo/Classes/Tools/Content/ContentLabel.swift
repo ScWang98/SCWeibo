@@ -36,6 +36,8 @@ public class ContentLabel: UILabel {
 
     public var linkTextColor = UIColor.sc.color(RGBA: 0x0099FFFF)
     public var selectedBackgroudColor = UIColor(white: 0.8, alpha: 1.0)
+    
+    private let tap = UITapGestureRecognizer(target: self, action: #selector(hyperLinkDidTap(tap:)))
 
     public var textModel: ContentLabelTextModel? {
         didSet {
@@ -120,7 +122,6 @@ public class ContentLabel: UILabel {
         textContainer.lineFragmentPadding = 0
         isUserInteractionEnabled = true
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hyperLinkDidTap(tap:)))
         tap.delegate = self
         addGestureRecognizer(tap)
     }
@@ -136,11 +137,11 @@ public class ContentLabel: UILabel {
 
 extension ContentLabel: UIGestureRecognizerDelegate {
     override public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let tap = gestureRecognizer as? UITapGestureRecognizer {
+        if gestureRecognizer == tap {
             let location = tap.location(in: self)
             return hyperLinkSchema(at: location) != nil
         }
-        return true
+        return super.gestureRecognizerShouldBegin(gestureRecognizer)
     }
 
     @objc func hyperLinkDidTap(tap: UITapGestureRecognizer) {
