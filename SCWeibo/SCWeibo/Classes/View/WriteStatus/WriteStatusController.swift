@@ -5,32 +5,31 @@
 //  Created by scwang on 2020/4/8.
 //
 
-import UIKit
-import SVProgressHUD
 import PhotosUI
+import SVProgressHUD
+import UIKit
 
+enum WriteType {
+    case writeStatus
+    case repostStatus
+    case commentStatus
+    case commentComment
+}
 
 class WriteStatusController: UIViewController, RouteAble {
     private lazy var titleView = WriteTitleButton()
 
     var textView = WriteStatusTextView()
-    var imageUploadView = ImageUploadView()
     var toolBar = UIToolbar()
+
+    var imageUploadView = ImageUploadView()
+    var referenceView = WriteReferenceView()
+
+    var referenceModel: WriteReferenceModel?
+    var writeType: WriteType = WriteType.writeStatus
 
     var service = WriteStatusService()
     var currentKeyBoardHeight: CGFloat = 0
-
-    required convenience init(routeParams: Dictionary<AnyHashable, Any>) {
-        self.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
 
     lazy var sendButton: UIButton = {
         let btn = UIButton()
@@ -46,6 +45,24 @@ class WriteStatusController: UIViewController, RouteAble {
         btn.addTarget(self, action: #selector(sendButtonDidClicked), for: .touchUpInside)
         return btn
     }()
+
+    required convenience init(routeParams: Dictionary<AnyHashable, Any>) {
+        self.init(nibName: nil, bundle: nil)
+        if let userInfo: [AnyHashable: Any] = routeParams.sc.dictionary(for: RouterParameterUserInfo) {
+            if let writeType = userInfo["writeType"] as? WriteType {
+                self.writeType = writeType
+            }
+            referenceModel = userInfo["referenceModel"] as? WriteReferenceModel
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
     // 往textView中插入表情符号
     lazy var emojiView: EmojiInputView = EmojiInputView { [weak self] emojiModel in
@@ -90,22 +107,32 @@ private extension WriteStatusController {
         textView.alwaysBounceVertical = true
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.delegate = self
-        
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+
         imageUploadView.delegate = self
+
+        if let referenceModel = referenceModel {
+            imageUploadView.isHidden = true
+            referenceView.isHidden = false
+            referenceView.reload(model: referenceModel, type: writeType)
+        } else {
+            imageUploadView.isHidden = false
+            referenceView.isHidden = true
+        }
 
         view.addSubview(toolBar)
         view.addSubview(textView)
-        view.addSubview(imageUploadView)
+        textView.addSubview(imageUploadView)
+        textView.addSubview(referenceView)
 
         refreshLayout()
     }
 
     func setupToolBar() {
-        let images = [["imageName": "compose_toolbar_picture"],
+        let images = [["imageName": "compose_toolbar_picture", "actionName": "addImageButtonDidClicked"],
                       ["imageName": "compose_mentionbutton_background"],
                       ["imageName": "compose_trendbutton_background"],
-                      ["imageName": "compose_emoticonbutton_background", "actionName": "emojiKeyboardDidTap"],
-                      ["imageName": "compose_add_background"]]
+                      ["imageName": "compose_emoticonbutton_background", "actionName": "emojiKeyboardDidTap"]]
 
         var items = [UIBarButtonItem]()
         for obj in images {
@@ -126,12 +153,11 @@ private extension WriteStatusController {
                 btn.addTarget(self, action: Selector(actionName), for: .touchUpInside)
             }
 
-            items.append(UIBarButtonItem(customView: btn))
-            // 添加弹簧
             items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+            items.append(UIBarButtonItem(customView: btn))
         }
-        // 删除最后一个弹簧 - 消除间隙
-        items.removeLast()
+
+        items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         toolBar.items = items
     }
 
@@ -142,21 +168,25 @@ private extension WriteStatusController {
         let height = toolBar.top - view.safeAreaInsets.top
         textView.anchorToEdge(.top, padding: view.safeAreaInsets.top, width: view.width, height: height)
 
-        imageUploadView.anchorToEdge(.top, padding: 300, width: view.width, height: 300)
+        let textHeight = textView.attributedText.sc.height(labelWidth: textView.contentSize.width)
+        imageUploadView.anchorToEdge(.top, padding: 200 + textHeight, width: view.width, height: imageUploadView.height)
+        referenceView.anchorToEdge(.top, padding: 200 + textHeight, width: view.width, height: referenceView.height)
     }
 
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", target: self, action: #selector(dismissViewController))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: sendButton)
         sendButton.isEnabled = false
+        titleView.userName = AccountManager.shared.user?.screenName
+        titleView.reload(type: writeType)
         navigationItem.titleView = titleView
     }
 }
 
 // MARK: - Upload Photos
 
-extension WriteStatusController: ImageUploadViewDelegate {
-    func addImageDidClicked(uploadView: ImageUploadView) {
+extension WriteStatusController {
+    func selectPhotos() {
         if #available(iOS 14, *) {
             var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
             config.filter = PHPickerFilter.images
@@ -176,6 +206,12 @@ extension WriteStatusController: ImageUploadViewDelegate {
     }
 }
 
+extension WriteStatusController: ImageUploadViewDelegate {
+    func addImageDidClicked(uploadView: ImageUploadView) {
+        selectPhotos()
+    }
+}
+
 extension WriteStatusController: PHPickerViewControllerDelegate, UINavigationControllerDelegate {
     @available(iOS 14, *)
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
@@ -183,7 +219,7 @@ extension WriteStatusController: PHPickerViewControllerDelegate, UINavigationCon
         let group = DispatchGroup()
         for item in results {
             group.enter()
-            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+            item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let image = image as? UIImage,
                    error == nil {
                     self.imageUploadView.photos.append(image)
@@ -211,6 +247,7 @@ extension WriteStatusController: UIImagePickerControllerDelegate {
 extension WriteStatusController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         sendButton.isEnabled = textView.hasText
+        refreshLayout()
     }
 }
 
@@ -231,18 +268,37 @@ extension WriteStatusController: UITextViewDelegate {
     }
 
     @objc func sendButtonDidClicked() {
-        let text = textView.emojiText
-        print("创建微博 ==> 提交的属性文本字符串 = \(text)")
-
-        SVProgressHUD.setBackgroundColor(UIColor(white: 0.8, alpha: 0.5))
-        SVProgressHUD.show(withStatus: "正在发送")
-        service.sendStatus(content: text, visible: 1) { success in
+        let completion: (_ success: Bool) -> Void = { success in
             SVProgressHUD.dismiss()
             if success {
                 SVProgressHUD.showSuccess(withStatus: "发送成功")
                 self.dismissViewController()
             } else {
                 SVProgressHUD.showError(withStatus: "发送失败")
+            }
+        }
+        SVProgressHUD.setBackgroundColor(UIColor(white: 0.8, alpha: 0.5))
+        SVProgressHUD.show(withStatus: "正在发送")
+
+        let text = textView.emojiText
+
+        switch writeType {
+        case .writeStatus:
+            service.sendStatus(content: text, photos: imageUploadView.photos, visible: 1, completion: completion)
+        case .repostStatus:
+            if let id = referenceModel?.status?.retweetedStatus?.id {
+                service.repostStatus(content: text, statusId: id, visible: 1, completion: completion)
+            } else if let id = referenceModel?.status?.id {
+                service.repostStatus(content: text, statusId: id, visible: 1, completion: completion)
+            }
+        case .commentStatus:
+            if let id = referenceModel?.status?.id {
+                service.createComment(content: text, statusId: id, completion: completion)
+            }
+        case .commentComment:
+            if let statusId = referenceModel?.status?.id,
+               let commentId = referenceModel?.comment?.id {
+                service.replyComment(content: text, statusId: statusId, commentId: commentId, completion: completion)
             }
         }
     }
@@ -253,5 +309,9 @@ extension WriteStatusController: UITextViewDelegate {
         textView.inputView = textView.inputView == nil ? emojiView : nil
         textView.reloadInputViews()
         textView.becomeFirstResponder()
+    }
+
+    @objc func addImageButtonDidClicked() {
+        selectPhotos()
     }
 }

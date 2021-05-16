@@ -10,7 +10,7 @@ import UIKit
 class StatusDetailToolbar: UIView {
     var viewModel: StatusDetailViewModel?
     var toolBar = UIToolbar()
-    
+
     private let repostButton = ToolbarButton()
     private let commentButton = ToolbarButton()
     private let favoriteButton = ToolbarButton()
@@ -29,7 +29,7 @@ class StatusDetailToolbar: UIView {
         super.layoutSubviews()
         setupLayout()
     }
-    
+
     func reload(with viewModel: StatusDetailViewModel) {
         self.viewModel = viewModel
 
@@ -38,7 +38,6 @@ class StatusDetailToolbar: UIView {
 
         setNeedsLayout()
     }
-
 }
 
 private extension StatusDetailToolbar {
@@ -74,7 +73,7 @@ private extension StatusDetailToolbar {
             if let type = obj["type"] as? ToolButtonType {
                 btn.toolButtonType = type
             }
-            
+
             btn.hitTestEdgeInsets = UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
 
             btn.addTarget(self, action: #selector(buttonDidClicked(button:)), for: .touchUpInside)
@@ -89,9 +88,9 @@ private extension StatusDetailToolbar {
     }
 
     func setupLayout() {
-        toolBar.anchorToEdge(.top, padding: 0, width: self.width, height: 44)
+        toolBar.anchorToEdge(.top, padding: 0, width: width, height: 44)
     }
-    
+
     @objc private func buttonDidClicked(button: UIButton) {
         guard let toolBarButton = (button as? ToolbarButton),
               let type = toolBarButton.toolButtonType else {
@@ -100,13 +99,26 @@ private extension StatusDetailToolbar {
         switch type {
         case .repost:
             viewModel?.sendRepostAction()
+            let referenceModel = WriteReferenceModel()
+            referenceModel.status = viewModel?.status
+
+            let userInfo: [String : Any] = ["writeType": WriteType.repostStatus, "referenceModel": referenceModel]
+            Router.open(url: "pillar://writeStatus", userInfo: userInfo)
+            
         case .comments:
             viewModel?.sendCommentAction()
+            let referenceModel = WriteReferenceModel()
+            referenceModel.status = viewModel?.status
+
+            let userInfo: [String : Any] = ["writeType": WriteType.commentStatus, "referenceModel": referenceModel]
+            Router.open(url: "pillar://writeStatus", userInfo: userInfo)
+
         case .favorite:
             let favorited = !toolBarButton.isSelected
             toolBarButton.setIsSelected(favorited, animated: true)
             viewModel?.favorited = favorited
             viewModel?.sendFavoriteAction(favorited: favorited)
+            
         case .like:
             let liked = !toolBarButton.isSelected
             toolBarButton.setIsSelected(liked, animated: true)
@@ -134,14 +146,14 @@ private class ToolbarButton: UIButton {
 //            imageView.anchorInCenter(width: imageView.width, height: imageView.height)
 //        }
 //    }
-    
+
     func setIsSelected(_ isSelected: Bool, animated: Bool) {
         self.isSelected = isSelected
-        
+
         if !animated {
             return
         }
-        
+
 //        self.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
 //        UIView.animate(withDuration: 2) {
 //            self.transform = CGAffineTransform.identity.scaledBy(x: 2, y: 2)

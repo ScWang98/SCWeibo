@@ -57,6 +57,8 @@ private extension ImageSelectedCell {
         imageView.clipsToBounds = true
         
         deleteButteon.setImage(UIImage.init(named: "DeleteImageButton_Normal"), for: .normal)
+        deleteButteon.addTarget(self, action: #selector(deleteImageDidClicked(button:)), for: .touchUpInside)
+        deleteButteon.hitTestEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: -5, right: 0)
 
         contentView.addSubview(imageView)
         contentView.addSubview(deleteButteon)

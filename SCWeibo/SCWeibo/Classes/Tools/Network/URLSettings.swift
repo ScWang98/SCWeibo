@@ -27,10 +27,6 @@ class URLSettings {
     class var ApiConfig: String {
         return h5BaseURL + "/api/config"
     }
-
-    class var sendStatus: String {
-        return h5BaseURL + "/api/statuses/update"
-    }
 }
 
 // MARK: - Home Tab
@@ -110,5 +106,33 @@ extension URLSettings {
     // 取消收藏
     class var favoriteDestroy: String {
         return h5BaseURL + "/mblogDeal/delFavMblog"
+    }
+}
+
+// MARK: - WriteStatus
+extension URLSettings {
+    // 发送微博
+    class var sendStatus: String {
+        return h5BaseURL + "/api/statuses/update"
+    }
+    
+    // 发送微博
+    class var repostStatus: String {
+        return h5BaseURL + "/api/statuses/repost"
+    }
+
+    // 评论微博
+    class var createComment: String {
+        return h5BaseURL + "/api/comments/create"
+    }
+    
+    // 回复评论
+    class var replyComment: String {
+        return h5BaseURL + "/api/comments/reply"
+    }
+
+    // 上传图片
+    class var addPicture: String {
+        return h5BaseURL + "/mblogDeal/addPic"
     }
 }

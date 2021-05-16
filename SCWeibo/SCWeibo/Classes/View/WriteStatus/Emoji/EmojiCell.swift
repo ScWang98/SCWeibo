@@ -129,7 +129,7 @@ private extension EmojiCell {
         let rowsNum = 3
 
         let tempWidth: CGFloat = UIScreen.sc.screenWidth
-        let tempHeight: CGFloat = 214
+        let tempHeight: CGFloat = 180
         let leftMargin: CGFloat = 8
         let bottomMargin: CGFloat = 16
         let width = (tempWidth - 2 * leftMargin) / CGFloat(columnsNum)

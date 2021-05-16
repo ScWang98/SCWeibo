@@ -29,8 +29,11 @@ class ImageUploadCell: UICollectionViewCell {
 
 private extension ImageUploadCell {
     func setupSubviews() {
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.sc.color(RGB: 0xD8D8D8).cgColor
+
         imageView.clipsToBounds = true
-        imageView.image = UIImage.init(named: "UploadImage_Normal")
+        imageView.image = UIImage(named: "UploadImage_Normal")
 
         contentView.addSubview(imageView)
     }

@@ -10,9 +10,9 @@ import UIKit
 class WriteTitleButton: UIView {
     private let topLabel = UILabel()
     private let userNameLabel = UILabel()
-    
+
     var userName: String? {
-        set (userName) {
+        set(userName) {
             userNameLabel.text = userName
             userNameLabel.sizeToFit()
         }
@@ -20,11 +20,10 @@ class WriteTitleButton: UIView {
             userNameLabel.text
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        topLabel.text = "发微博"
         topLabel.font = UIFont.boldSystemFont(ofSize: 17)
         topLabel.textColor = UIColor.black
         topLabel.sizeToFit()
@@ -42,8 +41,21 @@ class WriteTitleButton: UIView {
             make.top.equalTo(self.snp.centerY)
         }
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func reload(type: WriteType) {
+        switch type {
+        case .writeStatus:
+            topLabel.text = "发微博"
+        case .repostStatus:
+            topLabel.text = "转发微博"
+        case .commentStatus:
+            topLabel.text = "评论"
+        case .commentComment:
+            topLabel.text = "评论"
+        }
     }
 }

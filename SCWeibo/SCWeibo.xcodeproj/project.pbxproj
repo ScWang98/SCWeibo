@@ -28,6 +28,8 @@
 		2458C01826510C2C00CFACC8 /* ImageUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01726510C2C00CFACC8 /* ImageUploadView.swift */; };
 		2458C0202651100300CFACC8 /* ImageSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */; };
 		2458C0282651123100CFACC8 /* ImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C0272651123100CFACC8 /* ImageUploadCell.swift */; };
+		2458C02D26516B7600CFACC8 /* WriteReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */; };
+		2458C03226516B9500CFACC8 /* WriteReferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */; };
 		246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */; };
 		246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */; };
 		246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */; };
@@ -225,6 +227,8 @@
 		2458C01726510C2C00CFACC8 /* ImageUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadView.swift; sourceTree = "<group>"; };
 		2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectedCell.swift; sourceTree = "<group>"; };
 		2458C0272651123100CFACC8 /* ImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCell.swift; sourceTree = "<group>"; };
+		2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReferenceView.swift; sourceTree = "<group>"; };
+		2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReferenceModel.swift; sourceTree = "<group>"; };
 		246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewModel.swift; sourceTree = "<group>"; };
 		246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListService.swift; sourceTree = "<group>"; };
 		246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeTableCell.swift; sourceTree = "<group>"; };
@@ -507,6 +511,7 @@
 		245FA9C52633E8C1002BF6E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */,
 				2458C01626510C1300CFACC8 /* ImageUpload */,
 				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
 				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
@@ -539,6 +544,7 @@
 				245FA9C42633E5E2002BF6E9 /* Emoji */,
 				D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */,
 				248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */,
+				2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */,
 			);
 			path = WriteStatus;
 			sourceTree = "<group>";
@@ -1505,7 +1511,9 @@
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
+				2458C02D26516B7600CFACC8 /* WriteReferenceView.swift in Sources */,
 				24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */,
+				2458C03226516B9500CFACC8 /* WriteReferenceModel.swift in Sources */,
 				24C834282623168400E45CE5 /* RepostModel.swift in Sources */,
 				246EEA402625AE3900DB0F1D /* DetailCommentsView.swift in Sources */,
 				248423232631475300CD25A4 /* WebViewController.swift in Sources */,

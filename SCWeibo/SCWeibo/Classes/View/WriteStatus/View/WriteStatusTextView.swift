@@ -45,7 +45,7 @@ extension WriteStatusTextView {
         placeholderLabel.text = "说些什么呢？"
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.sizeToFit()
-        placeholderLabel.frame.origin = CGPoint(x: 5, y: 8)
+        placeholderLabel.frame.origin = CGPoint(x: 20, y: 15)
         addSubview(placeholderLabel)
     }
 }
