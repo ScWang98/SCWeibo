@@ -68,14 +68,18 @@ private extension UserProfileHeaderView {
         fansLabel.isUserInteractionEnabled = true
         fansLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fansLabelClickedAction(sender:))))
 
+        let color = UIColor.sc.color(RGB: 0x0099FF)
         followButton.setTitle("关注", for: .normal)
-        followButton.setTitleColor(UIColor.red, for: .normal)
+        followButton.setTitleColor(color, for: .normal)
+        followButton.setBackgroundImage(nil, for: .normal)
         followButton.setTitle("已关注", for: .selected)
-        followButton.setTitleColor(UIColor.black, for: .selected)
-        followButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        followButton.setTitleColor(UIColor.white, for: .selected)
+        followButton.setBackgroundImage(UIImage.sc.image(color: color), for: .selected)
+        followButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         followButton.layer.borderWidth = 1
-        followButton.layer.borderColor = UIColor.blue.cgColor
+        followButton.layer.borderColor = color.cgColor
         followButton.layer.cornerRadius = 4
+        followButton.clipsToBounds = true
         followButton.addTarget(self, action: #selector(followButtonClickedAction(button:)), for: .touchUpInside)
 
         addSubview(avatarImage)
@@ -92,7 +96,7 @@ private extension UserProfileHeaderView {
         avatarImage.snp.makeConstraints { make in
             make.width.height.equalTo(80)
             make.centerX.equalTo(self)
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
         }
         nickNameLabel.snp.makeConstraints { make in
             make.top.equalTo(avatarImage.snp.bottom).offset(10)
@@ -124,8 +128,8 @@ private extension UserProfileHeaderView {
         followButton.snp.makeConstraints { make in
             make.left.equalTo(avatarImage.snp.right).offset(12)
             make.centerY.equalTo(avatarImage).offset(10)
-            make.width.equalTo(60)
-            make.height.equalTo(25)
+            make.width.equalTo(80)
+            make.height.equalTo(26)
         }
     }
 }

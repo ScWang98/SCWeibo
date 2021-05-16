@@ -22,7 +22,7 @@ class HorizontalCategoryCell: UIView {
     var item: HorizontalCategoryBarItem?
     var selected = false {
         willSet {
-            if self.selected == newValue {
+            if selected == newValue {
                 return
             }
             titleLabel.textColor = newValue ? UIColor.blue : UIColor.black
@@ -70,6 +70,7 @@ class HorizontalCategoryBar: UIView {
     weak var delegate: HorizontalCategoryBarDelegate?
 
     var indicator = UIView()
+    var bottomSeperator = UIView()
 
     var cells = [HorizontalCategoryCell]()
 
@@ -89,20 +90,26 @@ class HorizontalCategoryBar: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let cellWidth = self.width / CGFloat(cells.count)
+
+        let cellWidth = width / CGFloat(cells.count)
         for (index, cell) in cells.enumerated() {
             cell.frame = CGRect(x: cellWidth * CGFloat(index), y: 0, width: cellWidth, height: height)
         }
         if currentSelectedIndex < cells.count {
-            self.indicator.frame = CGRect(x: self.cells[currentSelectedIndex].left + 10, y: self.height - 4, width: cellWidth - 20, height: 4)
+            indicator.frame = CGRect(x: cells[currentSelectedIndex].left + 10, y: height - 4, width: cellWidth - 20, height: 4)
         }
+
+        bottomSeperator.anchorToEdge(.bottom, padding: 0, width: width, height: 1)
     }
 
     private func setupSubviews() {
         indicator.backgroundColor = UIColor.blue
         indicator.frame = CGRect(x: 0, y: height - 4, width: 100, height: 4)
+
+        bottomSeperator.backgroundColor = UIColor.sc.color(RGB: 0xD8D8D8)
+
         addSubview(indicator)
+        addSubview(bottomSeperator)
     }
 
     func reload(names: [String]) {
@@ -112,7 +119,7 @@ class HorizontalCategoryBar: UIView {
             item.name = name
             items.append(item)
         }
-        
+
         for cell in cells {
             cell.removeFromSuperview()
         }
@@ -149,13 +156,13 @@ class HorizontalCategoryBar: UIView {
                 self.indicator.centerX = self.cells[index].center.x
             }
         } else {
-            self.indicator.centerX = self.cells[index].center.x
+            indicator.centerX = cells[index].center.x
         }
     }
 
     func scrollSelected(fromIndex: Int, toIndex: Int, percent: Double) {
         guard 0 <= fromIndex && fromIndex < cells.count,
-            0 <= toIndex && toIndex < cells.count else {
+              0 <= toIndex && toIndex < cells.count else {
             return
         }
 

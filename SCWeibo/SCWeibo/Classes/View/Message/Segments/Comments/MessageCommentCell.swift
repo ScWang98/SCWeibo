@@ -69,7 +69,7 @@ private extension MessageCommentCell {
         avatarImageView.layer.cornerRadius = 20
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
-        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(tap:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
         avatarImageView.addGestureRecognizer(tap)
 
         nameLabel.textColor = UIColor.black
@@ -112,6 +112,12 @@ private extension MessageCommentCell {
 }
 
 @objc private extension MessageCommentCell {
-    func avatarDidClicked(tap: UITapGestureRecognizer) {
+    func avatarDidClicked(sender: Any) {
+        guard let user = viewModel?.model.user else {
+            return
+        }
+        
+        let userInfo = ["user": user]
+        Router.open(url: "pillar://userProfile", userInfo: userInfo)
     }
 }

@@ -139,7 +139,8 @@ extension ContentLabel: UIGestureRecognizerDelegate {
     override public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == tap {
             let location = tap.location(in: self)
-            return hyperLinkSchema(at: location) != nil
+            let shouldBegin = hyperLinkSchema(at: location) != nil
+            return shouldBegin
         }
         return super.gestureRecognizerShouldBegin(gestureRecognizer)
     }

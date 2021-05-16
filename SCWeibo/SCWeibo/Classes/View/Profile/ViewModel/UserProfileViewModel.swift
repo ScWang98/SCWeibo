@@ -35,6 +35,7 @@ class UserProfileViewModel {
         }
     }()
 
+    var isSelf: Bool = false
     var user: UserResponse?
     var id: Int?
     var screenName: NSAttributedString?
@@ -139,6 +140,8 @@ private extension UserProfileViewModel {
         statusesCountAttrStr = generateNumberAttrStr(count: user.statusesCount, type: "微博")
         followersCountAttrStr = generateNumberAttrStr(count: user.followersCount, type: "粉丝")
         followCountAttrStr = generateNumberAttrStr(count: user.followCount, type: "正在关注")
+        
+        isSelf = id == AccountManager.shared.user?.id
     }
     
     func generateNumberAttrStr(count: Int?, type: String) -> NSAttributedString {
