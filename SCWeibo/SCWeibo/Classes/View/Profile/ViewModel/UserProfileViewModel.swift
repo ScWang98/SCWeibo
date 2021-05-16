@@ -47,6 +47,8 @@ class UserProfileViewModel {
     var statusesCountAttrStr: NSAttributedString?
     var followersCountAttrStr: NSAttributedString?
     var followCountAttrStr: NSAttributedString?
+    var following: Bool = false
+    var followMe: Bool = false
 
     var profileService = UserProfileService()
 
@@ -87,7 +89,7 @@ class UserProfileViewModel {
             completion()
         }
     }
-    
+
     func reloadAllTabsContent() {
         for viewModel in tabViewModels {
             viewModel.tabRefresh(with: nil)
@@ -140,10 +142,13 @@ private extension UserProfileViewModel {
         statusesCountAttrStr = generateNumberAttrStr(count: user.statusesCount, type: "微博")
         followersCountAttrStr = generateNumberAttrStr(count: user.followersCount, type: "粉丝")
         followCountAttrStr = generateNumberAttrStr(count: user.followCount, type: "正在关注")
-        
+
         isSelf = id == AccountManager.shared.user?.id
+
+        following = user.following
+        followMe = user.followMe
     }
-    
+
     func generateNumberAttrStr(count: Int?, type: String) -> NSAttributedString {
         if let count = count {
             let countAttrStr = NSAttributedString(string: String(format: "%d", count), attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])

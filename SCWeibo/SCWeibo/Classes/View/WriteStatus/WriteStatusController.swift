@@ -7,11 +7,14 @@
 
 import UIKit
 import SVProgressHUD
+import PhotosUI
+
 
 class WriteStatusController: UIViewController, RouteAble {
     private lazy var titleView = WriteTitleButton()
 
     var textView = WriteStatusTextView()
+    var imageUploadView = ImageUploadView()
     var toolBar = UIToolbar()
 
     var service = WriteStatusService()
@@ -87,9 +90,12 @@ private extension WriteStatusController {
         textView.alwaysBounceVertical = true
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.delegate = self
+        
+        imageUploadView.delegate = self
 
         view.addSubview(toolBar)
         view.addSubview(textView)
+        view.addSubview(imageUploadView)
 
         refreshLayout()
     }
@@ -135,6 +141,8 @@ private extension WriteStatusController {
 
         let height = toolBar.top - view.safeAreaInsets.top
         textView.anchorToEdge(.top, padding: view.safeAreaInsets.top, width: view.width, height: height)
+
+        imageUploadView.anchorToEdge(.top, padding: 300, width: view.width, height: 300)
     }
 
     func setupNavigationBar() {
@@ -145,11 +153,68 @@ private extension WriteStatusController {
     }
 }
 
+// MARK: - Upload Photos
+
+extension WriteStatusController: ImageUploadViewDelegate {
+    func addImageDidClicked(uploadView: ImageUploadView) {
+        if #available(iOS 14, *) {
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.filter = PHPickerFilter.images
+            config.selectionLimit = 9
+            let pickerController = PHPickerViewController(configuration: config)
+            pickerController.delegate = self
+
+            self.present(pickerController, animated: true, completion: nil)
+        } else {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = false
+            imagePickerController.delegate = self
+
+            present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension WriteStatusController: PHPickerViewControllerDelegate, UINavigationControllerDelegate {
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        let group = DispatchGroup()
+        for item in results {
+            group.enter()
+            item.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                if let image = image as? UIImage,
+                   error == nil {
+                    self.imageUploadView.photos.append(image)
+                }
+                group.leave()
+            }
+        }
+        group.notify(queue: .main) {
+            self.imageUploadView.refreshData()
+        }
+    }
+}
+
+extension WriteStatusController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            imageUploadView.photos.append(image)
+            imageUploadView.refreshData()
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
 extension WriteStatusController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         sendButton.isEnabled = textView.hasText
     }
 }
+
+// MARK: - Actions
 
 @objc private extension WriteStatusController {
     @objc func keyboardWillChangeFrame(noti: Notification) {
@@ -168,8 +233,8 @@ extension WriteStatusController: UITextViewDelegate {
     @objc func sendButtonDidClicked() {
         let text = textView.emojiText
         print("创建微博 ==> 提交的属性文本字符串 = \(text)")
-        
-        SVProgressHUD.setBackgroundColor(UIColor.init(white: 0.8, alpha: 0.5))
+
+        SVProgressHUD.setBackgroundColor(UIColor(white: 0.8, alpha: 0.5))
         SVProgressHUD.show(withStatus: "正在发送")
         service.sendStatus(content: text, visible: 1) { success in
             SVProgressHUD.dismiss()

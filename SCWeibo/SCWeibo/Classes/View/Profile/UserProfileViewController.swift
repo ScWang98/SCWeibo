@@ -8,6 +8,7 @@
 import FLEX
 import Neon
 import UIKit
+import MJRefresh
 
 class UserProfileViewController: UIViewController, RouteAble {
     let headerView = UserProfileHeaderView()
@@ -76,9 +77,9 @@ class UserProfileViewController: UIViewController, RouteAble {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        viewModel.fetchUserInfo {
-            self.refreshHeader()
-        }
+//        viewModel.fetchUserInfo {
+//            self.refreshHeader()
+//        }
     }
     
     override func viewSafeAreaInsetsDidChange() {
@@ -101,10 +102,17 @@ private extension UserProfileViewController {
         categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
-        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 240)
+        headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 260)
         pagesView.headerView = headerView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
+        pagesView.mj_header = MJRefreshGifHeader(refreshingBlock: {
+            self.viewModel.fetchUserInfo {
+                self.refreshHeader()
+                self.pagesView.mj_header?.endRefreshing()
+            }
+            self.viewModel.reloadAllTabsContent()
+        })
 
         view.addSubview(pagesView)
         view.addSubview(categoryBar)

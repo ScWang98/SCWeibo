@@ -25,6 +25,9 @@
 		241D8A5C263477CD0092F598 /* MessageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A5B263477CD0092F598 /* MessageCommentCell.swift */; };
 		241D8A61263477DA0092F598 /* MessageCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A60263477DA0092F598 /* MessageCommentModel.swift */; };
 		241D8A66263477E60092F598 /* MessageCommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A65263477E60092F598 /* MessageCommentCellViewModel.swift */; };
+		2458C01826510C2C00CFACC8 /* ImageUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01726510C2C00CFACC8 /* ImageUploadView.swift */; };
+		2458C0202651100300CFACC8 /* ImageSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */; };
+		2458C0282651123100CFACC8 /* ImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C0272651123100CFACC8 /* ImageUploadCell.swift */; };
 		246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */; };
 		246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */; };
 		246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */; };
@@ -219,6 +222,9 @@
 		241D8A5B263477CD0092F598 /* MessageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCell.swift; sourceTree = "<group>"; };
 		241D8A60263477DA0092F598 /* MessageCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentModel.swift; sourceTree = "<group>"; };
 		241D8A65263477E60092F598 /* MessageCommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCellViewModel.swift; sourceTree = "<group>"; };
+		2458C01726510C2C00CFACC8 /* ImageUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadView.swift; sourceTree = "<group>"; };
+		2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectedCell.swift; sourceTree = "<group>"; };
+		2458C0272651123100CFACC8 /* ImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCell.swift; sourceTree = "<group>"; };
 		246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewModel.swift; sourceTree = "<group>"; };
 		246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListService.swift; sourceTree = "<group>"; };
 		246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeTableCell.swift; sourceTree = "<group>"; };
@@ -476,6 +482,16 @@
 			path = Attitudes;
 			sourceTree = "<group>";
 		};
+		2458C01626510C1300CFACC8 /* ImageUpload */ = {
+			isa = PBXGroup;
+			children = (
+				2458C01726510C2C00CFACC8 /* ImageUploadView.swift */,
+				2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */,
+				2458C0272651123100CFACC8 /* ImageUploadCell.swift */,
+			);
+			path = ImageUpload;
+			sourceTree = "<group>";
+		};
 		245FA9C42633E5E2002BF6E9 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +507,7 @@
 		245FA9C52633E8C1002BF6E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2458C01626510C1300CFACC8 /* ImageUpload */,
 				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
 				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
 			);
@@ -1345,6 +1362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2458C0282651123100CFACC8 /* ImageUploadCell.swift in Sources */,
 				D6A2264025EE3AEF00E3E767 /* String+Substring.swift in Sources */,
 				D6A2263D25EE3AEF00E3E767 /* UIButton+Tool.swift in Sources */,
 				240472AD26340CBA0035B75A /* MessageMentionsService.swift in Sources */,
@@ -1424,6 +1442,7 @@
 				24C833FA2622FC5100E45CE5 /* DetailCommentListViewController.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Utilities.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
+				2458C01826510C2C00CFACC8 /* ImageUploadView.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
 				240472872633FF690035B75A /* FavoriteViewController.swift in Sources */,
 				24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */,
@@ -1455,6 +1474,7 @@
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */,
 				240472DB263416CB0035B75A /* MessageAttitudeCell.swift in Sources */,
+				2458C0202651100300CFACC8 /* ImageSelectedCell.swift in Sources */,
 				24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */,
 				24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */,
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,

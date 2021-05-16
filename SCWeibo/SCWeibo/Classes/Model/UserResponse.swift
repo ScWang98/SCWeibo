@@ -19,8 +19,8 @@ class UserResponse: Codable {
     var statusesCount: Int?
     var followersCount: Int?
     var followCount: Int?
-    var following: Bool?
-    var followMe: Bool?
+    var following: Bool = false
+    var followMe: Bool = false
     var verifiedType: Int = 0 // 认证类型（-1:没有认证, 0:认证用户, 2,3,5:企业认证, 220:达人）
     var mbrank: Int = 0 // 会员等级 0~6
 

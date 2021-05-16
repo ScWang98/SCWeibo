@@ -38,6 +38,9 @@ class UserProfileHeaderView: UIView {
         followLabel.attributedText = viewModel.followCountAttrStr
         weiboLabel.attributedText = viewModel.statusesCountAttrStr
         fansLabel.attributedText = viewModel.followersCountAttrStr
+        
+        followButton.isHidden = viewModel.isSelf
+        followButton.isSelected = viewModel.following
     }
 }
 
