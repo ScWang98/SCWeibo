@@ -107,6 +107,11 @@ extension URLSettings {
     class var favoriteDestroy: String {
         return h5BaseURL + "/mblogDeal/delFavMblog"
     }
+    
+    // 删除微博
+    class var deleteStatus: String {
+        return h5BaseURL + "/profile/delMyblog"
+    }
 }
 
 // MARK: - WriteStatus

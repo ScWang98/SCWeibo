@@ -14,6 +14,7 @@ target 'SCWeibo' do
   pod 'MJRefresh', '3.5.0'
   pod 'SKPhotoBrowser', '6.1.0'
   pod 'SVProgressHUD'
+  pod 'SwipeCellKit'
   
   # Pods for DEBUG
   pod 'FLEX', '4.4.0', :configurations => ['Debug']

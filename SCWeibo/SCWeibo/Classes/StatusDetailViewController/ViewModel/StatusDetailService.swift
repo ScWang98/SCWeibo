@@ -54,36 +54,7 @@ extension StatusDetailService {
 
 extension StatusDetailService {
     func sendFavoriteAction(favorited: Bool, statusId: Int, completion: @escaping (_ success: Bool) -> Void) {
-        ApiConfigService.getApiConfig { _, st, _ in
-            self.postFavorite(favorited: favorited, statusId: statusId, st: st, completion: completion)
-        }
-    }
-
-    private func postFavorite(favorited: Bool, statusId: Int, st: String, completion: @escaping (_ success: Bool) -> Void) {
-        let URLString = favorited ? URLSettings.favoriteCreate : URLSettings.favoriteDestroy
-
-        var params = [String: Any]()
-        params["id"] = statusId
-        params["st"] = st
-        
-        var headers = HTTPHeaders()
-        headers.add(HTTPHeader(name: "referer", value: "https://m.weibo.cn/"))
-        AF.request(URLString, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: headers).responseJSON { response in
-            var jsonResult: Dictionary<AnyHashable, Any>?
-            switch response.result {
-            case let .success(json):
-                if let dict = json as? Dictionary<AnyHashable, Any> {
-                    jsonResult = dict
-                }
-            case .failure:
-                jsonResult = nil
-            }
-
-            if jsonResult?.sc.string(for: "ok") != "1" {
-                completion(false)
-            }
-            completion(true)
-        }
+        StatusCommonActionManager.sendFavoriteAction(statusId: statusId, favorited: favorited, completion: completion)
     }
 }
 

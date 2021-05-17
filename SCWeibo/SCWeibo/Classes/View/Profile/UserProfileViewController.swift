@@ -106,7 +106,7 @@ private extension UserProfileViewController {
         pagesView.headerView = headerView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
-        pagesView.mj_header = MJRefreshGifHeader(refreshingBlock: {
+        pagesView.mj_header = MJRefreshStateHeader(refreshingBlock: {
             self.viewModel.fetchUserInfo {
                 self.refreshHeader()
                 self.pagesView.mj_header?.endRefreshing()

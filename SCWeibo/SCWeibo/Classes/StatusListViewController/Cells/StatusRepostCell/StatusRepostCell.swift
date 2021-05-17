@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class StatusRepostCell: UITableViewCell {
+class StatusRepostCell: SwipeTableViewCell {
     var viewModel: StatusRepostCellViewModel?
 
     let topToolBar = StatusTopToolBar()

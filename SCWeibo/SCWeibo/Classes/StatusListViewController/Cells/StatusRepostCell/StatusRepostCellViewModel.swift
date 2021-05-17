@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwipeCellKit
 
 class StatusRepostCellViewModel {
     var status: StatusResponse
@@ -117,12 +118,52 @@ extension StatusRepostCellViewModel {
             let picsHeight = StatusPicturesView.height(for: picUrls)
             totalHeight += picsHeight
             totalHeight += 10 // Gap
-        } else if self.videoModel != nil {
+        } else if videoModel != nil {
             let height = VideoCoverImageView.height(width: contentWidth)
             totalHeight += height
             totalHeight += 10 // Gap
         }
 
         return totalHeight
+    }
+}
+
+// MARK: - Behavior
+
+extension StatusRepostCellViewModel {
+    func sendFavoriteAction(completion: ((_ success: Bool) -> Void)? = nil) {
+        StatusCommonActionManager.sendFavoriteAction(statusId: status.id, favorited: !status.favorited, completion: completion)
+    }
+
+    func sendRepostAction(completion: ((_ success: Bool) -> Void)? = nil) {
+        let referenceModel = WriteReferenceModel()
+        referenceModel.status = status
+
+        let userInfo: [String: Any] = ["writeType": WriteType.repostStatus, "referenceModel": referenceModel]
+        Router.open(url: "pillar://writeStatus", userInfo: userInfo)
+    }
+
+    func sendCommentAction(completion: ((_ success: Bool) -> Void)? = nil) {
+        let referenceModel = WriteReferenceModel()
+        referenceModel.status = status
+
+        let userInfo: [String: Any] = ["writeType": WriteType.commentStatus, "referenceModel": referenceModel]
+        Router.open(url: "pillar://writeStatus", userInfo: userInfo)
+    }
+
+    func sendDeleteAction(completion: ((_ success: Bool) -> Void)? = nil) {
+        guard status.id != 0,
+              let userId = status.user?.id else {
+            return
+        }
+
+        let alert = UIAlertController(title: "确定删除这条微博？", message: "在删除这条微博后，您将无法回复它", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "删除微博", style: .destructive, handler: { _ in
+            StatusCommonActionManager.sendDeleteAction(statusId: self.status.id, userId: userId, completion: completion)
+        }))
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        ResponderHelper.visibleTopViewController()?.present(alert, animated: true, completion: nil)
     }
 }

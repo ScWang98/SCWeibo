@@ -20,6 +20,7 @@
 		240472E6263416F20035B75A /* MessageAttitudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472E5263416F20035B75A /* MessageAttitudeModel.swift */; };
 		240472EB2634170B0035B75A /* MessageAttitudeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */; };
 		2404730426354F460035B75A /* MessageCommentsCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */; };
+		24078DF42652476000882244 /* StatusCommonActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24078DF32652476000882244 /* StatusCommonActionManager.swift */; };
 		241D8A52263477B50092F598 /* MessageCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */; };
 		241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A56263477C00092F598 /* MessageCommentsService.swift */; };
 		241D8A5C263477CD0092F598 /* MessageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A5B263477CD0092F598 /* MessageCommentCell.swift */; };
@@ -219,6 +220,7 @@
 		240472E5263416F20035B75A /* MessageAttitudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeModel.swift; sourceTree = "<group>"; };
 		240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCellViewModel.swift; sourceTree = "<group>"; };
 		2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsCategoryBar.swift; sourceTree = "<group>"; };
+		24078DF32652476000882244 /* StatusCommonActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCommonActionManager.swift; sourceTree = "<group>"; };
 		241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsViewModel.swift; sourceTree = "<group>"; };
 		241D8A56263477C00092F598 /* MessageCommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsService.swift; sourceTree = "<group>"; };
 		241D8A5B263477CD0092F598 /* MessageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCell.swift; sourceTree = "<group>"; };
@@ -486,6 +488,14 @@
 			path = Attitudes;
 			sourceTree = "<group>";
 		};
+		24078DF22652473F00882244 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				24078DF32652476000882244 /* StatusCommonActionManager.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
 		2458C01626510C1300CFACC8 /* ImageUpload */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +541,7 @@
 		248423212631472B00CD25A4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				24078DF22652473F00882244 /* Action */,
 				248423222631475300CD25A4 /* WebViewController.swift */,
 				248A0F232632A89800D2DACC /* CommonService.swift */,
 			);
@@ -1511,6 +1522,7 @@
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
+				24078DF42652476000882244 /* StatusCommonActionManager.swift in Sources */,
 				2458C02D26516B7600CFACC8 /* WriteReferenceView.swift in Sources */,
 				24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */,
 				2458C03226516B9500CFACC8 /* WriteReferenceModel.swift in Sources */,
