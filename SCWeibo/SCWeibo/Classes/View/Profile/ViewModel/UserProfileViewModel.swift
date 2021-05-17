@@ -47,8 +47,12 @@ class UserProfileViewModel {
     var statusesCountAttrStr: NSAttributedString?
     var followersCountAttrStr: NSAttributedString?
     var followCountAttrStr: NSAttributedString?
-    var following: Bool = false
-    var followMe: Bool = false
+    var following: Bool {
+        return user?.following ?? false
+    }
+    var followMe: Bool {
+        return user?.followMe ?? false
+    }
 
     var profileService = UserProfileService()
 
@@ -93,6 +97,36 @@ class UserProfileViewModel {
     func reloadAllTabsContent() {
         for viewModel in tabViewModels {
             viewModel.tabRefresh(with: nil)
+        }
+    }
+    
+    func sendFollowAction(follow: Bool, refresh: (() -> Void)? = nil) {
+        guard let userId = user?.id else {
+            return
+        }
+        
+        if follow {
+            UserCommonActionManager.sendFollowAction(follow: follow, userId: userId) { (success) in
+                refresh?()
+            }
+        } else {
+            var title = "您确定要取消关注"
+            if let screenName = user?.screenName {
+                title = title + "「" + screenName + "」？"
+            } else {
+                title = title + "此用户吗？"
+            }
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "取消关注", style: .destructive, handler: { _ in
+                refresh?()
+                UserCommonActionManager.sendFollowAction(follow: follow, userId: userId) { (success) in
+                    refresh?()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            ResponderHelper.visibleTopViewController()?.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -144,9 +178,6 @@ private extension UserProfileViewModel {
         followCountAttrStr = generateNumberAttrStr(count: user.followCount, type: "正在关注")
 
         isSelf = id == AccountManager.shared.user?.id
-
-        following = user.following
-        followMe = user.followMe
     }
 
     func generateNumberAttrStr(count: Int?, type: String) -> NSAttributedString {

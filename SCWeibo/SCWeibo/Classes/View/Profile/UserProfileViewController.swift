@@ -6,9 +6,9 @@
 //
 
 import FLEX
+import MJRefresh
 import Neon
 import UIKit
-import MJRefresh
 
 class UserProfileViewController: UIViewController, RouteAble {
     let headerView = UserProfileHeaderView()
@@ -45,33 +45,39 @@ class UserProfileViewController: UIViewController, RouteAble {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
         setupSubviews()
         refreshHeader()
-        
+
         categoryBar.reload(names: viewModel.tabNames)
         pagesView.reloadPages()
-        
+
         viewModel.reloadAllTabsContent()
+
+//        var rightItems = [UIBarButtonItem]()
+//        let queryButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
+//        rightItems.append(queryButton)
+//        if viewModel.isSelf {
+//            let settingButton = UIBarButtonItem(title: "设置", target: self, action: #selector(settingButtonDidClicked(sender:)))
+//            rightItems.append(settingButton)
+//        }
+//        navigationItem.rightBarButtonItems = rightItems
         
-        var rightItems = [UIBarButtonItem]()
-        let queryButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
-        rightItems.append(queryButton)
-        if (viewModel.isSelf) {
-            let settingButton = UIBarButtonItem(title: "设置", target: self, action: #selector(settingButtonDidClicked(sender:)))
-            rightItems.append(settingButton)
+        if viewModel.isSelf {
+            let settingItem = UIBarButtonItem(title: "设置", target: self, action: #selector(settingButtonDidClicked(sender:)))
+            navigationItem.rightBarButtonItem = settingItem
         }
-        navigationItem.rightBarButtonItems = rightItems
+        
         navigationItem.title = "个人资料"
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -81,7 +87,7 @@ class UserProfileViewController: UIViewController, RouteAble {
 //            self.refreshHeader()
 //        }
     }
-    
+
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         setupLayout()
@@ -98,10 +104,10 @@ private extension UserProfileViewController {
     func setupSubviews() {
         view.backgroundColor = UIColor.white
 
-
         categoryBar.backgroundColor = UIColor.white
         categoryBar.delegate = self
 
+        headerView.delegate = self
         headerView.frame = CGRect(x: 0, y: 0, width: view.width, height: 260)
         pagesView.headerView = headerView
         pagesView.pagesDataSource = self
@@ -116,14 +122,14 @@ private extension UserProfileViewController {
 
         view.addSubview(pagesView)
         view.addSubview(categoryBar)
-        
+
         setupLayout()
     }
-    
+
     func setupLayout() {
         pagesView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: view.height - view.safeAreaInsets.top)
         categoryBar.align(.underCentered, relativeTo: headerView, padding: 10, width: view.width, height: 50)
-        self.view.setNeedsLayout()
+        view.setNeedsLayout()
     }
 
     func addObservers() {
@@ -131,7 +137,7 @@ private extension UserProfileViewController {
             self.categoryBar.bottom = max(self.view.safeAreaInsets.top + self.headerView.height - self.pagesView.contentOffset.y, self.view.safeAreaInsets.top + self.categoryBar.height)
         }
     }
-    
+
     func removeObservers() {
         pagesObservation?.invalidate()
     }
@@ -181,13 +187,34 @@ extension UserProfileViewController: PagesScrollViewDataSource, PagesScrollViewD
     }
 }
 
+// MARK: - UserProfileHeaderViewDelegate
+
+extension UserProfileViewController: UserProfileHeaderViewDelegate {
+    func followingDidClicked(headerView: UserProfileHeaderView) {
+        guard let userId = viewModel.id,
+              let followingCount = viewModel.user?.followCount else {
+            return
+        }
+        let viewController = ProfileFollowViewController(type: .following, userId: userId, count: followingCount)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func followerDidClicked(headerView: UserProfileHeaderView) {
+        guard let userId = viewModel.id,
+              let followerCount = viewModel.user?.followersCount else {
+            return
+        }
+        let viewController = ProfileFollowViewController(type: .follower, userId: userId, count: followerCount)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
 // MARK: - Action
 
 @objc private extension UserProfileViewController {
     func queryButtonDidClicked(sender: Any) {
-        
     }
-    
+
     func settingButtonDidClicked(sender: Any) {
         if FLEXManager.shared.isHidden {
             FLEXManager.shared.showExplorer()

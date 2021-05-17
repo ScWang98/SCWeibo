@@ -39,7 +39,7 @@ class StatusHomeViewController: StatusListViewController {
 private extension StatusHomeViewController {
     func setupSubviews() {
         listViewModel.listService = service
-//        refreshData(with: true)
+        refreshData(with: true)
     }
 
     func setupNavigationButtons() {
@@ -52,9 +52,11 @@ private extension StatusHomeViewController {
         let leftButton = UIBarButtonItem(customView: avatarView)
         navigationItem.leftBarButtonItem = leftButton
 
-        let queryButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
-        let writeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeButtonDidClicked(sender:)))
-        navigationItem.rightBarButtonItems = [writeButton, queryButton]
+//        let queryButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
+//        let writeButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeButtonDidClicked(sender:)))
+//        navigationItem.rightBarButtonItems = [writeButton, queryButton]
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeButtonDidClicked(sender:)))
+        navigationItem.rightBarButtonItem = rightButton
 
         navigationItem.title = "主页"
         titleButton.frame = CGRect(x: 0, y: 0, width: 70, height: 21)

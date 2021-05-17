@@ -29,6 +29,18 @@ class URLSettings {
     }
 }
 
+// MARK: - User
+
+extension URLSettings {
+    class var followUser: String {
+        return h5BaseURL + "/api/friendships/create"
+    }
+    
+    class var unFollowUser: String {
+        return h5BaseURL + "/api/friendships/destory"
+    }
+}
+
 // MARK: - Home Tab
 
 extension URLSettings {

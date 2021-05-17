@@ -57,7 +57,9 @@ private extension CommentTabViewController {
         let leftButton = UIBarButtonItem(customView: avatarView)
         navigationItem.leftBarButtonItem = leftButton
 
-        let rightButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
+//        let rightButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(queryButtonDidClicked(sender:)))
+//        navigationItem.rightBarButtonItem = rightButton
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(writeButtonDidClicked(sender:)))
         navigationItem.rightBarButtonItem = rightButton
 
         titleView.frame = CGRect(x: 0, y: 0, width: 100, height: 21)
@@ -88,6 +90,10 @@ private extension CommentTabViewController {
 
     func queryButtonDidClicked(sender: Any) {
 //        Router.open(url: "pillar://writeStatus")
+    }
+    
+    func writeButtonDidClicked(sender: Any) {
+        Router.open(url: "pillar://writeStatus")
     }
 
     func titleSegmentDidSelected(segControl: UISegmentedControl) {

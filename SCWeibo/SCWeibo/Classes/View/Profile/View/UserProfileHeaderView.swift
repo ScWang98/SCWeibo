@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol UserProfileHeaderViewDelegate: class {
+    func followingDidClicked(headerView: UserProfileHeaderView)
+    func followerDidClicked(headerView: UserProfileHeaderView)
+}
+
 class UserProfileHeaderView: UIView {
+    weak var delegate: UserProfileHeaderViewDelegate?
+    
     let avatarImage = UIImageView()
     let nickNameLabel = UILabel()
     let descriptionLabel = UILabel()
@@ -39,8 +46,14 @@ class UserProfileHeaderView: UIView {
         weiboLabel.attributedText = viewModel.statusesCountAttrStr
         fansLabel.attributedText = viewModel.followersCountAttrStr
         
-        followButton.isHidden = viewModel.isSelf
-        followButton.isSelected = viewModel.following
+        refreshFollowButton()
+    }
+    
+    func refreshFollowButton() {
+        if let viewModel = viewModel {
+            followButton.isHidden = viewModel.isSelf
+            followButton.isSelected = viewModel.following
+        }
     }
 }
 
@@ -144,14 +157,19 @@ private extension UserProfileHeaderView {
     }
 
     func followLabelClickedAction(sender: UILabel) {
+        delegate?.followingDidClicked(headerView: self)
     }
 
     func fansLabelClickedAction(sender: UILabel) {
+        delegate?.followerDidClicked(headerView: self)
     }
 
     func followButtonClickedAction(button: UIButton) {
-        button.isSelected = !button.isSelected
+        viewModel?.sendFollowAction(follow: !button.isSelected) {
+            self.refreshFollowButton()
+        }
+        viewModel?.user?.following = !button.isSelected
 
-        Router.open(url: "pillar://h5login")
+//        Router.open(url: "pillar://h5login")
     }
 }

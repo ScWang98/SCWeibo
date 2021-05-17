@@ -5,9 +5,9 @@
 //  Created by scwang on 2021/3/7.
 //
 
-import UIKit
 import MJRefresh
 import SwipeCellKit
+import UIKit
 
 class StatusListViewController: UIViewController {
     var tableView = UITableView()
@@ -154,14 +154,13 @@ extension StatusListViewController: SwipeTableViewCellDelegate {
 
             if viewModel.status.user?.id == AccountManager.shared.user?.id {
                 let delete = SwipeAction(style: .default, title: "删除") { _, _ in
-                    viewModel.sendDeleteAction { (success) in
+                    viewModel.sendDeleteAction { _ in
                         self.tableView.performBatchUpdates {
                             self.listViewModel.statusList.remove(at: indexPath.row)
                             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                        } completion: { (complete) in
+                        } completion: { _ in
                             self.tableView.reloadData()
                         }
-
                     }
                 }
                 delete.backgroundColor = UIColor.sc.color(RGB: 0xFF3B30)
