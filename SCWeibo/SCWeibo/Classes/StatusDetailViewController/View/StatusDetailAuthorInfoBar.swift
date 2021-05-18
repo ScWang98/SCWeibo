@@ -11,6 +11,8 @@ class StatusDetailAuthorInfoBar: UIView {
     var avatarImageView = UIImageView()
     var nameLabel = UILabel()
     var timeLabel = UILabel()
+    
+    var viewModel: StatusDetailViewModel?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +29,8 @@ class StatusDetailAuthorInfoBar: UIView {
     }
 
     func reload(with viewModel: StatusDetailViewModel) {
+        self.viewModel = viewModel
+        
         nameLabel.text = viewModel.screenName
 
         let placeholder = UIImage(named: "avatar_default_big")
@@ -53,6 +57,8 @@ private extension StatusDetailAuthorInfoBar {
         avatarImageView.layer.borderWidth = 1
         avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0x7F7F7F4D).cgColor
         avatarImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
+        avatarImageView.addGestureRecognizer(tap)
 
         nameLabel.textColor = UIColor.black
         nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
@@ -71,6 +77,16 @@ private extension StatusDetailAuthorInfoBar {
         let contentWidth = self.width - 15 - 40 - 10 - 15
         nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 10, width: contentWidth, height: 21)
         timeLabel.align(.toTheRightMatchingBottom, relativeTo: avatarImageView, padding: 10, width: contentWidth, height: 15)
+    }
+}
+
+private extension StatusDetailAuthorInfoBar {
+    @objc func avatarDidClicked(sender: Any) {
+        guard let user = viewModel?.status?.user else {
+            return
+        }
+        let userInfo = ["user": user]
+        Router.open(url: "pillar://userProfile", userInfo: userInfo)
     }
 }
 

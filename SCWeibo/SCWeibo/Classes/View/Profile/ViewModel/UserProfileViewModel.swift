@@ -35,17 +35,24 @@ class UserProfileViewModel {
         }
     }()
 
+    var isSelf: Bool = false
     var user: UserResponse?
     var id: Int?
-    var screenName: String?
+    var screenName: NSAttributedString?
     var avatar: URL?
     var avatarHD: URL?
     var description: String?
     var genderImage: UIImage?
-    var location: String?
-    var statusesCountStr: String?
-    var followersCountStr: String?
-    var followCountStr: String?
+    var location: NSAttributedString?
+    var statusesCountAttrStr: NSAttributedString?
+    var followersCountAttrStr: NSAttributedString?
+    var followCountAttrStr: NSAttributedString?
+    var following: Bool {
+        return user?.following ?? false
+    }
+    var followMe: Bool {
+        return user?.followMe ?? false
+    }
 
     var profileService = UserProfileService()
 
@@ -86,10 +93,40 @@ class UserProfileViewModel {
             completion()
         }
     }
-    
+
     func reloadAllTabsContent() {
         for viewModel in tabViewModels {
             viewModel.tabRefresh(with: nil)
+        }
+    }
+    
+    func sendFollowAction(follow: Bool, refresh: (() -> Void)? = nil) {
+        guard let userId = user?.id else {
+            return
+        }
+        
+        if follow {
+            UserCommonActionManager.sendFollowAction(follow: follow, userId: userId) { (success) in
+                refresh?()
+            }
+        } else {
+            var title = "您确定要取消关注"
+            if let screenName = user?.screenName {
+                title = title + "「" + screenName + "」？"
+            } else {
+                title = title + "此用户吗？"
+            }
+            let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "取消关注", style: .destructive, handler: { _ in
+                refresh?()
+                UserCommonActionManager.sendFollowAction(follow: follow, userId: userId) { (success) in
+                    refresh?()
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            ResponderHelper.visibleTopViewController()?.present(alert, animated: true, completion: nil)
         }
     }
 }
@@ -98,7 +135,6 @@ private extension UserProfileViewModel {
     func parseUserResponse(user: UserResponse) {
         self.user = user
         id = user.id
-        screenName = user.screenName
         if let urlString = user.avatar {
             avatar = URL(string: urlString)
         } else {
@@ -115,22 +151,43 @@ private extension UserProfileViewModel {
         } else {
             description = "你还没有描述"
         }
-        genderImage = user.gender == "m" ? UIImage(named: "Male_Normal") : UIImage(named: "Female_Normal")
-        location = user.location
-        if let statusesCount = user.statusesCount {
-            statusesCountStr = String(format: "%d 微博", statusesCount)
-        } else {
-            statusesCountStr = "---"
+        if let screenName = user.screenName {
+            let image = user.gender == "m" ? UIImage(named: "Male_Normal") : UIImage(named: "Female_Normal")
+            let screenNameAttrStr = NSMutableAttributedString(string: screenName + " ", attributes: [.font: UIFont.boldSystemFont(ofSize: 16)])
+            let iconAttachment = NSTextAttachment()
+            iconAttachment.image = image
+            iconAttachment.bounds = CGRect(x: 0, y: 0, width: 12, height: 12)
+            let iconAttrStr = NSAttributedString(attachment: iconAttachment)
+            screenNameAttrStr.append(iconAttrStr)
+            self.screenName = screenNameAttrStr
         }
-        if let followersCount = user.followersCount {
-            followersCountStr = String(format: "%d 粉丝", followersCount)
-        } else {
-            followersCountStr = "---"
+
+        if let location = user.location {
+            let image = UIImage(named: "Location_Normal")
+            let locationAttrStr = NSMutableAttributedString(string: " " + location, attributes: [.font: UIFont.systemFont(ofSize: 15)])
+            let iconAttachment = NSTextAttachment()
+            iconAttachment.image = image
+            iconAttachment.bounds = CGRect(x: 0, y: 0, width: 12, height: 12)
+            let iconAttrStr = NSAttributedString(attachment: iconAttachment)
+            locationAttrStr.insert(iconAttrStr, at: 0)
+            self.location = locationAttrStr
         }
-        if let followCount = user.followCount {
-            followCountStr = String(format: "%d 正在关注", followCount)
+
+        statusesCountAttrStr = generateNumberAttrStr(count: user.statusesCount, type: "微博")
+        followersCountAttrStr = generateNumberAttrStr(count: user.followersCount, type: "粉丝")
+        followCountAttrStr = generateNumberAttrStr(count: user.followCount, type: "正在关注")
+
+        isSelf = id == AccountManager.shared.user?.id
+    }
+
+    func generateNumberAttrStr(count: Int?, type: String) -> NSAttributedString {
+        if let count = count {
+            let countAttrStr = NSAttributedString(string: String(format: "%d", count), attributes: [.font: UIFont.boldSystemFont(ofSize: 15)])
+            let attrStr = NSMutableAttributedString(string: " " + type, attributes: [.font: UIFont.systemFont(ofSize: 15)])
+            attrStr.insert(countAttrStr, at: 0)
+            return attrStr
         } else {
-            followCountStr = "---"
+            return NSAttributedString(string: "---", attributes: [.font: UIFont.systemFont(ofSize: 15)])
         }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class ContentHTMLParser {
-    class func parseContentText(string: String, font: UIFont, html: Bool = true) -> ContentLabelTextModel {
+    class func parseContentText(string: String, font: UIFont, html: Bool = true, baseAttributes: [NSAttributedString.Key: Any]? = nil) -> ContentLabelTextModel {
         let attrString = NSMutableAttributedString(string: string)
         let labelModel = ContentLabelTextModel(text: attrString)
 
@@ -29,10 +29,10 @@ class ContentHTMLParser {
 
         // 替换 位置
         replaceLocationHref(labelModel: labelModel)
-        
+
         // 替换 视频
         replaceVideoHref(labelModel: labelModel)
-        
+
         // 替换 网页链接
         replaceWebHref(labelModel: labelModel)
 
@@ -49,6 +49,12 @@ class ContentHTMLParser {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 3
         attributes[.paragraphStyle] = paragraphStyle
+
+        if let baseAttributes = baseAttributes {
+            attributes.merge(baseAttributes) { (_, new) -> Any in
+                new
+            }
+        }
 
         labelModel.text.addAttributes(attributes, range: NSRange(location: 0, length: labelModel.text.length))
 
@@ -247,7 +253,7 @@ private extension ContentHTMLParser {
             let fromRange = result.range
             var toRange = result.range(at: 2)
             var toStr = string.attributedSubstring(from: toRange)
-            
+
             if let image = UIImage(named: "SmallLocation")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
                 let mutToStr = NSMutableAttributedString(attributedString: toStr)
                 let attachment = NSTextAttachment(image: image)
@@ -257,7 +263,7 @@ private extension ContentHTMLParser {
                 toRange.length = mutToStr.length
                 toStr = mutToStr
             }
-            
+
             let urlStr = string.attributedSubstring(from: result.range(at: 1))
 
             string.replaceCharacters(in: fromRange, with: toStr)
@@ -274,7 +280,7 @@ private extension ContentHTMLParser {
             labelModel.schemas.append(schemaModel)
         }
     }
-    
+
     class func replaceVideoHref(labelModel: ContentLabelTextModel) {
         let string = labelModel.text
         let pattern = "<a.*?data-url.*?href=\"(.*?)\".*?><img.*?video.*?</span><span.*?>(.*?)</span></a>"
@@ -288,7 +294,7 @@ private extension ContentHTMLParser {
             let fromRange = result.range
             var toRange = result.range(at: 2)
             var toStr = string.attributedSubstring(from: toRange)
-            
+
             if let image = UIImage(named: "CardSmallVideo")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
                 let mutToStr = NSMutableAttributedString(attributedString: toStr)
                 let attachment = NSTextAttachment(image: image)
@@ -298,7 +304,7 @@ private extension ContentHTMLParser {
                 toRange.length = mutToStr.length
                 toStr = mutToStr
             }
-            
+
             let urlStr = string.attributedSubstring(from: result.range(at: 1))
 
             string.replaceCharacters(in: fromRange, with: toStr)
@@ -315,7 +321,7 @@ private extension ContentHTMLParser {
             labelModel.schemas.append(schemaModel)
         }
     }
-    
+
     class func replaceWebHref(labelModel: ContentLabelTextModel) {
         let string = labelModel.text
         let pattern = "<a.*?data-url.*?href=\"(.*?)\".*?><img.*?web.*?</span><span.*?>(.*?)</span></a>"
@@ -329,7 +335,7 @@ private extension ContentHTMLParser {
             let fromRange = result.range
             var toRange = result.range(at: 2)
             var toStr = string.attributedSubstring(from: toRange)
-            
+
             if let image = UIImage(named: "SmallWebLink")?.sc.image(tintColor: UIColor.sc.color(RGBA: 0x0099FFFF)) {
                 let mutToStr = NSMutableAttributedString(attributedString: toStr)
                 let attachment = NSTextAttachment(image: image)
@@ -339,7 +345,7 @@ private extension ContentHTMLParser {
                 toRange.length = mutToStr.length
                 toStr = mutToStr
             }
-            
+
             let urlStr = string.attributedSubstring(from: result.range(at: 1))
 
             string.replaceCharacters(in: fromRange, with: toStr)

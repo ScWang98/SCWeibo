@@ -30,7 +30,7 @@ class MessageViewController: UIViewController {
 private extension MessageViewController {
     func setupSubviews() {
         let viewControllerClazzs = [MessageMentionsViewController.self,
-                                    MessageCommentsViewController.self,
+//                                    MessageCommentsViewController.self,
                                     MessageAttitudesViewController.self]
         for clazz in viewControllerClazzs {
             addSubSegmentVC(viewControllerClazz: clazz)
@@ -103,7 +103,7 @@ private extension MessageViewController {
 
 class MessageTitleView: UISegmentedControl {
     init() {
-        super.init(items: ["@我的", "评论", "赞"])
+        super.init(items: ["@我的", "赞"])
     }
 
     required init?(coder: NSCoder) {

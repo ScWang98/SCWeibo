@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472862633FF690035B75A /* FavoriteListViewController.swift */; };
+		240472872633FF690035B75A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472862633FF690035B75A /* FavoriteViewController.swift */; };
 		2404728F263404EE0035B75A /* NavigationAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404728E263404EE0035B75A /* NavigationAvatarView.swift */; };
 		24047294263406350035B75A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047293263406350035B75A /* MessageViewController.swift */; };
 		2404729A263408920035B75A /* MessageMentionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24047299263408920035B75A /* MessageMentionsViewController.swift */; };
@@ -20,11 +20,18 @@
 		240472E6263416F20035B75A /* MessageAttitudeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472E5263416F20035B75A /* MessageAttitudeModel.swift */; };
 		240472EB2634170B0035B75A /* MessageAttitudeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */; };
 		2404730426354F460035B75A /* MessageCommentsCategoryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */; };
+		24078DF42652476000882244 /* StatusCommonActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24078DF32652476000882244 /* StatusCommonActionManager.swift */; };
+		24078DF9265262AE00882244 /* ProfileFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24078DF8265262AE00882244 /* ProfileFollowViewController.swift */; };
 		241D8A52263477B50092F598 /* MessageCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */; };
 		241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A56263477C00092F598 /* MessageCommentsService.swift */; };
 		241D8A5C263477CD0092F598 /* MessageCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A5B263477CD0092F598 /* MessageCommentCell.swift */; };
 		241D8A61263477DA0092F598 /* MessageCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A60263477DA0092F598 /* MessageCommentModel.swift */; };
 		241D8A66263477E60092F598 /* MessageCommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241D8A65263477E60092F598 /* MessageCommentCellViewModel.swift */; };
+		2458C01826510C2C00CFACC8 /* ImageUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01726510C2C00CFACC8 /* ImageUploadView.swift */; };
+		2458C0202651100300CFACC8 /* ImageSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */; };
+		2458C0282651123100CFACC8 /* ImageUploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C0272651123100CFACC8 /* ImageUploadCell.swift */; };
+		2458C02D26516B7600CFACC8 /* WriteReferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */; };
+		2458C03226516B9500CFACC8 /* WriteReferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */; };
 		246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */; };
 		246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */; };
 		246EEA0726258A9500DB0F1D /* DetailAttitudeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */; };
@@ -65,7 +72,16 @@
 		24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */; };
 		24C8343526241BEF00E45CE5 /* ContentLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8343426241BEF00E45CE5 /* ContentLabel.swift */; };
 		24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */; };
+		24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */; };
+		24D0A45D264EBB9000F0BF28 /* StatusDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */; };
+		24D0A466264FBF3D00F0BF28 /* FavoriteListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */; };
+		24D0A46C264FCA3600F0BF28 /* CommentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */; };
 		24E4E5FB2613615C008EA231 /* StatusHomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E4E5FA2613615C008EA231 /* StatusHomeService.swift */; };
+		24FD39742652648200DB3820 /* ProfileFollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD39732652648200DB3820 /* ProfileFollowViewModel.swift */; };
+		24FD3979265264B100DB3820 /* ProfileFollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD3978265264B100DB3820 /* ProfileFollowService.swift */; };
+		24FD397E2652658E00DB3820 /* ProfileFollowUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD397D2652658E00DB3820 /* ProfileFollowUserCell.swift */; };
+		24FD3983265265A500DB3820 /* ProfileFollowUserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD3982265265A500DB3820 /* ProfileFollowUserCellViewModel.swift */; };
+		24FD39882652C9F500DB3820 /* UserCommonActionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD39872652C9F500DB3820 /* UserCommonActionManager.swift */; };
 		3972E407DC6075D42E525E53 /* Pods_SCWeibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E927C418C22068EF0CE9D7A7 /* Pods_SCWeibo.framework */; };
 		8D2E485AE0DC76CABEFE6D22 /* Pods_SCWeiboTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F19D9A19F7B273202049354D /* Pods_SCWeiboTests.framework */; };
 		9A161471712BAA6ACCD4D09E /* Pods_SCWeiboUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8CD1F5162D04979016AE40 /* Pods_SCWeiboUITests.framework */; };
@@ -197,7 +213,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		240472862633FF690035B75A /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		240472862633FF690035B75A /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		2404728E263404EE0035B75A /* NavigationAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAvatarView.swift; sourceTree = "<group>"; };
 		24047293263406350035B75A /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		24047299263408920035B75A /* MessageMentionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageMentionsViewController.swift; sourceTree = "<group>"; };
@@ -210,11 +226,18 @@
 		240472E5263416F20035B75A /* MessageAttitudeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeModel.swift; sourceTree = "<group>"; };
 		240472EA2634170B0035B75A /* MessageAttitudeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAttitudeCellViewModel.swift; sourceTree = "<group>"; };
 		2404730326354F460035B75A /* MessageCommentsCategoryBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsCategoryBar.swift; sourceTree = "<group>"; };
+		24078DF32652476000882244 /* StatusCommonActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCommonActionManager.swift; sourceTree = "<group>"; };
+		24078DF8265262AE00882244 /* ProfileFollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowViewController.swift; sourceTree = "<group>"; };
 		241D8A51263477B50092F598 /* MessageCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsViewModel.swift; sourceTree = "<group>"; };
 		241D8A56263477C00092F598 /* MessageCommentsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentsService.swift; sourceTree = "<group>"; };
 		241D8A5B263477CD0092F598 /* MessageCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCell.swift; sourceTree = "<group>"; };
 		241D8A60263477DA0092F598 /* MessageCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentModel.swift; sourceTree = "<group>"; };
 		241D8A65263477E60092F598 /* MessageCommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCommentCellViewModel.swift; sourceTree = "<group>"; };
+		2458C01726510C2C00CFACC8 /* ImageUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadView.swift; sourceTree = "<group>"; };
+		2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectedCell.swift; sourceTree = "<group>"; };
+		2458C0272651123100CFACC8 /* ImageUploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadCell.swift; sourceTree = "<group>"; };
+		2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReferenceView.swift; sourceTree = "<group>"; };
+		2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReferenceModel.swift; sourceTree = "<group>"; };
 		246EE9FC26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListViewModel.swift; sourceTree = "<group>"; };
 		246EEA0126258A8000DB0F1D /* DetailAttitudeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeListService.swift; sourceTree = "<group>"; };
 		246EEA0626258A9500DB0F1D /* DetailAttitudeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAttitudeTableCell.swift; sourceTree = "<group>"; };
@@ -258,7 +281,16 @@
 		24C8342C262316C200E45CE5 /* DetailRepostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepostCellViewModel.swift; sourceTree = "<group>"; };
 		24C8343426241BEF00E45CE5 /* ContentLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLabel.swift; sourceTree = "<group>"; };
 		24C8347226253C9200E45CE5 /* ContentHTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentHTMLParser.swift; sourceTree = "<group>"; };
+		24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailToolbar.swift; sourceTree = "<group>"; };
+		24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailService.swift; sourceTree = "<group>"; };
+		24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListService.swift; sourceTree = "<group>"; };
+		24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTabViewController.swift; sourceTree = "<group>"; };
 		24E4E5FA2613615C008EA231 /* StatusHomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHomeService.swift; sourceTree = "<group>"; };
+		24FD39732652648200DB3820 /* ProfileFollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowViewModel.swift; sourceTree = "<group>"; };
+		24FD3978265264B100DB3820 /* ProfileFollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowService.swift; sourceTree = "<group>"; };
+		24FD397D2652658E00DB3820 /* ProfileFollowUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowUserCell.swift; sourceTree = "<group>"; };
+		24FD3982265265A500DB3820 /* ProfileFollowUserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFollowUserCellViewModel.swift; sourceTree = "<group>"; };
+		24FD39872652C9F500DB3820 /* UserCommonActionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCommonActionManager.swift; sourceTree = "<group>"; };
 		38CCA2DF2CD2533909F45CFE /* Pods-SCWeiboUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.debug.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		467DABF6900E1A0933E771F5 /* Pods-SCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeiboUITests.release.xcconfig"; path = "Target Support Files/Pods-SCWeiboUITests/Pods-SCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
 		696174D48FF03B8F94DB6F5B /* Pods-SCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCWeibo.debug.xcconfig"; path = "Target Support Files/Pods-SCWeibo/Pods-SCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -416,7 +448,8 @@
 		240472852633FF300035B75A /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				240472862633FF690035B75A /* FavoriteListViewController.swift */,
+				240472862633FF690035B75A /* FavoriteViewController.swift */,
+				24D0A465264FBF3D00F0BF28 /* FavoriteListService.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -467,6 +500,37 @@
 			path = Attitudes;
 			sourceTree = "<group>";
 		};
+		24078DF22652473F00882244 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				24078DF32652476000882244 /* StatusCommonActionManager.swift */,
+				24FD39872652C9F500DB3820 /* UserCommonActionManager.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		24078DFD265262B700882244 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				24078DF8265262AE00882244 /* ProfileFollowViewController.swift */,
+				24FD39732652648200DB3820 /* ProfileFollowViewModel.swift */,
+				24FD3978265264B100DB3820 /* ProfileFollowService.swift */,
+				24FD397D2652658E00DB3820 /* ProfileFollowUserCell.swift */,
+				24FD3982265265A500DB3820 /* ProfileFollowUserCellViewModel.swift */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		2458C01626510C1300CFACC8 /* ImageUpload */ = {
+			isa = PBXGroup;
+			children = (
+				2458C01726510C2C00CFACC8 /* ImageUploadView.swift */,
+				2458C01F2651100300CFACC8 /* ImageSelectedCell.swift */,
+				2458C0272651123100CFACC8 /* ImageUploadCell.swift */,
+			);
+			path = ImageUpload;
+			sourceTree = "<group>";
+		};
 		245FA9C42633E5E2002BF6E9 /* Emoji */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +546,8 @@
 		245FA9C52633E8C1002BF6E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2458C02C26516B7600CFACC8 /* WriteReferenceView.swift */,
+				2458C01626510C1300CFACC8 /* ImageUpload */,
 				248423312631BA6100CD25A4 /* WriteTitleButton.swift */,
 				D6A225D025EE3AEF00E3E767 /* WriteStatusTextView.swift */,
 			);
@@ -500,6 +566,7 @@
 		248423212631472B00CD25A4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				24078DF22652473F00882244 /* Action */,
 				248423222631475300CD25A4 /* WebViewController.swift */,
 				248A0F232632A89800D2DACC /* CommonService.swift */,
 			);
@@ -513,6 +580,7 @@
 				245FA9C42633E5E2002BF6E9 /* Emoji */,
 				D6A2262225EE3AEF00E3E767 /* WriteStatusController.swift */,
 				248A0F1B2632A7E700D2DACC /* WriteStatusService.swift */,
+				2458C03126516B9500CFACC8 /* WriteReferenceModel.swift */,
 			);
 			path = WriteStatus;
 			sourceTree = "<group>";
@@ -584,6 +652,14 @@
 				246EEA1026258AC000DB0F1D /* DetailAttitudeCellViewModel.swift */,
 			);
 			path = Attitude;
+			sourceTree = "<group>";
+		};
+		24D0A46A264FC97C00F0BF28 /* CommentTab */ = {
+			isa = PBXGroup;
+			children = (
+				24D0A46B264FCA3600F0BF28 /* CommentTabViewController.swift */,
+			);
+			path = CommentTab;
 			sourceTree = "<group>";
 		};
 		6743F5658FECDE936B065BA3 /* Pods */ = {
@@ -742,6 +818,7 @@
 				24C834032623099500E45CE5 /* StatusDetailRepostTabViewModel.swift */,
 				24C8340E262309CE00E45CE5 /* StatusDetailCommentTabViewModel.swift */,
 				24C83413262309E300E45CE5 /* StatusDetailAttitudeTabViewModel.swift */,
+				24D0A45C264EBB9000F0BF28 /* StatusDetailService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -754,6 +831,7 @@
 				24C81A082621D81700E45CE5 /* StatusDetailRepostView.swift */,
 				24AD7E24262A87CD007BBB10 /* StatusDetailHorizontalCategoryBar.swift */,
 				24AD97C8262B3D1D007BBB10 /* ListEndCell.swift */,
+				24D0A457264E9DBE00F0BF28 /* StatusDetailToolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -940,6 +1018,7 @@
 		D6A225FB25EE3AEF00E3E767 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				24D0A46A264FC97C00F0BF28 /* CommentTab */,
 				240472852633FF300035B75A /* Favorite */,
 				248423302631B86700CD25A4 /* WriteStatus */,
 				24842305263055DF00CD25A4 /* Common */,
@@ -982,6 +1061,7 @@
 		D6A2260D25EE3AEF00E3E767 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				24078DFD265262B700882244 /* Follow */,
 				D64C450A2601F69C00A63631 /* Tabs */,
 				D6F24A4025F1032800F54C87 /* ViewModel */,
 				D6A2260E25EE3AEF00E3E767 /* UserProfileViewController.swift */,
@@ -1325,6 +1405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2458C0282651123100CFACC8 /* ImageUploadCell.swift in Sources */,
 				D6A2264025EE3AEF00E3E767 /* String+Substring.swift in Sources */,
 				D6A2263D25EE3AEF00E3E767 /* UIButton+Tool.swift in Sources */,
 				240472AD26340CBA0035B75A /* MessageMentionsService.swift in Sources */,
@@ -1346,7 +1427,9 @@
 				D6A2262B25EE3AEF00E3E767 /* NetworkManager.swift in Sources */,
 				241D8A57263477C00092F598 /* MessageCommentsService.swift in Sources */,
 				246EEA312625A2DE00DB0F1D /* CommentModel.swift in Sources */,
+				24D0A466264FBF3D00F0BF28 /* FavoriteListService.swift in Sources */,
 				D6A2268425EE3B1800E3E767 /* Router.swift in Sources */,
+				24D0A458264E9DBE00F0BF28 /* StatusDetailToolbar.swift in Sources */,
 				D627056925F4BA8200B7F6DC /* StatusCellViewModelProducer.swift in Sources */,
 				D659EF3B2607A286005F1398 /* H5LoginWebViewController.swift in Sources */,
 				240472A7263409080035B75A /* MessageAttitudesViewController.swift in Sources */,
@@ -1356,14 +1439,17 @@
 				D6A2266125EE3AF000E3E767 /* UserProfileViewController.swift in Sources */,
 				D6A2267025EE3AF000E3E767 /* MNBaseViewController.swift in Sources */,
 				D6A2267825EE3B0400E3E767 /* MNLayout.swift in Sources */,
+				24D0A45D264EBB9000F0BF28 /* StatusDetailService.swift in Sources */,
 				246EEA0226258A8000DB0F1D /* DetailAttitudeListService.swift in Sources */,
 				D68D363E260A1EB1004A6630 /* StatusDetailViewModel.swift in Sources */,
+				24078DF9265262AE00882244 /* ProfileFollowViewController.swift in Sources */,
 				D63D51362604992D0034FDB3 /* VideoCellViewModel.swift in Sources */,
 				D627056E25F4BB2B00B7F6DC /* StatusCellCommonDefine.swift in Sources */,
 				D68F989325EF95B300C0092A /* ResponderHelper.swift in Sources */,
 				248A0F142632A13200D2DACC /* UIViewController+Extension.swift in Sources */,
 				D68D04C12608F1CF004A6630 /* PhotosListViewModel.swift in Sources */,
 				D6A2266325EE3AF000E3E767 /* UserProfileHeaderView.swift in Sources */,
+				24FD397E2652658E00DB3820 /* ProfileFollowUserCell.swift in Sources */,
 				D68D04D52608FFA8004A6630 /* PhotoResponse.swift in Sources */,
 				246EE9FD26258A6E00DB0F1D /* DetailAttitudeListViewModel.swift in Sources */,
 				248A0F022632705400D2DACC /* UIView+Addition.m in Sources */,
@@ -1385,10 +1471,12 @@
 				D64C45262601FFCD00A63631 /* VideosListService.swift in Sources */,
 				24E4E5FB2613615C008EA231 /* StatusHomeService.swift in Sources */,
 				D68D04DA2608FFC1004A6630 /* PhotoCellViewModel.swift in Sources */,
+				24FD39882652C9F500DB3820 /* UserCommonActionManager.swift in Sources */,
 				24C834232623165800E45CE5 /* DetailRepostTableCell.swift in Sources */,
 				D6A2263725EE3AEF00E3E767 /* EmojiCollectionFlowLayout.swift in Sources */,
 				D6A2266F25EE3AF000E3E767 /* WriteStatusController.swift in Sources */,
 				D6A2268825EE3B1800E3E767 /* StartupTaskGroup.swift in Sources */,
+				24D0A46C264FCA3600F0BF28 /* CommentTabViewController.swift in Sources */,
 				D6F1A93C25F7E3DB00A42949 /* UserProfileDefine.swift in Sources */,
 				D6A2263325EE3AEF00E3E767 /* EmojiTipView.swift in Sources */,
 				246EEA2C2625A2CE00DB0F1D /* DetailCommentTableCell.swift in Sources */,
@@ -1396,12 +1484,14 @@
 				24047294263406350035B75A /* MessageViewController.swift in Sources */,
 				246EEA242625A2B200DB0F1D /* DetailCommentListService.swift in Sources */,
 				D659EF30260799CF005F1398 /* UIColor+Utilities.swift in Sources */,
+				24FD3983265265A500DB3820 /* ProfileFollowUserCellViewModel.swift in Sources */,
 				D611D64225F507E20041D99A /* StatusTopToolBar.swift in Sources */,
 				24C833FA2622FC5100E45CE5 /* DetailCommentListViewController.swift in Sources */,
 				D6A2264125EE3AEF00E3E767 /* UIScreen+Utilities.swift in Sources */,
 				D6A2266825EE3AF000E3E767 /* WeiboNavigationController.swift in Sources */,
+				2458C01826510C2C00CFACC8 /* ImageUploadView.swift in Sources */,
 				D611D64C25F510620041D99A /* StatusPicturesView.swift in Sources */,
-				240472872633FF690035B75A /* FavoriteListViewController.swift in Sources */,
+				240472872633FF690035B75A /* FavoriteViewController.swift in Sources */,
 				24AD97C9262B3D1D007BBB10 /* ListEndCell.swift in Sources */,
 				D6A7DEA225FE383B00DE5412 /* StatusHomeViewController.swift in Sources */,
 				24C834042623099500E45CE5 /* StatusDetailRepostTabViewModel.swift in Sources */,
@@ -1431,6 +1521,7 @@
 				D6A2267925EE3B0400E3E767 /* MNWeiboCommon.swift in Sources */,
 				24C8342D262316C200E45CE5 /* DetailRepostCellViewModel.swift in Sources */,
 				240472DB263416CB0035B75A /* MessageAttitudeCell.swift in Sources */,
+				2458C0202651100300CFACC8 /* ImageSelectedCell.swift in Sources */,
 				24C833FF2622FC8700E45CE5 /* DetailAttitudeListViewController.swift in Sources */,
 				24C81A042621D21F00E45CE5 /* StatusDetailContentView.swift in Sources */,
 				24C83419262315F400E45CE5 /* DetailRepostListViewModel.swift in Sources */,
@@ -1449,6 +1540,7 @@
 				D6A2263A25EE3AEF00E3E767 /* MNSQLiteManager.swift in Sources */,
 				240472D6263416A90035B75A /* MessageAttitudesService.swift in Sources */,
 				D64C45192601FCF700A63631 /* VideosListViewController.swift in Sources */,
+				24FD39742652648200DB3820 /* ProfileFollowViewModel.swift in Sources */,
 				D6A2263F25EE3AEF00E3E767 /* UIButtion+Extension.swift in Sources */,
 				D6A2264A25EE3AEF00E3E767 /* MNRefreshView.swift in Sources */,
 				24C833F22622FC1E00E45CE5 /* DetailRepostListViewController.swift in Sources */,
@@ -1461,7 +1553,10 @@
 				D611D64725F507F70041D99A /* StatusBottomToolBar.swift in Sources */,
 				D62705AC25F4CDF400B7F6DC /* StatusListViewModel.swift in Sources */,
 				D6A2265F25EE3AF000E3E767 /* MNDiscoverViewController.swift in Sources */,
+				24078DF42652476000882244 /* StatusCommonActionManager.swift in Sources */,
+				2458C02D26516B7600CFACC8 /* WriteReferenceView.swift in Sources */,
 				24C8347326253C9200E45CE5 /* ContentHTMLParser.swift in Sources */,
+				2458C03226516B9500CFACC8 /* WriteReferenceModel.swift in Sources */,
 				24C834282623168400E45CE5 /* RepostModel.swift in Sources */,
 				246EEA402625AE3900DB0F1D /* DetailCommentsView.swift in Sources */,
 				248423232631475300CD25A4 /* WebViewController.swift in Sources */,
@@ -1485,6 +1580,7 @@
 				D6A2266225EE3AF000E3E767 /* UserProfileTopToolBar.swift in Sources */,
 				24C8341E2623161D00E45CE5 /* DetailRepostListService.swift in Sources */,
 				D6F2492325F2A96C00F54C87 /* UserResponse.swift in Sources */,
+				24FD3979265264B100DB3820 /* ProfileFollowService.swift in Sources */,
 				D6A2262925EE3AEF00E3E767 /* MNLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1654,7 +1750,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 696174D48FF03B8F94DB6F5B /* Pods-SCWeibo.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1679,7 +1775,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D42A4FCDB750311E3112FD46 /* Pods-SCWeibo.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

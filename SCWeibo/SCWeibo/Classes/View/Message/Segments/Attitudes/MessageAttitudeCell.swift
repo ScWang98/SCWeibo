@@ -52,7 +52,7 @@ extension MessageAttitudeCell {
         nameLabel.text = viewModel.screenName
         timeLabel.text = viewModel.createdAt
         
-        contentLabel.attributedText = viewModel.cotentAttrString
+        contentLabel.attributedText = viewModel.contentAttrString
         if let urlString = viewModel.imageUrl,
            let url = URL(string: urlString) {
             pictureView.kf.setImage(with: url)
@@ -69,10 +69,10 @@ private extension MessageAttitudeCell {
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
         avatarImageView.isUserInteractionEnabled = true
-        avatarImageView.layer.cornerRadius = 16
+        avatarImageView.layer.cornerRadius = 20
         avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.borderColor = UIColor.sc.color(RGBA: 0xD8D8D8FF).cgColor
-        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(tap:)))
+        avatarImageView.layer.borderColor = UIColor.sc.color(RGB: 0xD8D8D8).cgColor
+        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarDidClicked(sender:)))
         avatarImageView.addGestureRecognizer(tap)
 
         nameLabel.textColor = UIColor.black
@@ -82,7 +82,8 @@ private extension MessageAttitudeCell {
         
         contentLabel.numberOfLines = 2
         
-        backShadowView.backgroundColor = UIColor.sc.color(RGB: 0xEEEEEE)
+        backShadowView.backgroundColor = UIColor.sc.color(RGB: 0xEFEFF4)
+        backShadowView.layer.cornerRadius = 5
         backShadowView.addSubview(contentLabel)
         backShadowView.addSubview(pictureView)
 
@@ -99,20 +100,26 @@ private extension MessageAttitudeCell {
     }
 
     func setupLayout() {
-        let contentWidth = width - 15 - 32 - 15 - 15
+        let contentWidth = self.width - 16 - 40 - 9 - 16
 
-        avatarImageView.anchorInCorner(.topLeft, xPad: 15, yPad: 15, width: 32, height: 32)
-        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
-        timeLabel.anchorInCorner(.bottomLeft, xPad: 15 + 32 + 15, yPad: 8, width: contentWidth, height: 17)
-        backShadowView.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 100)
+        avatarImageView.anchorInCorner(.topLeft, xPad: 16, yPad: 12, width: 40, height: 40)
+        nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 9, width: contentWidth, height: 20)
+        backShadowView.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 56)
+        timeLabel.anchorInCorner(.bottomLeft, xPad: backShadowView.left, yPad: 8, width: contentWidth, height: 17)
         separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
         
-        pictureView.anchorToEdge(.left, padding: 5, width: 40, height: 40)
-        contentLabel.anchorToEdge(.right, padding: 5, width: backShadowView.width - 5 - 40 - 5 - 5, height: 40)
+        pictureView.anchorToEdge(.left, padding: 8, width: 40, height: 40)
+        contentLabel.anchorToEdge(.right, padding: 8, width: backShadowView.width - 8 - 40 - 8 - 8, height: 40)
     }
 }
 
 @objc private extension MessageAttitudeCell {
-    func avatarDidClicked(tap: UITapGestureRecognizer) {
+    func avatarDidClicked(sender: Any) {
+        guard let user = viewModel?.model.user else {
+            return
+        }
+        
+        let userInfo = ["user": user]
+        Router.open(url: "pillar://userProfile", userInfo: userInfo)
     }
 }

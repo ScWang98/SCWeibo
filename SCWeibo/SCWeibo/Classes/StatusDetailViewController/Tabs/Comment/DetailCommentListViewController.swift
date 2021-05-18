@@ -35,8 +35,8 @@ class DetailCommentListViewController: UIViewController {
 // MARK: - Public Methods
 
 extension DetailCommentListViewController {
-    func config(statusId: String?) {
-        listViewModel.config(statusId: statusId)
+    func config(status: StatusResponse?) {
+        listViewModel.config(status: status)
     }
     
     func refreshData(with loadingState: Bool) {
@@ -103,6 +103,17 @@ extension DetailCommentListViewController: UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.commentList[indexPath.row]
         return viewModel.cellHeight(cellWidth: tableView.width)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = listViewModel.commentList[indexPath.row]
+
+        let referenceModel = WriteReferenceModel()
+        referenceModel.status = listViewModel.status
+        referenceModel.comment = viewModel.model
+
+        let userInfo: [String : Any] = ["writeType": WriteType.commentComment, "referenceModel": referenceModel]
+        Router.open(url: "pillar://writeStatus", userInfo: userInfo)
     }
 }
 

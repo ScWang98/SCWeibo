@@ -11,6 +11,7 @@ class StatusDetailViewController: UIViewController, RouteAble {
     let detailContentView = StatusDetailContentView()
     let categoryBar = StatusDetailHorizontalCategoryBar()
     let pagesView = PagesScrollView()
+    let toolBar = StatusDetailToolbar()
 
     let viewModel = StatusDetailViewModel()
 
@@ -39,6 +40,7 @@ class StatusDetailViewController: UIViewController, RouteAble {
                 
         setupSubviews()
         refreshHeader()
+        refreshToolBar()
         
         categoryBar.reload(names: viewModel.tabNames)
         categoryBar.selectItem(at: 1, animated: false)
@@ -66,7 +68,13 @@ class StatusDetailViewController: UIViewController, RouteAble {
 
         viewModel.fetchUserInfo {
             self.refreshHeader()
+            self.refreshToolBar()
         }
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        setupLayout()
     }
 }
 
@@ -86,12 +94,22 @@ private extension StatusDetailViewController {
         pagesView.headerView = detailContentView
         pagesView.pagesDataSource = self
         pagesView.pagesDelegate = self
+        
+        toolBar.viewModel = viewModel
 
         view.addSubview(pagesView)
         view.addSubview(categoryBar)
-
+        view.addSubview(toolBar)
+        
+        setupLayout()
+    }
+    
+    func setupLayout() {
         pagesView.frame = CGRect(x: 0, y: 0, width: view.width, height: view.height)
         categoryBar.align(.underCentered, relativeTo: detailContentView, padding: 10, width: view.width, height: 35)
+        toolBar.anchorToEdge(.bottom, padding: 0, width: view.width, height: 44 + view.safeAreaInsets.bottom)
+        
+        // TODO: 排查以下为啥一定要加这句，有没有更好的方式
         self.view.setNeedsLayout()
     }
 
@@ -107,6 +125,10 @@ private extension StatusDetailViewController {
 
     func refreshHeader() {
         detailContentView.reload(with: viewModel)
+    }
+    
+    func refreshToolBar() {
+        toolBar.reload(with: viewModel)
     }
 }
 

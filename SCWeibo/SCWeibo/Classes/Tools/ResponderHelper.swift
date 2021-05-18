@@ -49,7 +49,7 @@ class ResponderHelper {
 
     static func visibleTopViewController() -> UIViewController? {
         var viewController = _visibleTopViewController(viewController: UIApplication.shared.sc.keyWindow?.rootViewController)
-        while viewController?.presentationController != nil {
+        while viewController?.presentedViewController != nil {
             viewController = _visibleTopViewController(viewController: viewController?.presentedViewController)
         }
 

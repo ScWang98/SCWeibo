@@ -27,9 +27,17 @@ class URLSettings {
     class var ApiConfig: String {
         return h5BaseURL + "/api/config"
     }
+}
 
-    class var sendStatus: String {
-        return h5BaseURL + "/api/statuses/update"
+// MARK: - User
+
+extension URLSettings {
+    class var followUser: String {
+        return h5BaseURL + "/api/friendships/create"
+    }
+    
+    class var unFollowUser: String {
+        return h5BaseURL + "/api/friendships/destory"
     }
 }
 
@@ -90,5 +98,58 @@ extension URLSettings {
 
     class var commentsHotflow: String {
         return h5BaseURL + "/comments/hotflow"
+    }
+    
+    // 点赞
+    class var attitudesCreate: String {
+        return h5BaseURL + "/api/attitudes/create"
+    }
+    
+    // 取消点赞
+    class var attitudesDestroy: String {
+        return h5BaseURL + "/api/attitudes/destroy"
+    }
+    
+    // 收藏
+    class var favoriteCreate: String {
+        return h5BaseURL + "/mblogDeal/addFavMblog"
+    }
+    
+    // 取消收藏
+    class var favoriteDestroy: String {
+        return h5BaseURL + "/mblogDeal/delFavMblog"
+    }
+    
+    // 删除微博
+    class var deleteStatus: String {
+        return h5BaseURL + "/profile/delMyblog"
+    }
+}
+
+// MARK: - WriteStatus
+extension URLSettings {
+    // 发送微博
+    class var sendStatus: String {
+        return h5BaseURL + "/api/statuses/update"
+    }
+    
+    // 发送微博
+    class var repostStatus: String {
+        return h5BaseURL + "/api/statuses/repost"
+    }
+
+    // 评论微博
+    class var createComment: String {
+        return h5BaseURL + "/api/comments/create"
+    }
+    
+    // 回复评论
+    class var replyComment: String {
+        return h5BaseURL + "/api/comments/reply"
+    }
+
+    // 上传图片
+    class var addPicture: String {
+        return h5BaseURL + "/mblogDeal/addPic"
     }
 }

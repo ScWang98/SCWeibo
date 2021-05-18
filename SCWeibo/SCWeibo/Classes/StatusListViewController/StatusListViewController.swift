@@ -6,6 +6,7 @@
 //
 
 import MJRefresh
+import SwipeCellKit
 import UIKit
 
 class StatusListViewController: UIViewController {
@@ -103,6 +104,7 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
 
         if let homeCell = (cell as? StatusRepostCell) {
             homeCell.reload(with: viewModel)
+            homeCell.delegate = self
         }
 
         return cell
@@ -118,6 +120,57 @@ extension StatusListViewController: UITableViewDelegate, UITableViewDataSource {
         let userInfo = ["status": status]
 
         Router.open(url: "pillar://statusDetail", userInfo: userInfo)
+    }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension StatusListViewController: SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        let viewModel = listViewModel.statusList[indexPath.row]
+        if orientation == .right {
+            var swipeActions = [SwipeAction]()
+
+            let favorite = SwipeAction(style: .default, title: "收藏") { _, _ in
+                viewModel.sendFavoriteAction()
+            }
+            favorite.backgroundColor = UIColor.sc.color(RGB: 0xD0D0D5)
+            favorite.hidesWhenSelected = true
+            swipeActions.append(favorite)
+
+            let comment = SwipeAction(style: .default, title: "评论") { _, _ in
+                viewModel.sendCommentAction()
+            }
+            comment.backgroundColor = UIColor.sc.color(RGB: 0xB7B7BC)
+            comment.hidesWhenSelected = true
+            swipeActions.append(comment)
+
+            let repost = SwipeAction(style: .default, title: "转发") { _, _ in
+                viewModel.sendRepostAction()
+            }
+            repost.backgroundColor = UIColor.sc.color(RGB: 0x9F9FA4)
+            repost.hidesWhenSelected = true
+            swipeActions.append(repost)
+
+            if viewModel.status.user?.id == AccountManager.shared.user?.id {
+                let delete = SwipeAction(style: .default, title: "删除") { _, _ in
+                    viewModel.sendDeleteAction { _ in
+                        self.tableView.performBatchUpdates {
+                            self.listViewModel.statusList.remove(at: indexPath.row)
+                            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                        } completion: { _ in
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                delete.backgroundColor = UIColor.sc.color(RGB: 0xFF3B30)
+                delete.hidesWhenSelected = true
+                swipeActions.append(delete)
+            }
+
+            return swipeActions
+        }
+        return nil
     }
 }
 

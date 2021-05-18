@@ -20,6 +20,17 @@ extension UtilitiesWrapper where Base: UIImage {
         UIGraphicsEndImageContext()
         return tintedImage
     }
+    
+    public static func image(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 
     public func compressImage(to targetSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(targetSize, false, 0.0)

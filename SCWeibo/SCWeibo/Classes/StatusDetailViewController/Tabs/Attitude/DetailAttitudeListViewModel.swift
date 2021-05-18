@@ -42,7 +42,9 @@ class DetailAttitudeListViewModel {
         }
     }
     
-    func config(statusId: String?) {
-        listService.statusId = statusId
+    func config(status: StatusResponse?) {
+        if let id = status?.id {
+            listService.statusId = String(id)
+        }
     }
 }

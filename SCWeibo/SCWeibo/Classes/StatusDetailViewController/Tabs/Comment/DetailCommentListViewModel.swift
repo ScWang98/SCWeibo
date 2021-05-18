@@ -8,6 +8,7 @@
 import Foundation
 
 class DetailCommentListViewModel {
+    var status: StatusResponse?
     lazy var commentList = [DetailCommentCellViewModel]()
     lazy var listService = DetailCommentListService()
 
@@ -37,7 +38,10 @@ class DetailCommentListViewModel {
         }
     }
     
-    func config(statusId: String?) {
-        listService.statusId = statusId
+    func config(status: StatusResponse?) {
+        self.status = status
+        if let id = status?.id {
+            listService.statusId = String(id)
+        }
     }
 }

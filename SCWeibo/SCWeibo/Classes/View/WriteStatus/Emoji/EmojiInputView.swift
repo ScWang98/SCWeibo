@@ -77,13 +77,13 @@ private extension EmojiInputView {
             make.bottom.equalTo(toolbar.snp.top).offset(-8)
         }
 
-        let bundle = EmojiManager.shared.bundle
+//        let bundle = EmojiManager.shared.bundle
 
-        guard let normalImage = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
-              let selectedImage = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil)
-        else {
-            return
-        }
+//        guard let normalImage = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
+//              let selectedImage = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil)
+//        else {
+//            return
+//        }
 //        pageControl.setValue(normalImage, forKey: "_pageImage")
 //        pageControl.setValue(selectedImage, forKey: "_currentPageImage")
     }

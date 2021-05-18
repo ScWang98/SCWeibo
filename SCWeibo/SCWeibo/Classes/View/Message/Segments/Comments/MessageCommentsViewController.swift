@@ -8,25 +8,31 @@
 import MJRefresh
 import UIKit
 
+enum MessageCommentsListType {
+    case received
+    case mentioned
+    case sended
+}
+
 class MessageCommentsViewController: UIViewController {
     let tableView = UITableView()
-    let categoryBar = HorizontalCategoryBar()
 
-    private var listViewModel = MessageCommentsViewModel()
+    private var listViewModel: MessageCommentsViewModel
 
     deinit {
         removeObservers()
     }
-
-    init() {
+    
+    init(type: MessageCommentsListType) {
+        listViewModel = MessageCommentsViewModel(type: type)
         super.init(nibName: nil, bundle: nil)
         addObservers()
     }
-
+    
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -46,11 +52,6 @@ extension MessageCommentsViewController {
 
 private extension MessageCommentsViewController {
     func setupSubviews() {
-        categoryBar.delegate = self
-        categoryBar.reload(names: ["1", "2", "3"])
-        categoryBar.frame = CGRect(x: 0, y: 0, width: view.width, height: 40)
-
-        tableView.tableHeaderView = categoryBar
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 0
@@ -83,6 +84,9 @@ private extension MessageCommentsViewController {
             if needRefresh {
                 self.tableView.reloadData()
             }
+            if !loadMore && self.listViewModel.commentsList.count < 3 {
+                self.loadDatas(loadMore: true)
+            }
         }
     }
 }
@@ -110,14 +114,6 @@ extension MessageCommentsViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let viewModel = listViewModel.commentsList[indexPath.row]
         return viewModel.cellHeight(cellWidth: tableView.width)
-    }
-}
-
-// MARK: - HorizontalCategoryDelegate
-
-extension MessageCommentsViewController: HorizontalCategoryBarDelegate {
-    func categoryBar(_ categoryBar: HorizontalCategoryBar, didSelectItemAt index: Int) {
-//        pagesView.set(selectedIndex: index, animated: true)
     }
 }
 
