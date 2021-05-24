@@ -7,13 +7,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>Emoticons</string>
+	<string>Emojis</string>
 	<key>CFBundleIdentifier</key>
-	<string>cn.scwang.Emoticons</string>
+	<string>cn.scwang.Emojis</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Emoticons</string>
+	<string>Emojis</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>

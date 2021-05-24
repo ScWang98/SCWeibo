@@ -2,40 +2,29 @@
 //  EmojiInputView.swift
 //  SCWeibo
 //
-//  Created by scwang on 2020/4/15.
+//  Created by 王书超 on 2021/5/25.
 //
 
 import UIKit
 
-let mnKeyboardHeight: CGFloat = 254.0
+protocol EmojiInputViewDelegate: class {
+    func emojiInputView(view: EmojiInputView, didSelectEmoji emoji: Emoji)
+}
 
 class EmojiInputView: UIView {
-    let cellID = "cellID"
+    weak var delegate: EmojiInputViewDelegate?
+    
+    private var categoryBar = EmojiCategoryBar()
+    private var selectViews = [EmojiSelectView]()
+    private var listCategorys = [EmojiListCategory]()
 
-    var collectionView: UICollectionView = {
-        let layout = EmojiCollectionFlowLayout()
-        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.isPagingEnabled = true
-        collectionView.bounces = false
-        collectionView.backgroundColor = UIColor.white
-        return collectionView
-    }()
+    init() {
+        var safeBottom: CGFloat = 0
+        if let bottom = UIApplication.shared.sc.keyWindow?.safeAreaInsets.bottom {
+            safeBottom = bottom
+        }
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 254 + safeBottom))
 
-    var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.tintColor = UIColor.orange
-        pageControl.hidesForSinglePage = true
-        return pageControl
-    }()
-
-    var toolbar = EmojiToolbar()
-
-    private var selectedEmojiCallBack: ((_ emojiModel: EmojiModel?) -> Void)?
-
-    init(selectedEmoji: @escaping (_ emojiModel: EmojiModel?) -> Void) {
-        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: mnKeyboardHeight))
-        selectedEmojiCallBack = selectedEmoji
         setupUI()
     }
 
@@ -43,135 +32,95 @@ class EmojiInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        categoryBar.anchorToEdge(.bottom, padding: safeAreaInsets.bottom, width: width, height: 40)
+
+        for selectView in selectViews {
+            selectView.anchorToEdge(.top, padding: 0, width: width, height: categoryBar.top)
+        }
+    }
+
     override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
-        toolbar.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().offset(-self.safeAreaInsets.bottom)
-        }
+        setNeedsLayout()
     }
 }
 
 private extension EmojiInputView {
     func setupUI() {
-        toolbar.delegate = self
-        toolbar.backgroundColor = UIColor.lightGray
-        addSubview(toolbar)
-        toolbar.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.height.equalTo(40)
-            make.bottom.equalToSuperview().offset(-self.safeAreaInsets.bottom)
-        }
-
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(EmojiCell.self, forCellWithReuseIdentifier: cellID)
-        addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(toolbar.snp.top)
-        }
-
-        addSubview(pageControl)
-        pageControl.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(toolbar.snp.top).offset(-8)
-        }
-
-//        let bundle = EmojiManager.shared.bundle
-
-//        guard let normalImage = UIImage(named: "compose_keyboard_dot_normal", in: bundle, compatibleWith: nil),
-//              let selectedImage = UIImage(named: "compose_keyboard_dot_selected", in: bundle, compatibleWith: nil)
-//        else {
-//            return
-//        }
-//        pageControl.setValue(normalImage, forKey: "_pageImage")
-//        pageControl.setValue(selectedImage, forKey: "_currentPageImage")
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension EmojiInputView: UICollectionViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // collectionView中心点
-        var center = scrollView.center
-        center.x += scrollView.contentOffset.x
-
-        // 当前中心点所在界面
-        var targetIndex: IndexPath?
-
-        let indexPaths = collectionView.indexPathsForVisibleItems
-
-        for indexPath in indexPaths {
-            let cell = collectionView.cellForItem(at: indexPath)
-
-            if cell?.frame.contains(center) == true {
-                targetIndex = indexPath
-                break
+        backgroundColor = UIColor.sc.color(RGB: 0xEFEFF4)
+        for (index, category) in EmojiManager.shared.categorys.enumerated() {
+            var sections = [EmojiListSection]()
+            if index == 0 {
+                let recent = EmojiManager.shared.getRecentEmojis()
+                if recent.count > 0 {
+                    let section = EmojiListSection(title: "最近使用", emojis: recent)
+                    sections.append(section)
+                }
             }
+
+            let section = EmojiListSection(title: category.categoryName, emojis: category.generateEmojis())
+            sections.append(section)
+
+            var listCategory = EmojiListCategory(sections: sections)
+            listCategory.image = EmojiManager.shared.getEmoji(byName: category.coverName)?.image
+            listCategorys.append(listCategory)
         }
 
-        guard let target = targetIndex else {
-            return
+        for (index, category) in listCategorys.enumerated() {
+            let selectView = EmojiSelectView(category: category)
+            selectView.isHidden = index != 0
+            selectView.delegate = self
+            addSubview(selectView)
+            selectViews.append(selectView)
         }
-        // indexPath.section = 组
-        toolbar.selectedIndex = target.section
 
-        pageControl.numberOfPages = collectionView.numberOfItems(inSection: target.section)
-        pageControl.currentPage = target.item
+        categoryBar.reload(withCategorys: listCategorys)
+        categoryBar.delegate = self
+        addSubview(categoryBar)
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - EmojiSelectViewDelegate
 
-extension EmojiInputView: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return EmojiManager.shared.packages.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return EmojiManager.shared.packages[section].numberOfPage
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! EmojiCell
-        let package = EmojiManager.shared.packages[indexPath.section]
-        cell.emojiModels = package.emojiModel(page: indexPath.item)
-        cell.deleagage = self
-        return cell
+extension EmojiInputView: EmojiSelectViewDelegate {
+    func emojiSelectView(view: EmojiSelectView, didSelectEmoji emoji: Emoji) {
+        delegate?.emojiInputView(view: self, didSelectEmoji: emoji)
     }
 }
 
-extension EmojiInputView: EmojiCellDelegagte {
-    func emojiCellSelectedEmoji(cell: EmojiCell, model: EmojiModel?) {
-        // 通过闭包回传选中的表情
-        selectedEmojiCallBack?(model)
 
-        // 最近使用表情
-        guard let model = model else {
+// MARK: - EmojiCategoryBarDelegate
+
+extension EmojiInputView: EmojiCategoryBarDelegate {
+    func emojiCategoryBar(categoryBar: EmojiCategoryBar, didSelectCategoryAt index: Int) {
+        guard index < selectViews.count else {
             return
         }
-        EmojiManager.shared.recentEmoji(model: model)
-
-        // “最近使用”的不用添加表情逻辑
-        let indexPath = collectionView.indexPathsForVisibleItems[0]
-        if indexPath.section == 0 {
-            print("这是‘最近使用’的表情")
-            return
+        
+        for (idx, view) in selectViews.enumerated() {
+            view.isHidden = idx != index
         }
-
-        // 数据刷新
-        var indexSet = IndexSet()
-        indexSet.insert(0)
-        collectionView.reloadSections(indexSet)
     }
 }
 
-extension EmojiInputView: EmojiToolBarDelegate {
-    func emojiToolBarDidSelected(tooBar: EmojiToolbar, index: Int) {
-        // 滚动到每个分组的第[0]页
-        let indexPath = IndexPath(item: 0, section: index)
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
-        tooBar.selectedIndex = index
+struct EmojiListCategory {
+    var sections: [EmojiListSection]
+    var image: UIImage?
+
+    init(sections: [EmojiListSection]) {
+        self.sections = sections
+    }
+}
+
+struct EmojiListSection {
+    var title: String
+    var emojis: [Emoji]
+
+    init(title: String, emojis: [Emoji]) {
+        self.title = title
+        self.emojis = emojis
     }
 }

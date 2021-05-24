@@ -107,7 +107,7 @@ private extension MessageCommentCell {
 
         timeLabel.anchorInCorner(.bottomLeft, xPad: nameLabel.left, yPad: 8, width: contentWidth, height: 17)
 
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1.0 / UIScreen.main.scale)
     }
 }
 

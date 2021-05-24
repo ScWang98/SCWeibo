@@ -75,7 +75,7 @@ private extension DetailAttitudeTableCell {
     func setupLayout() {
         avatarImageView.anchorToEdge(.left, padding: 27, width: 36, height: 36)
         nameLabel.align(.toTheRightCentered, relativeTo: avatarImageView, padding: 8, width: width - 71, height: 36)
-        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1 / UIScreen.main.scale)
+        bottomSeperator.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 20, height: 1.0 / UIScreen.main.scale)
     }
 }
 

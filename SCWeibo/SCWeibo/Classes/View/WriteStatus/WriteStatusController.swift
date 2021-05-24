@@ -24,6 +24,11 @@ class WriteStatusController: UIViewController, RouteAble {
 
     var imageUploadView = ImageUploadView()
     var referenceView = WriteReferenceView()
+    lazy var emojiView: EmojiInputView = {
+        let emojiView = EmojiInputView()
+        emojiView.delegate = self
+        return emojiView
+    }()
 
     var referenceModel: WriteReferenceModel?
     var writeType: WriteType = WriteType.writeStatus
@@ -64,10 +69,6 @@ class WriteStatusController: UIViewController, RouteAble {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    // 往textView中插入表情符号
-    lazy var emojiView: EmojiInputView = EmojiInputView { [weak self] emojiModel in
-        self?.textView.insertEmoji(model: emojiModel)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +120,10 @@ private extension WriteStatusController {
             imageUploadView.isHidden = false
             referenceView.isHidden = true
         }
-
+        
+        imageUploadView.isHidden = true
+        referenceView.isHidden = true
+        
         view.addSubview(toolBar)
         view.addSubview(textView)
         textView.addSubview(imageUploadView)
@@ -239,6 +243,14 @@ extension WriteStatusController: UIImagePickerControllerDelegate {
             imageUploadView.photos.append(image)
             imageUploadView.refreshData()
         }
+    }
+}
+
+// MARK: - EmojiInputViewDelegate
+
+extension WriteStatusController: EmojiInputViewDelegate {
+    func emojiInputView(view: EmojiInputView, didSelectEmoji emoji: Emoji) {
+        self.textView.insertEmoji(model: emoji)
     }
 }
 

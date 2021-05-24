@@ -10,7 +10,7 @@ import UIKit
 class StatusHomeViewController: StatusListViewController {
     let avatarView = NavigationAvatarView()
     let titleButton = HomeTitleButton()
-    
+
     let service = StatusHomeService()
 
     var groupModels: [GroupModel]? {
@@ -109,9 +109,9 @@ class HomeTitleButton: UIButton {
             }
         }
     }
-    
+
     var title: String? {
-        set (title) {
+        set(title) {
             let attrTitle = NSAttributedString(string: title ?? "", attributes: [.font: UIFont.boldSystemFont(ofSize: 17)])
             setAttributedTitle(attrTitle, for: .normal)
             self.sizeToFit()
@@ -120,7 +120,7 @@ class HomeTitleButton: UIButton {
             return attributedTitle(for: .normal)?.string
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         title = "主页"

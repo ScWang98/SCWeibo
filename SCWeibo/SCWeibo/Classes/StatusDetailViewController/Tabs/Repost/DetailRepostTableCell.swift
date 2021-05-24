@@ -94,7 +94,7 @@ private extension DetailRepostTableCell {
         timeLabel.anchorInCorner(.bottomLeft, xPad: nameLabel.left, yPad: 8, width: contentWidth, height: 17)
         let labelHeight = viewModel?.commentLabelModel?.text.sc.height(labelWidth: contentWidth) ?? 0
         contentLabel.frame = CGRect(x: nameLabel.left, y: nameLabel.bottom + 10, width: contentWidth, height: labelHeight)
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1.0 / UIScreen.main.scale)
     }
 }
 

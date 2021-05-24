@@ -106,7 +106,7 @@ private extension MessageAttitudeCell {
         nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 9, width: contentWidth, height: 20)
         backShadowView.align(.underMatchingLeft, relativeTo: nameLabel, padding: 10, width: contentWidth, height: 56)
         timeLabel.anchorInCorner(.bottomLeft, xPad: backShadowView.left, yPad: 8, width: contentWidth, height: 17)
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1.0 / UIScreen.main.scale)
         
         pictureView.anchorToEdge(.left, padding: 8, width: 40, height: 40)
         contentLabel.anchorToEdge(.right, padding: 8, width: backShadowView.width - 8 - 40 - 8 - 8, height: 40)
