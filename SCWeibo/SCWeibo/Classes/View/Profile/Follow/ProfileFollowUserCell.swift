@@ -102,7 +102,7 @@ private extension ProfileFollowUserCell {
         let contentWidth = followButton.left - avatarImageView.right - 15 - 8
         nameLabel.align(.toTheRightMatchingTop, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
         descriptionLabel.align(.toTheRightMatchingBottom, relativeTo: avatarImageView, padding: 15, width: contentWidth, height: 20)
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: width - 15, height: 1.0 / UIScreen.main.scale)
     }
     
     func refreshFollowButton() {

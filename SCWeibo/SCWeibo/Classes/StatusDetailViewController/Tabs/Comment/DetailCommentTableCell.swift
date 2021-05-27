@@ -111,7 +111,7 @@ private extension DetailCommentTableCell {
             commentsView.frame = CGRect(x: nameLabel.left, y: contentLabel.bottom + 10, width: contentWidth, height: commentsHeight)
         }
         
-        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1 / UIScreen.main.scale)
+        separatorLine.anchorInCorner(.bottomRight, xPad: 0, yPad: 0, width: self.width - 15, height: 1.0 / UIScreen.main.scale)
     }
 }
 

@@ -2,72 +2,108 @@
 //  EmojiManager.swift
 //  SCWeibo
 //
-//  Created by scwang on 2020/4/12.
+//  Created by 王书超 on 2021/5/25.
 //
 
-import UIKit
+import Foundation
+import MMKV
 
-class EmojiManager {
+private let recentEmojisKey = "EmojiRecentEmojisKey"
+private let recentMaxCount = 14
+
+public class EmojiManager {
     static let shared = EmojiManager()
 
-    lazy var packages = [EmojiPackageModel]()
-
-    let pageCells = 20
-
-    lazy var bundle: Bundle = {
-        let path = Bundle.main.path(forResource: "Emoji.bundle", ofType: nil)
-        return Bundle(path: path ?? "") ?? Bundle()
-    }()
+    lazy var categorys = [EmojiCategory]()
+    
+    private lazy var recentEmojis = [String]()
+    private lazy var emojis = [String: Emoji]()
 
     private init() {
-        loadPackageDatas()
+        loadEmojisData()
+        
+        addRecent(emojiName: "[微笑]")
+        addRecent(emojiName: "[生病]")
+        addRecent(emojiName: "[允悲]")
     }
 
-    // 添加最近使用的表情
-    func recentEmoji(model: EmojiModel) {
-        // 1.表情使用次数+1
-        model.times += 1
-
-        // 2.添加表情
-        if !packages[0].emotions.contains(model) {
-            packages[0].emotions.append(model)
-        }
-
-        // 3.排序(降序)
-        packages[0].emotions.sort { $0.times > $1.times }
-
-        // 4.表情数组长度处理
-        if packages[0].emotions.count > pageCells {
-            let subRange = pageCells ..< packages[0].emotions.count
-            packages[0].emotions.removeSubrange(subRange)
-        }
+    func addRecent(emoji: Emoji) {
+        let emojiName = emoji.emojiName
+        addRecent(emojiName: emojiName)
     }
 
-    /// 根据传入的字符串[abc]，查找对应的表情模型
-    /// - Parameter string : 查询字符串
-    func findEmoji(string: String) -> EmojiModel? {
-        for pModel in packages {
-            // 传入的参数和model对比，过滤出一致字符串对应的模型.
-            let result = pModel.emotions.filter { $0.chs == string }
-            if result.count > 0 {
-                return result.first
-            }
-        }
-        return nil
-    }
-}
-
-private extension EmojiManager {
-    func loadPackageDatas() {
-        guard let plistPath = bundle.path(forResource: "emoticons.plist", ofType: nil),
-              let array = NSArray(contentsOfFile: plistPath) as? [[String: String]],
-              let models = NSArray.yy_modelArray(with: EmojiPackageModel.self, json: array) as? [EmojiPackageModel]
-        else {
-            print("loadPackageDatas failure.")
+    func addRecent(emojiName: String) {
+        guard getEmoji(byName: emojiName) != nil else {
+            assertionFailure("RecentEmoji查找有误")
             return
         }
-        packages += models
+        if let index = recentEmojis.firstIndex(of: emojiName) {
+            recentEmojis.remove(at: index)
+        }
+        recentEmojis.insert(emojiName, at: 0)
+
+        while recentEmojis.count > recentMaxCount {
+            recentEmojis.removeLast()
+        }
+
+        if let emojisData = try? JSONEncoder().encode(recentEmojis) {
+            MMKV.default()?.set(emojisData, forKey: recentEmojisKey)
+        }
+    }
+    
+    func getRecentEmojis() -> [Emoji] {
+        return recentEmojis.compactMap { (emojiName) -> Emoji? in
+            getEmoji(byName: emojiName)
+        }
+    }
+
+    func getEmoji(byName name: String) -> Emoji? {
+        return emojis[name]
     }
 }
 
-// MARK: - 表情符号处理
+// MARK: - Private Methods
+
+private extension EmojiManager {
+    func loadEmojisData() {
+        guard let bundlePath = Bundle.main.path(forResource: "Emoji", ofType: "bundle"),
+              let emojisBundle = Bundle(path: bundlePath) else {
+            assertionFailure("Bundle加载失败")
+            return
+        }
+
+        if let data = MMKV.default()?.data(forKey: recentEmojisKey),
+           let emojis = try? JSONDecoder().decode([String].self, from: data) {
+            recentEmojis = emojis
+        }
+
+        loadEmojis(fromBundle: emojisBundle, categoryName: "全部表情", coverName: "[微笑]", plistName: "IconEmojis")
+        loadEmojis(fromBundle: emojisBundle, categoryName: "浪小花", coverName: "[噢耶]", plistName: "LXHEmojis")
+    }
+
+    func loadEmojis(fromBundle bundle: Bundle,
+                categoryName: String,
+                coverName: String,
+                    plistName: String) {
+        guard let plistPath = bundle.path(forResource: plistName, ofType: "plist"),
+              let xml = FileManager.default.contents(atPath: plistPath),
+              let emojis = (try? PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil)) as? [[String: String]] else {
+            assertionFailure("表情加载失败")
+            return
+        }
+
+        let emojiNames = emojis.compactMap { (emoji) -> String? in
+            emoji.keys.first
+        }
+        let category = EmojiCategory.init(categoryName: categoryName, coverName: coverName, emojiNames: emojiNames)
+        categorys.append(category)
+
+        for emoji in emojis {
+            if let emojiName = emoji.keys.first,
+               let fileName = emoji[emojiName] {
+                let model = Emoji(emojiName: emojiName, fileName: fileName)
+                self.emojis[emojiName] = model
+            }
+        }
+    }
+}

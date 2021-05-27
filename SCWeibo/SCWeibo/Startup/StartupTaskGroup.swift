@@ -15,6 +15,7 @@ class StartupTaskGroup {
     class var tasks: Array<StartupTaskProtocol> {
         var allTasks = [StartupTaskProtocol]()
         
+        allTasks.append(MMKVInitializeTask())
         allTasks.append(FetchAppInfoTask())
         allTasks.append(WeiboSDKTask())
         allTasks.append(RouteRegisterTask())
